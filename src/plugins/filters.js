@@ -1,18 +1,15 @@
-export default function registerFilters(Vue) {
+export default function registerFilters(Vue, i18n) {
   Vue.filter("formatDate", (value) => {
     if (!value) return "-";
     const date = new Date(value);
-    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(
-      date.getDate()
-    ).padStart(2, "0")}`;
+    return new Intl.DateTimeFormat(i18n.locale, {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).format(date);
   });
 
   Vue.filter("statusLabel", (value) => {
-    const map = {
-      todo: "할 일",
-      doing: "진행 중",
-      done: "완료",
-    };
-    return map[value] || value;
+    return i18n.t(`common.status.${value}`) || value;
   });
 }

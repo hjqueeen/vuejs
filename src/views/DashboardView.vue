@@ -1,14 +1,14 @@
 <template>
   <div class="page">
-    <h2>대시보드</h2>
+    <h2>{{ $t("dashboard.title") }}</h2>
     <div class="grid">
-      <BaseCard title="전체 작업 수">
+      <BaseCard :title="$t('dashboard.totalTasks')">
         <p class="metric">{{ list.length }}</p>
       </BaseCard>
-      <BaseCard title="진행중 작업">
+      <BaseCard :title="$t('dashboard.inProgressTasks')">
         <p class="metric">{{ groupedByStatus.doing.length }}</p>
       </BaseCard>
-      <BaseCard title="완료 작업">
+      <BaseCard :title="$t('dashboard.doneTasks')">
         <p class="metric">{{ groupedByStatus.done.length }}</p>
       </BaseCard>
     </div>

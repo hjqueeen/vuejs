@@ -1,0 +1,272 @@
+export const messages = {
+  ko: {
+    app: {
+      title: "Vue2 학습 프로젝트",
+      nav: {
+        dashboard: "대시보드",
+        tasks: "작업관리",
+        admin: "관리자",
+      },
+      logout: "로그아웃",
+      language: "언어",
+    },
+    auth: {
+      login: "로그인",
+      loginFailed: "로그인 실패",
+      hint: "admin@demo.com / admin123 또는 user@demo.com / user123",
+      emailPlaceholder: "email",
+      passwordPlaceholder: "password",
+      invalidCredentials: "이메일 또는 비밀번호가 올바르지 않습니다.",
+    },
+    dashboard: {
+      title: "대시보드",
+      totalTasks: "전체 작업 수",
+      inProgressTasks: "진행중 작업",
+      doneTasks: "완료 작업",
+    },
+    tasks: {
+      title: "작업관리",
+      newTask: "새 작업 등록",
+      list: "작업 리스트",
+      loading: "불러오는 중...",
+      created: "작업이 등록되었습니다.",
+      statusChanged: "상태가 변경되었습니다.",
+      fields: {
+        title: "제목",
+        assignee: "담당자",
+        dueDate: "마감일",
+        status: "상태",
+        change: "변경",
+      },
+      form: {
+        titlePlaceholder: "작업명",
+        assigneePlaceholder: "담당자",
+        submit: "등록",
+      },
+    },
+    admin: {
+      title: "관리자 페이지",
+      cardTitle: "운영 기능",
+      items: {
+        rbac: "권한 기반 접근 제어(meta.requiredRole)",
+        directive: "커스텀 디렉티브(v-permission)",
+        modular: "대규모 프로젝트에서의 기능 모듈 분리 패턴",
+      },
+    },
+    learning: {
+      panelTitle: "Vuex/Props/Emit 학습 패널",
+      counter: "counter",
+      doubled: "doubled(getter)",
+      keyword: "keyword(getter)",
+      keywordLength: "keywordLength(getter)",
+      actions: {
+        decrement: "-1 (action)",
+        increment: "+1 (action)",
+        incrementAsync: "+1 async action",
+        commitIncrement: "+1 direct mutation",
+        plusTen: "+10 (action -> mutation)",
+        reset: "reset (setter)",
+      },
+      keywordLabel: "props/emit(v-model) 데모",
+    },
+    notFound: {
+      message: "요청하신 페이지를 찾을 수 없습니다.",
+      toDashboard: "대시보드로 이동",
+    },
+    common: {
+      confirmLeave: "입력 중인 내용이 있습니다. 정말 이동할까요?",
+      status: {
+        todo: "할 일",
+        doing: "진행 중",
+        done: "완료",
+      },
+      role: {
+        admin: "관리자",
+        member: "일반 사용자",
+      },
+    },
+    errors: {
+      taskNotFound: "작업을 찾을 수 없습니다.",
+    },
+  },
+  de: {
+    app: {
+      title: "Vue2 Lernprojekt",
+      nav: {
+        dashboard: "Dashboard",
+        tasks: "Aufgaben",
+        admin: "Admin",
+      },
+      logout: "Abmelden",
+      language: "Sprache",
+    },
+    auth: {
+      login: "Anmelden",
+      loginFailed: "Anmeldung fehlgeschlagen",
+      hint: "admin@demo.com / admin123 oder user@demo.com / user123",
+      emailPlaceholder: "E-Mail",
+      passwordPlaceholder: "Passwort",
+      invalidCredentials: "E-Mail oder Passwort ist nicht korrekt.",
+    },
+    dashboard: {
+      title: "Dashboard",
+      totalTasks: "Alle Aufgaben",
+      inProgressTasks: "In Bearbeitung",
+      doneTasks: "Erledigte Aufgaben",
+    },
+    tasks: {
+      title: "Aufgaben",
+      newTask: "Neue Aufgabe",
+      list: "Aufgabenliste",
+      loading: "Wird geladen...",
+      created: "Die Aufgabe wurde erstellt.",
+      statusChanged: "Der Status wurde aktualisiert.",
+      fields: {
+        title: "Titel",
+        assignee: "Zuständig",
+        dueDate: "Fällig am",
+        status: "Status",
+        change: "Ändern",
+      },
+      form: {
+        titlePlaceholder: "Aufgabentitel",
+        assigneePlaceholder: "Zuständig",
+        submit: "Erstellen",
+      },
+    },
+    admin: {
+      title: "Admin-Seite",
+      cardTitle: "Betriebsfunktionen",
+      items: {
+        rbac: "Rollenbasierte Zugriffskontrolle (meta.requiredRole)",
+        directive: "Benutzerdefinierte Direktive (v-permission)",
+        modular: "Modulares Trennungsmuster für große Projekte",
+      },
+    },
+    learning: {
+      panelTitle: "Vuex/Props/Emit Lernpanel",
+      counter: "counter",
+      doubled: "doubled(getter)",
+      keyword: "keyword(getter)",
+      keywordLength: "keywordLength(getter)",
+      actions: {
+        decrement: "-1 (action)",
+        increment: "+1 (action)",
+        incrementAsync: "+1 async action",
+        commitIncrement: "+1 direct mutation",
+        plusTen: "+10 (action -> mutation)",
+        reset: "reset (setter)",
+      },
+      keywordLabel: "props/emit(v-model) Demo",
+    },
+    notFound: {
+      message: "Die angeforderte Seite wurde nicht gefunden.",
+      toDashboard: "Zum Dashboard",
+    },
+    common: {
+      confirmLeave: "Es gibt ungespeicherte Eingaben. Wirklich wechseln?",
+      status: {
+        todo: "Offen",
+        doing: "In Arbeit",
+        done: "Erledigt",
+      },
+      role: {
+        admin: "Administrator",
+        member: "Mitglied",
+      },
+    },
+    errors: {
+      taskNotFound: "Aufgabe wurde nicht gefunden.",
+    },
+  },
+  en: {
+    app: {
+      title: "Vue2 Learning Project",
+      nav: {
+        dashboard: "Dashboard",
+        tasks: "Tasks",
+        admin: "Admin",
+      },
+      logout: "Logout",
+      language: "Language",
+    },
+    auth: {
+      login: "Login",
+      loginFailed: "Login failed",
+      hint: "admin@demo.com / admin123 or user@demo.com / user123",
+      emailPlaceholder: "email",
+      passwordPlaceholder: "password",
+      invalidCredentials: "Email or password is incorrect.",
+    },
+    dashboard: {
+      title: "Dashboard",
+      totalTasks: "Total tasks",
+      inProgressTasks: "In-progress tasks",
+      doneTasks: "Completed tasks",
+    },
+    tasks: {
+      title: "Tasks",
+      newTask: "Create task",
+      list: "Task list",
+      loading: "Loading...",
+      created: "Task has been created.",
+      statusChanged: "Status has been updated.",
+      fields: {
+        title: "Title",
+        assignee: "Assignee",
+        dueDate: "Due date",
+        status: "Status",
+        change: "Change",
+      },
+      form: {
+        titlePlaceholder: "Task title",
+        assigneePlaceholder: "Assignee",
+        submit: "Create",
+      },
+    },
+    admin: {
+      title: "Admin Page",
+      cardTitle: "Operations",
+      items: {
+        rbac: "Role-based access control (meta.requiredRole)",
+        directive: "Custom directive (v-permission)",
+        modular: "Feature module separation pattern in large projects",
+      },
+    },
+    learning: {
+      panelTitle: "Vuex/Props/Emit Learning Panel",
+      counter: "counter",
+      doubled: "doubled(getter)",
+      keyword: "keyword(getter)",
+      keywordLength: "keywordLength(getter)",
+      actions: {
+        decrement: "-1 (action)",
+        increment: "+1 (action)",
+        incrementAsync: "+1 async action",
+        commitIncrement: "+1 direct mutation",
+        plusTen: "+10 (action -> mutation)",
+        reset: "reset (setter)",
+      },
+      keywordLabel: "props/emit(v-model) demo",
+    },
+    notFound: {
+      message: "The requested page could not be found.",
+      toDashboard: "Go to dashboard",
+    },
+    common: {
+      confirmLeave: "You have unsaved input. Are you sure you want to leave?",
+      status: {
+        todo: "To do",
+        doing: "Doing",
+        done: "Done",
+      },
+      role: {
+        admin: "Admin",
+        member: "Member",
+      },
+    },
+    errors: {
+      taskNotFound: "Task could not be found.",
+    },
+  },
+};

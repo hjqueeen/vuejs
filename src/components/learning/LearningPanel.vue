@@ -1,24 +1,24 @@
 <template>
-  <BaseCard title="Vuex/Props/Emit 학습 패널">
+  <BaseCard :title="$t('learning.panelTitle')">
     <div class="learning-panel">
-      <p><strong>counter:</strong> {{ counter }}</p>
-      <p><strong>doubled(getter):</strong> {{ doubledCounter }}</p>
-      <p><strong>keyword(getter):</strong> {{ keyword }}</p>
-      <p><strong>keywordLength(getter):</strong> {{ keywordLength }}</p>
+      <p><strong>{{ $t("learning.counter") }}:</strong> {{ counter }}</p>
+      <p><strong>{{ $t("learning.doubled") }}:</strong> {{ doubledCounter }}</p>
+      <p><strong>{{ $t("learning.keyword") }}:</strong> {{ keyword }}</p>
+      <p><strong>{{ $t("learning.keywordLength") }}:</strong> {{ keywordLength }}</p>
 
       <div class="button-row">
-        <button @click="decrement">-1 (action)</button>
-        <button @click="increment">+1 (action)</button>
-        <button @click="incrementAsync">+1 async action</button>
-        <button @click="commitIncrement">+1 direct mutation</button>
+        <button @click="decrement">{{ $t("learning.actions.decrement") }}</button>
+        <button @click="increment">{{ $t("learning.actions.increment") }}</button>
+        <button @click="incrementAsync">{{ $t("learning.actions.incrementAsync") }}</button>
+        <button @click="commitIncrement">{{ $t("learning.actions.commitIncrement") }}</button>
       </div>
 
       <div class="button-row">
-        <button @click="setCounter(counter + 10)">+10 (action -> mutation)</button>
-        <button @click="setCounter(0)">reset (setter)</button>
+        <button @click="setCounter(counter + 10)">{{ $t("learning.actions.plusTen") }}</button>
+        <button @click="setCounter(0)">{{ $t("learning.actions.reset") }}</button>
       </div>
 
-      <KeywordInput v-model="keywordProxy" label="props/emit(v-model) 데모" />
+      <KeywordInput v-model="keywordProxy" :label="$t('learning.keywordLabel')" />
     </div>
   </BaseCard>
 </template>

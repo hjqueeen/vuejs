@@ -1,9 +1,13 @@
 <template>
   <form class="task-form" @submit.prevent="submit">
-    <input v-model.trim="form.title" placeholder="작업명" @input="onDirty" />
-    <input v-model.trim="form.assignee" placeholder="담당자" @input="onDirty" />
+    <input v-model.trim="form.title" :placeholder="$t('tasks.form.titlePlaceholder')" @input="onDirty" />
+    <input
+      v-model.trim="form.assignee"
+      :placeholder="$t('tasks.form.assigneePlaceholder')"
+      @input="onDirty"
+    />
     <input v-model="form.dueDate" type="date" @change="onDirty" />
-    <button type="submit">등록</button>
+    <button type="submit">{{ $t("tasks.form.submit") }}</button>
   </form>
 </template>
 

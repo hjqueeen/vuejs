@@ -1,12 +1,12 @@
 <template>
   <div class="page auth-page">
-    <BaseCard title="로그인">
+    <BaseCard :title="$t('auth.login')">
       <form class="auth-form" @submit.prevent="login">
-        <input v-model.trim="email" placeholder="email" />
-        <input v-model="password" type="password" placeholder="password" />
-        <button type="submit" :disabled="loading">로그인</button>
+        <input v-model.trim="email" :placeholder="$t('auth.emailPlaceholder')" />
+        <input v-model="password" type="password" :placeholder="$t('auth.passwordPlaceholder')" />
+        <button type="submit" :disabled="loading">{{ $t("auth.login") }}</button>
       </form>
-      <p class="hint">admin@demo.com / admin123 또는 user@demo.com / user123</p>
+      <p class="hint">{{ $t("auth.hint") }}</p>
       <p v-if="error" class="error-text">{{ error }}</p>
     </BaseCard>
   </div>
@@ -38,7 +38,7 @@ export default {
         const redirect = this.$route.query.redirect || "/dashboard";
         this.$router.replace(redirect);
       } catch (error) {
-        this.error = error.message || "로그인 실패";
+        this.error = error.message || this.$t("auth.loginFailed");
       } finally {
         this.loading = false;
       }

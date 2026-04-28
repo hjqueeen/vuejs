@@ -15,7 +15,7 @@ export default {
     },
     label: {
       type: String,
-      default: "검색어",
+      default: "",
     },
   },
 };

@@ -1,3 +1,5 @@
+import i18n from "@/i18n";
+
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const fakeDb = {
@@ -18,7 +20,7 @@ export async function loginApi(payload) {
   await delay(500);
   const user = fakeDb.users.find((item) => item.email === payload.email && item.password === payload.password);
   if (!user) {
-    throw new Error("이메일 또는 비밀번호가 올바르지 않습니다.");
+    throw new Error(i18n.t("auth.invalidCredentials"));
   }
   return {
     token: createToken(user),
@@ -47,7 +49,7 @@ export async function createTaskApi(payload) {
 export async function updateTaskStatusApi(taskId, status) {
   await delay(250);
   const task = fakeDb.tasks.find((item) => item.id === taskId);
-  if (!task) throw new Error("작업을 찾을 수 없습니다.");
+  if (!task) throw new Error(i18n.t("errors.taskNotFound"));
   task.status = status;
   return { ...task };
 }

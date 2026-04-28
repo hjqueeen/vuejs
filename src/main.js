@@ -4,15 +4,17 @@ import router from "./router";
 import store from "./store";
 import registerFilters from "./plugins/filters";
 import permissionDirective from "./directives/permission";
+import i18n from "./i18n";
 import "./styles/global.css";
 
 Vue.config.productionTip = false;
 
-registerFilters(Vue);
+registerFilters(Vue, i18n);
 Vue.directive("permission", permissionDirective(store));
 
 new Vue({
   router,
   store,
+  i18n,
   render: (h) => h(App),
 }).$mount("#app");
