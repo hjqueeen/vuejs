@@ -1,7 +1,7 @@
 <template>
   <header class="app-header">
     <div class="header-left">
-      <router-link class="home-link" to="/dashboard" aria-label="홈으로 이동" title="홈으로 이동">
+      <router-link class="home-link" to="/dashboard" :aria-label="$t('app.headerAria.dashboardHome')">
         <svg class="home-icon" viewBox="0 0 24 24" aria-hidden="true">
           <path
             d="M3 10.5L12 3l9 7.5M5.5 9.5V20h13V9.5M9.5 20v-5.5h5V20"
@@ -14,7 +14,18 @@
         </svg>
       </router-link>
       <div class="header-divider"></div>
-      <router-link class="review-link" to="/review">복습노트</router-link>
+      <router-link class="review-link" to="/review" :aria-label="$t('app.headerAria.review')">
+        <svg class="header-btn-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M8 7h13M8 12h13M8 17h13M5 7h.01M5 12h.01M5 17h.01"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+        </svg>
+        <span class="header-btn-text">{{ reviewLabel }}</span>
+      </router-link>
     </div>
 
     <div class="header-right">
@@ -37,18 +48,36 @@
           class="ghost-btn"
           :class="{ active: hideKorean }"
           :disabled="hideEnglish && !hideKorean"
+          :aria-label="$t('app.headerAria.maskKorean')"
+          :aria-pressed="hideKorean"
           @click="$emit('toggle-hide-korean')"
         >
-          한국어 가리기
+          <svg class="ghost-btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <text x="5" y="17" fill="currentColor" font-size="14" font-weight="700">가</text>
+            <path d="M16 14h4M17 17h2M15 11h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" />
+          </svg>
+          <span class="ghost-btn-text">{{ $t('app.ebook.maskKoreanBtn') }}</span>
         </button>
         <button
           type="button"
           class="ghost-btn"
           :class="{ active: hideEnglish }"
           :disabled="hideKorean && !hideEnglish"
+          :aria-label="$t('app.headerAria.maskEnglish')"
+          :aria-pressed="hideEnglish"
           @click="$emit('toggle-hide-english')"
         >
-          영어 가리기
+          <svg class="ghost-btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.85"
+              d="M12 5l8 17h-2.9l-1.85-4.2H8.75L6.9 22H4L12 5zm0 9.7L9.7 9.2h4.6L12 14.7z"
+            />
+          </svg>
+          <span class="ghost-btn-text">{{ $t('app.ebook.maskEnglishBtn') }}</span>
         </button>
       </div>
 
@@ -57,22 +86,68 @@
           type="button"
           class="ghost-btn"
           :class="{ active: hideCompletedSentences }"
+          :aria-label="$t('app.headerAria.hideCompleted')"
+          :aria-pressed="hideCompletedSentences"
           @click="$emit('toggle-hide-completed')"
         >
-          {{ hideCompletedSentences ? "완료 숨김 ON" : "완료 숨기기" }}
+          <svg class="ghost-btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 11l3 3L22 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M21 12v7a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h11" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" />
+          </svg>
+          <span class="ghost-btn-text">{{
+            hideCompletedSentences ? $t('app.ebook.hideCompletedOnBtn') : $t('app.ebook.hideCompletedBtn')
+          }}</span>
         </button>
       </div>
 
-      <div v-if="isEbookRoute" class="ebook-controls">
-        <button type="button" class="ghost-btn" @click="$emit('toggle-toc')">
-          {{ showToc ? $t("app.ebook.hideToc") : $t("app.ebook.showToc") }}
+      <div v-if="isEbookRoute" class="ebook-controls ebook-controls-toc-pages">
+        <button
+          type="button"
+          class="ghost-btn"
+          :aria-label="$t('app.headerAria.toc')"
+          @click="$emit('toggle-toc')"
+        >
+          <svg class="ghost-btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 6h13M9 12h13M9 18h13M5 7h2M5 17h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none" />
+            <path d="M4 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <span class="ghost-btn-text">{{ showToc ? $t('app.ebook.hideToc') : $t('app.ebook.showToc') }}</span>
         </button>
-        <label class="page-mode-label">
-          <select :value="pageMode" @change="$emit('change-page-mode', $event.target.value)">
-            <option value="single">{{ $t("app.ebook.singlePage") }}</option>
-            <option value="double">{{ $t("app.ebook.doublePage") }}</option>
+
+        <label class="page-mode-label page-mode-label-desktop">
+          <select :value="pageMode" :aria-label="$t('app.ebook.pageView')" @change="$emit('change-page-mode', $event.target.value)">
+            <option value="single">{{ $t('app.ebook.singlePage') }}</option>
+            <option value="double">{{ $t('app.ebook.doublePage') }}</option>
           </select>
         </label>
+
+        <div class="page-mode-toggle-mobile" role="group" :aria-label="$t('app.headerAria.pageLayoutGroup')">
+          <button
+            type="button"
+            class="ghost-btn page-mode-icon-btn"
+            :class="{ active: pageMode === 'single' }"
+            :aria-pressed="pageMode === 'single'"
+            :aria-label="$t('app.headerAria.pageSingle')"
+            @click="$emit('change-page-mode', 'single')"
+          >
+            <svg class="ghost-btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="7" y="5" width="10" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="ghost-btn page-mode-icon-btn"
+            :class="{ active: pageMode === 'double' }"
+            :aria-pressed="pageMode === 'double'"
+            :aria-label="$t('app.headerAria.pageSpread')"
+            @click="$emit('change-page-mode', 'double')"
+          >
+            <svg class="ghost-btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="4" y="5" width="7" height="14" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6" />
+              <rect x="13" y="5" width="7" height="14" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </header>
@@ -91,6 +166,11 @@ export default {
     hideCompletedSentences: { type: Boolean, default: false },
     darkMode: { type: Boolean, default: false },
   },
+  computed: {
+    reviewLabel() {
+      return this.$route && this.$route.path === "/review" ? this.$t("app.nav.dashboard") : this.$t("app.nav.review");
+    },
+  },
 };
 </script>
 
@@ -104,6 +184,24 @@ export default {
 .page-mode-label {
   display: inline-flex;
   align-items: center;
+}
+
+.page-mode-label-desktop {
+  display: inline-flex;
+}
+
+.page-mode-toggle-mobile {
+  display: none;
+}
+
+.page-mode-icon-btn {
+  padding: 0 !important;
+  min-width: 34px;
+  width: 34px;
+}
+
+.page-mode-icon-btn .ghost-btn-icon {
+  margin: 0 auto;
 }
 
 .dark-mode-btn {

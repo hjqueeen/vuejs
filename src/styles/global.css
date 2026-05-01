@@ -467,6 +467,42 @@ a {
   font-weight: 500;
 }
 
+.ebook-swipe-area {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.review-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header-btn-icon-svg {
+  display: none;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.ghost-btn-icon {
+  display: none;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.page-mode-label-desktop {
+  display: inline-flex;
+}
+
+.page-mode-toggle-mobile {
+  display: none;
+  align-items: center;
+  gap: 2px;
+}
+
 .page-side-nav {
   position: absolute;
   top: 0;
@@ -953,5 +989,93 @@ audio {
 
   .ebook-page-wrap.double-page .ebook-pages {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-side-nav {
+    display: none !important;
+  }
+
+  .ebook-page-wrap,
+  .ebook-page-wrap.double-page {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .app-header {
+    padding: 0 10px;
+    height: 46px;
+  }
+
+  .header-right {
+    flex-wrap: nowrap;
+    gap: 4px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: min(72vw, 520px);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .header-right::-webkit-scrollbar {
+    display: none;
+  }
+
+  .header-left {
+    flex-shrink: 0;
+    gap: 8px;
+  }
+
+  .header-btn-icon-svg {
+    display: block;
+  }
+
+  .header-btn-text,
+  .ghost-btn-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .review-link,
+  .ghost-btn:not(.dark-mode-btn) {
+    position: relative;
+  }
+
+  .ghost-btn-icon {
+    display: block;
+  }
+
+  .ghost-btn {
+    justify-content: center;
+    flex-shrink: 0;
+    min-height: 34px;
+    min-width: 34px;
+    padding: 0 8px !important;
+  }
+
+  .page-mode-label-desktop {
+    display: none !important;
+  }
+
+  .page-mode-toggle-mobile {
+    display: inline-flex;
+  }
+
+  .ebook-controls-toc-pages {
+    flex-wrap: nowrap;
+  }
+}
+
+@media (min-width: 769px) {
+  .page-mode-toggle-mobile {
+    display: none !important;
   }
 }

@@ -54,43 +54,50 @@
             <span aria-hidden="true">‹</span>
           </button>
 
-          <transition :name="transitionName" mode="out-in">
-            <div :key="$route.fullPath + '-' + pageMode" class="ebook-pages">
-              <div class="ebook-page">
-                <ParagraphDetailView
-                  v-if="primaryPage && primaryPage.type.startsWith('paragraph')"
-                  :paragraph-id="primaryPage.route.params.paragraphId"
-                  :view-mode="primaryPage.viewMode"
-                />
-                <GrammarChapterView
-                  v-else-if="primaryPage && primaryPage.type === 'grammar'"
-                  :grammar-id="primaryPage.route.params.grammarId"
-                />
-                <QuizChapterView
-                  v-else-if="primaryPage && primaryPage.type === 'quiz'"
-                  :quiz-id="primaryPage.route.params.quizId"
-                />
-                <SentenceDetailView v-else :sentence-id="currentSentenceId" />
+          <div
+            class="ebook-swipe-area"
+            @touchstart="onEbookTouchStart"
+            @touchend="onEbookTouchEnd"
+            @touchcancel="onEbookTouchCancel"
+          >
+            <transition :name="transitionName" mode="out-in">
+              <div :key="$route.fullPath + '-' + pageMode" class="ebook-pages">
+                <div class="ebook-page">
+                  <ParagraphDetailView
+                    v-if="primaryPage && primaryPage.type.startsWith('paragraph')"
+                    :paragraph-id="primaryPage.route.params.paragraphId"
+                    :view-mode="primaryPage.viewMode"
+                  />
+                  <GrammarChapterView
+                    v-else-if="primaryPage && primaryPage.type === 'grammar'"
+                    :grammar-id="primaryPage.route.params.grammarId"
+                  />
+                  <QuizChapterView
+                    v-else-if="primaryPage && primaryPage.type === 'quiz'"
+                    :quiz-id="primaryPage.route.params.quizId"
+                  />
+                  <SentenceDetailView v-else :sentence-id="currentSentenceId" />
+                </div>
+                <div v-if="isDoublePageMode" class="ebook-page second-page">
+                  <ParagraphDetailView
+                    v-if="secondaryPage && secondaryPage.type.startsWith('paragraph')"
+                    :paragraph-id="secondaryPage.route.params.paragraphId"
+                    :view-mode="secondaryPage.viewMode"
+                  />
+                  <GrammarChapterView
+                    v-else-if="secondaryPage && secondaryPage.type === 'grammar'"
+                    :grammar-id="secondaryPage.route.params.grammarId"
+                  />
+                  <QuizChapterView
+                    v-else-if="secondaryPage && secondaryPage.type === 'quiz'"
+                    :quiz-id="secondaryPage.route.params.quizId"
+                  />
+                  <SentenceDetailView v-else-if="secondarySentenceId" :sentence-id="secondarySentenceId" />
+                  <div v-else class="empty-page"></div>
+                </div>
               </div>
-              <div v-if="isDoublePageMode" class="ebook-page second-page">
-                <ParagraphDetailView
-                  v-if="secondaryPage && secondaryPage.type.startsWith('paragraph')"
-                  :paragraph-id="secondaryPage.route.params.paragraphId"
-                  :view-mode="secondaryPage.viewMode"
-                />
-                <GrammarChapterView
-                  v-else-if="secondaryPage && secondaryPage.type === 'grammar'"
-                  :grammar-id="secondaryPage.route.params.grammarId"
-                />
-                <QuizChapterView
-                  v-else-if="secondaryPage && secondaryPage.type === 'quiz'"
-                  :quiz-id="secondaryPage.route.params.quizId"
-                />
-                <SentenceDetailView v-else-if="secondarySentenceId" :sentence-id="secondarySentenceId" />
-                <div v-else class="empty-page"></div>
-              </div>
-            </div>
-          </transition>
+            </transition>
+          </div>
 
           <button
             type="button"
@@ -140,6 +147,7 @@ export default {
       previousChapterIndex: 0,
       showToc: savedShowToc ? savedShowToc === "true" : true,
       pageMode: savedPageMode === "double" ? "double" : "single",
+      ebookSwipeStart: null,
     };
   },
   computed: {
@@ -430,6 +438,46 @@ export default {
     },
     toggleDarkMode() {
       this.$store.dispatch("ui/toggleDarkMode");
+    },
+    ebookSwipeEnabled() {
+      if (typeof window === "undefined" || !window.matchMedia) return false;
+      return (
+        this.isEbookRoute &&
+        this.isSpeakingListeningTemplate &&
+        window.matchMedia("(max-width: 768px)").matches
+      );
+    },
+    onEbookTouchStart(event) {
+      if (!this.ebookSwipeEnabled()) return;
+      const t = event.touches && event.touches[0];
+      if (!t) return;
+      this.ebookSwipeStart = { x: t.clientX, y: t.clientY };
+    },
+    onEbookTouchEnd(event) {
+      if (!this.ebookSwipeStart || !this.ebookSwipeEnabled()) {
+        this.ebookSwipeStart = null;
+        return;
+      }
+      const t = event.changedTouches && event.changedTouches[0];
+      if (!t) {
+        this.ebookSwipeStart = null;
+        return;
+      }
+      const dx = t.clientX - this.ebookSwipeStart.x;
+      const dy = t.clientY - this.ebookSwipeStart.y;
+      this.ebookSwipeStart = null;
+      const threshold = 56;
+      if (Math.abs(dx) < threshold || Math.abs(dx) < Math.abs(dy) * 1.15) {
+        return;
+      }
+      if (dx < 0 && this.nextPage) {
+        this.goToPage(this.nextPage);
+      } else if (dx > 0 && this.prevPage) {
+        this.goToPage(this.prevPage);
+      }
+    },
+    onEbookTouchCancel() {
+      this.ebookSwipeStart = null;
     },
     findPageIndexByRoute(route) {
       return this.pages.findIndex((page) => {
