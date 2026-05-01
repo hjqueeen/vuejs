@@ -997,6 +997,10 @@ audio {
     display: none !important;
   }
 
+  .app-main {
+    padding: 6px 8px;
+  }
+
   .ebook-page-wrap,
   .ebook-page-wrap.double-page {
     padding-left: 12px;
