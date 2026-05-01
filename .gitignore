@@ -32,4 +32,5 @@ Thumbs.db
 # local / large curriculum data (not tracked)
 src/data/englishLearningDb.js
 src/data/grammarChapters.js
+src/data/books.private.js
 public/audio/
