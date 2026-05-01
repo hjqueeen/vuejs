@@ -1,0 +1,41 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [develop, main]
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Materialize CI curriculum (when full DB not in repo)
+        run: |
+          if [ ! -f src/data/englishLearningDb.js ]; then
+            cp src/data/englishLearningDb.public.js src/data/englishLearningDb.js
+          fi
+          if [ ! -f src/data/grammarChapters.js ]; then
+            cp src/data/grammarChapters.public.js src/data/grammarChapters.js
+          fi
+
+      - name: Production build
+        run: npm run build
+
+      - name: Publish dist to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          force_orphan: true
