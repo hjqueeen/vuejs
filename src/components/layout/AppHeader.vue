@@ -42,13 +42,28 @@
         </svg>
       </button>
 
+      <div v-if="showLanguageMaskControls" class="study-translation-wrap">
+        <label class="study-translation-label">
+          <span class="study-translation-label-text">{{ $t("app.ebook.studyTranslationLabel") }}</span>
+          <select
+            class="study-translation-select"
+            :value="studyTranslationLanguage"
+            :aria-label="$t('app.headerAria.studyTranslationSelect')"
+            @change="$emit('change-study-translation', $event.target.value)"
+          >
+            <option value="ko">{{ $t("app.ebook.studyTranslationKo") }}</option>
+            <option value="de">{{ $t("app.ebook.studyTranslationDe") }}</option>
+          </select>
+        </label>
+      </div>
+
       <div v-if="showLanguageMaskControls" class="ebook-controls">
         <button
           type="button"
           class="ghost-btn"
           :class="{ active: hideKorean }"
           :disabled="hideEnglish && !hideKorean"
-          :aria-label="$t('app.headerAria.maskKorean')"
+          :aria-label="maskStudyLineAria"
           :aria-pressed="hideKorean"
           @click="$emit('toggle-hide-korean')"
         >
@@ -56,7 +71,7 @@
             <text x="5" y="17" fill="currentColor" font-size="14" font-weight="700">가</text>
             <path d="M16 14h4M17 17h2M15 11h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" />
           </svg>
-          <span class="ghost-btn-text">{{ $t('app.ebook.maskKoreanBtn') }}</span>
+          <span class="ghost-btn-text">{{ maskStudyLineLabel }}</span>
         </button>
         <button
           type="button"
@@ -165,10 +180,21 @@ export default {
     hideKorean: { type: Boolean, default: false },
     hideCompletedSentences: { type: Boolean, default: false },
     darkMode: { type: Boolean, default: false },
+    studyTranslationLanguage: { type: String, default: "ko" },
   },
   computed: {
     reviewLabel() {
       return this.$route && this.$route.path === "/review" ? this.$t("app.nav.dashboard") : this.$t("app.nav.review");
+    },
+    maskStudyLineLabel() {
+      return this.studyTranslationLanguage === "de"
+        ? this.$t("app.ebook.maskStudyTranslationDe")
+        : this.$t("app.ebook.maskStudyTranslationKo");
+    },
+    maskStudyLineAria() {
+      return this.studyTranslationLanguage === "de"
+        ? this.$t("app.ebook.maskStudyTranslationDe")
+        : this.$t("app.ebook.maskStudyTranslationKo");
     },
   },
 };
@@ -228,5 +254,49 @@ export default {
 .dark-mode-btn svg {
   width: 16px;
   height: 16px;
+}
+
+.study-translation-wrap {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.study-translation-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: 12px;
+  color: var(--c-text-secondary);
+  white-space: nowrap;
+}
+
+.study-translation-label-text {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .study-translation-label-text {
+    display: inline;
+  }
+}
+
+.study-translation-select {
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: var(--c-radius-md);
+  border: 1px solid var(--c-border);
+  background: var(--c-bg);
+  color: var(--c-text-primary);
+  cursor: pointer;
+  max-width: 140px;
+}
+
+.study-translation-select:focus {
+  outline: 2px solid var(--c-accent, #3b82f6);
+  outline-offset: 1px;
 }
 </style>

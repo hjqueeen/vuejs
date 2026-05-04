@@ -28,6 +28,8 @@ export const bbcLearningEnglishSentences = [
       "Performer describes locking eyes with Trump as they ducked for cover during the shooting.",
     koreanTranslation:
       "공연자, 총격 당시 트럼프와 눈을 마주쳤다고 증언했습니다.",
+    germanTranslation:
+      "Ein Darsteller beschreibt, wie er Trump während der Schießerei in die Augen sah, als beide in Deckung gingen.",
     context: "news headline narrative",
     source: "chat",
     difficulty: "intermediate",
@@ -40,6 +42,8 @@ export const bbcLearningEnglishSentences = [
     originalText: "Trump claims gala shooting gives urgency to White House ballroom plan.",
     koreanTranslation:
       "트럼프는 연회 행사 총격이 백악관 무도회장(볼룸) 계획에 시급성을 더했다고 주장합니다.",
+    germanTranslation:
+      "Trump behauptet, die Schießerei bei der Gala verleihe den Plänen für einen Ballsaal im Weißen Haus zusätzliche Dringlichkeit.",
     context: "political headline",
     source: "chat",
     difficulty: "intermediate",
@@ -53,6 +57,8 @@ export const bbcLearningEnglishSentences = [
       "UK royals head to the U.S. in the wake of war, shooting and rocky relations.",
     koreanTranslation:
       "영국 왕실이 전쟁과 총격 사건, 그리고 불안했던 관계의 여파로 미국을 향했습니다.",
+    germanTranslation:
+      "Das britische Königshaus reist in die USA – nach Krieg, einer Schießerei und angespannten Beziehungen.",
     context: "royal diplomacy headline",
     source: "chat",
     difficulty: "intermediate",
@@ -70,6 +76,8 @@ export const bbcLearningEnglishParagraphs = [
       "Performer describes locking eyes with Trump as they ducked for cover during the shooting. Trump claims gala shooting gives urgency to White House ballroom plan. UK royals head to the U.S. in the wake of war, shooting and rocky relations.",
     koreanTranslation:
       "공연자, 총격 당시 트럼프와 눈을 마주쳤다고 증언했습니다. 트럼프는 연회 행사에서의 총격이 백악관 무도회장 계획을 더 긴급한 안건으로 만든다고 말했습니다. 한편 영국 왕실은 전쟁과 총격, 그리고 삐거덕거리던 양국 관계의 여파 속에서 미국을 방문하게 되었습니다.",
+    germanTranslation:
+      "Ein Darsteller beschreibt, wie er Trump während der Schießerei in die Augen sah, als beide in Deckung gingen. Trump behauptet, die Schießerei bei der Gala verleihe den Plänen für einen Ballsaal im Weißen Haus zusätzliche Dringlichkeit. Das britische Königshaus reist in die USA – nach Krieg, einer Schießerei und angespannten Beziehungen.",
     normalSpeedUrl: "",
     slowSpeedUrl: "",
     sourceUrl: "https://youtu.be/k5dd29hOrsA?si=Y75VykipWWBwVyvf",

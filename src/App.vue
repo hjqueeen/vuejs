@@ -9,12 +9,14 @@
       :hide-korean="hideKorean"
       :hide-completed-sentences="hideCompletedSentences"
       :dark-mode="darkMode"
+      :study-translation-language="studyTranslationLanguage"
       @toggle-toc="toggleToc"
       @change-page-mode="changePageMode"
       @toggle-hide-english="toggleHideEnglish"
       @toggle-hide-korean="toggleHideKorean"
       @toggle-hide-completed="toggleHideCompletedSentences"
       @toggle-dark-mode="toggleDarkMode"
+      @change-study-translation="setStudyTranslationLanguage"
     />
     <main class="app-main">
       <div
@@ -170,6 +172,9 @@ export default {
     },
     hideKorean() {
       return this.$store.getters["ui/hideKorean"];
+    },
+    studyTranslationLanguage() {
+      return this.$store.getters["ui/studyTranslationLanguage"];
     },
     hideCompletedSentences() {
       return this.$store.getters["ui/hideCompletedSentences"];
@@ -438,6 +443,9 @@ export default {
     },
     toggleDarkMode() {
       this.$store.dispatch("ui/toggleDarkMode");
+    },
+    setStudyTranslationLanguage(lang) {
+      this.$store.dispatch("ui/setStudyTranslationLanguage", lang);
     },
     ebookSwipeEnabled() {
       if (typeof window === "undefined" || !window.matchMedia) return false;

@@ -2,21 +2,21 @@ import Vue from "vue";
 import VueI18n from "vue-i18n";
 import { messages } from "./messages";
 
-const FIXED_LOCALE = "ko";
+const DEFAULT_LOCALE = "en";
 
 Vue.use(VueI18n);
 
 const i18n = new VueI18n({
-  locale: FIXED_LOCALE,
-  fallbackLocale: FIXED_LOCALE,
+  locale: DEFAULT_LOCALE,
+  fallbackLocale: DEFAULT_LOCALE,
   messages,
 });
 
 export const setLocale = (locale) => {
-  if (locale !== FIXED_LOCALE) return;
-  i18n.locale = FIXED_LOCALE;
+  if (!messages[locale]) return;
+  i18n.locale = locale;
 };
 
-export const availableLocales = [FIXED_LOCALE];
+export const availableLocales = Object.keys(messages);
 
 export default i18n;

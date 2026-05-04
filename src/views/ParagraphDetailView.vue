@@ -36,7 +36,7 @@
       <section v-if="resolvedViewMode === 'overview'" class="para-body">
         <div class="para-text-box">
           <p v-if="!hideEnglish" class="para-en">{{ paragraph.englishText }}</p>
-          <p v-if="!hideKorean" class="para-ko">{{ paragraph.koreanTranslation }}</p>
+          <p v-if="!hideKorean" class="para-ko">{{ paragraphStudyTranslation }}</p>
         </div>
         <a
           v-if="paragraph.sourceUrl"
@@ -72,7 +72,7 @@
               <span class="sentence-no">{{ index + 1 }}</span>
               <div class="sentence-texts">
                 <p v-if="!hideEnglish" class="sent-en">{{ item.originalText }}</p>
-                <p v-if="!hideKorean" class="sent-ko">{{ item.koreanTranslation }}</p>
+                <p v-if="!hideKorean" class="sent-ko">{{ sentenceStudyLine(item) }}</p>
               </div>
               <span class="sentence-arrow" aria-hidden="true">›</span>
             </li>
@@ -85,6 +85,7 @@
 
 <script>
 import { paragraphs, sentences } from "@/data/englishLearningDb";
+import { pickStudyTranslation } from "@/utils/studyTranslation";
 
 export default {
   name: "ParagraphDetailView",
@@ -127,6 +128,12 @@ export default {
     hideKorean() {
       return this.$store.getters["ui/hideKorean"];
     },
+    studyTranslationLanguage() {
+      return this.$store.getters["ui/studyTranslationLanguage"];
+    },
+    paragraphStudyTranslation() {
+      return pickStudyTranslation(this.paragraph, this.studyTranslationLanguage);
+    },
     hideCompletedSentences() {
       return this.$store.getters["ui/hideCompletedSentences"];
     },
@@ -138,6 +145,9 @@ export default {
     },
   },
   methods: {
+    sentenceStudyLine(sentence) {
+      return pickStudyTranslation(sentence, this.studyTranslationLanguage);
+    },
     goToSentenceDetail(sentenceId) {
       if (!sentenceId) return;
       this.$router.push({

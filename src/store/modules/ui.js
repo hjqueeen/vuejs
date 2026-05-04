@@ -4,6 +4,8 @@ const state = () => ({
   toast: "",
   hideEnglish: false,
   hideKorean: false,
+  /** eBook 영어 옆 번역: 한국어(`ko`) 또는 독일어(`de`) */
+  studyTranslationLanguage: "ko",
   hideCompletedSentences: false,
   completedSentenceMap: {},
   readStepMap: {},
@@ -14,6 +16,7 @@ const getters = {
   toast: (state) => state.toast,
   hideEnglish: (state) => state.hideEnglish,
   hideKorean: (state) => state.hideKorean,
+  studyTranslationLanguage: (state) => state.studyTranslationLanguage,
   hideCompletedSentences: (state) => state.hideCompletedSentences,
   darkMode: (state) => state.darkMode,
   isSentenceCompleted: (state) => (sentenceId) => Boolean(state.completedSentenceMap[sentenceId]),
@@ -32,6 +35,9 @@ const mutations = {
   },
   SET_HIDE_KOREAN(state, value) {
     state.hideKorean = Boolean(value);
+  },
+  SET_STUDY_TRANSLATION_LANGUAGE(state, value) {
+    state.studyTranslationLanguage = value === "de" ? "de" : "ko";
   },
   SET_HIDE_COMPLETED_SENTENCES(state, value) {
     state.hideCompletedSentences = Boolean(value);
@@ -83,6 +89,7 @@ const actions = {
       const parsed = JSON.parse(raw);
       commit("SET_HIDE_ENGLISH", Boolean(parsed.hideEnglish));
       commit("SET_HIDE_KOREAN", Boolean(parsed.hideKorean));
+      commit("SET_STUDY_TRANSLATION_LANGUAGE", parsed.studyTranslationLanguage);
       commit("SET_HIDE_COMPLETED_SENTENCES", Boolean(parsed.hideCompletedSentences));
       if (parsed.completedSentenceMap && typeof parsed.completedSentenceMap === "object") {
         commit("SET_COMPLETED_SENTENCE_MAP", parsed.completedSentenceMap);
@@ -94,6 +101,7 @@ const actions = {
     } catch (error) {
       commit("SET_HIDE_ENGLISH", false);
       commit("SET_HIDE_KOREAN", false);
+      commit("SET_STUDY_TRANSLATION_LANGUAGE", "ko");
       commit("SET_HIDE_COMPLETED_SENTENCES", false);
       commit("SET_COMPLETED_SENTENCE_MAP", {});
       commit("SET_READ_STEP_MAP", {});
@@ -106,7 +114,7 @@ const actions = {
   },
   toggleHideEnglish({ state, commit, dispatch }) {
     if (!state.hideEnglish && state.hideKorean) {
-      dispatch("notify", "영어와 한국어를 동시에 가릴 수 없습니다.");
+      dispatch("notify", "영어와 번역문을 동시에 가릴 수 없습니다.");
       return;
     }
     commit("SET_HIDE_ENGLISH", !state.hideEnglish);
@@ -114,7 +122,7 @@ const actions = {
   },
   toggleHideKorean({ state, commit, dispatch }) {
     if (!state.hideKorean && state.hideEnglish) {
-      dispatch("notify", "영어와 한국어를 동시에 가릴 수 없습니다.");
+      dispatch("notify", "영어와 번역문을 동시에 가릴 수 없습니다.");
       return;
     }
     commit("SET_HIDE_KOREAN", !state.hideKorean);
@@ -126,6 +134,10 @@ const actions = {
   },
   toggleDarkMode({ state, commit, dispatch }) {
     commit("SET_DARK_MODE", !state.darkMode);
+    dispatch("persist");
+  },
+  setStudyTranslationLanguage({ commit, dispatch }, value) {
+    commit("SET_STUDY_TRANSLATION_LANGUAGE", value);
     dispatch("persist");
   },
   toggleSentenceCompleted({ commit, dispatch }, sentenceId) {
@@ -144,6 +156,7 @@ const actions = {
       JSON.stringify({
         hideEnglish: state.hideEnglish,
         hideKorean: state.hideKorean,
+        studyTranslationLanguage: state.studyTranslationLanguage,
         hideCompletedSentences: state.hideCompletedSentences,
         completedSentenceMap: state.completedSentenceMap,
         readStepMap: state.readStepMap,
