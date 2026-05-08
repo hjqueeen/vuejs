@@ -11,9 +11,19 @@ const router = new Router({
       redirect: "/dashboard",
     },
     {
+      path: "/esd",
+      name: "esd",
+      component: () => import("@/components/common/StatusDisplay.vue"),
+    },
+    {
       path: "/dashboard",
       name: "dashboard",
       component: () => import("@/views/DashboardView.vue"),
+    },
+    {
+      path: "/onboard",
+      name: "onboard-display",
+      component: () => import("@/views/OnboardDisplayView.vue"),
     },
     {
       path: "/tasks",

@@ -5,16 +5,10 @@
  * 1. 이 파일을 복사해 같은 폴더에 `books.private.js` 로 저장합니다.
  * 2. `books.private.js`는 .gitignore에 있어 깃허브에 올라가지 않습니다.
  *
- * 필요 시 책 객체를 `extraBooks` 배열에 추가하면 됩니다.
+ * `paragraphIds` / `sentenceIds`는 `englishLearningDb.js`에 실제로 있는 id와 일치해야 합니다.
+ * 기본 스텁 DB는 BBC 학습용 `p4`와 `bbcLearningEnglishContent`의 문장 id만 포함합니다.
  */
-import { sentences } from "./englishLearningDb";
-
-const featureRequestSentenceIds = sentences
-  .filter((item) => {
-    const n = Number(String(item.id).replace(/^s/, ""));
-    return n >= 1 && n <= 41;
-  })
-  .map((item) => item.id);
+import { BBC_LEARNING_SENTENCE_IDS } from "./bbcLearningEnglishContent.js";
 
 export const extraBooks = [
   {
@@ -25,7 +19,7 @@ export const extraBooks = [
     description:
       "팀 미팅에서 나온 문장을 핵심 문장/표현/확장/문법 포인트 중심으로 학습하는 실무 영어북",
     coverColor: "book-cover-a",
-    paragraphIds: ["p1", "p2", "p3"],
-    sentenceIds: featureRequestSentenceIds,
+    paragraphIds: ["p4"],
+    sentenceIds: [...BBC_LEARNING_SENTENCE_IDS],
   },
 ];
