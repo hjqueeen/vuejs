@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import OnboardDisplay from "@/components/common/OnboardDisplay.vue";
+import OnboardDisplay from '@/components/common/OnboardDisplay.vue';
 
 export default {
-  name: "OnboardDisplayView",
+  name: 'OnboardDisplayView',
   components: {
     OnboardDisplay,
   },

@@ -7,45 +7,57 @@
 
     <div class="onboard-display__route">
       <div class="onboard-display__line">
-        <span class="onboard-display__segment onboard-display__segment--complete" />
-        <span class="onboard-display__segment onboard-display__segment--inactive" />
-        <span class="onboard-display__segment onboard-display__segment--inactive" />
+        <span
+          class="onboard-display__segment onboard-display__segment--complete"
+        />
+        <span
+          class="onboard-display__segment onboard-display__segment--inactive"
+        />
+        <span
+          class="onboard-display__segment onboard-display__segment--inactive"
+        />
       </div>
       <div class="onboard-display__marker" aria-hidden="true"></div>
       <div class="onboard-display__arrow" aria-hidden="true">→</div>
     </div>
 
     <div class="onboard-display__stations">
-      <span class="onboard-display__station onboard-display__station--muted">{{ startStation }}</span>
-      <span class="onboard-display__station onboard-display__station--active">{{ activeStation }}</span>
-      <span class="onboard-display__station onboard-display__station--muted">{{ endStation }}</span>
+      <span class="onboard-display__station onboard-display__station--muted">{{
+        startStation
+      }}</span>
+      <span class="onboard-display__station onboard-display__station--active">{{
+        activeStation
+      }}</span>
+      <span class="onboard-display__station onboard-display__station--muted">{{
+        endStation
+      }}</span>
     </div>
   </section>
 </template>
 
 <script>
 export default {
-  name: "OnboardDisplay",
+  name: 'OnboardDisplay',
   props: {
     time: {
       type: String,
-      default: "HH:MM",
+      default: 'HH:MM',
     },
     carriage: {
       type: String,
-      default: "Vagn NN",
+      default: 'Vagn NN',
     },
     startStation: {
       type: String,
-      default: "Katrineholm C",
+      default: 'Katrineholm C',
     },
     activeStation: {
       type: String,
-      default: "Södertälje Syd",
+      default: 'Södertälje Syd',
     },
     endStation: {
       type: String,
-      default: "Stockholm C",
+      default: 'Stockholm C',
     },
   },
 };
@@ -72,8 +84,8 @@ export default {
 
 .onboard-display__time,
 .onboard-display__carriage {
-  font-family: "SJ Sans", sans-serif;
-  font-feature-settings: "dlig" 1;
+  font-family: 'SJ Sans', sans-serif;
+  font-feature-settings: 'dlig' 1;
   font-size: 66px;
   line-height: 99px;
   letter-spacing: 0;
@@ -153,7 +165,7 @@ export default {
 }
 
 .onboard-display__station {
-  font-family: "SJ Sans", sans-serif;
+  font-family: 'SJ Sans', sans-serif;
   font-size: 58px;
   line-height: 82px;
   letter-spacing: 0;

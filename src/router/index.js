@@ -15,15 +15,25 @@ const router = new Router({
       name: "esd",
       component: () => import("@/components/common/StatusDisplay.vue"),
     },
+        {
+      path: "/approach",
+      name: "approach",
+      component: () => import("@/components/common/ApproachingPIS.vue"),
+    },
     {
-      path: "/dashboard",
-      name: "dashboard",
-      component: () => import("@/views/DashboardView.vue"),
+      path: "/vestibule",
+      name: "vestibule-pis",
+      component: () => import("@/components/common/VestibulePIS.vue"),
     },
     {
       path: "/onboard",
       name: "onboard-display",
       component: () => import("@/views/OnboardDisplayView.vue"),
+    },
+        {
+      path: "/dashboard",
+      name: "dashboard",
+      component: () => import("@/views/DashboardView.vue"),
     },
     {
       path: "/tasks",
