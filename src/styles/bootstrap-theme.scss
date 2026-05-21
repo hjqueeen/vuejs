@@ -1,5 +1,6 @@
-// Bootstrap 4.4.1 — Sass build entry (import this file from main.js when ready)
-// Do not use bootstrap/dist/css/*.css (precompiled).
+// Bootstrap 4.4.1 — compiled at build time via Sass (see README).
+// Do not import bootstrap/dist/css/*.css (precompiled).
+// Theming: https://getbootstrap.com/docs/4.4/getting-started/theming/
 
 // --- Alstom brand palette ---
 $alstom-red: #d62f20;
@@ -12,14 +13,18 @@ $alstom-greengrey: #73cdaa;
 $green-color: #008767;
 $light-green-color: #00b389;
 
-// --- Bootstrap variable overrides (before @import) ---
-$primary: $alstom-darkblue;
+// --- Bootstrap Sass variables (before @import; overrides !default in _variables.scss) ---
+$blue: $alstom-darkblue; // --blue, .text-blue, etc.
+$red: $alstom-red; // --red; $danger follows $red by default
+$primary: $alstom-darkblue; // --primary, .btn-primary, $component-active-bg chain
+
 $link-color: $alstom-darkblue;
 $link-hover-color: $alstom-bluegrey;
 
 @import "~bootstrap/scss/bootstrap";
 
-// --- Overrides: hover/active colors Bootstrap derives via darken(), not $variables ---
+// --- Post-import overrides (Task 594893: keep only what variables cannot express) ---
+// Bootstrap button-variant / button-outline-variant use darken() and color-yiq(), not brand hover colors.
 .btn-primary:focus,
 .btn-primary.focus {
   background-color: $alstom-darkblue;
@@ -50,7 +55,7 @@ $link-hover-color: $alstom-bluegrey;
   color: $alstom-bluegrey;
 }
 
-// .btn-link uses $link-color / $link-hover-color; both should be bluegrey
+// .btn-link: legacy theme uses bluegrey for default and hover; global links use $link-color → $link-hover-color
 .btn-link,
 .btn-link:hover {
   color: $alstom-bluegrey;

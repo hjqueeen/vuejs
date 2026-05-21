@@ -37,6 +37,32 @@ npm run serve
 
 Open the URL shown in your terminal (default: `http://localhost:8080`).
 
+## Bootstrap 4.4.1 (Sass theming)
+
+This project uses **Bootstrap 4.4.1** compiled from Sass at build time, not the precompiled CSS in `node_modules/bootstrap/dist/css/`.
+
+- Entry file: [`src/styles/bootstrap-theme.scss`](src/styles/bootstrap-theme.scss)
+- Loaded from [`src/main.js`](src/main.js) before `global.css`
+- Official guide: [Bootstrap 4 theming](https://getbootstrap.com/docs/4.4/getting-started/theming/)
+
+### Alstom corporate colors (Sass variables)
+
+Set **before** `@import "~bootstrap/scss/bootstrap"` so they override Bootstrap defaults (`!default` in `node_modules/bootstrap/scss/_variables.scss`):
+
+| Variable | Alstom token | Hex | Affects (examples) |
+|----------|--------------|-----|-------------------|
+| `$blue` | `$alstom-darkblue` | `#162134` | `:root --blue`, `.text-blue`, `.bg-blue` |
+| `$red` | `$alstom-red` | `#d62f20` | `:root --red`, `.btn-danger` (via `$danger: $red`) |
+| `$primary` | `$alstom-darkblue` | `#162134` | `:root --primary`, `.btn-primary`, active dropdown/nav states |
+
+Link colors use `$link-color` / `$link-hover-color` (reboot `a` styles). Some button hover/active rules stay as small post-import overrides because Bootstrap derives those states with `darken()` / `color-yiq()`, not fixed brand hex values. Details: [`src/styles/bootstrap-theme.md`](src/styles/bootstrap-theme.md).
+
+**Do not** add `import "bootstrap/dist/css/bootstrap.min.css"` alongside the Sass entry.
+
+### Dependencies
+
+`sass` and `sass-loader` are required (included in `devDependencies` after `npm install`).
+
 ## Demo accounts
 
 - Admin: `admin@demo.com / admin123`

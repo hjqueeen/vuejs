@@ -27,10 +27,14 @@ This document explains how `bootstrap-theme.scss` maps the **original Alstom LES
 
 ### 1.1 Sass variables (before `@import`)
 
+Requirement: adapt at least **primary**, **blue**, and **red** via Sass ([Bootstrap 4 theming](https://getbootstrap.com/docs/4.4/getting-started/theming/)).
+
 ```scss
-$primary: $alstom-darkblue;           // #162134
+$blue: $alstom-darkblue;    // #162134
+$red: $alstom-red;          // #d62f20
+$primary: $alstom-darkblue; // #162134
 $link-color: $alstom-darkblue;
-$link-hover-color: $alstom-bluegrey;  // #788291
+$link-hover-color: $alstom-bluegrey; // #788291
 ```
 
 ### 1.2 Post-import CSS overrides (after `@import`)
@@ -45,12 +49,12 @@ Only button states whose colors **differ from Bootstrap’s formulas** remain (s
 
 | Bootstrap variable | Default (`_variables.scss`) | This theme | Effect |
 |--------------------|---------------------------|------------|--------|
-| `$blue` | `#007bff` | *(not overridden)* | `--blue` stays Bootstrap default unless you add `$blue: …` before import |
+| `$blue` | `#007bff` | `$alstom-darkblue` `#162134` | `:root --blue`, `.text-blue`, `.bg-blue`, utilities using `$blue` |
+| `$red` | `#dc3545` | `$alstom-red` `#d62f20` | `:root --red`, `$danger` (default `$danger: $red`) |
 | `$primary` | `$blue` → `#007bff` | `$alstom-darkblue` `#162134` | `--primary`, `.btn-primary`, `.btn-outline-primary` base, many “active” surfaces |
 | `$link-color` | `theme-color("primary")` | `$alstom-darkblue` | `a { color }` in reboot |
 | `$link-hover-color` | `darken($link-color, 15%)` | `$alstom-bluegrey` | `a:hover` — **explicit hex**, not `darken()` |
-| `$component-active-bg` | `theme-color("primary")` | *(not set)* | Resolves to `$primary` → `#162134` after our override |
-| `$danger` | `$red` → `#dc3545` | *(not overridden)* | `--danger` unchanged unless you set `$red` / `$danger` |
+| `$danger` | `$red` | *(inherits `$red`)* | `:root --danger`, `.btn-danger` → `#d62f20` |
 
 ### 2.2 How `$primary` propagates (why many rules were removable)
 
@@ -167,13 +171,6 @@ Chain: `$primary` → `$component-active-bg` → `$dropdown-link-active-bg` → 
 
 ---
 
-### 4.5 `$component-active-bg: $alstom-darkblue` (removed from variables)
-
-**Was:** explicit duplicate of `$primary`.
-
-**Already primary:** `$component-active-bg` defaults to `theme-color("primary")`. Assigning `$primary` first is enough; a second assignment adds no new behavior unless you intentionally want active surfaces **different** from `$primary`.
-
----
 
 ## 5. Kept overrides — why variables are not enough
 
@@ -256,38 +253,3 @@ Bootstrap 4 does **not** expose per-state Sass variables such as `$btn-primary-h
 Legacy LESS required **both** default and hover to be bluegrey. That contradicts `$link-color` / `$link-hover-color` (used for normal `<a>` tags). Changing `$link-color` to bluegrey would fix `.btn-link` but break global link styling—so a **scoped** post-import rule remains.
 
 ---
-
-## 6. Optional variables not set in this file
-
-| If you need… | Set before `@import` | Affects |
-|--------------|----------------------|---------|
-| `--blue` ≠ default | `$blue: …` | `:root --blue`, utilities `.text-blue`, etc. |
-| `--red` / `--danger` | `$red`, `$danger` | `:root`, `.btn-danger`, etc. |
-| Active ≠ primary | `$component-active-bg: …` | Dropdown/nav/pagination active without changing `$primary` |
-
----
-
-## 7. Summary table (current `bootstrap-theme.scss`)
-
-| Piece | Type | Removable? | Reason |
-|-------|------|------------|--------|
-| `$primary` | Variable | **Keep** | Drives primary theme, `.btn-primary` default, outline base, `--primary`, `$component-active-bg` chain |
-| `$link-color`, `$link-hover-color` | Variable | **Keep** | Global `<a>` colors; distinct from `.btn-link` intent |
-| `a { }` / `a:hover { }` | CSS | Removed | Same as reboot + link variables |
-| `.btn-primary` default | CSS | Removed | `button-variant($primary, $primary)` |
-| `.btn-primary` hover/focus/active | CSS | **Keep** | `darken($primary)` / focus=hover ≠ Alstom bluegrey/darkblue |
-| `.btn-outline-primary` default/focus | CSS | Removed | `button-outline-variant($primary)` |
-| `.btn-outline-primary` hover/active | CSS | **Keep** | Hover fill/text logic ≠ Alstom |
-| `.btn-link` | CSS | **Keep** | Needs bluegrey on default; links need darkblue |
-| `.dropdown-item.active` | CSS | Removed | `$dropdown-link-active-bg` → `$primary` |
-| `$component-active-bg` | Variable | Removed | Already `theme-color("primary")` |
-
----
-
-## 8. Enabling the theme in the app
-
-1. Install compilers: `npm install -D sass sass-loader@^10`
-2. In `main.js` (when ready): `import "./styles/bootstrap-theme.scss";`
-3. Do **not** import `bootstrap/dist/css/bootstrap.min.css` (precompiled) alongside this file.
-
-Load order vs `global.css`: whichever stylesheet is imported **last** wins for overlapping selectors (e.g. global `a { color: var(--c-blue) }` vs Bootstrap reboot).

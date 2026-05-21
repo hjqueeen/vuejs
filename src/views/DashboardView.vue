@@ -24,6 +24,15 @@
           <h3 class="book-title">{{ book.title }}</h3>
           <p class="book-subtitle">{{ book.subtitle }}</p>
           <p class="book-desc">{{ book.description }}</p>
+          <div v-if="isQuizWorkbook(book)" class="book-progress">
+            <div class="mini-bar">
+              <div class="mini-fill studied" :style="{ width: bookProgress(book).studiedPercent + '%' }"></div>
+            </div>
+            <span class="mini-stat">
+              공부 {{ bookProgress(book).studied }}/{{ bookProgress(book).total }}
+              · 테스트 {{ bookProgress(book).tested }}
+            </span>
+          </div>
         </div>
       </article>
     </div>
@@ -39,7 +48,21 @@ export default {
     return { books };
   },
   methods: {
+    isQuizWorkbook(book) {
+      return book.templateType === "quiz-workbook";
+    },
+    bookProgress(book) {
+      const ids = book.questionIds || [];
+      return this.$store.getters["quizWorkbook/bookProgress"](book.id, ids);
+    },
     openBook(book) {
+      if (this.isQuizWorkbook(book)) {
+        this.$router.push({
+          name: "workbook-hub",
+          params: { bookId: book.id },
+        });
+        return;
+      }
       const firstParagraphId =
         book.paragraphIds?.length > 0 ? book.paragraphIds[0] : book.paragraphId;
       if (firstParagraphId) {
@@ -50,7 +73,7 @@ export default {
         });
         return;
       }
-      const firstSentenceId = book.sentenceIds[0];
+      const firstSentenceId = book.sentenceIds?.[0];
       if (!firstSentenceId) return;
       this.$router.push({
         name: "sentence-detail",
@@ -201,5 +224,28 @@ export default {
   font-size: 12px;
   color: var(--c-text-muted);
   line-height: 1.55;
+}
+
+.book-progress {
+  margin-top: 12px;
+}
+
+.mini-bar {
+  height: 4px;
+  background: var(--c-border);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.mini-fill.studied {
+  height: 100%;
+  background: var(--c-teal);
+  border-radius: 2px;
+}
+
+.mini-stat {
+  font-size: 11px;
+  color: var(--c-text-muted);
 }
 </style>

@@ -6,6 +6,7 @@ import review from "./modules/review";
 import sentences from "./modules/sentences";
 import tasks from "./modules/tasks";
 import ui from "./modules/ui";
+import quizWorkbook from "./modules/quizWorkbook";
 
 Vue.use(Vuex);
 
@@ -17,5 +18,6 @@ export default new Vuex.Store({
     sentences,
     tasks,
     ui,
+    quizWorkbook,
   },
 });

@@ -1,4 +1,8 @@
 import { BBC_LEARNING_SENTENCE_IDS, bbcLearningQuizChapters } from "./bbcLearningEnglishContent.js";
+import { tongilQuizQuestions } from "./tongilQuizContent.js";
+
+export const TONGIL_QUIZ_BOOK_ID = "book-tongil-quiz";
+export const TONGIL_QUIZ_QUESTION_IDS = tongilQuizQuestions.map((q) => q.id);
 
 export const publicBooks = [
   {
@@ -12,5 +16,15 @@ export const publicBooks = [
     paragraphIds: ["p4"],
     sentenceIds: [...BBC_LEARNING_SENTENCE_IDS],
     quizChapters: bbcLearningQuizChapters,
+  },
+  {
+    id: TONGIL_QUIZ_BOOK_ID,
+    templateType: "quiz-workbook",
+    title: "2026 청소년 통일골든벨",
+    subtitle: "기본학습문제 (공개 200문항)",
+    description:
+      "통일원정대 공개문제 200선. 문제·보기·답·해설로 공부하고, 공부한 문항만 랜덤 퀴즈 10문제로 복습할 수 있습니다.",
+    coverColor: "book-cover-c",
+    questionIds: TONGIL_QUIZ_QUESTION_IDS,
   },
 ];

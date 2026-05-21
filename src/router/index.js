@@ -66,6 +66,24 @@ const router = new Router({
       component: () => import("@/views/QuizChapterView.vue"),
     },
     {
+      path: "/workbook/:bookId",
+      name: "workbook-hub",
+      component: () => import("@/views/QuizWorkbookHubView.vue"),
+      props: true,
+    },
+    {
+      path: "/workbook/:bookId/q/:questionId",
+      name: "workbook-question",
+      component: () => import("@/views/QuizQuestionView.vue"),
+      props: true,
+    },
+    {
+      path: "/workbook/:bookId/random",
+      name: "workbook-random",
+      component: () => import("@/views/QuizRandomView.vue"),
+      props: true,
+    },
+    {
       path: "/admin",
       name: "admin",
       component: () => import("@/views/AdminView.vue"),

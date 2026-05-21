@@ -13,6 +13,7 @@ registerFilters(Vue, i18n);
 Vue.directive("permission", permissionDirective(store));
 store.dispatch("review/init");
 store.dispatch("ui/init");
+store.dispatch("quizWorkbook/init");
 
 new Vue({
   router,
