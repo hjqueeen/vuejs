@@ -1,0 +1,57 @@
+// Bootstrap 4.4.1 — Sass build entry (import this file from main.js when ready)
+// Do not use bootstrap/dist/css/*.css (precompiled).
+
+// --- Alstom brand palette ---
+$alstom-red: #d62f20;
+$alstom-redgrey: #eb827d;
+$alstom-darkblue: #162134;
+$alstom-bluegrey: #788291;
+$alstom-darkgreen: #19aa6e;
+$alstom-greengrey: #73cdaa;
+
+$green-color: #008767;
+$light-green-color: #00b389;
+
+// --- Bootstrap variable overrides (before @import) ---
+$primary: $alstom-darkblue;
+$link-color: $alstom-darkblue;
+$link-hover-color: $alstom-bluegrey;
+
+@import "~bootstrap/scss/bootstrap";
+
+// --- Overrides: hover/active colors Bootstrap derives via darken(), not $variables ---
+.btn-primary:focus,
+.btn-primary.focus {
+  background-color: $alstom-darkblue;
+  border-color: $alstom-darkblue;
+}
+
+.btn-primary:hover {
+  background-color: $alstom-bluegrey;
+  border-color: $alstom-bluegrey;
+}
+
+.btn-primary:active:focus,
+.btn-primary.active:focus {
+  background-color: $alstom-darkblue !important;
+  border-color: $alstom-darkblue !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: $alstom-bluegrey;
+  border-color: $alstom-bluegrey;
+  color: $alstom-darkblue;
+}
+
+.btn-outline-primary:active:focus,
+.btn-outline-primary.active:focus {
+  background-color: $alstom-darkblue !important;
+  border-color: $alstom-darkblue !important;
+  color: $alstom-bluegrey;
+}
+
+// .btn-link uses $link-color / $link-hover-color; both should be bluegrey
+.btn-link,
+.btn-link:hover {
+  color: $alstom-bluegrey;
+}
