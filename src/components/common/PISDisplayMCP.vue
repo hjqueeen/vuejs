@@ -37,7 +37,7 @@
 
 <script>
 export default {
-  name: 'OnboardDisplay',
+  name: 'PISDisplayMCP',
   props: {
     time: {
       type: String,

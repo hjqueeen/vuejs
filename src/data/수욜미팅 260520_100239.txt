@@ -1,0 +1,147 @@
+
+Unknown speaker 00:00 
+Kevin when they are done with their discussion, but um we will see okay so um maybe they won't be able because maybe we are quick today because I don't have any general influence from my side. Are there any topics you want to mention, something which you have on your mind? 
+
+Unknown speaker 00:20 
+I have a great laptop you can probably choose between like HP laptops and some Apple laptops and I person actually it could be better for performance than Apple laptops but is there some other problems with it so can we take this or it would be not enough for us or it's a bad decision because everyone has Windows and just one guy has demo or something like that. 
+
+Unknown speaker 00:57 
+I don't think they have an Intel CPU so you couldn't run the virtual machines, right? Probably. I don't know. I never had one Apple that looks. They have their own RM chips but for the virtualization I don't think it's a big deal. 
+
+Unknown speaker 01:18 
+They have their own virtualization software. Yeah, so they have their own chips, but that's something that would need to be investigated, I'm not sure, but I'm also not sure if it's that easy to get an Apple or Mac laptop. 
+
+Unknown speaker 01:41 
+And I think Pratash has one. I will probably reach out to him to maybe get a feeling. But from my last feeling I got, or last feedback I heard from him, is that there were a lot of trouble and a lot of issues with the MacBooks because many kinds of software which is needed in our more or less infrastructural work. 
+
+Unknown speaker 02:09 
+So like time booking and all that stuff is not working properly. But yes. So I was just questioning that. Yeah, understandable. I can maybe bring some more for that one next time, but I need to investigate. 
+
+Unknown speaker 02:29 
+But at least we need a parallels desktop license then or something, right? Anyway. Yeah, those would be all topics that needs to be clarified before and all the things. And I would prefer, to be honest, that everyone in the team has the same laptop because it makes it easier for troubleshooting and get a standardized working environment. 
+
+Unknown speaker 02:55 
+Would everybody use Apple, yeah? If it's better, that's a possibility, but we would need to do some investigation for that one. I guess kiddie. Okay, so any other general things, topics, remarks, highlights you want to mention? 
+
+Unknown speaker 03:20 
+Okay, so then Jenkins, to be honest, I didn't have the time to get some look into it, so I didn't prepare it. Just from my side, the highlight began. I really prefer and appreciate if you are writing a short mail when you are getting assigned an issue of the Jenkins, then if you're taking some actions, which you should do, it would probably be helpful for everyone if you just get or send an email to a team like, 
+
+Unknown speaker 03:56 
+I took care of it, had a look into it, I created an expal, I created a ticket, I contacted the one who is responsible for it and all those things. So like for example Matthias did in the last email regarding this one, this is I think a good example. 
+
+Unknown speaker 04:15 
+Just to mention it, I think this is a good behavior in a good manner, which we all should hopefully do. Okay, that's it for the general part. Then we can go to round the table and we start with Benjamin. 
+
+Unknown speaker 04:34 
+I put the big one when I shortcatch the development. So if the big one fails, for example, we can go back to the original version. And now I'm working on the next bit. Okay, thank you. I think I'm going to remain and also. 
+
+Unknown speaker 05:06 
+We have many problems in many places. The biggest thing in one place is T2R, which is task. So it's like, I know my priority number one is multi-test. And everything is moditas problem that you write your code fast enough. 
+
+Unknown speaker 05:31 
+And like this mask with G2R, it's just not working properly. I have no clue why. I tried to investigate it in labor. So I tried to speak to other developers, to the Matthias DP, and he helped me, so I just worked. 
+
+Unknown speaker 05:53 
+Then HMI is also a topic what needs to be discussed. A model test in the Matix web app is also still open, but it's really warm for it, so it needs to be defined with Kerbal, I think. And it's just a little bit there, a little bit there, and I cannot investigate much more time on this because I switch between these problems and this is the biggest problem of me now. 
+
+Unknown speaker 06:30 
+Yeah. Okay. Thank you. Pierre? Yeah, working on the test for the selection, deselection or the tip by via VLTIN number. I finished the first and before my application starts I already got some bits from robot about what are missing and where to look for algorithms and yeah I'm working on that. 
+
+Unknown speaker 06:58 
+Okay, perfect. So you are going on vacation from next week or? Oh yeah, so before you okay now I understood. Thank you then I am still reflecting the next stuff so mostly currently transpiling the XML to C-sharp mode. 
+
+Unknown speaker 07:31 
+Thank you, Gimmens. Yeah, my main task for today is preparation for the meeting at Friday with Schmal. Have a look in the old FISB documents. Unfortunately we have written a lot of stuff. BB, a lot of stuff, for the normal IZ team. 
+
+Unknown speaker 07:56 
+Supporting team, the web is still open and more I get a request from VT that they want to have a conversion from MP3 into another format. It's not a big deal, but yeah. MP4, not MP3, but it's video. Yeah, it's a video, sure. 
+
+Unknown speaker 08:26 
+FP4. FP4. Okay. Thank you. Wozan? I'm still on member of media. The biggest task is regarding cybersecurity logging. Now I've finished the implementation and did some refactoring optimization. And here today I want to try it finally and finish that task. 
+
+Unknown speaker 09:00 
+Also I have some discussion with Valve because the feature sheet of regarding the topic, there are some mismatches between what are specified and what are the best practices and we change that according to our findings. 
+
+Unknown speaker 09:21 
+And the second topic is the occupancy etiquette. I contact with Amit, I hope I pronounced correctly. And we split the work that he implements the pre-jump, I will test this VR model test. And the first draft you finish the implementation and when I finish with the first task I want to test this VR model test. 
+
+Unknown speaker 09:50 
+Thank you for my side. Perfect. Thank you. Kevin? What was the task? I saw that there is nothing available, no Darmark currently available, or the classic Darmark available for the STD project. So the changes that were required for implementations went off ahead. 
+
+Unknown speaker 10:10 
+And now the thought is, or I was reminded by several people, that one thought was that we don't test against exports from Dananto, but against the interfaces that are defined by the feature sheets. So the data supply variables that you might have seen in there. 
+
+Unknown speaker 10:33 
+We will have to decide on that how to continue with it. Then there was a second round of presentation for the facilities feature by Edematios. So this wouldn't be a big one discussion. Anyone first data meeting was going to be more DDC is a number of partners. 
+
+Unknown speaker 10:59 
+Then there were several topics that I'm not really sure which round to discuss this in. So one thought or one big problem that becomes apparent at the moment is that the complexity is hard to handle. 
+
+Unknown speaker 11:22 
+So the complexity in the software regarding configuration and supporting features and what is Pargam and all. And there were several ideas on how to analyze this, so the classic product approach, but then I heard of several people that they would prefer to make a hard cut in the Middle Ag world and the media world. 
+
+Unknown speaker 11:47 
+This of course is not something that you can decide with three people or in outline. So I don't know on which round we will discuss this. Maybe you can provide. I just wrote down that there's an action here from my side. 
+
+Unknown speaker 12:05 
+That there is a term incident that you might have heard, which is not the other thing that happened. Right? And so on. So this could be a problem. Did you get anything that you repeated? Can you repeat, please? 
+
+Unknown speaker 12:27 
+The audio was off. Which part? The last bit. I heard two bits split, but then. This is something that needs to be defined. And this is not equal to the feature that I'm currently working on. So this configuration feature, this will be rudimentary implemented just to have check marks on it by providing a script that on top of the already built baseline container will just automatically filter. 
+
+Unknown speaker 13:03 
+Yeah, I might have such a script, by the way, somewhere. I also have StatureScript. Very good. Yeah, we can go here and see how this works. I don't want to spend too much time on this because it's not clearly how it makes sense, how it's currently defined. 
+
+Unknown speaker 13:28 
+So it's worth ongoing. And this is it. Okay, I think you, Tanya. I'm getting shift. Yes, I think. For now, take interest of open points to continue with my HDS project. Yeah, continue with the oil channels of PCS. 
+
+Unknown speaker 14:22 
+Thank you. It's trying to run stable. I will have all the problem there. In the meantime, I will try to get the temperature integration to work completely. Also, I want to make a new features. Hopefully, when I find a log. 
+
+Unknown speaker 14:50 
+Okay, thank you. Hello, I'm working for T2R. Currently, we have some to solve some issues which come from the field. And I have to prepare the next ASB for release 4.9. And in the remaining time, I will continue with it. 
+
+Unknown speaker 15:29 
+Thank you, Agent. Yeah, I worked on resolving the issue by investigating the diagnosis web app case where FCGI disconnect should be called and the display issue in the infotainment applicant mask in T2R and yeah. 
+
+Unknown speaker 15:57 
+That's all. Okay, thank you, Marco. Good morning. I am analyzing the cybersecurity feature and in specific the HTTPS part. Until now I'm trying to get it work in my environment and the goal is to find out if it's possible with our software, especially with our Lighty version and so on. 
+
+Unknown speaker 16:33 
+Next, I was constantly checking the statics and SJ model tests and builds and they are constantly failing every time another part of it. So is it still something what you have to check? And finally, I also got some minutes from the left to add it. 
+
+Unknown speaker 17:02 
+That's it. Thank you. Did you take Jeff? Yes. Sometimes it's bad here. I hope it's not my connection. My new fiber connection here. Yeah, I some deliveries from the hot branch. There were a lot of work not directly on the environment stuff, like UDP logging and stuff like this. 
+
+Unknown speaker 17:40 
+And I run quick test bits and quick test button and I hit some instability keys and the deck port and that pocket one. And I spent more time in a lot of details trying to get more even last before I integrated an open source logger tool from Linux to our source code called HELogger and for cybersecurity and any and I now consider how to if whether we need to update our first license document and would like to know who is if we have an author in charge or how how we proceed this well what the document somewhere in SharePoint where I just added an entry can any anybody tell me yeah I guess this is something so I worked a bit with such a FOSS document but it's quite outdated I think that's also an action I need to take with me where we need to have a look at so should I just email you the new two lines that could possibly be added yes just for that we are remembering them and don't forget it um but I think the whole first list or however you are calling it some are calling it SBOM I think that's something we need to take into account but I wrote it down as an action for me but most of our packages are really seven years old or so yeah so it might be okay that's old just yeah okay but then I'm writing email reminder thank you okay thank you okay I I think I forgot I think I understood everything but I'm not the most controlled two investigations on T2R and the second one was something was changed yeah I got it thank you Joseph there is a problem with the startup test for the onit container environment I fixed that but there are a lot of issues now with the module test so I have to deactivate for now some of the module test and then I will deliver this a fix for that for the original issue and as I am as I will be in on on holiday the next two weeks I don't think I can deliver more than that unfortunately any questions from you damn it no no questions from my question I write an email to Ro I will write an email to Robert and I discussed with Kevin and Tanya so I hope enough knowledge is spread so that next speech someone can continue. 
+
+Unknown speaker 21:44 
+Okay, okay, perfect. And Osan and Marco, you are okay with the cybersecurity, nothing you need from Britney's side? We finished this side and we discussed it somehow last week and this week. I think it should be everything okay. 
+
+Unknown speaker 22:00 
+I hope. If not I am quite patient. Yeah, I mean I delivered last Friday and until now it seems to work for everybody so we are in the intermediate state that should be stable for now. I wish you a nice vacation of course. 
+
+Unknown speaker 22:31 
+Yeah, two more days, so yeah, thanks okay then we are through round the table. Did anything came up to your mind? Some general things mail like in the topics and names for the persons that are responsible for that because every time you have to go into the mail and see if your name is inside or not. 
+
+Unknown speaker 23:06 
+So I when you are selected then you are getting an extra email. Ah okay so you were for you it's not the case because you were missing in the list but you are now added so stay tuned you are now getting probably some some Jenkins mails so when you are selected you are getting a separate email. 
+
+Unknown speaker 23:23 
+Okay perfect because I thought okay I have to look like in the 20 minutes if my name is inside it or not. The idea is that you check the emails nevertheless because maybe you accidentally broke something or so that I think was the idea. 
+
+Unknown speaker 23:47 
+Any other topics we had a little buck the last two days or so that a lot of mails got accidentally sent because development branch mails were sent to the distribution list instead of the branch owners. 
+
+Unknown speaker 24:05 
+So maybe this led to a flood of emails but I think that's already fixed hopefully. Maybe that's why you got to normally you get one mail per day yeah for like 20 mails in the last two days. Yeah in the last two days we had unfortunately a small glitch in the source code. 
+
+Unknown speaker 24:29 
+Yeah, sorry about that. Gabriel has written an email because the Dama2Next handling is a little bit complicated. I know this, this is true. Shall we make it a short session? This is also written down as an action on my side. 
+
+Unknown speaker 24:54 
+This is something where we need to, or I missed to answer on Kevin's email, so I already talked to Kevin directly. But this is something where we need to take some actions. Or first of all, I'm going to go to the next one. 
+
+Unknown speaker 25:35 
+Thank you very much. Thank you. 

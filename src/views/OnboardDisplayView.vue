@@ -1,7 +1,7 @@
 <template>
   <div class="onboard-display-page">
     <h1 class="onboard-display-page__title">Onboard display</h1>
-    <OnboardDisplay
+    <PISDisplayMCP
       time="HH:MM"
       carriage="Vagn NN"
       start-station="Katrineholm C"
@@ -12,12 +12,12 @@
 </template>
 
 <script>
-import OnboardDisplay from '@/components/common/OnboardDisplay.vue';
+import PISDisplayMCP from '@/components/common/PISDisplayMCP.vue';
 
 export default {
   name: 'OnboardDisplayView',
   components: {
-    OnboardDisplay,
+    PISDisplayMCP,
   },
 };
 </script>

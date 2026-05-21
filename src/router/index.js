@@ -23,7 +23,7 @@ const router = new Router({
     {
       path: "/vestibule",
       name: "vestibule-pis",
-      component: () => import("@/components/common/VestibulePIS.vue"),
+      component: () => import("@/components/common/PISDisplayBuilderIO.vue"),
     },
     {
       path: "/onboard",

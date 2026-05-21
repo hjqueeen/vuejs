@@ -1,5 +1,5 @@
 /**
- * GitHub Pages / CI용 전체 DB 스텁: BBC Learning English(`bbcLearningEnglishContent.js`)만 포함합니다.
+ * GitHub Pages / CI용 전체 DB: 수요일 팀미팅 + BBC Learning English.
  * 로컬에 `englishLearningDb.js`가 있으면 `vue.config.js` alias로 그 파일이 대신 사용됩니다.
  */
 import {
@@ -10,24 +10,41 @@ import {
   bbcLearningEnglishSentences,
   bbcLearningEnglishVocabularies,
 } from "./bbcLearningEnglishContent.js";
+import {
+  wednesdayTeamMeetingAudios,
+  wednesdayTeamMeetingExpansionExamples,
+  wednesdayTeamMeetingExpressions,
+  wednesdayTeamMeetingParagraphs,
+  wednesdayTeamMeetingQuizzes,
+  wednesdayTeamMeetingSentenceChunks,
+  wednesdayTeamMeetingSentences,
+  wednesdayTeamMeetingUsageScenarios,
+  wednesdayTeamMeetingVocabularies,
+} from "./wednesdayTeamMeetingContent.js";
 
-export const sentences = [...bbcLearningEnglishSentences];
+export const sentences = [...wednesdayTeamMeetingSentences, ...bbcLearningEnglishSentences];
 
-export const paragraphs = [...bbcLearningEnglishParagraphs];
+export const paragraphs = [...wednesdayTeamMeetingParagraphs, ...bbcLearningEnglishParagraphs];
 
-export const sentenceChunks = [...bbcLearningEnglishSentenceChunks];
+export const sentenceChunks = [
+  ...wednesdayTeamMeetingSentenceChunks,
+  ...bbcLearningEnglishSentenceChunks,
+];
 
-export const vocabularies = [...bbcLearningEnglishVocabularies];
+export const vocabularies = [...wednesdayTeamMeetingVocabularies, ...bbcLearningEnglishVocabularies];
 
-export const expressions = [...bbcLearningEnglishExpressions];
+export const expressions = [...wednesdayTeamMeetingExpressions, ...bbcLearningEnglishExpressions];
 
-export const expansionExamples = [...bbcLearningEnglishExpansionExamples];
+export const expansionExamples = [
+  ...wednesdayTeamMeetingExpansionExamples,
+  ...bbcLearningEnglishExpansionExamples,
+];
 
-export const usageScenarios = [];
+export const usageScenarios = [...wednesdayTeamMeetingUsageScenarios];
 
-export const audios = [];
+export const audios = [...wednesdayTeamMeetingAudios];
 
-export const quizzes = [];
+export const quizzes = [...wednesdayTeamMeetingQuizzes];
 
 export const buildSentenceDetails = () =>
   sentences.map((sentence) => ({

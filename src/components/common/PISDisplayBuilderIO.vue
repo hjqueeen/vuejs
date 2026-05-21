@@ -92,7 +92,7 @@
 
 <script>
 export default {
-  name: 'VestibulePIS',
+  name: 'PISDisplayBuilderIO',
 
   props: {
     time: {
