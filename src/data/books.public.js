@@ -37,7 +37,7 @@ export const publicBooks = [
     title: "Physik · Wärme",
     subtitle: "Karteikarten — Klasse 7 · LEK 5.6.",
     description:
-      "7학년 LEK Wärmelehre: Volumenänderung(고체·액체·기체·계산), Begriffe, Wärmeübertragung, Dämmung 등 15장. 독일어·한국어(쉬운 설명).",
+      "7학년 LEK Wärmelehre: Ausdehnung, Anwendungen, Begriffe, Wärmeübertragung, Teilchenmodell, Dämmung 등 19장. 독일어·한국어(7학년).",
     coverColor: "book-cover-d",
     cardIds: WAERME_KARTEIKARTEN_CARD_IDS,
   },
