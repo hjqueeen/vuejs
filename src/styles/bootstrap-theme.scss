@@ -13,17 +13,19 @@ $alstom-greengrey: #73cdaa;
 $green-color: #008767;
 $light-green-color: #00b389;
 
+// Media query breakpoint (legacy LESS @min1920 → SCSS)
+$min1920: "(min-width: 1920px)";
+
 // --- Bootstrap Sass variables (before @import; overrides !default in _variables.scss) ---
-$blue: $alstom-darkblue; // --blue, .text-blue, etc.
-$red: $alstom-red; // --red; $danger follows $red by default
-$primary: $alstom-darkblue; // --primary, .btn-primary, $component-active-bg chain
+$blue: $alstom-darkblue;
+$red: $alstom-red;
+$primary: $alstom-darkblue;
 
 $link-color: $alstom-darkblue;
 $link-hover-color: $alstom-bluegrey;
 
 @import "~bootstrap/scss/bootstrap";
 
-// --- Post-import overrides (Task 594893: keep only what variables cannot express) ---
 // Bootstrap button-variant / button-outline-variant use darken() and color-yiq(), not brand hover colors.
 .btn-primary:focus,
 .btn-primary.focus {
@@ -55,8 +57,217 @@ $link-hover-color: $alstom-bluegrey;
   color: $alstom-bluegrey;
 }
 
-// .btn-link: legacy theme uses bluegrey for default and hover; global links use $link-color → $link-hover-color
 .btn-link,
 .btn-link:hover {
   color: $alstom-bluegrey;
+}
+
+// --- Global styles ---
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $alstom-darkblue;
+}
+
+.logo {
+  height: 53px;
+  max-width: 200px;
+}
+
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+.page-footer-container {
+  height: 4.5rem;
+}
+
+.page-footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  background: $alstom-darkblue;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0.5em 0;
+
+  @media screen and (max-width: 480px) {
+    font-size: 70%;
+  }
+}
+
+.tabcolor {
+  background-color: #fff;
+}
+
+.text-center {
+  margin-bottom: 0.75rem !important;
+}
+
+.border-table {
+  border: 1px solid lightgrey;
+  border-top: 2px solid $alstom-bluegrey;
+  border-collapse: separate;
+  padding: 0 1em;
+}
+
+th {
+  cursor: pointer;
+}
+
+.my-custom-scrollbar {
+  margin-top: 15px;
+  position: relative;
+  min-height: 500px;
+  height: 70vh;
+  overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+  display: block;
+}
+
+.nav-link.active {
+  color: #495057;
+  background-color: #f8f9fa;
+  border-color: #dee2e6 #dee2e6 #fff;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.5rem 2rem;
+}
+
+.nav-logo {
+  display: block;
+  padding: 0;
+}
+
+.nav-logo-left {
+  padding: 0.5rem 0.1rem;
+}
+
+input[type="checkbox"] {
+  margin-left: 10px;
+}
+
+.component-header {
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.table-header {
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+// Navigation tabs
+nav > .nav.nav-tabs {
+  border: none;
+  color: #fff;
+  background: $alstom-darkblue;
+  border-radius: 0;
+}
+
+nav > div a.nav-item.nav-link,
+nav > div a.nav-item.nav-link.active {
+  border: none;
+  padding: 18px 25px;
+  color: #fff;
+  background: $alstom-darkblue;
+  border-radius: 0;
+}
+
+nav > div a.nav-item.nav-link.subcomponent.active:after {
+  content: "";
+  position: relative;
+  bottom: -60px;
+  left: -6%;
+  border: 15px solid transparent;
+  border-top-color: $green-color;
+}
+
+.tab-content {
+  background: #fdfdfd;
+  line-height: 25px;
+  border: 1px solid #ddd;
+  border-top: 2px solid #adb5bd;
+  border-bottom: 2px solid #adb5bd;
+  padding: 10px;
+}
+
+nav > div a.nav-item.nav-link.subcomponent:hover,
+nav > div a.nav-item.nav-link.subcomponent:focus {
+  border: none;
+  background: $light-green-color;
+  color: #fff;
+  border-radius: 0;
+  transition: background 0.2s linear;
+  font-weight: bold;
+}
+
+nav > div a.nav-item.nav-link.subcomponent.active {
+  border: none;
+  background: $green-color;
+  color: #fff;
+  border-radius: 0;
+  transition: background 0.2s linear;
+}
+
+.text-error-message {
+  font-weight: bold;
+  font-style: italic;
+  color: red;
+}
+
+.text-success-message {
+  font-weight: bold;
+  font-style: italic;
+  color: darkgreen;
+}
+
+.logProgress {
+  white-space: pre;
+  font-family: monospace;
+  font-size: large;
+}
+
+.logMessage {
+  white-space: pre;
+  font-family: monospace;
+  font-size: smaller;
+}
+
+.logLine {
+  padding: 0 !important;
+  border-top: unset !important;
+}
+
+button.logLevelButton.collapsed:before {
+  content: "\25B6 \A0 \A0 \A0 Adjust Log Level";
+  display: block;
+  min-width: 170px;
+}
+
+button.logLevelButton:before {
+  content: "\25BC \A0 \A0 Close Log Levels";
+  display: block;
+  min-width: 170px;
+}
+
+.logStart {
+  min-width: 170px;
+  font-family: "Segoe UI Symbol";
+}
+
+.logPause {
+  background-color: $alstom-darkblue;
+  color: $alstom-bluegrey;
+  min-width: 170px;
+  font-family: "Segoe UI Symbol";
 }

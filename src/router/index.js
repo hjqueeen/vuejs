@@ -84,9 +84,26 @@ const router = new Router({
       props: true,
     },
     {
+      path: "/flashcards/:bookId",
+      name: "flashcard-hub",
+      component: () => import("@/views/FlashcardHubView.vue"),
+      props: true,
+    },
+    {
+      path: "/flashcards/:bookId/c/:cardId",
+      name: "flashcard-detail",
+      component: () => import("@/views/FlashcardDetailView.vue"),
+      props: true,
+    },
+    {
       path: "/admin",
       name: "admin",
       component: () => import("@/views/AdminView.vue"),
+    },
+    {
+      path: "/bootstrap-theme-preview",
+      name: "bootstrap-theme-preview",
+      component: () => import("@/views/BootstrapThemePreview.vue"),
     },
     {
       path: "*",

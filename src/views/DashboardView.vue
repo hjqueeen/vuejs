@@ -24,7 +24,7 @@
           <h3 class="book-title">{{ book.title }}</h3>
           <p class="book-subtitle">{{ book.subtitle }}</p>
           <p class="book-desc">{{ book.description }}</p>
-          <div v-if="isQuizWorkbook(book)" class="book-progress">
+          <div v-if="isQuizWorkbook(book) || isFlashcardBook(book)" class="book-progress">
             <div class="mini-bar">
               <div class="mini-fill studied" :style="{ width: bookProgress(book).studiedPercent + '%' }"></div>
             </div>
@@ -51,11 +51,21 @@ export default {
     isQuizWorkbook(book) {
       return book.templateType === "quiz-workbook";
     },
+    isFlashcardBook(book) {
+      return book.templateType === "flashcard";
+    },
     bookProgress(book) {
-      const ids = book.questionIds || [];
+      const ids = book.questionIds || book.cardIds || [];
       return this.$store.getters["quizWorkbook/bookProgress"](book.id, ids);
     },
     openBook(book) {
+      if (this.isFlashcardBook(book)) {
+        this.$router.push({
+          name: "flashcard-hub",
+          params: { bookId: book.id },
+        });
+        return;
+      }
       if (this.isQuizWorkbook(book)) {
         this.$router.push({
           name: "workbook-hub",
