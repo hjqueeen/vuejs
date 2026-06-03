@@ -183,14 +183,14 @@ export default {
 }
 
 .flip-card {
-  min-height: 340px;
+  min-height: 400px;
   position: relative;
 }
 
 .flip-inner {
   position: relative;
   width: 100%;
-  min-height: 340px;
+  min-height: 400px;
   transition: transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1);
   transform-style: preserve-3d;
 }
