@@ -10,7 +10,9 @@
     </header>
 
     <div
+      ref="flipScene"
       class="flip-scene"
+      :style="sceneStyle"
       role="button"
       tabindex="0"
       :aria-label="flipped ? '뒷면 — 다시 뒤집기' : '앞면 — 카드 뒤집기'"
@@ -19,17 +21,19 @@
       @keyup.space.prevent="toggleFlip"
     >
       <div class="flip-card" :class="{ flipped }">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
+        <div class="flip-inner" :style="{ height: sceneHeight + 'px' }">
+          <div ref="frontFace" class="flip-face flip-front">
             <p class="face-label">Begriff</p>
             <h2 class="term">{{ card.term }}</h2>
             <p class="tap-hint">탭하여 뒤집기</p>
           </div>
-          <div class="flip-face flip-back">
-            <p class="face-label">Erklärung</p>
-            <p class="explanation de">{{ card.explanationDe }}</p>
-            <p class="explanation ko">{{ card.explanationKo }}</p>
-            <p class="tap-hint">탭하여 앞면</p>
+          <div ref="backFace" class="flip-face flip-back" :class="{ 'is-scrollable': backScrollable }">
+            <div class="flip-back-content">
+              <p class="face-label">Erklärung</p>
+              <p class="explanation de">{{ card.explanationDe }}</p>
+              <p class="explanation ko">{{ card.explanationKo }}</p>
+              <p class="tap-hint">탭하여 앞면</p>
+            </div>
           </div>
         </div>
       </div>
@@ -71,7 +75,14 @@ export default {
     cardId: { type: String, required: true },
   },
   data() {
-    return { flipped: false };
+    return {
+      flipped: false,
+      sceneHeight: 360,
+      maxSceneHeight: 600,
+      minSceneHeight: 360,
+      backScrollable: false,
+      resizeObserver: null,
+    };
   },
   computed: {
     allCards() {
@@ -100,13 +111,104 @@ export default {
     isStudied() {
       return this.$store.getters["quizWorkbook/isStudied"](this.bookId, this.cardId);
     },
+    sceneStyle() {
+      return {
+        height: `${this.sceneHeight}px`,
+        maxHeight: `${this.maxSceneHeight}px`,
+      };
+    },
+  },
+  mounted() {
+    this.syncSceneHeight();
+    window.addEventListener("resize", this.syncSceneHeight);
+    if (typeof ResizeObserver !== "undefined") {
+      this.resizeObserver = new ResizeObserver(() => this.syncSceneHeight());
+      this.$nextTick(() => {
+        if (this.$refs.backFace) this.resizeObserver.observe(this.$refs.backFace);
+        if (this.$refs.frontFace) this.resizeObserver.observe(this.$refs.frontFace);
+      });
+    }
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.syncSceneHeight);
+    this.resizeObserver?.disconnect();
   },
   watch: {
     cardId() {
       this.flipped = false;
+      this.$nextTick(() => this.syncSceneHeight());
+    },
+    flipped() {
+      this.$nextTick(() => this.syncSceneHeight());
+    },
+    card() {
+      this.$nextTick(() => this.syncSceneHeight());
     },
   },
   methods: {
+    getViewportLimits() {
+      const root = this.$el;
+      if (!root || typeof window === "undefined") {
+        return { minH: 360, maxH: 600 };
+      }
+
+      const nav = root.querySelector(".fc-nav");
+      const actions = root.querySelector(".fc-actions");
+      const top = root.getBoundingClientRect().top;
+      const chrome =
+        (nav?.offsetHeight || 0) +
+        (actions?.offsetHeight || 0) +
+        48;
+
+      const available = Math.max(280, window.innerHeight - top - chrome);
+      const minH = Math.round(window.innerHeight * 0.5);
+      const maxH = available;
+
+      return {
+        minH: Math.min(minH, maxH),
+        maxH,
+      };
+    },
+    measureFace(faceEl) {
+      if (!faceEl || !this.$refs.flipScene) return 280;
+
+      const width = this.$refs.flipScene.clientWidth || faceEl.clientWidth;
+      const clone = faceEl.cloneNode(true);
+      clone.style.cssText = [
+        "position:fixed",
+        "left:-9999px",
+        "top:0",
+        "visibility:hidden",
+        "pointer-events:none",
+        `width:${width}px`,
+        "height:auto",
+        "max-height:none",
+        "overflow:visible",
+      ].join(";");
+      document.body.appendChild(clone);
+      const height = clone.scrollHeight;
+      document.body.removeChild(clone);
+      return height;
+    },
+    syncSceneHeight() {
+      this.$nextTick(() => {
+        const front = this.$refs.frontFace;
+        const back = this.$refs.backFace;
+        if (!front || !back) return;
+
+        const { minH, maxH } = this.getViewportLimits();
+        this.minSceneHeight = minH;
+        this.maxSceneHeight = maxH;
+
+        const frontH = this.measureFace(front);
+        const backH = this.measureFace(back);
+        const contentH = this.flipped ? backH : frontH;
+        const targetH = Math.max(contentH, minH);
+
+        this.backScrollable = this.flipped && targetH > maxH;
+        this.sceneHeight = Math.min(targetH, maxH);
+      });
+    },
     toggleFlip() {
       this.flipped = !this.flipped;
     },
@@ -180,18 +282,19 @@ export default {
   perspective: 1200px;
   cursor: pointer;
   outline: none;
+  width: 100%;
+  transition: height 0.35s ease;
 }
 
 .flip-card {
-  min-height: 280px;
+  height: 100%;
   position: relative;
 }
 
 .flip-inner {
   position: relative;
   width: 100%;
-  min-height: 280px;
-  transition: transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transition: transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1), height 0.35s ease;
   transform-style: preserve-3d;
 }
 
@@ -204,8 +307,6 @@ export default {
   inset: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   padding: 28px 24px;
   text-align: center;
   backface-visibility: hidden;
@@ -214,15 +315,33 @@ export default {
   border: 1px solid var(--c-border);
   background: var(--c-surface);
   box-shadow: 0 8px 28px rgba(26, 23, 20, 0.06);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.flip-front {
+  align-items: center;
+  justify-content: center;
 }
 
 .flip-back {
   transform: rotateY(180deg);
   background: var(--c-blue-light);
   border-color: var(--c-blue-mid);
-  align-items: flex-start;
+  align-items: stretch;
   justify-content: flex-start;
+}
+
+.flip-back.is-scrollable {
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.flip-back-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
 }
 
 .face-label {
@@ -257,7 +376,6 @@ export default {
 }
 
 .explanation.ko {
-  margin-bottom: 0;
   color: var(--c-text-secondary);
   font-size: 14px;
 }
@@ -266,6 +384,12 @@ export default {
   margin: 20px 0 0;
   font-size: 11px;
   color: var(--c-text-muted);
+  flex-shrink: 0;
+}
+
+.flip-back .tap-hint {
+  margin-top: auto;
+  padding-top: 16px;
 }
 
 .fc-actions {
