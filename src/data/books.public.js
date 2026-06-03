@@ -35,9 +35,9 @@ export const publicBooks = [
     id: WAERME_KARTEIKARTEN_BOOK_ID,
     templateType: "flashcard",
     title: "Physik · Wärme",
-    subtitle: "Karteikarten — 시험용",
+    subtitle: "Karteikarten — Klasse 7 · LEK 5.6.",
     description:
-      "LEK Wärmelehre(5.6.): Volumen-/Längenänderung, Bimetall, Benzinausdehnung, Anomalie, Begriffe, Wärmeübertragung, Dämmung 등 16장 카드. 설명은 독일어 + 한국어 한 문장.",
+      "7학년 LEK Wärmelehre: Volumenänderung(고체·액체·기체·계산), Begriffe, Wärmeübertragung, Dämmung 등 15장. 독일어·한국어(쉬운 설명).",
     coverColor: "book-cover-d",
     cardIds: WAERME_KARTEIKARTEN_CARD_IDS,
   },
