@@ -83,6 +83,77 @@ export const alltagKoDeCards = [
       "Wenn du die Kapitel noch nicht geschrieben hast und vom Professor auch noch keine Antwort da ist: Was wäre, wenn wir zur allerersten Version zurückgehen? Hab das Gefühl, wir könnten uns dann mehr auf Programmiersprachen lernen und Code durcharbeiten konzentrieren — statt über äußere Sachen wie App-Größe, Performance und Nutzererlebnis zu schreiben. Stattdessen mehr Theorie erklären und die Struktur der verschiedenen Sprachen mal lernen und vergleichen.",
     explanationKo: "zur allerersten Version · konzentrieren · Struktur vergleichen",
   },
+  {
+    id: "card-alltag-gastrosoft-thema",
+    term:
+      "우리 프로젝트 주제는 Gastrosoft야 — 요식업용 소프트웨어 기획이랑 개발이야. 시스템은 손님이 주문하는 것부터 주문 확인, 레스토랑 쪽 주문 관리까지 전체 흐름을 다 다뤄.",
+    explanationDe:
+      "Also, unser Projektthema heißt Gastrosoft — Konzeption und Entwicklung einer Software für gastronomische Betriebe. Unser System deckt die kompletten Abläufe ab: von der Bestellung durch den Gast über die Bestellungsbestätigung bis zur Verwaltung der Bestellungen auf Restaurantseite.",
+    explanationKo: "Projektthema · Abläufe abdecken · Als Nächstes vorstellen",
+    vocabulary: [
+      {
+        word: "abdecken",
+        meaning: "(범위·주제를) 다루다, 포괄하다 · to cover (trennbar: deckt … ab)",
+        examples: [
+          {
+            de: "Der Kurs deckt alle wichtigen Grundlagen ab.",
+            ko: "그 강의는 중요한 기초를 전부 다룬다.",
+          },
+          {
+            de: "Mit einem Modul können wir schon viele Anwendungsfälle abdecken.",
+            ko: "모듈 하나로도 많은 사용 사례를 이미 포괄할 수 있다.",
+          },
+        ],
+      },
+      {
+        word: "von … über … bis",
+        meaning:
+          "A에서 B(중간)를 거쳐 C까지 — 단계나 기간을 이을 때 (über = 사람 수식 아님)",
+        examples: [
+          {
+            de: "Wir arbeiten von Montag über Mittwoch bis Freitag an dem Projekt.",
+            ko: "우리는 월요일부터 수요일을 거쳐 금요일까지 그 프로젝트를 한다.",
+          },
+          {
+            de: "Von der Planung über die Entwicklung bis zum Test — so läuft unser Ablauf.",
+            ko: "기획에서 개발을 거쳐 테스트까지 — 우리 흐름은 이렇게 돌아간다.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "card-alltag-gastrosoft-android",
+    term:
+      "지금 Kotlin으로 개발한 Android 버전은 거의 다 끝났어. 손님 주문, 메뉴 고르기, 주문 만들기 같은 핵심 기능은 이미 돼. 전체 흐름도 이미 돌아가고, 앱은 지금 이런 모습이야.",
+    explanationDe:
+      "Aktuell haben wir die Android-Version, die wir mit Kotlin entwickelt haben, weitgehend abgeschlossen. Die Version kann schon die wichtigsten Kernfunktionen umsetzen — zum Beispiel Bestellen durch den Gast, Auswahl von Gerichten und Erstellung der Bestellung. Der ganze Ablauf funktioniert schon, und so sieht die App jetzt zum Beispiel aus.",
+    explanationKo: "weitgehend abgeschlossen · Kernfunktionen · Der Ablauf funktioniert",
+  },
+  {
+    id: "card-alltag-praxis-literatur",
+    term:
+      "우선 슬라이드를 제대로 준비해줘서 고마워. 꼭 필요하진 않았지만, 확실히 더 보기 좋아졌어. 질문이 있는데 — 사실 Praxisteil부터 시작하고 Literaturrecherche는 좀 뒤로 미뤄도 괜찮다고 봐.",
+    explanationDe:
+      "Erst mal schön, dass du richtig Folien vorbereitet hast. War jetzt an sich nicht nötig, aber macht's natürlich noch mal anschaulicher. Ich hätte eine Frage: Also erst mal — an sich spricht ja nichts dagegen, mit dem Praxisteil anzufangen und die Literaturrecherche etwas weiter nach hinten zu hängen.",
+    explanationKo: "erst mal schön · an sich · nach hinten hängen",
+    vocabulary: [
+      {
+        word: "an sich",
+        meaning: "그 자체로는, 근본적으로는, 사실은 · in itself, as such, basically",
+        examples: [
+          {
+            de: "Das war an sich keine schlechte Idee, nur schlecht getimed.",
+            ko: "그건 사실 나쁜 아이디어는 아니었는데, 타이밍만 안 좋았어.",
+          },
+          {
+            de: "An sich ist das System stabil, aber heute hakt es noch.",
+            ko: "시스템 자체는 안정적인데, 오늘은 아직 좀 걸려.",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export const ALLTAG_KO_DE_CARD_IDS = alltagKoDeCards.map((c) => c.id);
