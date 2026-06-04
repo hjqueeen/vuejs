@@ -80,6 +80,7 @@ export default {
   font-size: 14px;
   line-height: 1.5;
   color: var(--c-text-secondary);
+  white-space: pre-line;
 }
 
 .fc-vocab-examples {

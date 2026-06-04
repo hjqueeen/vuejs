@@ -129,14 +129,84 @@ export const alltagKoDeCards = [
     explanationDe:
       "Aktuell haben wir die Android-Version, die wir mit Kotlin entwickelt haben, weitgehend abgeschlossen. Die Version kann schon die wichtigsten Kernfunktionen umsetzen — zum Beispiel Bestellen durch den Gast, Auswahl von Gerichten und Erstellung der Bestellung. Der ganze Ablauf funktioniert schon, und so sieht die App jetzt zum Beispiel aus.",
     explanationKo: "weitgehend abgeschlossen · Kernfunktionen · Der Ablauf funktioniert",
+    vocabulary: [
+      {
+        word: "weitgehend",
+        meaning: "상당히, 대체로, 거의 · largely, to a large extent",
+        examples: [
+          {
+            de: "Das Projekt ist weitgehend fertig, nur noch kleine Bugs.",
+            ko: "프로젝트는 대체로 끝났고, 작은 버그만 남았어.",
+          },
+          {
+            de: "Die Anforderungen sind weitgehend klar.",
+            ko: "요구사항은 거의 다 명확해.",
+          },
+        ],
+      },
+      {
+        word: "umsetzen",
+        meaning:
+          "etw. umsetzen = (아이디어·기능·계획을) 구현·실현하다\n\n" +
+          "• 주어: 사람(Wir, ich) ✅ — «우리가 개발·구현했다»\n" +
+          "• 주어: 사물(Die App, die Version) ✅ — «앱이 그 기능을 지원한다» (IT 발표에서 흔함)\n" +
+          "• 목적어: Funktion, Idee, Prozess, Anforderung … ✅\n" +
+          "• 목적어: 사람 ❌ (Gast, Kunde 등은 안 씀)",
+        examples: [
+          {
+            de: "Wir können die Idee jetzt endlich in Code umsetzen.",
+            ko: "주어 = Wir (사람) · 목적어 = die Idee",
+          },
+          {
+            de: "Die App setzt den kompletten Bestellprozess digital um.",
+            ko: "주어 = die App (사물) · 목적어 = Bestellprozess",
+          },
+        ],
+      },
+    ],
+    writingPractice: {
+      attemptDe:
+        "Entwicklung durch Kotlin für die Android-Systeme ist fast fertig. Kernfunktionen wie Kundenbestellung, Menüauswahl, Bestellungsaufheben, haben wir. Die gesamte Flow funktioniert schon gut und die App sieht so aus.",
+      feedback: [
+        {
+          mark: "Entwicklung durch Kotlin für die Android-Systeme",
+          fix: "Die Android-Version, die wir mit Kotlin entwickelt haben,",
+          noteKo: "「Kotlin으로 개발한 Android 버전」→ mit Kotlin entwickelt",
+        },
+        {
+          mark: "ist fast fertig",
+          fix: "haben wir weitgehend abgeschlossen",
+          noteKo:
+            "fast fertig = 일상 구어(거의 다 됐어). weitgehend abgeschlossen = 발표·프로젝트에 맞는 격식 표현(대체로 마무리됨). 더 고급≠더 어려움, 상황에 맞게 선택.",
+        },
+        {
+          mark: "Kernfunktionen … haben wir",
+          fix: "Die Version kann schon die wichtigsten Kernfunktionen umsetzen —",
+          noteKo:
+            "haben wir schon(이미 갖고 있다)도 가능. 모범 답안처럼 kann … umsetzen(이미 구현·실행할 수 있다)으로 말해도 됨 — 기능이 돌아간다는 뉘앙스.",
+        },
+        {
+          mark: "Bestellungsaufheben",
+          fix: "Bestellerstellung / Erstellung der Bestellung",
+          noteKo: "주문 만들기 (aufheben = 취소 아님)",
+        },
+
+        {
+          mark: "die Flow",
+          fix: "der Ablauf",
+          noteKo: "영어 Flow 대신 독일어 Ablauf",
+        },
+      ],
+      practicedAt: "2026-06-04",
+    },
   },
   {
     id: "card-alltag-praxis-literatur",
     term:
-      "우선 슬라이드를 제대로 준비해줘서 고마워. 꼭 필요하진 않았지만, 확실히 더 보기 좋아졌어. 질문이 있는데 — 사실 Praxisteil부터 시작하고 Literaturrecherche는 좀 뒤로 미뤄도 괜찮다고 봐.",
+      "일단 슬라이드를 제대로 준비해 줘서 좋아. 원래는 꼭 필요하진 않았는데, 그래도 확실히 한층 더 보기 좋아졌어. 질문 하나 있는데 — 솔직히 Praxisteil부터 시작하고 Literaturrecherche는 조금 더 뒤로 미뤄도, 딱히 반대할 건 없을 것 같아.",
     explanationDe:
       "Erst mal schön, dass du richtig Folien vorbereitet hast. War jetzt an sich nicht nötig, aber macht's natürlich noch mal anschaulicher. Ich hätte eine Frage: Also erst mal — an sich spricht ja nichts dagegen, mit dem Praxisteil anzufangen und die Literaturrecherche etwas weiter nach hinten zu hängen.",
-    explanationKo: "erst mal schön · an sich · nach hinten hängen",
+    explanationKo: "erst mal schön · an sich spricht nichts dagegen · nach hinten hängen",
     vocabulary: [
       {
         word: "an sich",
@@ -152,7 +222,89 @@ export const alltagKoDeCards = [
           },
         ],
       },
+      {
+        word: "an sich spricht (ja) nichts dagegen",
+        meaning:
+          "원칙적으로 / 그 자체로는 반대할 건 없다 — 회의·메일에서 순서·방법을 부드럽게 제안할 때 통째로 자주 씀\n\n" +
+          "쓰임:\n" +
+          "• an sich spricht (ja) nichts dagegen, + zu-Infinitiv …\n" +
+          "• …, wenn / dass … (Nebensatz)\n" +
+          "• ja = 말할 때 자연스럽게 넣는 입자(필수 아님)\n\n" +
+          "≈ 딱히 반대할 건 없을 것 같아 · 별 문제 없을 것 같아 (강한 허락보다 한 단계 약함)",
+        examples: [
+          {
+            de: "An sich spricht ja nichts dagegen, mit dem Praxisteil anzufangen und die Literaturrecherche etwas weiter nach hinten zu hängen.",
+            ko: "이 카드 모범 답안 — Praxisteil 먼저, Literaturrecherche는 뒤로",
+          },
+          {
+            de: "An sich spricht nichts dagegen, das Meeting auf nächste Woche zu verschieben.",
+            ko: "회의를 다음 주로 미뤄도 딱히 반대할 건 없어.",
+          },
+          {
+            de: "Wenn wir erst den Prototypen zeigen — an sich spricht da nichts dagegen.",
+            ko: "먼저 프로토타입을 보여 주자 — 그건 별로 문제될 건 없어.",
+          },
+        ],
+      },
+      {
+        word: "nach hinten hängen",
+        meaning:
+          "(일정·작업을) 뒤로 미루다, 뒤쪽으로 밀다 · to push back, postpone (구어, oft mit etwas weiter)",
+        examples: [
+          {
+            de: "die Literaturrecherche etwas weiter nach hinten hängen",
+            ko: "문헌 조사를 조금 더 뒤로 미루다 — 이 카드와 짝",
+          },
+          {
+            de: "Können wir die Tests noch ein bisschen nach hinten hängen?",
+            ko: "테스트는 조금만 더 뒤로 미뤄도 될까?",
+          },
+        ],
+      },
     ],
+    writingPractice: {
+      attemptDe:
+        "Zuerst, vielen Dank für die Vorbereitung des Folien. Das musst du nicht unbedingt vorbereiten, aber es ist mehr anschaulicher. Ich habe eine Frage: Findest du in Ordnung, wenn du von Praxis teil anfangen und Literaturrecherche verschieben kannst?",
+      feedback: [
+        {
+          mark: "Zuerst, vielen Dank für die Vorbereitung des Folien",
+          fix: "Erst mal schön, dass du richtig Folien vorbereitet hast",
+          noteKo:
+            "감사는 «~해줘서 고맙다» → dass du … vorbereitet hast. Folien = die Folien (복수) — des Folien ❌, der Folien / die Folien ✅. erst mal schön = 우선 ~해줘서 좋다(구어 감사)",
+        },
+        {
+          mark: "Das musst du nicht unbedingt vorbereiten",
+          fix: "War jetzt an sich nicht nötig",
+          noteKo:
+            "이미 준비해 준 것에 대한 반응 — «꼭 안 해도 됐어»(과거·사실). musst du … vorbereiten은 «앞으로 준비하지 마»처럼 들림",
+        },
+        {
+          mark: "aber es ist mehr anschaulicher",
+          fix: "aber macht's natürlich noch mal anschaulicher",
+          noteKo:
+            "mehr + 비교급(-er) ❌ → noch (mal) anschaullicher. macht's = macht es (구어). «더 보기 좋아졌어»",
+        },
+        {
+          mark: "Ich habe eine Frage: Findest du in Ordnung",
+          fix: "Ich hätte eine Frage: Also erst mal —",
+          noteKo:
+            "Ich hätte eine Frage = 질문이 있는데(가벼운 도입). Findest du in Ordnung? 가능하지만 다소 딱딱·영어식 — 모범 답은 제안을 부드럽게 이어감",
+        },
+        {
+          mark: "wenn du von Praxis teil anfangen",
+          fix: "mit dem Praxisteil anzufangen",
+          noteKo:
+            "Praxisteil = 한 단어. von … anfangen ❌ → mit dem Praxisteil anfangen / anzufangen. 한국어는 «~부터 시작해도 된다고 본다»이지 상대에게 «너가 시작해»가 아님",
+        },
+        {
+          mark: "und Literaturrecherche verschieben kannst?",
+          fix: "und die Literaturrecherche etwas weiter nach hinten zu hängen",
+          noteKo:
+            "verschieben만 쓰면 무엇을·어디로 미루는지 약함 → nach hinten hängen(뒤로 미루다). kannst? = «네가 미울 수 있어?» — 제안·동의 구하기는 an sich spricht nichts dagegen, … zu …",
+        },
+      ],
+      practicedAt: "2026-06-04",
+    },
   },
 ];
 

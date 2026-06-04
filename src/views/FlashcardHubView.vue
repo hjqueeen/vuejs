@@ -123,6 +123,13 @@ export default {
   padding: 8px 16px 48px;
 }
 
+@media (min-width: 768px) {
+  .flashcard-hub {
+    max-width: 1240px;
+    padding: 8px 24px 48px;
+  }
+}
+
 .fc-header {
   margin-bottom: 20px;
 }

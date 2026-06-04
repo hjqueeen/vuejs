@@ -104,6 +104,13 @@ export default {
   -webkit-font-smoothing: antialiased;
 }
 
+@media (min-width: 768px) {
+  .dashboard {
+    max-width: 1100px;
+    padding: 8px 8px 40px;
+  }
+}
+
 /* ─── Header ── */
 .dash-header {
   display: flex;

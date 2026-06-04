@@ -9,60 +9,67 @@
       </div>
     </header>
 
-    <div
-      class="flip-scene"
-      role="button"
-      tabindex="0"
-      :aria-label="flipped ? '뒷면 — 다시 뒤집기' : '앞면 — 카드 뒤집기'"
-      @click="toggleFlip"
-      @keyup.enter="toggleFlip"
-      @keyup.space.prevent="toggleFlip"
-    >
-      <div class="flip-card" :class="{ flipped }">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <p class="face-label">{{ labels.front }}</p>
-            <h2 class="term">{{ card.term }}</h2>
-            <p class="tap-hint">탭하여 뒤집기</p>
-          </div>
-          <div class="flip-face flip-back">
-            <p class="face-label">{{ labels.back }}</p>
-            <p class="explanation de">{{ card.explanationDe }}</p>
-            <p v-if="showKoOnBack && card.explanationKo" class="explanation ko">
-              {{ card.explanationKo }}
-            </p>
-            <p class="tap-hint">탭하여 앞면</p>
+    <div class="fc-body" :class="{ 'fc-body--with-writing': hasWritingPractice }">
+      <div
+        class="flip-scene"
+        role="button"
+        tabindex="0"
+        :aria-label="flipped ? '뒷면 — 다시 뒤집기' : '앞면 — 카드 뒤집기'"
+        @click="toggleFlip"
+        @keyup.enter="toggleFlip"
+        @keyup.space.prevent="toggleFlip"
+      >
+        <div class="flip-card" :class="{ flipped }">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <p class="face-label">{{ labels.front }}</p>
+              <h2 class="term">{{ card.term }}</h2>
+              <p class="tap-hint">탭하여 뒤집기</p>
+            </div>
+            <div class="flip-face flip-back">
+              <p class="face-label">{{ labels.back }}</p>
+              <p class="explanation de">{{ card.explanationDe }}</p>
+              <p v-if="showKoOnBack && card.explanationKo" class="explanation ko">
+                {{ card.explanationKo }}
+              </p>
+              <p class="tap-hint">탭하여 앞면</p>
+            </div>
           </div>
         </div>
       </div>
+
+      <aside v-if="hasWritingPractice" class="fc-writing-aside">
+        <FlashcardWritingPractice :practice="card.writingPractice" />
+      </aside>
+
+      <FlashcardVocabulary v-if="flipped" class="fc-vocab-slot" :items="card.vocabulary" />
+
+      <footer class="fc-actions">
+        <button type="button" class="flip-btn" @click="toggleFlip">
+          {{ flipped ? "앞면 보기" : "설명 보기 (뒤집기)" }}
+        </button>
+        <button
+          type="button"
+          class="studied-btn"
+          :class="{ active: isStudied }"
+          @click="toggleStudied"
+        >
+          {{ isStudied ? "✓ 공부함" : "공부 완료 표시" }}
+        </button>
+      </footer>
     </div>
-
-    <FlashcardVocabulary v-if="flipped" :items="card.vocabulary" />
-
-    <footer class="fc-actions">
-      <button type="button" class="flip-btn" @click="toggleFlip">
-        {{ flipped ? "앞면 보기" : "설명 보기 (뒤집기)" }}
-      </button>
-      <button
-        type="button"
-        class="studied-btn"
-        :class="{ active: isStudied }"
-        @click="toggleStudied"
-      >
-        {{ isStudied ? "✓ 공부함" : "공부 완료 표시" }}
-      </button>
-    </footer>
   </div>
   <div v-else class="not-found">카드를 찾을 수 없습니다.</div>
 </template>
 
 <script>
 import FlashcardVocabulary from "@/components/flashcard/FlashcardVocabulary.vue";
+import FlashcardWritingPractice from "@/components/flashcard/FlashcardWritingPractice.vue";
 import { getCardById, getCardsForBook, getFlashcardBook } from "@/data/flashcardRegistry";
 
 export default {
   name: "FlashcardDetailView",
-  components: { FlashcardVocabulary },
+  components: { FlashcardVocabulary, FlashcardWritingPractice },
   props: {
     bookId: { type: String, required: true },
     cardId: { type: String, required: true },
@@ -103,6 +110,9 @@ export default {
     isStudied() {
       return this.$store.getters["quizWorkbook/isStudied"](this.bookId, this.cardId);
     },
+    hasWritingPractice() {
+      return Boolean(this.card?.writingPractice?.attemptDe);
+    },
   },
   watch: {
     cardId() {
@@ -138,6 +148,68 @@ export default {
   max-width: 480px;
   margin: 0 auto;
   padding: 8px 16px 40px;
+}
+
+.fc-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fc-vocab-slot {
+  margin: 0;
+}
+
+.fc-writing-aside {
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .flashcard-detail {
+    max-width: 1240px;
+    padding: 8px 24px 48px;
+  }
+
+  .fc-body--with-writing {
+    display: grid;
+    grid-template-columns: minmax(0, 500px) minmax(440px, 1fr);
+    grid-template-areas:
+      "flip writing"
+      "vocab writing"
+      "actions writing";
+    column-gap: 36px;
+    row-gap: 16px;
+    align-items: start;
+  }
+
+  .fc-body--with-writing .flip-scene {
+    grid-area: flip;
+  }
+
+  .fc-body--with-writing .fc-writing-aside {
+    grid-area: writing;
+    position: sticky;
+    top: 12px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+
+  .fc-body--with-writing .fc-writing-aside :deep(.fc-writing) {
+    margin-top: 0;
+  }
+
+  .fc-body--with-writing .fc-vocab-slot {
+    grid-area: vocab;
+  }
+
+  .fc-body--with-writing .fc-actions {
+    grid-area: actions;
+    margin-top: 0;
+  }
+
+  .fc-body:not(.fc-body--with-writing) .fc-actions {
+    margin-top: 0;
+  }
 }
 
 .fc-nav {

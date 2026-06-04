@@ -17,50 +17,60 @@
     <div v-else-if="!finished" class="session-body">
       <p class="progress-text">{{ answeredCount + 1 }} / {{ sessionTotal }}</p>
 
-      <div
-        class="flip-scene"
-        role="button"
-        tabindex="0"
-        :aria-label="revealed ? '뒷면' : '앞면'"
-        @click="onCardTap"
-        @keyup.enter="onCardTap"
-        @keyup.space.prevent="onCardTap"
-      >
-        <div class="flip-card" :class="{ flipped: revealed }">
-          <div class="flip-inner">
-            <div class="flip-face flip-front">
-              <p class="face-label">{{ labels.front }}</p>
-              <p class="term">{{ currentCard.term }}</p>
-              <p v-if="!revealed" class="tap-hint">탭하여 답 보기</p>
-            </div>
-            <div class="flip-face flip-back">
-              <p class="face-label">{{ labels.back }}</p>
-              <p class="explanation de">{{ currentCard.explanationDe }}</p>
-              <p v-if="showKoOnBack && currentCard.explanationKo" class="explanation ko">
-                {{ currentCard.explanationKo }}
-              </p>
+      <div class="fc-body" :class="{ 'fc-body--with-writing': hasWritingPractice }">
+        <div
+          class="flip-scene"
+          role="button"
+          tabindex="0"
+          :aria-label="revealed ? '뒷면' : '앞면'"
+          @click="onCardTap"
+          @keyup.enter="onCardTap"
+          @keyup.space.prevent="onCardTap"
+        >
+          <div class="flip-card" :class="{ flipped: revealed }">
+            <div class="flip-inner">
+              <div class="flip-face flip-front">
+                <p class="face-label">{{ labels.front }}</p>
+                <p class="term">{{ currentCard.term }}</p>
+                <p v-if="!revealed" class="tap-hint">탭하여 답 보기</p>
+              </div>
+              <div class="flip-face flip-back">
+                <p class="face-label">{{ labels.back }}</p>
+                <p class="explanation de">{{ currentCard.explanationDe }}</p>
+                <p v-if="showKoOnBack && currentCard.explanationKo" class="explanation ko">
+                  {{ currentCard.explanationKo }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <FlashcardVocabulary v-if="revealed" :items="currentCard.vocabulary" />
+        <aside v-if="hasWritingPractice" class="fc-writing-aside">
+          <FlashcardWritingPractice :practice="currentCard.writingPractice" />
+        </aside>
 
-      <div v-if="!revealed" class="rev-actions">
-        <button type="button" class="reveal-btn" @click="reveal">답 보기</button>
-      </div>
-      <div v-else class="rev-actions">
-        <div class="grade-grid">
-          <button
-            v-for="grade in grades"
-            :key="grade.key"
-            type="button"
-            class="grade-btn"
-            :class="grade.key"
-            @click="rate(grade.key)"
-          >
-            <span class="grade-label">{{ grade.label }}</span>
-          </button>
+        <FlashcardVocabulary
+          v-if="revealed"
+          class="fc-vocab-slot"
+          :items="currentCard.vocabulary"
+        />
+
+        <div v-if="!revealed" class="rev-actions rev-actions-slot">
+          <button type="button" class="reveal-btn" @click="reveal">답 보기</button>
+        </div>
+        <div v-else class="rev-actions rev-actions-slot">
+          <div class="grade-grid">
+            <button
+              v-for="grade in grades"
+              :key="grade.key"
+              type="button"
+              class="grade-btn"
+              :class="grade.key"
+              @click="rate(grade.key)"
+            >
+              <span class="grade-label">{{ grade.label }}</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -79,6 +89,7 @@
 
 <script>
 import FlashcardVocabulary from "@/components/flashcard/FlashcardVocabulary.vue";
+import FlashcardWritingPractice from "@/components/flashcard/FlashcardWritingPractice.vue";
 import { getFlashcardBook, getCardsForBook } from "@/data/flashcardRegistry";
 import { formatDueLabel } from "@/data/flashcardSrs";
 
@@ -93,7 +104,7 @@ function shuffle(arr) {
 
 export default {
   name: "FlashcardReviewView",
-  components: { FlashcardVocabulary },
+  components: { FlashcardVocabulary, FlashcardWritingPractice },
   props: {
     bookId: { type: String, required: true },
   },
@@ -128,6 +139,9 @@ export default {
     },
     currentCard() {
       return this.sessionQueue[0] || null;
+    },
+    hasWritingPractice() {
+      return Boolean(this.currentCard?.writingPractice?.attemptDe);
     },
     answeredCount() {
       return this.sessionTotal - this.sessionQueue.length;
@@ -209,6 +223,67 @@ export default {
   max-width: 480px;
   margin: 0 auto;
   padding: 8px 16px 40px;
+}
+
+.fc-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fc-vocab-slot {
+  margin: 0;
+}
+
+.fc-writing-aside {
+  margin: 0;
+}
+
+.rev-actions-slot {
+  margin-top: 0;
+}
+
+@media (min-width: 768px) {
+  .fc-review {
+    max-width: 1240px;
+    padding: 8px 24px 48px;
+  }
+
+  .fc-body--with-writing {
+    display: grid;
+    grid-template-columns: minmax(0, 500px) minmax(440px, 1fr);
+    grid-template-areas:
+      "flip writing"
+      "vocab writing"
+      "actions writing";
+    column-gap: 36px;
+    row-gap: 16px;
+    align-items: start;
+  }
+
+  .fc-body--with-writing .flip-scene {
+    grid-area: flip;
+  }
+
+  .fc-body--with-writing .fc-writing-aside {
+    grid-area: writing;
+    position: sticky;
+    top: 12px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+
+  .fc-body--with-writing .fc-writing-aside :deep(.fc-writing) {
+    margin-top: 0;
+  }
+
+  .fc-body--with-writing .fc-vocab-slot {
+    grid-area: vocab;
+  }
+
+  .fc-body--with-writing .rev-actions-slot {
+    grid-area: actions;
+  }
 }
 
 .rev-header {
