@@ -96,6 +96,12 @@ const router = new Router({
       props: true,
     },
     {
+      path: "/flashcards/:bookId/review",
+      name: "flashcard-review",
+      component: () => import("@/views/FlashcardReviewView.vue"),
+      props: true,
+    },
+    {
       path: "/admin",
       name: "admin",
       component: () => import("@/views/AdminView.vue"),

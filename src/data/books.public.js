@@ -1,6 +1,10 @@
 import { BBC_LEARNING_SENTENCE_IDS, bbcLearningQuizChapters } from "./bbcLearningEnglishContent.js";
 import { tongilQuizQuestions } from "./tongilQuizContent.js";
 import {
+  ALLTAG_KO_DE_BOOK_ID,
+  ALLTAG_KO_DE_CARD_IDS,
+} from "./alltagKoDeContent.js";
+import {
   WAERME_KARTEIKARTEN_BOOK_ID,
   WAERME_KARTEIKARTEN_CARD_IDS,
 } from "./waermeKarteikartenContent.js";
@@ -30,6 +34,16 @@ export const publicBooks = [
       "통일원정대 공개문제 200선. 문제·보기·답·해설로 공부하고, 공부한 문항만 랜덤 퀴즈 10문제로 복습할 수 있습니다.",
     coverColor: "book-cover-c",
     questionIds: TONGIL_QUIZ_QUESTION_IDS,
+  },
+  {
+    id: ALLTAG_KO_DE_BOOK_ID,
+    templateType: "flashcard",
+    title: "Alltag · 한↔독",
+    subtitle: "Karteikarten — 일상 회화",
+    description:
+      "일상에서 말하고 싶은 한국어 문장을 독일어로 외웁니다. SM-2 간격 반복(Again/Hard/Good/Easy)으로 복습합니다.",
+    coverColor: "book-cover-e",
+    cardIds: ALLTAG_KO_DE_CARD_IDS,
   },
   {
     id: WAERME_KARTEIKARTEN_BOOK_ID,

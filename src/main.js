@@ -14,6 +14,7 @@ Vue.directive("permission", permissionDirective(store));
 store.dispatch("review/init");
 store.dispatch("ui/init");
 store.dispatch("quizWorkbook/init");
+store.dispatch("flashcardSrs/init");
 
 new Vue({
   router,

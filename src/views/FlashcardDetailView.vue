@@ -21,19 +21,23 @@
       <div class="flip-card" :class="{ flipped }">
         <div class="flip-inner">
           <div class="flip-face flip-front">
-            <p class="face-label">Begriff</p>
+            <p class="face-label">{{ labels.front }}</p>
             <h2 class="term">{{ card.term }}</h2>
             <p class="tap-hint">탭하여 뒤집기</p>
           </div>
           <div class="flip-face flip-back">
-            <p class="face-label">Erklärung</p>
+            <p class="face-label">{{ labels.back }}</p>
             <p class="explanation de">{{ card.explanationDe }}</p>
-            <p class="explanation ko">{{ card.explanationKo }}</p>
+            <p v-if="showKoOnBack && card.explanationKo" class="explanation ko">
+              {{ card.explanationKo }}
+            </p>
             <p class="tap-hint">탭하여 앞면</p>
           </div>
         </div>
       </div>
     </div>
+
+    <FlashcardVocabulary v-if="flipped" :items="card.vocabulary" />
 
     <footer class="fc-actions">
       <button type="button" class="flip-btn" @click="toggleFlip">
@@ -53,19 +57,12 @@
 </template>
 
 <script>
-import {
-  WAERME_KARTEIKARTEN_BOOK_ID,
-  waermeKarteikarten,
-  getWaermeCardById,
-} from "@/data/waermeKarteikartenContent";
-
-function cardsForBook(bookId) {
-  if (bookId === WAERME_KARTEIKARTEN_BOOK_ID) return waermeKarteikarten;
-  return [];
-}
+import FlashcardVocabulary from "@/components/flashcard/FlashcardVocabulary.vue";
+import { getCardById, getCardsForBook, getFlashcardBook } from "@/data/flashcardRegistry";
 
 export default {
   name: "FlashcardDetailView",
+  components: { FlashcardVocabulary },
   props: {
     bookId: { type: String, required: true },
     cardId: { type: String, required: true },
@@ -74,14 +71,20 @@ export default {
     return { flipped: false };
   },
   computed: {
+    bookMeta() {
+      return getFlashcardBook(this.bookId);
+    },
+    labels() {
+      return this.bookMeta?.labels || { front: "앞면", back: "뒷면" };
+    },
+    showKoOnBack() {
+      return this.bookMeta?.showKoOnBack !== false;
+    },
     allCards() {
-      return cardsForBook(this.bookId);
+      return getCardsForBook(this.bookId);
     },
     card() {
-      if (this.bookId === WAERME_KARTEIKARTEN_BOOK_ID) {
-        return getWaermeCardById(this.cardId);
-      }
-      return null;
+      return getCardById(this.bookId, this.cardId);
     },
     cardIndex() {
       return this.allCards.findIndex((c) => c.id === this.cardId);
@@ -236,9 +239,9 @@ export default {
 
 .term {
   margin: 0;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
-  line-height: 1.35;
+  line-height: 1.45;
   color: var(--c-text-primary);
 }
 

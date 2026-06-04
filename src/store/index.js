@@ -7,6 +7,7 @@ import sentences from "./modules/sentences";
 import tasks from "./modules/tasks";
 import ui from "./modules/ui";
 import quizWorkbook from "./modules/quizWorkbook";
+import flashcardSrs from "./modules/flashcardSrs";
 
 Vue.use(Vuex);
 
@@ -19,5 +20,6 @@ export default new Vuex.Store({
     tasks,
     ui,
     quizWorkbook,
+    flashcardSrs,
   },
 });
