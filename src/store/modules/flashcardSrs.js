@@ -1,16 +1,12 @@
 import {
-  GRADE_QUALITY,
-  defaultCardState,
-  dueAtFromIntervalDays,
+  applyGrade,
   formatDueLabel,
   formatIntervalDays,
+  getDueTimestamp,
   getGradeKey,
-  getQuality,
+  gradeOptionList,
   isCardDue,
   normalizeSchedule,
-  previewIntervalLabel,
-  sm2Next,
-  SRS_GRADE_KEYS,
 } from "@/data/flashcardSrs";
 
 const STORAGE_KEY = "flashcard-srs-schedule";
@@ -30,7 +26,7 @@ function migrateMap(parsed) {
 }
 
 const state = () => ({
-  /** { [bookId]: { [cardId]: Sm2Schedule } } */
+  /** { [bookId]: { [cardId]: SerializedFsrsCard } } */
   scheduleMap: {},
 });
 
@@ -48,15 +44,11 @@ const getters = {
     getters.dueCardIds(bookId, cardIds, now).length,
   dueLabel: (state, getters) => (bookId, cardId, now = Date.now()) => {
     const schedule = getters.getSchedule(bookId, cardId);
-    return formatDueLabel(schedule?.dueAt, now);
+    return formatDueLabel(getDueTimestamp(schedule), now);
   },
   gradeOptions: (state, getters) => (bookId, cardId) => {
     const schedule = getters.getSchedule(bookId, cardId);
-    return SRS_GRADE_KEYS.map((key) => ({
-      key,
-      label: previewIntervalLabel(schedule, key),
-      quality: GRADE_QUALITY[key],
-    }));
+    return gradeOptionList(schedule);
   },
 };
 
@@ -88,22 +80,15 @@ const actions = {
   },
   rateCard({ commit, dispatch, getters }, { bookId, cardId, gradeKey }) {
     const key = getGradeKey(gradeKey);
-    const quality = getQuality(gradeKey);
-    if (!bookId || !cardId || !key || quality == null) return null;
+    if (!bookId || !cardId || !key) return null;
 
-    const prev = getters.getSchedule(bookId, cardId) || defaultCardState();
-    const sm2 = sm2Next(prev, quality);
-    const now = Date.now();
-    const schedule = {
-      ...sm2,
-      dueAt: dueAtFromIntervalDays(sm2.intervalDays, now),
-      lastReviewedAt: now,
-    };
+    const prev = getters.getSchedule(bookId, cardId);
+    const { schedule, requeueInSession, phase } = applyGrade(prev, key);
 
     commit("SET_CARD_SCHEDULE", { bookId, cardId, schedule });
     dispatch("quizWorkbook/markStudied", { bookId, questionId: cardId }, { root: true });
 
-    if (quality >= 4) {
+    if (key === "good" || key === "easy") {
       dispatch(
         "quizWorkbook/recordTest",
         { bookId, questionId: cardId, passed: true },
@@ -114,9 +99,10 @@ const actions = {
     dispatch("persist");
     return {
       key,
-      label: formatIntervalDays(sm2.intervalDays),
-      quality,
-      intervalDays: sm2.intervalDays,
+      label: formatIntervalDays(schedule.scheduled_days),
+      requeueInSession,
+      phase,
+      intervalDays: schedule.scheduled_days,
     };
   },
   persist({ state }) {

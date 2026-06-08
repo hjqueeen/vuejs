@@ -2,9 +2,12 @@
   <div class="flashcard-hub">
     <header class="fc-header">
       <button type="button" class="back-btn" @click="goDashboard">← 서재</button>
-      <div>
-        <h1>{{ book.title }}</h1>
-        <p class="fc-sub">{{ book.subtitle }}</p>
+      <div class="fc-header-main">
+        <div>
+          <h1>{{ book.title }}</h1>
+          <p class="fc-sub">{{ book.subtitle }}</p>
+        </div>
+        <FlashcardLayoutToggle @change="layoutMode = $event" />
       </div>
       <p class="fc-progress">
         공부함 {{ studiedCount }} / {{ cards.length }}
@@ -17,7 +20,7 @@
       <button type="button" class="review-btn" :disabled="dueCount < 1" @click="goReview">
         Anki 복습 시작
         <small v-if="dueCount < 1">(복습할 카드가 없습니다)</small>
-        <small v-else>(복습 대기 {{ dueCount }}장 · SM-2)</small>
+        <small v-else>(복습 대기 {{ dueCount }}장 · FSRS)</small>
       </button>
     </section>
 
@@ -41,11 +44,17 @@
 <script>
 import { getBookById } from "@/data/books";
 import { getCardsForBook, getFlashcardBook } from "@/data/flashcardRegistry";
+import FlashcardLayoutToggle from "@/components/flashcard/FlashcardLayoutToggle.vue";
+import { getFlashcardLayoutMode } from "@/utils/flashcardLayout";
 
 export default {
   name: "FlashcardHubView",
+  components: { FlashcardLayoutToggle },
   props: {
     bookId: { type: String, required: true },
+  },
+  data() {
+    return { layoutMode: getFlashcardLayoutMode() };
   },
   computed: {
     book() {
@@ -134,8 +143,16 @@ export default {
   margin-bottom: 20px;
 }
 
+.fc-header-main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+}
+
 .fc-header h1 {
-  margin: 8px 0 4px;
+  margin: 0 0 4px;
   font-size: 20px;
   font-weight: 700;
 }

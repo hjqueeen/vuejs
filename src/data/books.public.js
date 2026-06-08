@@ -8,11 +8,24 @@ import {
   WAERME_KARTEIKARTEN_BOOK_ID,
   WAERME_KARTEIKARTEN_CARD_IDS,
 } from "./waermeKarteikartenContent.js";
-
+import {
+  BB84_PROTOCOL_BOOK_ID,
+  BB84_PROTOCOL_CARD_IDS,
+} from "./bb84ProtocolContent.js";
 export const TONGIL_QUIZ_BOOK_ID = "book-tongil-quiz";
 export const TONGIL_QUIZ_QUESTION_IDS = tongilQuizQuestions.map((q) => q.id);
 
 export const publicBooks = [
+  {
+    id: BB84_PROTOCOL_BOOK_ID,
+    templateType: "flashcard",
+    title: "BB84 Protocol",
+    subtitle: "발표 스크립트 + 워크샵 대화 · 한→English",
+    description:
+      "BB84 발표 원문(한국어)과 워크샵 팀 대화(영어)를 플래시카드로 연습합니다. 1–2일차: 프로토콜 이해 확인, AI·IDE·Colab·Qiskit 셋업.",
+    coverColor: "book-cover-a",
+    cardIds: BB84_PROTOCOL_CARD_IDS,
+  },
   {
     id: "book-bbc-learning",
     templateType: "speaking-listening",
@@ -25,16 +38,16 @@ export const publicBooks = [
     sentenceIds: [...BBC_LEARNING_SENTENCE_IDS],
     quizChapters: bbcLearningQuizChapters,
   },
-  {
-    id: TONGIL_QUIZ_BOOK_ID,
-    templateType: "quiz-workbook",
-    title: "2026 청소년 통일골든벨",
-    subtitle: "기본학습문제 (공개 200문항)",
-    description:
-      "통일원정대 공개문제 200선. 문제·보기·답·해설로 공부하고, 공부한 문항만 랜덤 퀴즈 10문제로 복습할 수 있습니다.",
-    coverColor: "book-cover-c",
-    questionIds: TONGIL_QUIZ_QUESTION_IDS,
-  },
+  // {
+  //   id: TONGIL_QUIZ_BOOK_ID,
+  //   templateType: "quiz-workbook",
+  //   title: "2026 청소년 통일골든벨",
+  //   subtitle: "기본학습문제 (공개 200문항)",
+  //   description:
+  //     "통일원정대 공개문제 200선. 문제·보기·답·해설로 공부하고, 공부한 문항만 랜덤 퀴즈 10문제로 복습할 수 있습니다.",
+  //   coverColor: "book-cover-c",
+  //   questionIds: TONGIL_QUIZ_QUESTION_IDS,
+  // },
   {
     id: ALLTAG_KO_DE_BOOK_ID,
     templateType: "flashcard",

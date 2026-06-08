@@ -3,6 +3,7 @@
     <header class="fc-nav">
       <button type="button" class="back-btn" @click="goHub">← 목록</button>
       <span class="fc-index">{{ cardIndex + 1 }} / {{ totalCards }}</span>
+      <FlashcardLayoutToggle @change="onLayoutChange" />
       <div class="fc-nav-btns">
         <button type="button" :disabled="!prevId" @click="goSibling(prevId)">‹</button>
         <button type="button" :disabled="!nextId" @click="goSibling(nextId)">›</button>
@@ -10,42 +11,34 @@
     </header>
 
     <div class="fc-body" :class="{ 'fc-body--with-writing': hasWritingPractice }">
-      <div
-        class="flip-scene"
-        role="button"
-        tabindex="0"
-        :aria-label="flipped ? '뒷면 — 다시 뒤집기' : '앞면 — 카드 뒤집기'"
-        @click="toggleFlip"
-        @keyup.enter="toggleFlip"
-        @keyup.space.prevent="toggleFlip"
-      >
-        <div class="flip-card" :class="{ flipped }">
-          <div class="flip-inner">
-            <div class="flip-face flip-front">
-              <p class="face-label">{{ labels.front }}</p>
-              <h2 class="term">{{ card.term }}</h2>
-              <p class="tap-hint">탭하여 뒤집기</p>
-            </div>
-            <div class="flip-face flip-back">
-              <p class="face-label">{{ labels.back }}</p>
-              <p class="explanation de">{{ card.explanationDe }}</p>
-              <p v-if="showKoOnBack && card.explanationKo" class="explanation ko">
-                {{ card.explanationKo }}
-              </p>
-              <p class="tap-hint">탭하여 앞면</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <FlashcardCardPanel
+        :card="card"
+        :labels="labels"
+        :show-ko-on-back="showKoOnBack"
+        :layout-mode="layoutMode"
+        :revealed="flipped"
+        tap-hint-front="탭하여 뒤집기"
+        tap-hint-back="탭하여 앞면"
+        @toggle="toggleFlip"
+      />
 
       <aside v-if="hasWritingPractice" class="fc-writing-aside">
         <FlashcardWritingPractice :practice="card.writingPractice" />
       </aside>
 
-      <FlashcardVocabulary v-if="flipped" class="fc-vocab-slot" :items="card.vocabulary" />
+      <FlashcardVocabulary
+        v-if="flipped || layoutMode === 'split'"
+        class="fc-vocab-slot"
+        :items="card.vocabulary"
+      />
 
       <footer class="fc-actions">
-        <button type="button" class="flip-btn" @click="toggleFlip">
+        <button
+          v-if="layoutMode === 'flip'"
+          type="button"
+          class="flip-btn"
+          @click="toggleFlip"
+        >
           {{ flipped ? "앞면 보기" : "설명 보기 (뒤집기)" }}
         </button>
         <button
@@ -63,19 +56,30 @@
 </template>
 
 <script>
+import FlashcardCardPanel from "@/components/flashcard/FlashcardCardPanel.vue";
+import FlashcardLayoutToggle from "@/components/flashcard/FlashcardLayoutToggle.vue";
 import FlashcardVocabulary from "@/components/flashcard/FlashcardVocabulary.vue";
 import FlashcardWritingPractice from "@/components/flashcard/FlashcardWritingPractice.vue";
 import { getCardById, getCardsForBook, getFlashcardBook } from "@/data/flashcardRegistry";
+import { getFlashcardLayoutMode } from "@/utils/flashcardLayout";
 
 export default {
   name: "FlashcardDetailView",
-  components: { FlashcardVocabulary, FlashcardWritingPractice },
+  components: {
+    FlashcardCardPanel,
+    FlashcardLayoutToggle,
+    FlashcardVocabulary,
+    FlashcardWritingPractice,
+  },
   props: {
     bookId: { type: String, required: true },
     cardId: { type: String, required: true },
   },
   data() {
-    return { flipped: false };
+    return {
+      flipped: false,
+      layoutMode: getFlashcardLayoutMode(),
+    };
   },
   computed: {
     bookMeta() {
@@ -120,6 +124,9 @@ export default {
     },
   },
   methods: {
+    onLayoutChange(mode) {
+      this.layoutMode = mode;
+    },
     toggleFlip() {
       this.flipped = !this.flipped;
     },
@@ -182,7 +189,7 @@ export default {
     align-items: start;
   }
 
-  .fc-body--with-writing .flip-scene {
+  .fc-body--with-writing > :first-child {
     grid-area: flip;
   }
 
@@ -217,6 +224,7 @@ export default {
   align-items: center;
   gap: 12px;
   margin-bottom: 24px;
+  flex-wrap: wrap;
 }
 
 .fc-index {
@@ -225,6 +233,7 @@ export default {
   font-size: 13px;
   color: var(--c-text-muted);
   font-weight: 600;
+  min-width: 64px;
 }
 
 .fc-nav-btns button {
@@ -249,98 +258,6 @@ export default {
   font-size: 13px;
   cursor: pointer;
   padding: 0;
-}
-
-.flip-scene {
-  perspective: 1200px;
-  cursor: pointer;
-  outline: none;
-}
-
-.flip-card {
-  min-height: 340px;
-  position: relative;
-}
-
-.flip-inner {
-  position: relative;
-  width: 100%;
-  min-height: 340px;
-  transition: transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1);
-  transform-style: preserve-3d;
-}
-
-.flip-card.flipped .flip-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-face {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 28px 24px;
-  text-align: center;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  border-radius: var(--c-radius-lg);
-  border: 1px solid var(--c-border);
-  background: var(--c-surface);
-  box-shadow: 0 8px 28px rgba(26, 23, 20, 0.06);
-}
-
-.flip-back {
-  transform: rotateY(180deg);
-  background: var(--c-blue-light);
-  border-color: var(--c-blue-mid);
-  align-items: flex-start;
-  justify-content: flex-start;
-  overflow-y: auto;
-}
-
-.face-label {
-  margin: 0 0 12px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--c-text-muted);
-}
-
-.term {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.45;
-  color: var(--c-text-primary);
-}
-
-.explanation {
-  margin: 0 0 14px;
-  font-size: 15px;
-  line-height: 1.55;
-  max-width: 100%;
-  white-space: pre-line;
-  text-align: left;
-}
-
-.explanation.de {
-  color: var(--c-text-primary);
-  font-weight: 500;
-}
-
-.explanation.ko {
-  margin-bottom: 0;
-  color: var(--c-text-secondary);
-  font-size: 14px;
-}
-
-.tap-hint {
-  margin: 20px 0 0;
-  font-size: 11px;
-  color: var(--c-text-muted);
 }
 
 .fc-actions {

@@ -4,8 +4,27 @@ const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 
 const projectRoot = path.resolve(__dirname, "..");
-const dataFile = path.join(projectRoot, "src/data/englishLearningDb.js");
-const outputDir = path.join(projectRoot, "public/audio");
+const ttsTarget = (process.env.TTS_TARGET || "english-learning").toLowerCase();
+
+const targetConfig = {
+  "english-learning": {
+    dataFile: path.join(projectRoot, "src/data/englishLearningDb.js"),
+    outputDir: path.join(projectRoot, "public/audio"),
+    speeds: ["normal"],
+  },
+  bb84: {
+    dataFile: path.join(projectRoot, "src/data/bb84ProtocolContent.js"),
+    outputDir: path.join(projectRoot, "public/audio/bb84-protocol"),
+    speeds: ["normal"],
+  },
+};
+
+const config = targetConfig[ttsTarget];
+if (!config) {
+  throw new Error(`Unknown TTS_TARGET: ${ttsTarget}`);
+}
+
+const { dataFile, outputDir, speeds } = config;
 
 const env = process.env;
 const provider = (env.TTS_PROVIDER || "elevenlabs").toLowerCase();
@@ -42,6 +61,17 @@ const extractParagraphTexts = (source) => {
   let match = regex.exec(source);
   while (match) {
     result.push({ id: match[1], text: match[2].trim(), kind: "paragraph" });
+    match = regex.exec(source);
+  }
+  return result;
+};
+
+const extractBb84ExplanationTexts = (source) => {
+  const regex = /id:\s*"([^"]+)"[\s\S]*?explanationDe:\s*\n\s*"([\s\S]*?)",\s*\n\s*explanationKo/g;
+  const result = [];
+  let match = regex.exec(source);
+  while (match) {
+    result.push({ id: match[1], text: match[2].trim(), kind: "bb84-card" });
     match = regex.exec(source);
   }
   return result;
@@ -139,20 +169,29 @@ const writeIfNeeded = async (id, speedType, text) => {
   console.log(`[OK] ${id}-${speedType}.mp3 generated`);
 };
 
+const collectTargets = (source) => {
+  if (ttsTarget === "bb84") {
+    return extractBb84ExplanationTexts(source);
+  }
+  const sentenceSection = pickSection(source, "sentences");
+  const paragraphSection = pickSection(source, "paragraphs");
+  return [...extractParagraphTexts(paragraphSection), ...extractSentenceTexts(sentenceSection)];
+};
+
 const main = async () => {
   ensureDir(outputDir);
   const source = fs.readFileSync(dataFile, "utf8");
-  const sentenceSection = pickSection(source, "sentences");
-  const paragraphSection = pickSection(source, "paragraphs");
-  const targets = [...extractParagraphTexts(paragraphSection), ...extractSentenceTexts(sentenceSection)];
+  const targets = collectTargets(source);
 
   if (!targets.length) {
-    throw new Error("No TTS targets found in englishLearningDb.js");
+    throw new Error(`No TTS targets found in ${path.basename(dataFile)}`);
   }
 
-  console.log(`[TTS] provider=${provider}, targets=${targets.length}`);
+  console.log(`[TTS] target=${ttsTarget}, provider=${provider}, items=${targets.length}`);
   for (const item of targets) {
-    await writeIfNeeded(item.id, "normal", item.text);
+    for (const speedType of speeds) {
+      await writeIfNeeded(item.id, speedType, item.text);
+    }
   }
   console.log("[TTS] Completed.");
 };

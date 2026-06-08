@@ -8,6 +8,11 @@ import {
   alltagKoDeCards,
   getAlltagKoDeCardById,
 } from "./alltagKoDeContent.js";
+import {
+  BB84_PROTOCOL_BOOK_ID,
+  BB84ProtocolCards,
+  getBb84ProtocolCardById,
+} from "./bb84ProtocolContent.js";
 
 /** @type {Record<string, { cards: object[], getCardById: (id: string) => object|null, labels: { front: string, back: string }, hint: string, showKoOnBack?: boolean }>} */
 export const flashcardBooks = {
@@ -24,6 +29,13 @@ export const flashcardBooks = {
     labels: { front: "한국어", back: "Deutsch" },
     hint: "한국어를 보고 독일어를 떠올린 뒤, 카드를 뒤집어 확인하세요.",
     showKoOnBack: false,
+  },
+  [BB84_PROTOCOL_BOOK_ID]: {
+    cards: BB84ProtocolCards,
+    getCardById: getBb84ProtocolCardById,
+    labels: { front: "한국어", back: "English" },
+    hint: "한국어(상황·원문)를 보고 영어 대사·발표 스크립트를 떠올린 뒤 확인하세요. 워크샵 카드(ws-d1, ws-d2)는 팀 대화 연습용입니다.",
+    showKoOnBack: true,
   },
 };
 

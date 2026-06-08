@@ -2,10 +2,15 @@
   <div class="fc-review">
     <header class="rev-header">
       <button type="button" class="back-btn" @click="goHub">← 목록</button>
-      <h1>복습 세션</h1>
-      <p class="rev-desc">
-        SM-2 간격 — 앞면을 보고 떠올린 뒤, 버튼에 표시된 다음 복습 간격을 선택하세요.
-      </p>
+      <div class="rev-header-main">
+        <div>
+          <h1>복습 세션</h1>
+          <p class="rev-desc">
+            FSRS(Anki) — 앞면을 보고 떠올린 뒤, 다시·어려움·좋음·쉬움과 다음 복습 시점을 선택하세요.
+          </p>
+        </div>
+        <FlashcardLayoutToggle @change="layoutMode = $event" />
+      </div>
     </header>
 
     <div v-if="!sessionQueue.length && !finished" class="empty-state">
@@ -18,44 +23,27 @@
       <p class="progress-text">{{ answeredCount + 1 }} / {{ sessionTotal }}</p>
 
       <div class="fc-body" :class="{ 'fc-body--with-writing': hasWritingPractice }">
-        <div
-          class="flip-scene"
-          role="button"
-          tabindex="0"
-          :aria-label="revealed ? '뒷면' : '앞면'"
-          @click="onCardTap"
-          @keyup.enter="onCardTap"
-          @keyup.space.prevent="onCardTap"
-        >
-          <div class="flip-card" :class="{ flipped: revealed }">
-            <div class="flip-inner">
-              <div class="flip-face flip-front">
-                <p class="face-label">{{ labels.front }}</p>
-                <p class="term">{{ currentCard.term }}</p>
-                <p v-if="!revealed" class="tap-hint">탭하여 답 보기</p>
-              </div>
-              <div class="flip-face flip-back">
-                <p class="face-label">{{ labels.back }}</p>
-                <p class="explanation de">{{ currentCard.explanationDe }}</p>
-                <p v-if="showKoOnBack && currentCard.explanationKo" class="explanation ko">
-                  {{ currentCard.explanationKo }}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <FlashcardCardPanel
+          :card="currentCard"
+          :labels="labels"
+          :show-ko-on-back="showKoOnBack"
+          :layout-mode="layoutMode"
+          :revealed="revealed"
+          :interactive="layoutMode === 'flip'"
+          @toggle="onCardTap"
+        />
 
         <aside v-if="hasWritingPractice" class="fc-writing-aside">
           <FlashcardWritingPractice :practice="currentCard.writingPractice" />
         </aside>
 
         <FlashcardVocabulary
-          v-if="revealed"
+          v-if="revealed || layoutMode === 'split'"
           class="fc-vocab-slot"
           :items="currentCard.vocabulary"
         />
 
-        <div v-if="!revealed" class="rev-actions rev-actions-slot">
+        <div v-if="layoutMode === 'flip' && !revealed" class="rev-actions rev-actions-slot">
           <button type="button" class="reveal-btn" @click="reveal">답 보기</button>
         </div>
         <div v-else class="rev-actions rev-actions-slot">
@@ -68,6 +56,7 @@
               :class="grade.key"
               @click="rate(grade.key)"
             >
+              <span class="grade-name">{{ grade.name }}</span>
               <span class="grade-label">{{ grade.label }}</span>
             </button>
           </div>
@@ -88,10 +77,13 @@
 </template>
 
 <script>
+import FlashcardCardPanel from "@/components/flashcard/FlashcardCardPanel.vue";
+import FlashcardLayoutToggle from "@/components/flashcard/FlashcardLayoutToggle.vue";
 import FlashcardVocabulary from "@/components/flashcard/FlashcardVocabulary.vue";
 import FlashcardWritingPractice from "@/components/flashcard/FlashcardWritingPractice.vue";
 import { getFlashcardBook, getCardsForBook } from "@/data/flashcardRegistry";
-import { formatDueLabel } from "@/data/flashcardSrs";
+import { formatDueLabel, getDueTimestamp } from "@/data/flashcardSrs";
+import { getFlashcardLayoutMode } from "@/utils/flashcardLayout";
 
 function shuffle(arr) {
   const a = [...arr];
@@ -104,7 +96,7 @@ function shuffle(arr) {
 
 export default {
   name: "FlashcardReviewView",
-  components: { FlashcardVocabulary, FlashcardWritingPractice },
+  components: { FlashcardCardPanel, FlashcardLayoutToggle, FlashcardVocabulary, FlashcardWritingPractice },
   props: {
     bookId: { type: String, required: true },
   },
@@ -115,6 +107,7 @@ export default {
       revealed: false,
       finished: false,
       nextDueHint: "",
+      layoutMode: getFlashcardLayoutMode(),
     };
   },
   computed: {
@@ -179,8 +172,9 @@ export default {
       let nearest = null;
       pool.forEach((card) => {
         const schedule = this.$store.getters["flashcardSrs/getSchedule"](this.bookId, card.id);
-        if (!schedule?.dueAt || schedule.dueAt <= now) return;
-        if (!nearest || schedule.dueAt < nearest) nearest = schedule.dueAt;
+        const dueAt = getDueTimestamp(schedule);
+        if (!dueAt || dueAt <= now) return;
+        if (!nearest || dueAt < nearest) nearest = dueAt;
       });
       if (!nearest) return "";
       return `다음 복습: ${formatDueLabel(nearest, now)}`;
@@ -195,13 +189,18 @@ export default {
       const card = this.currentCard;
       if (!card) return;
 
-      await this.$store.dispatch("flashcardSrs/rateCard", {
+      const result = await this.$store.dispatch("flashcardSrs/rateCard", {
         bookId: this.bookId,
         cardId: card.id,
         gradeKey,
       });
 
-      this.sessionQueue = this.sessionQueue.slice(1);
+      const rest = this.sessionQueue.slice(1);
+      if (result?.requeueInSession) {
+        this.sessionQueue = [...rest, card];
+      } else {
+        this.sessionQueue = rest;
+      }
       this.revealed = false;
 
       if (this.sessionQueue.length === 0) {
@@ -265,6 +264,10 @@ export default {
     grid-area: flip;
   }
 
+  .fc-body--with-writing > :first-child {
+    grid-area: flip;
+  }
+
   .fc-body--with-writing .fc-writing-aside {
     grid-area: writing;
     position: sticky;
@@ -290,8 +293,16 @@ export default {
   margin-bottom: 20px;
 }
 
+.rev-header-main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+}
+
 .rev-header h1 {
-  margin: 8px 0 4px;
+  margin: 0 0 4px;
   font-size: 20px;
   font-weight: 700;
 }
@@ -445,6 +456,12 @@ export default {
   cursor: pointer;
   border: 1px solid var(--c-border);
   background: var(--c-surface);
+}
+
+.grade-name {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.85;
 }
 
 .grade-label {
