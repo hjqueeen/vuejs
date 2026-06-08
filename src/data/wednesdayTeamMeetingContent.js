@@ -3,6 +3,8 @@
  * {@link ./englishLearningDb.js}에서 BBC 데이터와 병합해 사용합니다.
  */
 
+import { publicAssetUrl } from "@/utils/publicAssetUrl";
+
 /** @readonly books.private.js와 라우팅 등에서 동일 문자열 사용 */
 export const WEDNESDAY_TEAM_MEETING_BOOK_ID = "book-feature-request";
 
@@ -541,8 +543,8 @@ export const wednesdayTeamMeetingParagraphs = [
       "First of all, I'll assign you an analysis task for the feature request this week, possibly even today, as we want to plan the next release. With that analysis, I'd like you to review the feature request against the feature sheet and identify the steps required. Additionally, please add a rough effort estimate to the feature request. So that we have at least a rough estimate of the time required. So we can plan properly what we can deliver within the release and what might be too much. Of course, I can only assign one person to a ticket. Ideally, two of you would share the implementation, module testing, and everything else required for the feature request. I'll message each of you individually about that. Just so you know.",
     koreanTranslation:
       "우선, 이번 주 안에, 어쩌면 오늘이라도 기능 요청에 대한 분석 업무를 배정하겠습니다. 다음 릴리스를 계획해야 하기 때문입니다. 그 분석 업무에서는 feature sheet를 기준으로 기능 요청을 검토하고, 필요한 단계를 식별해 주세요. 그리고 추가로, 기능 요청에 대한 대략적인 작업량 추정치도 추가해 주세요. 그래야 최소한 필요한 시간에 대한 대략적인 추정치를 확보할 수 있습니다. 그래야 이번 릴리스 안에서 무엇을 제공할 수 있고 무엇이 과할지 제대로 계획할 수 있습니다. 물론 티켓에는 한 명만 담당자로 지정할 수 있습니다. 이상적으로는 두 사람이 구현, 모듈 테스트, 그리고 기능 요청에 필요한 나머지 작업을 함께 나누어 진행하면 좋습니다. 그 부분은 제가 각자에게 개별적으로 메시지드리겠습니다. 참고로 말씀드리면 그렇습니다.",
-    normalSpeedUrl: "/audio/p1-normal.mp3",
-    slowSpeedUrl: "/audio/p1-slow.mp3",
+    normalSpeedUrl: publicAssetUrl("audio/p1-normal.mp3"),
+    slowSpeedUrl: publicAssetUrl("audio/p1-slow.mp3"),
     provider: "openai",
     voiceName: "alloy",
     sentenceIds: ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9"],
@@ -556,8 +558,8 @@ export const wednesdayTeamMeetingParagraphs = [
       "Let's go to the next topic: system status. David, correct me if I'm wrong, but the messages in the email are still not right. So this is still an ongoing fix, is that right? Yes, David is working on it. Okay, this should be fixed by now. But in the last email I received, it's still the same issue. For example, in the infotainment web app, David already fixed it. Still, there seem to be some issues left there. The issues we had should all have been fixed by now, at least in the last five builds. Was it pushed yesterday? Yes, it was pushed yesterday evening. Then there's a low chance it's in this build yet. From what David told me, he fixed it earlier this week, and from what I've seen, it looks fine now. David, we still have two open topics regarding system status: the matrix LED and infotainment. Are both fixed on your side, and only not reflected in the email yet? Not the matrix. I have a bigger issue than I thought. We still have two different schemes in the master branch, and we generate our module classes from the old one. That's the problem. That's why it's not working. I already discussed it with David and Paul, and I'll probably delete the old one and replace it with the new one. I hope that will fix everything.",
     koreanTranslation:
       "다음 주제로 넘어가겠습니다. 시스템 상태입니다. David, 제가 틀렸다면 말씀해 주세요. 이메일 메시지가 아직 올바르지 않은 것 같습니다. 그러면 이건 아직 수정 진행 중인 사항인가요? 네, David가 작업하고 있습니다. 알겠습니다. 이건 지금쯤 수정되었어야 합니다. 하지만 제가 마지막으로 받은 이메일에는 아직도 같은 문제가 있습니다. 예를 들어 infotainment 웹 앱은 David가 이미 수정했습니다. 그래도 그쪽에는 아직 문제가 좀 남아 있는 것 같습니다. 우리가 겪던 이슈들은 지금쯤 모두 수정됐어야 합니다. 적어도 최근 다섯 번 빌드에서는요. 어제 반영된 건가요? 네, 어제 저녁에 반영됐습니다. 그러면 그 수정이 이번 빌드에 들어갔을 가능성은 낮습니다. David가 말한 바로는 이번 주 초에 수정했고, 제가 본 바로도 지금은 괜찮아 보입니다. David, 시스템 상태 관련해서 아직 열린 이슈가 두 개 있습니다. matrix LED와 infotainment인데, 두 건 다 당신 쪽에서는 수정됐고 이메일에만 아직 반영되지 않은 건가요? matrix는 아닙니다. 생각했던 것보다 더 큰 문제가 있습니다. master 브랜치에는 아직 서로 다른 두 개의 스키마가 있고, 모듈 클래스는 예전 스키마 기준으로 생성하고 있습니다. 그게 문제입니다. 그래서 작동하지 않는 것입니다. 이 문제는 이미 David와 Paul와 논의했고, 기존 것을 삭제하고 새 것으로 교체할 예정입니다. 그러면 모두 해결되길 바랍니다.",
-    normalSpeedUrl: "/audio/p2-normal.mp3",
-    slowSpeedUrl: "/audio/p2-slow.mp3",
+    normalSpeedUrl: publicAssetUrl("audio/p2-normal.mp3"),
+    slowSpeedUrl: publicAssetUrl("audio/p2-slow.mp3"),
     provider: "openai",
     voiceName: "alloy",
     sentenceIds: [
@@ -589,7 +591,7 @@ export const wednesdayTeamMeetingParagraphs = [
       "That issue is already being handled by David, so no action needed from others. So nothing needed from your side. There’s still one open issue in the module test, assigned to David. Regarding the system as a whole, we’re considering a small change. If no action is taken, the same error will keep getting assigned to the same people. It makes sense to use a test exception here. When creating a ticket, or if you're assigned a bug you can't fix immediately, please add a test exception. Create a ticket and reference it in the test exception. Do we want to make an exception for tests that only fail occasionally? I didn’t add a test exception because it hides how stable the test actually is. Both approaches are reasonable. A precondition for using a test exception is that the issue is reproducible. If it's a flaky test, then a test exception doesn't really make sense. We want the issue to keep coming up. By looking at it from different angles, we can eventually solve it.",
     koreanTranslation:
       "그 이슈는 이미 David가 처리 중이므로 다른 사람의 조치는 필요 없습니다. 그래서 당신 쪽에서 할 일은 없습니다. 모듈 테스트에 아직 하나의 미해결 이슈가 있고 David에게 할당되어 있습니다. 시스템 전체와 관련해 작은 변경을 고려 중입니다. 아무 조치가 없으면 같은 오류가 계속 반복해서 같은 사람들에게 할당됩니다. 여기서는 테스트 예외를 사용하는 것이 합리적입니다. 티켓을 생성하거나 즉시 해결할 수 없는 버그를 맡은 경우 테스트 예외를 추가해 주세요. 티켓을 생성하고 테스트 예외에 해당 티켓을 참조하세요. 가끔 실패하는 테스트에 대해서는 예외를 둘까요? 테스트의 실제 안정성을 가리기 때문에 테스트 예외를 추가하지 않았습니다. 두 가지 방식 모두 타당합니다. 테스트 예외를 사용하기 위한 전제 조건은 해당 이슈가 재현 가능해야 한다는 것입니다. flaky 테스트라면 테스트 예외는 적절하지 않습니다. 그 이슈가 계속 반복해서 발생하도록 두고 싶습니다. 다양한 관점에서 보면 결국 해결할 수 있습니다.",
-    normalSpeedUrl: "/audio/p3-normal.mp3",
+    normalSpeedUrl: publicAssetUrl("audio/p3-normal.mp3"),
     slowSpeedUrl: "",
     provider: "openai",
     voiceName: "alloy",
@@ -1021,8 +1023,8 @@ export const wednesdayTeamMeetingAudios = wednesdayTeamMeetingSentences
   .map((sentence) => ({
     id: `a-${sentence.id}`,
     sentenceId: sentence.id,
-    normalSpeedUrl: `/audio/${sentence.id}-normal.mp3`,
-    slowSpeedUrl: `/audio/${sentence.id}-slow.mp3`,
+    normalSpeedUrl: publicAssetUrl(`audio/${sentence.id}-normal.mp3`),
+    slowSpeedUrl: publicAssetUrl(`audio/${sentence.id}-slow.mp3`),
     provider: "openai",
     voiceName: "alloy",
   }));

@@ -34,4 +34,3 @@ src/data/englishLearningDb.js
 src/data/grammarChapters.js
 src/data/books.private.js
 src/data/*.md
-public/audio/

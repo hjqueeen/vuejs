@@ -1,5 +1,7 @@
 /** BB84 Protocol — 한국어 발표 원문 → English presentation script */
 
+import { publicAssetUrl } from "@/utils/publicAssetUrl";
+
 export const BB84_PROTOCOL_BOOK_ID = "book-BB84-protocol";
 
 const bb84ProtocolCardsRaw = [
@@ -491,11 +493,9 @@ const bb84ProtocolCardsRaw = [
   },
 ];
 
-const BB84_AUDIO_DIR = "/audio/bb84-protocol";
-
 export const BB84ProtocolCards = bb84ProtocolCardsRaw.map((card) => ({
   ...card,
-  normalSpeedUrl: `${BB84_AUDIO_DIR}/${card.id}-normal.mp3`,
+  normalSpeedUrl: publicAssetUrl(`audio/bb84-protocol/${card.id}-normal.mp3`),
 }));
 
 export const BB84_PROTOCOL_CARD_IDS = BB84ProtocolCards.map((c) => c.id);
