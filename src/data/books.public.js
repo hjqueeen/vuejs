@@ -12,6 +12,10 @@ import {
   BB84_PROTOCOL_BOOK_ID,
   BB84_PROTOCOL_CARD_IDS,
 } from "./bb84ProtocolContent.js";
+import {
+  LATIN_VOCAB_BOOK_ID,
+  LATIN_VOCAB_CARD_IDS,
+} from "./latinVocabContent.js";
 export const TONGIL_QUIZ_BOOK_ID = "book-tongil-quiz";
 export const TONGIL_QUIZ_QUESTION_IDS = tongilQuizQuestions.map((q) => q.id);
 
@@ -67,5 +71,15 @@ export const publicBooks = [
       "7학년 LEK Wärmelehre: Ausdehnung, Anwendungen, Begriffe, Wärmeübertragung, Teilchenmodell, Dämmung 등 19장. 독일어·한국어(7학년).",
     coverColor: "book-cover-d",
     cardIds: WAERME_KARTEIKARTEN_CARD_IDS,
+  },
+  {
+    id: LATIN_VOCAB_BOOK_ID,
+    templateType: "flashcard",
+    title: "Latein · Vokabeln",
+    subtitle: "Karteikarten — Latein → Deutsch",
+    description:
+      "라틴어 단어 25개. 앞면: 라틴어, 뒷면: 변형(활용·품사)과 독일어 뜻. SM-2 간격 반복(Again/Hard/Good/Easy)으로 복습합니다.",
+    coverColor: "book-cover-c",
+    cardIds: LATIN_VOCAB_CARD_IDS,
   },
 ];

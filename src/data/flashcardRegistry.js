@@ -13,6 +13,11 @@ import {
   BB84ProtocolCards,
   getBb84ProtocolCardById,
 } from "./bb84ProtocolContent.js";
+import {
+  LATIN_VOCAB_BOOK_ID,
+  latinVocabCards,
+  getLatinVocabCardById,
+} from "./latinVocabContent.js";
 
 /** @type {Record<string, { cards: object[], getCardById: (id: string) => object|null, labels: { front: string, back: string }, hint: string, showKoOnBack?: boolean }>} */
 export const flashcardBooks = {
@@ -36,6 +41,13 @@ export const flashcardBooks = {
     labels: { front: "한국어", back: "English" },
     hint: "한국어(상황·원문)를 보고 영어 대사·발표 스크립트를 떠올린 뒤 확인하세요. 워크샵 카드(ws-d1, ws-d2)는 팀 대화 연습용입니다.",
     showKoOnBack: true,
+  },
+  [LATIN_VOCAB_BOOK_ID]: {
+    cards: latinVocabCards,
+    getCardById: getLatinVocabCardById,
+    labels: { front: "Latein", back: "Form · Deutsch" },
+    hint: "라틴어 단어를 보고 변형(활용·품사)과 독일어 뜻을 떠올린 뒤, 카드를 뒤집어 확인하세요.",
+    showKoOnBack: false,
   },
 };
 
