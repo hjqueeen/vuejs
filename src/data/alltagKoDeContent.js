@@ -306,6 +306,94 @@ export const alltagKoDeCards = [
       practicedAt: "2026-06-04",
     },
   },
+  {
+    id: "card-alltag-preview-stelle",
+    term: "프리뷰 그 자리에서 그냥 없애도 될까?",
+    explanationDe:
+      "Soll ich die Preview an der Stelle einfach entfernen?",
+    explanationKo: "an der Stelle · Preview entfernen",
+    vocabulary: [
+      {
+        word: "an der Stelle",
+        meaning:
+          "그 자리에서, 바로 거기서 · on the spot, right there (ohne woanders hinzugehen)",
+        examples: [
+          {
+            de: "Können wir den fehlerhaften Abschnitt an der Stelle korrigieren, statt alles neu zu schreiben?",
+            ko: "전부 다시 쓰지 말고, 그 부분만 그 자리에서 고칠 수 있을까?",
+          },
+          {
+            de: "An der Stelle hab ich den Tippfehler gleich geändert.",
+            ko: "그 자리에서 바로 오타를 고쳤어.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "card-alltag-werkbank-anpassung",
+    term: "오늘 우리가 이야기했던 Werkbank Anpassung 작업 보러 올 거야?",
+    explanationDe:
+      "Kommst du heute zur Werkbank-Anpassung, die wir besprochen haben?",
+    explanationKo: "zur … Anpassung · die wir besprochen haben",
+    vocabulary: [
+      {
+        word: "Anpassung",
+        meaning:
+          "(시스템·레이아웃·코드 등에 대한) 수정, 맞춤 변경 · adjustment, customization",
+        examples: [
+          {
+            de: "Die Anpassung am Layout dauert noch ein paar Stunden.",
+            ko: "레이아웃 수정은 아직 몇 시간 더 걸릴 거야.",
+          },
+          {
+            de: "Vor dem Release brauchen wir noch eine kleine Anpassung am Export.",
+            ko: "릴리스 전에 Export 쪽으로 작은 수정 하나 더 필요해.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "card-alltag-delete-id-mitliefern",
+    term:
+      "Delete가 지금 안 돼. Reload 후에 함수에서 id가 안 넘어와서 DELETE를 호출할 수가 없거든. Item마다 id랑 sourceId도 같이 보내줄 수 있어? 그러면 될 것 같아.",
+    explanationDe:
+      "Delete klappt gerade nicht, weil uns nach dem Reload die ID aus der Funktion fehlt – ohne sie rufen wir DELETE gar nicht auf. Kannst du pro Item id und sourceId mitliefern? Dann sollte es passen.",
+    explanationKo: "aufrufen · mitliefern · pro Item",
+    vocabulary: [
+      {
+        word: "aufrufen",
+        meaning:
+          "(API·Funktion·Endpoint 등을) 호출하다 · to call, invoke (trennbar: ruft … auf)",
+        examples: [
+          {
+            de: "Ohne Token können wir die API gar nicht aufrufen.",
+            ko: "토큰 없이는 API를 아예 호출할 수 없어.",
+          },
+          {
+            de: "Ruf bitte die Hilfsfunktion auf, bevor du speicherst.",
+            ko: "저장하기 전에 헬퍼 함수부터 호출해 줘.",
+          },
+        ],
+      },
+      {
+        word: "mitliefern",
+        meaning:
+          "(데이터·정보를) 함께 보내다, 같이 넘기다 · to include/supply along with",
+        examples: [
+          {
+            de: "Kannst du beim Export auch die Metadaten mitliefern?",
+            ko: "Export할 때 메타데이터도 같이 넘겨줄 수 있어?",
+          },
+          {
+            de: "Jedes Item sollte eine eindeutige sourceId mitliefern.",
+            ko: "각 Item은 고유한 sourceId를 함께 보내야 해.",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export const ALLTAG_KO_DE_CARD_IDS = alltagKoDeCards.map((c) => c.id);

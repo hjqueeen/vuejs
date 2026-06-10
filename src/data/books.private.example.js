@@ -7,7 +7,7 @@
  *
  * `paragraphIds` / `sentenceIds`는 `englishLearningDb.js`에 실제로 있는 id와 일치해야 합니다.
  */
-import { WEDNESDAY_TEAM_MEETING_SENTENCE_IDS } from "./wednesdayTeamMeetingContent.js";
+import { WEDNESDAY_TEAM_MEETING_SENTENCE_IDS } from "./private/wednesdayTeamMeetingContent.js";
 
 export const extraBooks = [
   {
