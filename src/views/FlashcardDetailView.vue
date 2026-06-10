@@ -27,9 +27,10 @@
       </aside>
 
       <FlashcardVocabulary
-        v-if="flipped || layoutMode === 'split'"
+        v-if="hasVocabulary"
         class="fc-vocab-slot"
         :items="card.vocabulary"
+        :examples-ko-only="layoutMode === 'flip' && !flipped"
       />
 
       <footer class="fc-actions">
@@ -116,6 +117,9 @@ export default {
     },
     hasWritingPractice() {
       return Boolean(this.card?.writingPractice?.attemptDe);
+    },
+    hasVocabulary() {
+      return Boolean(this.card?.vocabulary?.length);
     },
   },
   watch: {

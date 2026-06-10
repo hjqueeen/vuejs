@@ -78,7 +78,7 @@ export const publicBooks = [
     title: "Latein · Vokabeln",
     subtitle: "Karteikarten — Latein → Deutsch",
     description:
-      "라틴어 단어 25개. 앞면: 라틴어, 뒷면: 변형(활용·품사)과 독일어 뜻. SM-2 간격 반복(Again/Hard/Good/Easy)으로 복습합니다.",
+      "라틴어 단어 29개. 앞면: 라틴어, 뒷면: 변형(활용·품사)과 독일어 뜻. SM-2 간격 반복(Again/Hard/Good/Easy)으로 복습합니다.",
     coverColor: "book-cover-c",
     cardIds: LATIN_VOCAB_CARD_IDS,
   },

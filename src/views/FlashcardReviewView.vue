@@ -38,9 +38,10 @@
         </aside>
 
         <FlashcardVocabulary
-          v-if="revealed || layoutMode === 'split'"
+          v-if="hasVocabulary"
           class="fc-vocab-slot"
           :items="currentCard.vocabulary"
+          :examples-ko-only="layoutMode === 'flip' && !revealed"
         />
 
         <div v-if="layoutMode === 'flip' && !revealed" class="rev-actions rev-actions-slot">
@@ -135,6 +136,9 @@ export default {
     },
     hasWritingPractice() {
       return Boolean(this.currentCard?.writingPractice?.attemptDe);
+    },
+    hasVocabulary() {
+      return Boolean(this.currentCard?.vocabulary?.length);
     },
     answeredCount() {
       return this.sessionTotal - this.sessionQueue.length;

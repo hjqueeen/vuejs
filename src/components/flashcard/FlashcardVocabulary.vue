@@ -1,16 +1,29 @@
 <template>
-  <section v-if="items && items.length" class="fc-vocab" :class="{ compact }">
-    <h3 class="fc-vocab-title">추가 단어</h3>
-    <article v-for="(item, idx) in items" :key="idx" class="fc-vocab-item">
-      <p class="fc-vocab-word">{{ item.word }}</p>
-      <p class="fc-vocab-meaning">{{ item.meaning }}</p>
-      <ul v-if="item.examples && item.examples.length" class="fc-vocab-examples">
-        <li v-for="(ex, exIdx) in item.examples" :key="exIdx">
-          <p class="ex-de">{{ ex.de }}</p>
-          <p v-if="ex.ko" class="ex-ko">{{ ex.ko }}</p>
-        </li>
-      </ul>
-    </article>
+  <section
+    v-if="visible"
+    class="fc-vocab"
+    :class="{ compact, 'fc-vocab--ko-only': examplesKoOnly }"
+  >
+    <h3 class="fc-vocab-title">{{ examplesKoOnly ? "예문" : "추가 단어" }}</h3>
+
+    <ul v-if="examplesKoOnly" class="fc-vocab-examples">
+      <li v-for="(ko, idx) in koOnlyExamples" :key="idx">
+        <p class="ex-ko ex-ko--primary">{{ ko }}</p>
+      </li>
+    </ul>
+
+    <template v-else>
+      <article v-for="(item, idx) in items" :key="idx" class="fc-vocab-item">
+        <p class="fc-vocab-word">{{ item.word }}</p>
+        <p class="fc-vocab-meaning">{{ item.meaning }}</p>
+        <ul v-if="item.examples && item.examples.length" class="fc-vocab-examples">
+          <li v-for="(ex, exIdx) in item.examples" :key="exIdx">
+            <p v-if="ex.de" class="ex-de">{{ ex.de }}</p>
+            <p v-if="ex.ko" class="ex-ko">{{ ex.ko }}</p>
+          </li>
+        </ul>
+      </article>
+    </template>
   </section>
 </template>
 
@@ -25,6 +38,21 @@ export default {
     compact: {
       type: Boolean,
       default: false,
+    },
+    examplesKoOnly: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  computed: {
+    koOnlyExamples() {
+      return this.items.flatMap((item) =>
+        (item.examples || []).filter((ex) => ex.ko).map((ex) => ex.ko)
+      );
+    },
+    visible() {
+      if (!this.items?.length) return false;
+      return this.examplesKoOnly ? this.koOnlyExamples.length > 0 : true;
     },
   },
 };
@@ -51,6 +79,10 @@ export default {
 
 .fc-vocab.compact .fc-vocab-examples li {
   background: rgba(255, 255, 255, 0.55);
+}
+
+.fc-vocab--ko-only .fc-vocab-examples {
+  margin-top: 0;
 }
 
 .fc-vocab-title {
@@ -111,5 +143,11 @@ export default {
   font-size: 13px;
   line-height: 1.45;
   color: var(--c-text-muted);
+}
+
+.ex-ko--primary {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--c-text-primary);
 }
 </style>

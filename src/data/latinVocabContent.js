@@ -131,6 +131,26 @@ export const latinVocabCards = [
     term: "stultus",
     explanationDe: back("-a, -um", "dumm"),
   },
+  {
+    id: "card-latin-venia",
+    term: "venia",
+    explanationDe: back("veniae f.", "Verzeihung"),
+  },
+  {
+    id: "card-latin-error",
+    term: "error",
+    explanationDe: back("errōris m.", "Irrfahrt; Irrtum, Fehler"),
+  },
+  {
+    id: "card-latin-nisi",
+    term: "nisī",
+    explanationDe: back("Konj.", "wenn nicht"),
+  },
+  {
+    id: "card-latin-liberare",
+    term: "līberāre",
+    explanationDe: back("līberō", "befreien"),
+  },
 ];
 
 export const LATIN_VOCAB_CARD_IDS = latinVocabCards.map((c) => c.id);

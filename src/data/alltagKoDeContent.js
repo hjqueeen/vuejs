@@ -17,11 +17,11 @@ export const alltagKoDeCards = [
         examples: [
           {
             de: "Gestern ist ein alter Freund plötzlich wieder aufgetaucht.",
-            ko: "어제 오랜 친구가 갑자기 다시 나타났다.",
+            ko: "어제 오래된 친구 한 명이 갑자기 다시 나타났다.",
           },
           {
             de: "Beim Meeting ist plötzlich ein neues Thema aufgetaucht.",
-            ko: "회의 중에 갑자기 새 주제가 나왔다.",
+            ko: "미팅에서 갑자기 새 주제가 나타났다.",
           },
         ],
       },
@@ -41,11 +41,11 @@ export const alltagKoDeCards = [
         examples: [
           {
             de: "Die Frage ist bis heute offen geblieben.",
-            ko: "그 질문은 오늘까지도 열린 채로 남아 있다.",
+            ko: "그 질문은 오늘까지 열린 채로 남아 있다.",
           },
           {
             de: "Am Ende sind wir bei der ersten Idee geblieben.",
-            ko: "결국 우리는 첫 번째 아이디어에 머물렀다.",
+            ko: "끝에 우리는 첫 번째 아이디어에 남았다.",
           },
         ],
       },
@@ -65,11 +65,11 @@ export const alltagKoDeCards = [
         examples: [
           {
             de: "Mir ist der Gedanke gekommen, ob wir nicht einfach eine Pause machen sollten.",
-            ko: "나에게는 우리가 그냥 잠깐 쉬면 어떨까 하는 생각이 들었어.",
+            ko: "나에게는 우리가 그냥 쉬어야 하지 않을까 하는 생각이 왔다.",
           },
           {
             de: "Sie hat vorgeschlagen, ob wir nicht erst mal den Plan ändern sollten.",
-            ko: "그녀는 우리가 우선 계획부터 바꿔 보는 게 어떨지 제안했어.",
+            ko: "그녀는 우리가 우선 계획을 바꿔야 하지 않을까고 제안했다.",
           },
         ],
       },
@@ -97,11 +97,11 @@ export const alltagKoDeCards = [
         examples: [
           {
             de: "Der Kurs deckt alle wichtigen Grundlagen ab.",
-            ko: "그 강의는 중요한 기초를 전부 다룬다.",
+            ko: "그 수업은 모든 중요한 기초를 다룬다.",
           },
           {
             de: "Mit einem Modul können wir schon viele Anwendungsfälle abdecken.",
-            ko: "모듈 하나로도 많은 사용 사례를 이미 포괄할 수 있다.",
+            ko: "모듈 하나로 우리는 이미 많은 적용 사례를 다룰 수 있다.",
           },
         ],
       },
@@ -112,11 +112,11 @@ export const alltagKoDeCards = [
         examples: [
           {
             de: "Wir arbeiten von Montag über Mittwoch bis Freitag an dem Projekt.",
-            ko: "우리는 월요일부터 수요일을 거쳐 금요일까지 그 프로젝트를 한다.",
+            ko: "우리는 월요일에서 수요일을 거쳐 금요일까지 그 프로젝트에 일한다.",
           },
           {
             de: "Von der Planung über die Entwicklung bis zum Test — so läuft unser Ablauf.",
-            ko: "기획에서 개발을 거쳐 테스트까지 — 우리 흐름은 이렇게 돌아간다.",
+            ko: "기획에서 개발을 거쳐 테스트까지 — 이렇게 우리 흐름이 돌아간다.",
           },
         ],
       },
@@ -136,11 +136,11 @@ export const alltagKoDeCards = [
         examples: [
           {
             de: "Das Projekt ist weitgehend fertig, nur noch kleine Bugs.",
-            ko: "프로젝트는 대체로 끝났고, 작은 버그만 남았어.",
+            ko: "프로젝트는 상당히 끝났다, 작은 버그만 아직.",
           },
           {
             de: "Die Anforderungen sind weitgehend klar.",
-            ko: "요구사항은 거의 다 명확해.",
+            ko: "요구사항은 상당히 명확하다.",
           },
         ],
       },
@@ -155,11 +155,11 @@ export const alltagKoDeCards = [
         examples: [
           {
             de: "Wir können die Idee jetzt endlich in Code umsetzen.",
-            ko: "주어 = Wir (사람) · 목적어 = die Idee",
+            ko: "우리는 이제 드디어 그 아이디어를 코드로 구현할 수 있다.",
           },
           {
             de: "Die App setzt den kompletten Bestellprozess digital um.",
-            ko: "주어 = die App (사물) · 목적어 = Bestellprozess",
+            ko: "앱은 전체 주문 과정을 디지털로 구현한다.",
           },
         ],
       },
@@ -214,11 +214,11 @@ export const alltagKoDeCards = [
         examples: [
           {
             de: "Das war an sich keine schlechte Idee, nur schlecht getimed.",
-            ko: "그건 사실 나쁜 아이디어는 아니었는데, 타이밍만 안 좋았어.",
+            ko: "그것은 그 자체로는 나쁜 아이디어가 아니었다, 타이밍만 나빴을 뿐.",
           },
           {
             de: "An sich ist das System stabil, aber heute hakt es noch.",
-            ko: "시스템 자체는 안정적인데, 오늘은 아직 좀 걸려.",
+            ko: "그 자체로는 시스템이 안정적이다, 하지만 오늘은 아직 걸린다.",
           },
         ],
       },
@@ -234,15 +234,15 @@ export const alltagKoDeCards = [
         examples: [
           {
             de: "An sich spricht ja nichts dagegen, mit dem Praxisteil anzufangen und die Literaturrecherche etwas weiter nach hinten zu hängen.",
-            ko: "이 카드 모범 답안 — Praxisteil 먼저, Literaturrecherche는 뒤로",
+            ko: "그 자체로는 실습 부분으로 시작하고 문헌 조사를 조금 더 뒤로 미루는 것에 반대하는 것은 없다.",
           },
           {
             de: "An sich spricht nichts dagegen, das Meeting auf nächste Woche zu verschieben.",
-            ko: "회의를 다음 주로 미뤄도 딱히 반대할 건 없어.",
+            ko: "그 자체로는 회의를 다음 주로 미루는 것에 반대하는 것은 없다.",
           },
           {
             de: "Wenn wir erst den Prototypen zeigen — an sich spricht da nichts dagegen.",
-            ko: "먼저 프로토타입을 보여 주자 — 그건 별로 문제될 건 없어.",
+            ko: "우리가 먼저 프로토타입을 보여준다면 — 그 자체로는 그에 반대하는 것은 없다.",
           },
         ],
       },
@@ -253,11 +253,11 @@ export const alltagKoDeCards = [
         examples: [
           {
             de: "die Literaturrecherche etwas weiter nach hinten hängen",
-            ko: "문헌 조사를 조금 더 뒤로 미루다 — 이 카드와 짝",
+            ko: "문헌 조사를 조금 더 뒤로 미루다",
           },
           {
             de: "Können wir die Tests noch ein bisschen nach hinten hängen?",
-            ko: "테스트는 조금만 더 뒤로 미뤄도 될까?",
+            ko: "우리가 테스트를 조금 더 뒤로 미룰 수 있을까?",
           },
         ],
       },
@@ -320,11 +320,11 @@ export const alltagKoDeCards = [
         examples: [
           {
             de: "Können wir den fehlerhaften Abschnitt an der Stelle korrigieren, statt alles neu zu schreiben?",
-            ko: "전부 다시 쓰지 말고, 그 부분만 그 자리에서 고칠 수 있을까?",
+            ko: "전부 새로 쓰는 대신, 그 자리에서 잘못된 부분을 고칠 수 있을까?",
           },
           {
             de: "An der Stelle hab ich den Tippfehler gleich geändert.",
-            ko: "그 자리에서 바로 오타를 고쳤어.",
+            ko: "그 자리에서 나는 오타를 바로 바꿨다.",
           },
         ],
       },
@@ -344,11 +344,11 @@ export const alltagKoDeCards = [
         examples: [
           {
             de: "Die Anpassung am Layout dauert noch ein paar Stunden.",
-            ko: "레이아웃 수정은 아직 몇 시간 더 걸릴 거야.",
+            ko: "레이아웃에 대한 수정은 아직 몇 시간 더 걸린다.",
           },
           {
             de: "Vor dem Release brauchen wir noch eine kleine Anpassung am Export.",
-            ko: "릴리스 전에 Export 쪽으로 작은 수정 하나 더 필요해.",
+            ko: "릴리스 전에 우리는 Export에 작은 수정 하나가 더 필요하다.",
           },
         ],
       },
@@ -369,11 +369,11 @@ export const alltagKoDeCards = [
         examples: [
           {
             de: "Ohne Token können wir die API gar nicht aufrufen.",
-            ko: "토큰 없이는 API를 아예 호출할 수 없어.",
+            ko: "토큰 없이는 우리는 API를 전혀 호출할 수 없다.",
           },
           {
             de: "Ruf bitte die Hilfsfunktion auf, bevor du speicherst.",
-            ko: "저장하기 전에 헬퍼 함수부터 호출해 줘.",
+            ko: "저장하기 전에 보조 함수를 호출해 줘.",
           },
         ],
       },
@@ -384,11 +384,91 @@ export const alltagKoDeCards = [
         examples: [
           {
             de: "Kannst du beim Export auch die Metadaten mitliefern?",
-            ko: "Export할 때 메타데이터도 같이 넘겨줄 수 있어?",
+            ko: "Export할 때 메타데이터도 함께 넘겨줄 수 있니?",
           },
           {
             de: "Jedes Item sollte eine eindeutige sourceId mitliefern.",
-            ko: "각 Item은 고유한 sourceId를 함께 보내야 해.",
+            ko: "각 Item은 고유한 sourceId를 함께 보내야 한다.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "card-alltag-werkbank-aura-sodass",
+    term:
+      "Aura Werkbank에서는 우리가 이미 있는 백엔드 URL을 다 쓸 수 있어. 그래야 제대로 동작하거든.",
+    explanationDe:
+      "In der Werkbank in Aura kannst du alle URLs, die wir schon haben, fürs Backend nutzen, sodass es funktionsfähig ist.",
+    explanationKo: "sodass · fürs Backend · funktionsfähig",
+    vocabulary: [
+      {
+        word: "sodass",
+        meaning:
+          "~해서, ~하도록 (결과·목적) · so that (Nebensatz mit Verb am Ende)",
+        examples: [
+          {
+            de: "Ich erkläre es nochmal langsam, sodass alle mitkommen.",
+            ko: "나는 모든 사람이 따라올 수 있도록 다시 천천히 설명한다.",
+          },
+          {
+            de: "Wir haben die Konfiguration angepasst, sodass der Export wieder klappt.",
+            ko: "우리는 Export가 다시 되도록 설정을 맞췄다.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "card-alltag-headerfavoriten-einbauen",
+    term:
+      "headerFavoriten 오늘 넣을 수 있어? 그러면 업데이트하기 전에 백엔드를 제대로 테스트할 수 있거든. 백엔드는 참고하라고 이미 업데이트해 뒀어.",
+    explanationDe:
+      "Schaffst du es, headerFavoriten heute einzubauen? Dann kann ich das Backend vernünftig testen, bevor ich ein Update mache — es ist zum Nachschauen schon aktualisiert.",
+    explanationKo: "einbauen · vernünftig · zum Nachschauen",
+    vocabulary: [
+      {
+        word: "einbauen",
+        meaning:
+          "(기능·코드·모듈을) 넣다, 통합하다 · to integrate, build in (trennbar: baut … ein)",
+        examples: [
+          {
+            de: "Kannst du die Validierung noch vor dem Release einbauen?",
+            ko: "릴리스 전에 유효성 검사를 아직 넣을 수 있니?",
+          },
+          {
+            de: "Wir haben das Logging direkt in die API eingebaut.",
+            ko: "우리는 Logging을 API에 바로 넣었다.",
+          },
+        ],
+      },
+      {
+        word: "vernünftig",
+        meaning:
+          "제대로, 합리적으로, 알맞게 · properly, sensibly, in a reasonable way",
+        examples: [
+          {
+            de: "Teste das bitte erst vernünftig, bevor du es mergst.",
+            ko: "머지하기 전에 그것을 먼저 합리적으로 테스트해 줘.",
+          },
+          {
+            de: "Ohne Dokumentation können wir das Feature nicht vernünftig nutzen.",
+            ko: "문서 없이는 우리는 그 기능을 합리적으로 쓸 수 없다.",
+          },
+        ],
+      },
+      {
+        word: "zum Nachschauen",
+        meaning:
+          "참고용으로, 확인하려고 · for reference, to look up / check (zu + Nominalisierung)",
+        examples: [
+          {
+            de: "Ich hab dir die aktuelle API-Doku zum Nachschauen ins Repo gelegt.",
+            ko: "나는 참고하려고 현재 API 문서를 repo에 넣어 뒀다.",
+          },
+          {
+            de: "Die Beispiel-Requests stehen in der README zum Nachschauen bereit.",
+            ko: "예시 Request들은 참고하려고 README에 준비되어 있다.",
           },
         ],
       },
