@@ -52,7 +52,7 @@
           @pause="onPause"
         ></audio>
       </div>
-      <p class="explanation de">{{ card.explanationDe }}</p>
+      <p class="explanation de">{{ backExplanation }}</p>
       <p v-if="showKoOnBack && card.explanationKo" class="explanation ko">
         {{ card.explanationKo }}
       </p>
@@ -120,7 +120,7 @@
               @pause="onPause"
             ></audio>
           </div>
-          <p class="explanation de">{{ card.explanationDe }}</p>
+          <p class="explanation de">{{ backExplanation }}</p>
           <p v-if="showKoOnBack && card.explanationKo" class="explanation ko">
             {{ card.explanationKo }}
           </p>
@@ -132,6 +132,8 @@
 </template>
 
 <script>
+import { getCardBackExplanation } from "@/utils/flashcardCardResolver";
+
 export default {
   name: "FlashcardCardPanel",
   props: {
@@ -141,6 +143,7 @@ export default {
       default: () => ({ front: "앞면", back: "뒷면" }),
     },
     showKoOnBack: { type: Boolean, default: true },
+    targetLang: { type: String, default: "de" },
     layoutMode: { type: String, default: "flip" },
     revealed: { type: Boolean, default: false },
     interactive: { type: Boolean, default: true },
@@ -156,6 +159,9 @@ export default {
     };
   },
   computed: {
+    backExplanation() {
+      return getCardBackExplanation(this.card, this.targetLang);
+    },
     formattedCurrentTime() {
       return this.formatTime(this.currentTime);
     },

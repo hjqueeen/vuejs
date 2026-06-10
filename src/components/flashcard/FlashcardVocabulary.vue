@@ -14,11 +14,11 @@
 
     <template v-else>
       <article v-for="(item, idx) in items" :key="idx" class="fc-vocab-item">
-        <p class="fc-vocab-word">{{ item.word }}</p>
-        <p class="fc-vocab-meaning">{{ item.meaning }}</p>
+        <p class="fc-vocab-word">{{ displayWord(item) }}</p>
+        <p class="fc-vocab-meaning">{{ displayMeaning(item) }}</p>
         <ul v-if="item.examples && item.examples.length" class="fc-vocab-examples">
           <li v-for="(ex, exIdx) in item.examples" :key="exIdx">
-            <p v-if="ex.de" class="ex-de">{{ ex.de }}</p>
+            <p v-if="displayExampleTarget(ex)" class="ex-target">{{ displayExampleTarget(ex) }}</p>
             <p v-if="ex.ko" class="ex-ko">{{ ex.ko }}</p>
           </li>
         </ul>
@@ -42,6 +42,28 @@ export default {
     examplesKoOnly: {
       type: Boolean,
       default: false,
+    },
+    targetLang: {
+      type: String,
+      default: "de",
+    },
+  },
+  methods: {
+    displayWord(item) {
+      if (this.targetLang === "en") return item.wordEn || item.word;
+      return item.word;
+    },
+    displayMeaning(item) {
+      if (this.targetLang === "en") {
+        if (item.meaningEn) return item.meaningEn;
+        const sep = item.meaning?.indexOf(" · ");
+        return sep >= 0 ? item.meaning.slice(sep + 3) : item.meaning;
+      }
+      return item.meaning;
+    },
+    displayExampleTarget(ex) {
+      if (this.targetLang === "en") return ex.en || ex.de;
+      return ex.de;
     },
   },
   computed: {
@@ -129,6 +151,13 @@ export default {
   background: var(--c-blue-light);
   border-radius: var(--c-radius-sm);
   border-left: 3px solid var(--c-blue);
+}
+
+.ex-target {
+  margin: 0 0 4px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--c-text-primary);
 }
 
 .ex-de {

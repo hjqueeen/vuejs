@@ -4,6 +4,11 @@
       <button type="button" class="back-btn" @click="goHub">← 목록</button>
       <span class="fc-index">{{ cardIndex + 1 }} / {{ totalCards }}</span>
       <FlashcardLayoutToggle @change="onLayoutChange" />
+      <FlashcardTargetLangToggle
+        v-if="supportsTargetLang"
+        :book-id="bookId"
+        @change="onTargetLangChange"
+      />
       <div class="fc-nav-btns">
         <button type="button" :disabled="!prevId" @click="goSibling(prevId)">‹</button>
         <button type="button" :disabled="!nextId" @click="goSibling(nextId)">›</button>
@@ -12,9 +17,10 @@
 
     <div class="fc-body" :class="{ 'fc-body--with-writing': hasWritingPractice }">
       <FlashcardCardPanel
-        :card="card"
+        :card="displayCard"
         :labels="labels"
         :show-ko-on-back="showKoOnBack"
+        :target-lang="targetLang"
         :layout-mode="layoutMode"
         :revealed="flipped"
         tap-hint-front="탭하여 뒤집기"
@@ -23,13 +29,14 @@
       />
 
       <aside v-if="hasWritingPractice" class="fc-writing-aside">
-        <FlashcardWritingPractice :practice="card.writingPractice" />
+        <FlashcardWritingPractice :practice="displayCard.writingPractice" />
       </aside>
 
       <FlashcardVocabulary
         v-if="hasVocabulary"
         class="fc-vocab-slot"
-        :items="card.vocabulary"
+        :items="displayCard.vocabulary"
+        :target-lang="targetLang"
         :examples-ko-only="layoutMode === 'flip' && !flipped"
       />
 
@@ -60,9 +67,12 @@
 import FlashcardCardPanel from "@/components/flashcard/FlashcardCardPanel.vue";
 import FlashcardLayoutToggle from "@/components/flashcard/FlashcardLayoutToggle.vue";
 import FlashcardVocabulary from "@/components/flashcard/FlashcardVocabulary.vue";
+import FlashcardTargetLangToggle from "@/components/flashcard/FlashcardTargetLangToggle.vue";
 import FlashcardWritingPractice from "@/components/flashcard/FlashcardWritingPractice.vue";
 import { getCardById, getCardsForBook, getFlashcardBook } from "@/data/flashcardRegistry";
+import { resolveFlashcardCard } from "@/utils/flashcardCardResolver";
 import { getFlashcardLayoutMode } from "@/utils/flashcardLayout";
+import { getFlashcardTargetLang } from "@/utils/flashcardTargetLang";
 
 export default {
   name: "FlashcardDetailView",
@@ -71,6 +81,7 @@ export default {
     FlashcardLayoutToggle,
     FlashcardVocabulary,
     FlashcardWritingPractice,
+    FlashcardTargetLangToggle,
   },
   props: {
     bookId: { type: String, required: true },
@@ -80,13 +91,20 @@ export default {
     return {
       flipped: false,
       layoutMode: getFlashcardLayoutMode(),
+      targetLang: getFlashcardTargetLang(this.bookId),
     };
   },
   computed: {
     bookMeta() {
       return getFlashcardBook(this.bookId);
     },
+    supportsTargetLang() {
+      return (this.bookMeta?.targetLanguages?.length || 0) > 1;
+    },
     labels() {
+      if (this.bookMeta?.labelsForLang) {
+        return this.bookMeta.labelsForLang(this.targetLang);
+      }
       return this.bookMeta?.labels || { front: "앞면", back: "뒷면" };
     },
     showKoOnBack() {
@@ -97,6 +115,9 @@ export default {
     },
     card() {
       return getCardById(this.bookId, this.cardId);
+    },
+    displayCard() {
+      return resolveFlashcardCard(this.card, this.bookId, this.targetLang) || this.card;
     },
     cardIndex() {
       return this.allCards.findIndex((c) => c.id === this.cardId);
@@ -116,10 +137,12 @@ export default {
       return this.$store.getters["quizWorkbook/isStudied"](this.bookId, this.cardId);
     },
     hasWritingPractice() {
-      return Boolean(this.card?.writingPractice?.attemptDe);
+      return (
+        this.targetLang === "de" && Boolean(this.displayCard?.writingPractice?.attemptDe)
+      );
     },
     hasVocabulary() {
-      return Boolean(this.card?.vocabulary?.length);
+      return Boolean(this.displayCard?.vocabulary?.length);
     },
   },
   watch: {
@@ -130,6 +153,10 @@ export default {
   methods: {
     onLayoutChange(mode) {
       this.layoutMode = mode;
+    },
+    onTargetLangChange(lang) {
+      this.targetLang = lang;
+      this.flipped = false;
     },
     toggleFlip() {
       this.flipped = !this.flipped;

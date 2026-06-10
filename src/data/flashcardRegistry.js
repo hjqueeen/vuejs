@@ -31,8 +31,17 @@ export const flashcardBooks = {
   [ALLTAG_KO_DE_BOOK_ID]: {
     cards: alltagKoDeCards,
     getCardById: getAlltagKoDeCardById,
+    targetLanguages: ["de", "en"],
+    labelsForLang: (lang) =>
+      lang === "en"
+        ? { front: "한국어", back: "English" }
+        : { front: "한국어", back: "Deutsch" },
+    hintForLang: (lang) =>
+      lang === "en"
+        ? "한국어를 보고 영어를 떠올린 뒤, 카드를 뒤집어 확인하세요."
+        : "한국어를 보고 독일어를 떠올린 뒤, 카드를 뒤집어 확인하세요.",
     labels: { front: "한국어", back: "Deutsch" },
-    hint: "한국어를 보고 독일어를 떠올린 뒤, 카드를 뒤집어 확인하세요.",
+    hint: "한국어를 보고 독일어 또는 영어를 떠올린 뒤, 카드를 뒤집어 확인하세요.",
     showKoOnBack: false,
   },
   [BB84_PROTOCOL_BOOK_ID]: {

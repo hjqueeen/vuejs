@@ -55,23 +55,23 @@ export const publicBooks = [
   {
     id: ALLTAG_KO_DE_BOOK_ID,
     templateType: "flashcard",
-    title: "Alltag · 한↔독",
-    subtitle: "Karteikarten — 일상 회화",
+    title: "Alltag · 한↔외",
+    subtitle: "Karteikarten — 일상 회화 · Deutsch / English",
     description:
-      "일상에서 말하고 싶은 한국어 문장을 독일어로 외웁니다. SM-2 간격 반복(Again/Hard/Good/Easy)으로 복습합니다.",
+      "일상에서 말하고 싶은 한국어 문장을 독일어 또는 영어로 외웁니다. 헤더에서 공부할 언어를 선택하세요. SM-2 간격 반복(Again/Hard/Good/Easy)으로 복습합니다.",
     coverColor: "book-cover-e",
     cardIds: ALLTAG_KO_DE_CARD_IDS,
   },
-  {
-    id: WAERME_KARTEIKARTEN_BOOK_ID,
-    templateType: "flashcard",
-    title: "Physik · Wärme",
-    subtitle: "Karteikarten — Klasse 7 · LEK 5.6.",
-    description:
-      "7학년 LEK Wärmelehre: Ausdehnung, Anwendungen, Begriffe, Wärmeübertragung, Teilchenmodell, Dämmung 등 19장. 독일어·한국어(7학년).",
-    coverColor: "book-cover-d",
-    cardIds: WAERME_KARTEIKARTEN_CARD_IDS,
-  },
+  // {
+  //   id: WAERME_KARTEIKARTEN_BOOK_ID,
+  //   templateType: "flashcard",
+  //   title: "Physik · Wärme",
+  //   subtitle: "Karteikarten — Klasse 7 · LEK 5.6.",
+  //   description:
+  //     "7학년 LEK Wärmelehre: Ausdehnung, Anwendungen, Begriffe, Wärmeübertragung, Teilchenmodell, Dämmung 등 19장. 독일어·한국어(7학년).",
+  //   coverColor: "book-cover-d",
+  //   cardIds: WAERME_KARTEIKARTEN_CARD_IDS,
+  // },
   {
     id: LATIN_VOCAB_BOOK_ID,
     templateType: "flashcard",

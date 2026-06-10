@@ -8,6 +8,11 @@
           <p class="fc-sub">{{ book.subtitle }}</p>
         </div>
         <FlashcardLayoutToggle @change="layoutMode = $event" />
+        <FlashcardTargetLangToggle
+          v-if="supportsTargetLang"
+          :book-id="bookId"
+          @change="onTargetLangChange"
+        />
       </div>
       <p class="fc-progress">
         공부함 {{ studiedCount }} / {{ cards.length }}
@@ -24,7 +29,7 @@
       </button>
     </section>
 
-    <p class="fc-hint">{{ bookMeta?.hint || "카드를 눌러 앞면과 뒷면을 뒤집으며 외우세요." }}</p>
+    <p class="fc-hint">{{ bookHint }}</p>
 
     <ol class="fc-list">
       <li v-for="(card, idx) in cards" :key="card.id" class="fc-row">
@@ -45,16 +50,21 @@
 import { getBookById } from "@/data/books";
 import { getCardsForBook, getFlashcardBook } from "@/data/flashcardRegistry";
 import FlashcardLayoutToggle from "@/components/flashcard/FlashcardLayoutToggle.vue";
+import FlashcardTargetLangToggle from "@/components/flashcard/FlashcardTargetLangToggle.vue";
 import { getFlashcardLayoutMode } from "@/utils/flashcardLayout";
+import { getFlashcardTargetLang } from "@/utils/flashcardTargetLang";
 
 export default {
   name: "FlashcardHubView",
-  components: { FlashcardLayoutToggle },
+  components: { FlashcardLayoutToggle, FlashcardTargetLangToggle },
   props: {
     bookId: { type: String, required: true },
   },
   data() {
-    return { layoutMode: getFlashcardLayoutMode() };
+    return {
+      layoutMode: getFlashcardLayoutMode(),
+      targetLang: getFlashcardTargetLang(this.bookId),
+    };
   },
   computed: {
     book() {
@@ -62,6 +72,15 @@ export default {
     },
     bookMeta() {
       return getFlashcardBook(this.bookId);
+    },
+    supportsTargetLang() {
+      return (this.bookMeta?.targetLanguages?.length || 0) > 1;
+    },
+    bookHint() {
+      if (this.bookMeta?.hintForLang) {
+        return this.bookMeta.hintForLang(this.targetLang);
+      }
+      return this.bookMeta?.hint || "카드를 눌러 앞면과 뒷면을 뒤집으며 외우세요.";
     },
     cards() {
       return getCardsForBook(this.bookId);
@@ -120,6 +139,9 @@ export default {
     },
     goDashboard() {
       this.$router.push({ name: "dashboard" });
+    },
+    onTargetLangChange(lang) {
+      this.targetLang = lang;
     },
   },
 };

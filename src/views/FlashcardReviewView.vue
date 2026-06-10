@@ -10,6 +10,11 @@
           </p>
         </div>
         <FlashcardLayoutToggle @change="layoutMode = $event" />
+        <FlashcardTargetLangToggle
+          v-if="supportsTargetLang"
+          :book-id="bookId"
+          @change="onTargetLangChange"
+        />
       </div>
     </header>
 
@@ -24,9 +29,10 @@
 
       <div class="fc-body" :class="{ 'fc-body--with-writing': hasWritingPractice }">
         <FlashcardCardPanel
-          :card="currentCard"
+          :card="displayCard"
           :labels="labels"
           :show-ko-on-back="showKoOnBack"
+          :target-lang="targetLang"
           :layout-mode="layoutMode"
           :revealed="revealed"
           :interactive="layoutMode === 'flip'"
@@ -34,13 +40,14 @@
         />
 
         <aside v-if="hasWritingPractice" class="fc-writing-aside">
-          <FlashcardWritingPractice :practice="currentCard.writingPractice" />
+          <FlashcardWritingPractice :practice="displayCard.writingPractice" />
         </aside>
 
         <FlashcardVocabulary
           v-if="hasVocabulary"
           class="fc-vocab-slot"
-          :items="currentCard.vocabulary"
+          :items="displayCard.vocabulary"
+          :target-lang="targetLang"
           :examples-ko-only="layoutMode === 'flip' && !revealed"
         />
 
@@ -81,10 +88,13 @@
 import FlashcardCardPanel from "@/components/flashcard/FlashcardCardPanel.vue";
 import FlashcardLayoutToggle from "@/components/flashcard/FlashcardLayoutToggle.vue";
 import FlashcardVocabulary from "@/components/flashcard/FlashcardVocabulary.vue";
+import FlashcardTargetLangToggle from "@/components/flashcard/FlashcardTargetLangToggle.vue";
 import FlashcardWritingPractice from "@/components/flashcard/FlashcardWritingPractice.vue";
 import { getFlashcardBook, getCardsForBook } from "@/data/flashcardRegistry";
+import { resolveFlashcardCard } from "@/utils/flashcardCardResolver";
 import { formatDueLabel, getDueTimestamp } from "@/data/flashcardSrs";
 import { getFlashcardLayoutMode } from "@/utils/flashcardLayout";
+import { getFlashcardTargetLang } from "@/utils/flashcardTargetLang";
 
 function shuffle(arr) {
   const a = [...arr];
@@ -97,7 +107,13 @@ function shuffle(arr) {
 
 export default {
   name: "FlashcardReviewView",
-  components: { FlashcardCardPanel, FlashcardLayoutToggle, FlashcardVocabulary, FlashcardWritingPractice },
+  components: {
+    FlashcardCardPanel,
+    FlashcardLayoutToggle,
+    FlashcardVocabulary,
+    FlashcardWritingPractice,
+    FlashcardTargetLangToggle,
+  },
   props: {
     bookId: { type: String, required: true },
   },
@@ -109,13 +125,20 @@ export default {
       finished: false,
       nextDueHint: "",
       layoutMode: getFlashcardLayoutMode(),
+      targetLang: getFlashcardTargetLang(this.bookId),
     };
   },
   computed: {
     bookMeta() {
       return getFlashcardBook(this.bookId);
     },
+    supportsTargetLang() {
+      return (this.bookMeta?.targetLanguages?.length || 0) > 1;
+    },
     labels() {
+      if (this.bookMeta?.labelsForLang) {
+        return this.bookMeta.labelsForLang(this.targetLang);
+      }
       return this.bookMeta?.labels || { front: "앞면", back: "뒷면" };
     },
     showKoOnBack() {
@@ -134,11 +157,20 @@ export default {
     currentCard() {
       return this.sessionQueue[0] || null;
     },
+    displayCard() {
+      return (
+        resolveFlashcardCard(this.currentCard, this.bookId, this.targetLang) ||
+        this.currentCard
+      );
+    },
     hasWritingPractice() {
-      return Boolean(this.currentCard?.writingPractice?.attemptDe);
+      return (
+        this.targetLang === "de" &&
+        Boolean(this.displayCard?.writingPractice?.attemptDe)
+      );
     },
     hasVocabulary() {
-      return Boolean(this.currentCard?.vocabulary?.length);
+      return Boolean(this.displayCard?.vocabulary?.length);
     },
     answeredCount() {
       return this.sessionTotal - this.sessionQueue.length;
@@ -182,6 +214,10 @@ export default {
       });
       if (!nearest) return "";
       return `다음 복습: ${formatDueLabel(nearest, now)}`;
+    },
+    onTargetLangChange(lang) {
+      this.targetLang = lang;
+      this.revealed = false;
     },
     onCardTap() {
       if (!this.revealed) this.reveal();
