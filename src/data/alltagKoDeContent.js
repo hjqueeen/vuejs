@@ -474,6 +474,160 @@ export const alltagKoDeCards = [
       },
     ],
   },
+  {
+    id: "card-alltag-paper-fokus",
+    term:
+      "저희 논문의 주제가 어디에 더 포커스가 있나요? 레스토랑 주문앱 개발, 아니면 언어 비교? 만약에 언어비교가 더 목적이라면 논문의 동기에 언어 비교에 대한 부분을 더 넣으면 되겠죠? 만약 저희의 경우에는 크로스플랫폼과 네이티브의 비교에 대한 문제의식 같은게 동기가 될 수 있나요?",
+    explanationDe:
+      "Wo liegt eigentlich der Schwerpunkt unserer Arbeit — bei der Entwicklung der Restaurant-Bestell-App oder beim Sprachvergleich? Wenn der Sprachvergleich das eigentliche Ziel ist, könnten wir in der Motivation ja noch stärker auf den Sprachvergleich eingehen, oder? Könnte bei uns so etwas wie die Problemstellung beim Vergleich von Cross-Platform und Native als Motivation fungieren?",
+    explanationKo: "Schwerpunkt · Motivation · Problemstellung",
+    vocabulary: [
+      {
+        word: "eingehen auf",
+        meaning:
+          "(주제·세부사항에) 들어가다, 다루다 · to go into, address (trennbar: geht … ein)",
+        examples: [
+          {
+            de: "In Kapitel 2 gehen wir ausführlich auf die Architektur ein.",
+            ko: "2장에서 우리는 아키텍처를 자세히 다룬다.",
+          },
+          {
+            de: "Könnten wir in der Motivation stärker auf den Sprachvergleich eingehen?",
+            ko: "동기 부분에서 언어 비교를 더 강하게 다룰 수 있을까?",
+          },
+        ],
+      },
+      {
+        word: "fungieren",
+        meaning: "~ 역할을 하다, ~로 쓰이다 · to serve as, act as",
+        examples: [
+          {
+            de: "Die App dient als Prototyp und fungiert gleichzeitig als Vergleichsobjekt.",
+            ko: "앱은 프로토타입 역할을 하면서 동시에 비교 대상으로 쓰인다.",
+          },
+          {
+            de: "Könnte die Problemstellung als Motivation fungieren?",
+            ko: "문제의식이 동기 역할을 할 수 있을까?",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "card-alltag-paper-titel",
+    term:
+      "논문의 제목도 변경할 수 있을지 궁금합니다. 우리는 이미 논문의 제목을 제출했는데요. 그렇다면 그냥 원래의 주제에 머무는 것도 좋은 선택이 될 수 있겠네요.",
+    explanationDe:
+      "Ich frage mich, ob wir den Titel der Arbeit noch ändern können. Wir haben den Titel ja schon eingereicht. Dann wäre es vielleicht auch eine gute Option, einfach beim ursprünglichen Thema zu bleiben.",
+    explanationKo: "Titel ändern · eingereicht · beim Thema bleiben",
+    vocabulary: [
+      {
+        word: "einreichen",
+        meaning: "(서류·논문·제목 등을) 제출하다 · to submit, hand in",
+        examples: [
+          {
+            de: "Wir haben den Arbeitstitel schon beim Prüfungsamt eingereicht.",
+            ko: "우리는 논문 제목을 이미 시험 사무실에 제출했다.",
+          },
+          {
+            de: "Den Entwurf müssen wir bis Freitag einreichen.",
+            ko: "초안은 금요일까지 제출해야 한다.",
+          },
+        ],
+      },
+      {
+        word: "beim … bleiben",
+        meaning: "(원래 주제·계획·방향에) 머무르다, 그대로 가다 · to stick with, stay with",
+        examples: [
+          {
+            de: "Vielleicht bleiben wir einfach beim ursprünglichen Thema.",
+            ko: "아마 우리는 그냥 원래 주제에 머무는 게 나을 것 같다.",
+          },
+          {
+            de: "Nach dem Feedback sind wir beim ersten Ansatz geblieben.",
+            ko: "피드백 후에 우리는 첫 번째 접근법에 머물렀다.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "card-alltag-paper-sprachvergleich",
+    term:
+      "제가 교수님께 쓴 메일은 혹시 제가 너무 깊게 생각한건 아닌가 생각합니다. 6000 단어 아래에서 세 언어를 비교하는 것이 너무 과하다고 생각된다면 원래 코틀린과 스위프트의 비교로 돌아가고, 언어자체의 비교에 좀더 초점을 맞추어 논문을 작성하면 될까요?",
+    explanationDe:
+      "Bei der Mail an den Professor frage ich mich, ob ich nicht zu tief gedacht hab. Falls ein Vergleich von drei Sprachen unter 6000 Wörtern zu viel ist, sollten wir vielleicht wieder zum ursprünglichen Kotlin-und-Swift-Vergleich zurückgehen und die Arbeit stärker auf den Sprachvergleich an sich konzentrieren?",
+    explanationKo: "zu tief denken · zurückgehen · sich konzentrieren auf",
+    vocabulary: [
+      {
+        word: "zu tief nachdenken",
+        meaning: "너무 깊게 생각하다, 지나치게 곱씹다 · to overthink",
+        examples: [
+          {
+            de: "Vielleicht hab ich bei der Mail einfach zu tief nachgedacht.",
+            ko: "아마 메일에서 나는 그냥 너무 깊게 생각한 것 같다.",
+          },
+          {
+            de: "Manchmal denke ich zu tief nach, statt pragmatisch zu bleiben.",
+            ko: "가끔 나는 실용적으로 가기보다 너무 깊게 생각한다.",
+          },
+        ],
+      },
+      {
+        word: "sich konzentrieren auf",
+        meaning: "~에 집중하다, 초점을 맞추다 · to focus on (reflexiv)",
+        examples: [
+          {
+            de: "Wir sollten uns stärker auf den Sprachvergleich an sich konzentrieren.",
+            ko: "우리는 언어 자체의 비교에 더 집중해야 한다.",
+          },
+          {
+            de: "Können wir uns beim Schreiben mehr auf die Syntax konzentrieren?",
+            ko: "글을 쓸 때 문법 구조에 더 집중할 수 있을까?",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "card-alltag-paper-ziel",
+    term:
+      "실제로 이 논문에서 교수님이 우리에게 바라는것, 우리가 이루어야 할 목표는 무엇인가요?",
+    explanationDe:
+      "Was erwartet der Professor von uns bei dieser Arbeit eigentlich — und was sind unsere Ziele, die wir erreichen müssen?",
+    explanationKo: "erwarten · Ziele erreichen",
+    vocabulary: [
+      {
+        word: "erwarten von",
+        meaning:
+          "~에게 ~을 기대하다, 바라다 · to expect from (+ Dativ)",
+        examples: [
+          {
+            de: "Was erwartet der Professor von uns bei dieser Arbeit?",
+            ko: "이 논문에서 교수님은 우리에게 무엇을 기대하시나요?",
+          },
+          {
+            de: "Von uns wird vor allem ein klarer Vergleich erwartet.",
+            ko: "우리에게는 무엇보다 명확한 비교가 기대된다.",
+          },
+        ],
+      },
+      {
+        word: "erreichen",
+        meaning: "(목표·Ergebnis를) 이루다, 달성하다 · to achieve, reach",
+        examples: [
+          {
+            de: "Welche Ziele müssen wir bis zur Abgabe erreichen?",
+            ko: "제출까지 우리가 달성해야 할 목표는 무엇인가요?",
+          },
+          {
+            de: "Mit dem engeren Fokus können wir unser Ziel realistischer erreichen.",
+            ko: "더 좁은 초점으로 우리는 목표를 더 현실적으로 달성할 수 있다.",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export const ALLTAG_KO_DE_CARD_IDS = alltagKoDeCards.map((c) => c.id);

@@ -24,6 +24,14 @@ export const alltagExplanationEn = {
     "In the Werkbank in Aura you can use all the URLs we already have for the backend, so that it's functional.",
   "card-alltag-headerfavoriten-einbauen":
     "Can you integrate headerFavoriten today? Then I can properly test the backend before I do an update — it's already updated for reference.",
+  "card-alltag-paper-fokus":
+    "Where is the actual focus of our paper — on developing the restaurant ordering app or on the language comparison? If the language comparison is the real goal, we could go into the language comparison more strongly in the motivation, right? Could something like the problem statement in comparing cross-platform vs. native serve as our motivation?",
+  "card-alltag-paper-titel":
+    "I wonder whether we can still change the title of the paper. We've already submitted the title. Then maybe staying with the original topic would also be a good option.",
+  "card-alltag-paper-sprachvergleich":
+    "Regarding the email to the professor, I'm wondering if I overthought it. If comparing three languages under 6000 words is too much, should we go back to the original Kotlin-and-Swift comparison and focus the paper more on the language comparison itself?",
+  "card-alltag-paper-ziel":
+    "What does the professor actually expect from us in this paper — and what are the goals we need to achieve?",
 };
 
 /** @type {Record<string, Record<string, { wordEn: string, meaningEn?: string, examples: { en: string }[] }>>} */
@@ -176,6 +184,70 @@ export const alltagVocabEn = {
       examples: [
         { en: "I put the current API docs in the repo for reference." },
         { en: "The example requests are ready in the README for reference." },
+      ],
+    },
+  },
+  "card-alltag-paper-fokus": {
+    "eingehen auf": {
+      wordEn: "go into / address",
+      examples: [
+        { en: "In chapter 2 we go into the architecture in detail." },
+        { en: "Could we go into the language comparison more strongly in the motivation?" },
+      ],
+    },
+    fungieren: {
+      wordEn: "serve as / act as",
+      examples: [
+        { en: "The app serves as a prototype and at the same time acts as a comparison object." },
+        { en: "Could the problem statement serve as motivation?" },
+      ],
+    },
+  },
+  "card-alltag-paper-titel": {
+    einreichen: {
+      wordEn: "submit / hand in",
+      examples: [
+        { en: "We've already submitted the paper title to the examination office." },
+        { en: "We have to submit the draft by Friday." },
+      ],
+    },
+    "beim … bleiben": {
+      wordEn: "stick with / stay with",
+      examples: [
+        { en: "Maybe we'll simply stay with the original topic." },
+        { en: "After the feedback we stayed with the first approach." },
+      ],
+    },
+  },
+  "card-alltag-paper-sprachvergleich": {
+    "zu tief nachdenken": {
+      wordEn: "overthink",
+      examples: [
+        { en: "Maybe I simply overthought the email." },
+        { en: "Sometimes I overthink instead of staying pragmatic." },
+      ],
+    },
+    "sich konzentrieren auf": {
+      wordEn: "focus on",
+      examples: [
+        { en: "We should focus more on the language comparison itself." },
+        { en: "Can we focus more on syntax while writing?" },
+      ],
+    },
+  },
+  "card-alltag-paper-ziel": {
+    "erwarten von": {
+      wordEn: "expect from",
+      examples: [
+        { en: "What does the professor expect from us in this paper?" },
+        { en: "Above all, a clear comparison is expected from us." },
+      ],
+    },
+    erreichen: {
+      wordEn: "achieve / reach",
+      examples: [
+        { en: "What goals do we have to achieve by the submission deadline?" },
+        { en: "With a narrower focus we can achieve our goal more realistically." },
       ],
     },
   },
