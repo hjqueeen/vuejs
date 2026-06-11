@@ -6,7 +6,7 @@
         <div>
           <h1>복습 세션</h1>
           <p class="rev-desc">
-            FSRS(Anki) — 앞면을 보고 떠올린 뒤, 다시·어려움·좋음·쉬움과 다음 복습 시점을 선택하세요.
+            FSRS(Anki) — 선택한 언어(Deutsch/English) 카드만 복습합니다. 간격은 언어별로 따로 저장됩니다.
           </p>
         </div>
         <FlashcardLayoutToggle @change="layoutMode = $event" />
@@ -29,27 +29,20 @@
 
       <div class="fc-body" :class="{ 'fc-body--with-writing': hasWritingPractice }">
         <FlashcardCardPanel
-          :card="displayCard"
+          :card="panelCard"
           :labels="labels"
-          :show-ko-on-back="showKoOnBack"
+          :show-ko-on-back="showKoOnBack && !isExampleItem"
           :target-lang="targetLang"
           :layout-mode="layoutMode"
           :revealed="revealed"
           :interactive="layoutMode === 'flip'"
+          :badge="panelBadge"
           @toggle="onCardTap"
         />
 
         <aside v-if="hasWritingPractice" class="fc-writing-aside">
-          <FlashcardWritingPractice :practice="displayCard.writingPractice" />
+          <FlashcardWritingPractice :practice="displayMainCard.writingPractice" />
         </aside>
-
-        <FlashcardVocabulary
-          v-if="hasVocabulary"
-          class="fc-vocab-slot"
-          :items="displayCard.vocabulary"
-          :target-lang="targetLang"
-          :examples-ko-only="layoutMode === 'flip' && !revealed"
-        />
 
         <div v-if="layoutMode === 'flip' && !revealed" class="rev-actions rev-actions-slot">
           <button type="button" class="reveal-btn" @click="reveal">답 보기</button>
@@ -87,13 +80,17 @@
 <script>
 import FlashcardCardPanel from "@/components/flashcard/FlashcardCardPanel.vue";
 import FlashcardLayoutToggle from "@/components/flashcard/FlashcardLayoutToggle.vue";
-import FlashcardVocabulary from "@/components/flashcard/FlashcardVocabulary.vue";
 import FlashcardTargetLangToggle from "@/components/flashcard/FlashcardTargetLangToggle.vue";
 import FlashcardWritingPractice from "@/components/flashcard/FlashcardWritingPractice.vue";
 import { getFlashcardBook, getCardsForBook } from "@/data/flashcardRegistry";
 import { resolveFlashcardCard } from "@/utils/flashcardCardResolver";
 import { formatDueLabel, getDueTimestamp } from "@/data/flashcardSrs";
 import { getFlashcardLayoutMode } from "@/utils/flashcardLayout";
+import {
+  expandReviewItems,
+  reviewItemToPanelCard,
+} from "@/utils/flashcardReviewItems";
+import { bookHasDualLang } from "@/utils/flashcardSrsId";
 import { getFlashcardTargetLang } from "@/utils/flashcardTargetLang";
 
 function shuffle(arr) {
@@ -110,7 +107,6 @@ export default {
   components: {
     FlashcardCardPanel,
     FlashcardLayoutToggle,
-    FlashcardVocabulary,
     FlashcardWritingPractice,
     FlashcardTargetLangToggle,
   },
@@ -133,7 +129,10 @@ export default {
       return getFlashcardBook(this.bookId);
     },
     supportsTargetLang() {
-      return (this.bookMeta?.targetLanguages?.length || 0) > 1;
+      return bookHasDualLang(this.bookMeta);
+    },
+    dualLang() {
+      return bookHasDualLang(this.bookMeta);
     },
     labels() {
       if (this.bookMeta?.labelsForLang) {
@@ -145,32 +144,47 @@ export default {
       return this.bookMeta?.showKoOnBack !== false;
     },
     grades() {
-      if (!this.currentCard) return [];
+      if (!this.currentItem) return [];
       return this.$store.getters["flashcardSrs/gradeOptions"](
         this.bookId,
-        this.currentCard.id
+        this.currentItem.id
       );
     },
     allCards() {
       return getCardsForBook(this.bookId);
     },
-    currentCard() {
+    currentItem() {
       return this.sessionQueue[0] || null;
     },
-    displayCard() {
+    isExampleItem() {
+      return this.currentItem?.type === "example";
+    },
+    displayMainCard() {
+      if (!this.currentItem) return null;
+      if (this.currentItem.type === "example") {
+        return (
+          resolveFlashcardCard(this.currentItem.card, this.bookId, this.targetLang) ||
+          this.currentItem.card
+        );
+      }
       return (
-        resolveFlashcardCard(this.currentCard, this.bookId, this.targetLang) ||
-        this.currentCard
+        resolveFlashcardCard(this.currentItem.card, this.bookId, this.targetLang) ||
+        this.currentItem.card
       );
+    },
+    panelCard() {
+      return reviewItemToPanelCard(this.currentItem, this.targetLang);
+    },
+    panelBadge() {
+      if (!this.isExampleItem) return "";
+      return `예문 · ${this.currentItem.vocabWord}`;
     },
     hasWritingPractice() {
       return (
+        !this.isExampleItem &&
         this.targetLang === "de" &&
-        Boolean(this.displayCard?.writingPractice?.attemptDe)
+        Boolean(this.displayMainCard?.writingPractice?.attemptDe)
       );
-    },
-    hasVocabulary() {
-      return Boolean(this.displayCard?.vocabulary?.length);
     },
     answeredCount() {
       return this.sessionTotal - this.sessionQueue.length;
@@ -189,12 +203,14 @@ export default {
     },
     buildSession() {
       const pool = this.reviewPool();
+      const items = expandReviewItems(pool, this.bookId, this.targetLang, {
+        dualLang: this.dualLang,
+      });
       const dueIds = this.$store.getters["flashcardSrs/dueCardIds"](
         this.bookId,
-        pool.map((c) => c.id)
+        items.map((item) => item.id)
       );
-      const dueCards = pool.filter((c) => dueIds.includes(c.id));
-      const picked = shuffle(dueCards);
+      const picked = shuffle(items.filter((item) => dueIds.includes(item.id)));
 
       this.sessionQueue = picked;
       this.sessionTotal = picked.length;
@@ -206,8 +222,11 @@ export default {
       if (!pool.length) return "";
       const now = Date.now();
       let nearest = null;
-      pool.forEach((card) => {
-        const schedule = this.$store.getters["flashcardSrs/getSchedule"](this.bookId, card.id);
+      const items = expandReviewItems(pool, this.bookId, this.targetLang, {
+        dualLang: this.dualLang,
+      });
+      items.forEach((item) => {
+        const schedule = this.$store.getters["flashcardSrs/getSchedule"](this.bookId, item.id);
         const dueAt = getDueTimestamp(schedule);
         if (!dueAt || dueAt <= now) return;
         if (!nearest || dueAt < nearest) nearest = dueAt;
@@ -218,6 +237,7 @@ export default {
     onTargetLangChange(lang) {
       this.targetLang = lang;
       this.revealed = false;
+      this.buildSession();
     },
     onCardTap() {
       if (!this.revealed) this.reveal();
@@ -226,18 +246,18 @@ export default {
       this.revealed = true;
     },
     async rate(gradeKey) {
-      const card = this.currentCard;
-      if (!card) return;
+      const item = this.currentItem;
+      if (!item) return;
 
       const result = await this.$store.dispatch("flashcardSrs/rateCard", {
         bookId: this.bookId,
-        cardId: card.id,
+        cardId: item.id,
         gradeKey,
       });
 
       const rest = this.sessionQueue.slice(1);
       if (result?.requeueInSession) {
-        this.sessionQueue = [...rest, card];
+        this.sessionQueue = [...rest, item];
       } else {
         this.sessionQueue = rest;
       }

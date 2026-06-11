@@ -8,8 +8,30 @@ import {
   isCardDue,
   normalizeSchedule,
 } from "@/data/flashcardSrs";
+import { LANG_SRS_SEP } from "@/utils/flashcardSrsId";
 
 const STORAGE_KEY = "flashcard-srs-schedule";
+
+function readSchedule(state, bookId, cardId) {
+  const raw = state.scheduleMap?.[bookId]?.[cardId];
+  return raw ? normalizeSchedule(raw) : null;
+}
+
+/** Legacy schedules (no lang suffix) count as Deutsch. */
+function getScheduleWithLegacyFallback(state, bookId, cardId) {
+  const direct = readSchedule(state, bookId, cardId);
+  if (direct) return direct;
+
+  const sepIdx = cardId.lastIndexOf(LANG_SRS_SEP);
+  if (sepIdx < 0) return null;
+
+  const lang = cardId.slice(sepIdx + LANG_SRS_SEP.length);
+  const baseId = cardId.slice(0, sepIdx);
+  if (lang === "de") {
+    return readSchedule(state, bookId, baseId);
+  }
+  return null;
+}
 
 function migrateMap(parsed) {
   if (!parsed || typeof parsed !== "object") return {};
@@ -32,10 +54,8 @@ const state = () => ({
 
 const getters = {
   scheduleMap: (state) => state.scheduleMap,
-  getSchedule: (state) => (bookId, cardId) => {
-    const raw = state.scheduleMap?.[bookId]?.[cardId];
-    return raw ? normalizeSchedule(raw) : null;
-  },
+  getSchedule: (state) => (bookId, cardId) =>
+    getScheduleWithLegacyFallback(state, bookId, cardId),
   isDue: (state, getters) => (bookId, cardId, now = Date.now()) =>
     isCardDue(getters.getSchedule(bookId, cardId), now),
   dueCardIds: (state, getters) => (bookId, cardIds, now = Date.now()) =>

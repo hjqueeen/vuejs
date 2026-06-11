@@ -41,7 +41,7 @@ export const flashcardBooks = {
         ? "한국어를 보고 영어를 떠올린 뒤, 카드를 뒤집어 확인하세요."
         : "한국어를 보고 독일어를 떠올린 뒤, 카드를 뒤집어 확인하세요.",
     labels: { front: "한국어", back: "Deutsch" },
-    hint: "한국어를 보고 독일어 또는 영어를 떠올린 뒤, 카드를 뒤집어 확인하세요.",
+    hint: "한국어를 보고 독일어 또는 영어를 떠올린 뒤, 카드를 뒤집어 확인하세요. Anki 복습은 언어별(Deutsch/English)로 따로 진행·저장됩니다.",
     showKoOnBack: false,
   },
   [BB84_PROTOCOL_BOOK_ID]: {

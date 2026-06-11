@@ -6,10 +6,12 @@
   >
     <div class="split-panel split-front">
       <p class="face-label">{{ labels.front }}</p>
+      <p v-if="badge" class="face-badge">{{ badge }}</p>
       <p class="term">{{ card.term }}</p>
     </div>
     <div class="split-panel split-back">
       <p class="face-label">{{ labels.back }}</p>
+      <p v-if="badge" class="face-badge">{{ badge }}</p>
       <div v-if="card.normalSpeedUrl" class="fc-audio-controls" @click.stop>
         <div class="audio-player-wrap">
           <button type="button" class="audio-skip-btn" aria-label="-3초" @click="skipBack">
@@ -73,11 +75,13 @@
       <div class="flip-inner">
         <div class="flip-face flip-front">
           <p class="face-label">{{ labels.front }}</p>
+          <p v-if="badge" class="face-badge">{{ badge }}</p>
           <p class="term">{{ card.term }}</p>
           <p v-if="interactive && !revealed" class="tap-hint">{{ tapHintFront }}</p>
         </div>
         <div class="flip-face flip-back">
           <p class="face-label">{{ labels.back }}</p>
+          <p v-if="badge" class="face-badge">{{ badge }}</p>
           <div v-if="card.normalSpeedUrl" class="fc-audio-controls" @click.stop>
             <div class="audio-player-wrap">
               <button type="button" class="audio-skip-btn" aria-label="-3초" @click="skipBack">
@@ -150,6 +154,7 @@ export default {
     compact: { type: Boolean, default: false },
     tapHintFront: { type: String, default: "탭하여 답 보기" },
     tapHintBack: { type: String, default: "탭하여 앞면" },
+    badge: { type: String, default: "" },
   },
   data() {
     return {
@@ -359,6 +364,13 @@ export default {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--c-text-muted);
+}
+
+.face-badge {
+  margin: -6px 0 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--c-amber);
 }
 
 .term {

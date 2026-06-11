@@ -18,6 +18,7 @@
         공부함 {{ studiedCount }} / {{ cards.length }}
         <span v-if="studiedCount">({{ studiedPercent }}%)</span>
         · 복습 대기 {{ dueCount }}장
+        <span v-if="dualLang">({{ targetLang === "en" ? "English" : "Deutsch" }})</span>
       </p>
     </header>
 
@@ -51,6 +52,8 @@ import { getBookById } from "@/data/books";
 import { getCardsForBook, getFlashcardBook } from "@/data/flashcardRegistry";
 import FlashcardLayoutToggle from "@/components/flashcard/FlashcardLayoutToggle.vue";
 import FlashcardTargetLangToggle from "@/components/flashcard/FlashcardTargetLangToggle.vue";
+import { expandReviewItems } from "@/utils/flashcardReviewItems";
+import { bookHasDualLang, withLangSrsId } from "@/utils/flashcardSrsId";
 import { getFlashcardLayoutMode } from "@/utils/flashcardLayout";
 import { getFlashcardTargetLang } from "@/utils/flashcardTargetLang";
 
@@ -74,7 +77,10 @@ export default {
       return getFlashcardBook(this.bookId);
     },
     supportsTargetLang() {
-      return (this.bookMeta?.targetLanguages?.length || 0) > 1;
+      return bookHasDualLang(this.bookMeta);
+    },
+    dualLang() {
+      return bookHasDualLang(this.bookMeta);
     },
     bookHint() {
       if (this.bookMeta?.hintForLang) {
@@ -100,7 +106,9 @@ export default {
       return this.cards;
     },
     cardIds() {
-      return this.reviewPool.map((c) => c.id);
+      return expandReviewItems(this.reviewPool, this.bookId, this.targetLang, {
+        dualLang: this.dualLang,
+      }).map((item) => item.id);
     },
     dueCount() {
       return this.$store.getters["flashcardSrs/dueCount"](this.bookId, this.cardIds);
@@ -118,7 +126,8 @@ export default {
       return this.$store.getters["quizWorkbook/isTested"](this.bookId, cardId);
     },
     dueLabel(cardId) {
-      return this.$store.getters["flashcardSrs/dueLabel"](this.bookId, cardId);
+      const srsId = withLangSrsId(cardId, this.targetLang, this.dualLang);
+      return this.$store.getters["flashcardSrs/dueLabel"](this.bookId, srsId);
     },
     rowClass(cardId) {
       if (this.isTested(cardId)) return "tested";
