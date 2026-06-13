@@ -28,7 +28,8 @@ import {
 } from "./latinVocabContent.js";
 import {
   ABSOLUTISMUS_BOOK_ID,
-  absolutismusCards,
+  absolutismusSections,
+  orderedAbsolutismusCards,
   getAbsolutismusCardById,
 } from "./absolutismusContent.js";
 
@@ -90,10 +91,11 @@ export const flashcardBooks = {
     showKoOnBack: false,
   },
   [ABSOLUTISMUS_BOOK_ID]: {
-    cards: absolutismusCards,
+    cards: orderedAbsolutismusCards,
+    sections: absolutismusSections,
     getCardById: getAbsolutismusCardById,
     labels: { front: "Begriff", back: "Erklärung" },
-    hint: "Karikatur M1: Bild ansehen, Kategorie und Frage beantworten, dann M1-Lösung auf der Rückseite prüfen.",
+    hint: "Karikatur M1–M3: Bild ansehen, Frage beantworten, dann Lösung auf der Rückseite prüfen.",
     showKoOnBack: false,
   },
 };

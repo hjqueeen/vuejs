@@ -2,7 +2,7 @@
   <div
     v-if="layoutMode === 'split'"
     class="split-scene"
-    :class="{ 'split-scene--compact': compact }"
+    :class="{ 'split-scene--compact': compact, 'split-scene--with-image': card.frontImageUrl }"
   >
     <div class="split-panel split-front">
       <p class="face-label">{{ labels.front }}</p>
@@ -70,7 +70,10 @@
   <div
     v-else
     class="flip-scene"
-    :class="{ 'flip-scene--interactive': interactive }"
+    :class="{
+      'flip-scene--interactive': interactive,
+      'flip-scene--with-image': card.frontImageUrl,
+    }"
     role="button"
     :tabindex="interactive ? 0 : -1"
     :aria-label="revealed ? '뒷면' : '앞면'"
@@ -303,6 +306,19 @@ export default {
   transform: rotateY(180deg);
 }
 
+.flip-scene--with-image .flip-card,
+.flip-scene--with-image .flip-inner {
+  min-height: 520px;
+}
+
+.split-scene--with-image {
+  min-height: 520px;
+}
+
+.split-scene--with-image.split-scene--compact {
+  min-height: 460px;
+}
+
 .flip-face {
   position: absolute;
   inset: 0;
@@ -390,13 +406,25 @@ export default {
 .term-image {
   display: block;
   width: 100%;
-  max-width: 220px;
-  max-height: 160px;
-  margin: 0 auto 12px;
+  max-width: min(100%, 520px);
+  max-height: min(42vh, 340px);
+  margin: 0 auto 14px;
   object-fit: contain;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid var(--c-border);
   background: #fff;
+}
+
+@media (max-width: 640px) {
+  .term-image {
+    max-height: min(36vh, 260px);
+  }
+
+  .flip-scene--with-image .flip-card,
+  .flip-scene--with-image .flip-inner,
+  .split-scene--with-image {
+    min-height: 440px;
+  }
 }
 
 .term-category {
