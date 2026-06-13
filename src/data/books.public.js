@@ -62,7 +62,7 @@ export const publicBooks = [
     title: "라이브 아카데미 토들러",
     subtitle: "여행 기본질문 · 한↔Deutsch / English",
     description:
-      "Live Academy Toddler 영상에서 정리한 플래시카드 41장. 한국어를 보고 독일어 또는 영어로 외웁니다.",
+      "Live Academy Toddler 영상에서 정리한 플래시카드 44장. 한국어를 보고 독일어 또는 영어로 외웁니다.",
     coverColor: "book-cover-b",
     cardIds: LIVE_ACADEMY_TODDLER_CARD_IDS,
   },

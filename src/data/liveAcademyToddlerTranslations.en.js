@@ -38,18 +38,60 @@ export const liveAcademyToddlerExplanationEn = {
   "card-lat-lesson001-8": "I work in an office six hours a day.",
   "card-lat-lesson001-9": "I study at home every day mainly with books.",
   "card-lat-lesson001-10": "I work out on weekends by myself.",
-  "card-lat-lesson002-1": "He doesn't work.",
-  "card-lat-lesson002-2": "She doesn't study.",
-  "card-lat-lesson002-3": "Jane doesn't cook.",
-  "card-lat-lesson002-4": "He works hard.",
-  "card-lat-lesson002-5": "He doesn't work hard.",
-  "card-lat-lesson002-6":
+  "card-lat-lesson002-1": "He works hard.",
+  "card-lat-lesson002-2": "He doesn't work hard.",
+  "card-lat-lesson002-3":
     "She cooks pretty well. But she doesn't cook every day.",
-  "card-lat-lesson002-7": "He works every day.",
-  "card-lat-lesson002-8": "She studies at home 2 hours a day.",
-  "card-lat-lesson002-9": "Jane cooks pretty well.",
-  "card-lat-lesson002-10":
-    "He exercises by himself at home 2 hours a day.",
+  "card-lat-lesson002-4": "He works every day.",
+  "card-lat-lesson002-5": "She studies at home 2 hours a day.",
+  "card-lat-lesson002-6": "Jane cooks pretty well.",
+  "card-lat-lesson002-7": "He exercises by himself at home 2 hours a day.",
+  "card-lat-lesson002-8": "He doesn't work.",
+  "card-lat-lesson002-9": "She doesn't study.",
+  "card-lat-lesson002-10": "Jane doesn't cook.",
+  "card-lat-lesson003-1":
+    "I work almost 12 hours a day.\n+ It's tough.\n\nI don't work on weekends.\n+ I'm lucky.",
+  "card-lat-lesson003-2":
+    "She exercises every day at home by herself.\n+ She's very healthy.\n+ She's in very good shape.",
+  "card-lat-lesson003-3":
+    "She doesn't eat any junk food.\n+ It's amazing!",
+};
+
+/** @type {Record<string, Record<string, { wordEn: string, examples: { en: string }[] }>>} */
+export const liveAcademyToddlerVocabEn = {
+  "card-lat-lesson003-1": {
+    "von zu Hause arbeiten": {
+      wordEn: "work from home",
+      examples: [
+        {
+          en: "I work in the office 3 days a week and work from home 2 days.",
+        },
+        {
+          en: "But it's tough because I have to work in German.",
+        },
+      ],
+    },
+  },
+  "card-lat-lesson003-2": {
+    "mindestens dreimal die Woche trainieren": {
+      wordEn: "exercise at least three times a week",
+      examples: [
+        {
+          en: "I haven't been in good health since last year. So I try to exercise at least three times a week.",
+        },
+      ],
+    },
+  },
+  "card-lat-lesson003-3": {
+    "nicht aufhören können, Junkfood zu essen": {
+      wordEn: "can't stop eating junk food",
+      examples: [
+        {
+          en: "But still, I can't seem to stop eating junk food. It's not good.",
+        },
+      ],
+    },
+  },
 };
 
 /** @param {object} card */
@@ -57,10 +99,24 @@ export function enrichLiveAcademyToddlerCardForLang(card, targetLang) {
   if (!card || targetLang !== "en") return card;
 
   const explanationEn = liveAcademyToddlerExplanationEn[card.id];
-  if (!explanationEn) return card;
+  const vocabMap = liveAcademyToddlerVocabEn[card.id] || {};
+
+  const vocabulary = (card.vocabulary || []).map((item) => {
+    const en = vocabMap[item.word];
+    if (!en) return { ...item };
+    return {
+      ...item,
+      wordEn: en.wordEn,
+      examples: (item.examples || []).map((ex, i) => ({
+        ...ex,
+        en: en.examples?.[i]?.en || ex.en,
+      })),
+    };
+  });
 
   return {
     ...card,
-    explanationEn,
+    ...(explanationEn ? { explanationEn } : {}),
+    ...(vocabulary.length ? { vocabulary } : {}),
   };
 }

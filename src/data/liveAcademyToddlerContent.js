@@ -14,6 +14,9 @@ export const LIVE_ACADEMY_TODDLER_LESSON001_SOURCE_URL =
 export const LIVE_ACADEMY_TODDLER_LESSON002_SOURCE_URL =
   "https://youtu.be/yJg0rrmRZhA?si=tN-CzpmrpB-px617";
 
+export const LIVE_ACADEMY_TODDLER_LESSON003_SOURCE_URL =
+  "https://youtu.be/0R6tL0ESm_U?si=IpVlCaQJzn64IcP-";
+
 export const liveAcademyToddlerCards = [
   {
     id: "card-alltag-reise-wie-war",
@@ -215,67 +218,133 @@ export const liveAcademyToddlerCards = [
     explanationDe: "Ich trainiere am Wochenende allein.",
     explanationKo: "work out · on weekends · by myself",
   },
-  // ── Lesson 002 [문장 만들기] ──
+  // ── Lesson 002 [문장 만들기] · 3인칭 단수 ──
   {
     id: "card-lat-lesson002-1",
-    term: "그는 일하지 않아요.",
-    explanationDe: "Er arbeitet nicht.",
-    explanationKo: "3인칭 · doesn't work",
+    term: "그는 열심히 일해요.",
+    explanationDe: "Er arbeitet hart.",
+    explanationKo: "He works · hard",
   },
   {
     id: "card-lat-lesson002-2",
-    term: "그녀는 공부하지 않아요.",
-    explanationDe: "Sie lernt nicht.",
-    explanationKo: "3인칭 · doesn't study",
+    term: "그는 열심히 일하지 않아요.",
+    explanationDe: "Er arbeitet nicht hart.",
+    explanationKo: "He doesn't work · hard",
   },
   {
     id: "card-lat-lesson002-3",
-    term: "제인은 요리하지 않아요.",
-    explanationDe: "Jane kocht nicht.",
-    explanationKo: "3인칭 · doesn't cook",
-  },
-  {
-    id: "card-lat-lesson002-4",
-    term: "그는 열심히 일해요.",
-    explanationDe: "Er arbeitet hart.",
-    explanationKo: "works hard",
-  },
-  {
-    id: "card-lat-lesson002-5",
-    term: "그는 열심히 일하지 않아요.",
-    explanationDe: "Er arbeitet nicht hart.",
-    explanationKo: "doesn't work hard",
-  },
-  {
-    id: "card-lat-lesson002-6",
     term: "그녀는 요리를 꽤 잘 해요. 근데 매일 요리하지는 않아요.",
     explanationDe:
       "Sie kocht ziemlich gut. Aber sie kocht nicht jeden Tag.",
-    explanationKo: "cooks pretty well · doesn't cook every day",
+    explanationKo: "She cooks pretty well · doesn't cook every day",
+  },
+  {
+    id: "card-lat-lesson002-4",
+    term: "그는 매일 일해요.",
+    explanationDe: "Er arbeitet jeden Tag.",
+    explanationKo: "He works · every day",
+  },
+  {
+    id: "card-lat-lesson002-5",
+    term: "그녀는 집에서 하루에 2시간씩 공부해요.",
+    explanationDe: "Sie lernt zu Hause zwei Stunden am Tag.",
+    explanationKo: "She studies · at home · 2 hours a day",
+  },
+  {
+    id: "card-lat-lesson002-6",
+    term: "제인은 요리를 꽤 잘 해요.",
+    explanationDe: "Jane kocht ziemlich gut.",
+    explanationKo: "Jane cooks · pretty well",
   },
   {
     id: "card-lat-lesson002-7",
-    term: "그는 매일 일해요.",
-    explanationDe: "Er arbeitet jeden Tag.",
-    explanationKo: "works · every day",
+    term: "그는 집에서 혼자서 하루에 2시간씩 운동해요.",
+    explanationDe: "Er trainiert zu Hause allein zwei Stunden am Tag.",
+    explanationKo: "He exercises · by himself · at home · 2 hours a day",
   },
   {
     id: "card-lat-lesson002-8",
-    term: "그녀는 집에서 하루에 2시간씩 공부해요.",
-    explanationDe: "Sie lernt zu Hause zwei Stunden am Tag.",
-    explanationKo: "studies · at home · 2 hours a day",
+    term: "그는 일하지 않아요.",
+    explanationDe: "Er arbeitet nicht.",
+    explanationKo: "He doesn't work",
   },
   {
     id: "card-lat-lesson002-9",
-    term: "제인은 요리를 꽤 잘 해요.",
-    explanationDe: "Jane kocht ziemlich gut.",
-    explanationKo: "cooks pretty well",
+    term: "그녀는 공부하지 않아요.",
+    explanationDe: "Sie lernt nicht.",
+    explanationKo: "She doesn't study",
   },
   {
     id: "card-lat-lesson002-10",
-    term: "그는 집에서 혼자서 하루에 2시간씩 운동해요.",
-    explanationDe: "Er trainiert allein zu Hause zwei Stunden am Tag.",
-    explanationKo: "exercises · by himself · at home · 2 hours a day",
+    term: "제인은 요리하지 않아요.",
+    explanationDe: "Jane kocht nicht.",
+    explanationKo: "Jane doesn't cook",
+  },
+  // ── Lesson 003 | be 동사 (is, am, are) ──
+  {
+    id: "card-lat-lesson003-1",
+    term:
+      "저는 하루에 거의 12시간씩 일해요.\n+ 힘들어요.\n\n주말에는 일을 안 해요.\n+ 운이 좋아요.",
+    explanationDe:
+      "Ich arbeite fast zwölf Stunden am Tag.\n+ Es ist anstrengend.\n\nIch arbeite am Wochenende nicht.\n+ Ich habe Glück.",
+    explanationKo: "work 12h · tough · weekends · lucky",
+    vocabulary: [
+      {
+        word: "von zu Hause arbeiten",
+        meaning: "재택근무를 한다 · to work from home",
+        examples: [
+          {
+            de: "Ich arbeite drei Tage die Woche im Büro und zwei Tage von zu Hause.",
+            ko: "나는 일주일에 3일은 사무실에서, 2일은 재택근무를 해요.",
+          },
+          {
+            de: "Aber es ist anstrengend, weil ich auf Deutsch arbeiten muss.",
+            ko: "하지만 독일어로 일해야 해서 힘들어요.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "card-lat-lesson003-2",
+    term:
+      "그녀는 매일 집에서 혼자서 운동해요.\n+ 아주 건강해요.\n+ 상태가 아주 좋아요.",
+    explanationDe:
+      "Sie trainiert jeden Tag zu Hause allein.\n+ Sie ist sehr gesund.\n+ Sie ist in sehr guter Form.",
+    explanationKo: "exercises · healthy · in good shape",
+    vocabulary: [
+      {
+        word: "mindestens dreimal die Woche trainieren",
+        meaning:
+          "최소한 일주일에 세 번은 · at least three times a week",
+        examples: [
+          {
+            de: "Seit letztem Jahr geht es mir gesundheitlich nicht so gut. Deshalb bemühe ich mich, mindestens dreimal die Woche zu trainieren.",
+            ko: "나는 작년부터 건강이 좋지 않아. 그래서 최소한 일주일에 세 번은 운동하려고 노력해.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "card-lat-lesson003-3",
+    term: "그녀는 불량식품을 전혀 안 먹어요.\n+ 대단해요!",
+    explanationDe:
+      "Sie isst überhaupt kein Junkfood.\n+ Das ist unglaublich!",
+    explanationKo: "no junk food · + It's amazing!",
+    vocabulary: [
+      {
+        word: "nicht aufhören können, Junkfood zu essen",
+        meaning:
+          "불량식품 먹는 걸 멈추지 못하다 · can't stop eating junk food",
+        examples: [
+          {
+            de: "Trotzdem kann ich nicht aufhören, Junkfood zu essen. Das ist nicht gut.",
+            ko: "그런데도 나는 불량식품 먹는 걸 멈추지 못하겠어요. 이건 좋지 않아요.",
+          },
+        ],
+      },
+    ],
   },
 ];
 
@@ -351,6 +420,17 @@ export const liveAcademyToddlerSections = [
       "card-lat-lesson002-8",
       "card-lat-lesson002-9",
       "card-lat-lesson002-10",
+    ],
+  },
+  {
+    id: "section-lat-5",
+    title: "Lesson 003 | 실제 회화에서 be 동사의 기본적인 활용",
+    sourceUrl: LIVE_ACADEMY_TODDLER_LESSON003_SOURCE_URL,
+    sourceLabel: "Live Academy Toddler · YouTube",
+    cardIds: [
+      "card-lat-lesson003-1",
+      "card-lat-lesson003-2",
+      "card-lat-lesson003-3",
     ],
   },
 ];
