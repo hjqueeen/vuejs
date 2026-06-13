@@ -4,8 +4,16 @@ import {
   getWaermeCardById,
 } from "./waermeKarteikartenContent.js";
 import {
+  LIVE_ACADEMY_TODDLER_BOOK_ID,
+  LIVE_ACADEMY_TODDLER_CARD_IDS,
+  liveAcademyToddlerSections,
+  orderedLiveAcademyToddlerCards,
+  getLiveAcademyToddlerCardById,
+} from "./liveAcademyToddlerContent.js";
+import {
   ALLTAG_KO_DE_BOOK_ID,
-  alltagKoDeCards,
+  alltagKoDeSections,
+  orderedAlltagKoDeCards,
   getAlltagKoDeCardById,
 } from "./alltagKoDeContent.js";
 import {
@@ -29,7 +37,8 @@ export const flashcardBooks = {
     showKoOnBack: true,
   },
   [ALLTAG_KO_DE_BOOK_ID]: {
-    cards: alltagKoDeCards,
+    cards: orderedAlltagKoDeCards,
+    sections: alltagKoDeSections,
     getCardById: getAlltagKoDeCardById,
     targetLanguages: ["de", "en"],
     labelsForLang: (lang) =>
@@ -42,6 +51,23 @@ export const flashcardBooks = {
         : "한국어를 보고 독일어를 떠올린 뒤, 카드를 뒤집어 확인하세요.",
     labels: { front: "한국어", back: "Deutsch" },
     hint: "한국어를 보고 독일어 또는 영어를 떠올린 뒤, 카드를 뒤집어 확인하세요. Anki 복습은 언어별(Deutsch/English)로 따로 진행·저장됩니다.",
+    showKoOnBack: false,
+  },
+  [LIVE_ACADEMY_TODDLER_BOOK_ID]: {
+    cards: orderedLiveAcademyToddlerCards,
+    sections: liveAcademyToddlerSections,
+    getCardById: getLiveAcademyToddlerCardById,
+    targetLanguages: ["de", "en"],
+    labelsForLang: (lang) =>
+      lang === "en"
+        ? { front: "한국어", back: "English" }
+        : { front: "한국어", back: "Deutsch" },
+    hintForLang: (lang) =>
+      lang === "en"
+        ? "한국어를 보고 영어를 떠올린 뒤, 카드를 뒤집어 확인하세요."
+        : "한국어를 보고 독일어를 떠올린 뒤, 카드를 뒤집어 확인하세요.",
+    labels: { front: "한국어", back: "Deutsch" },
+    hint: "여행 기본질문 — 한국어를 보고 독일어 또는 영어를 떠올린 뒤 확인하세요.",
     showKoOnBack: false,
   },
   [BB84_PROTOCOL_BOOK_ID]: {

@@ -1,6 +1,10 @@
 import { BBC_LEARNING_SENTENCE_IDS, bbcLearningQuizChapters } from "./bbcLearningEnglishContent.js";
 import { tongilQuizQuestions } from "./tongilQuizContent.js";
 import {
+  LIVE_ACADEMY_TODDLER_BOOK_ID,
+  LIVE_ACADEMY_TODDLER_CARD_IDS,
+} from "./liveAcademyToddlerContent.js";
+import {
   ALLTAG_KO_DE_BOOK_ID,
   ALLTAG_KO_DE_CARD_IDS,
 } from "./alltagKoDeContent.js";
@@ -52,6 +56,16 @@ export const publicBooks = [
   //   coverColor: "book-cover-c",
   //   questionIds: TONGIL_QUIZ_QUESTION_IDS,
   // },
+  {
+    id: LIVE_ACADEMY_TODDLER_BOOK_ID,
+    templateType: "flashcard",
+    title: "라이브 아카데미 토들러",
+    subtitle: "여행 기본질문 · 한↔Deutsch / English",
+    description:
+      "Live Academy Toddler 영상에서 정리한 플래시카드 41장. 한국어를 보고 독일어 또는 영어로 외웁니다.",
+    coverColor: "book-cover-b",
+    cardIds: LIVE_ACADEMY_TODDLER_CARD_IDS,
+  },
   {
     id: ALLTAG_KO_DE_BOOK_ID,
     templateType: "flashcard",

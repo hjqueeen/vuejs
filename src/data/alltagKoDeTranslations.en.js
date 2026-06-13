@@ -17,7 +17,7 @@ export const alltagExplanationEn = {
     "First off, nice that you properly prepared slides. It wasn't really necessary, but of course it makes things even clearer. I have a question: first off — in itself there's nothing against starting with the practical part and pushing the literature research a bit further back.",
   "card-alltag-preview-stelle": "Should I just remove the preview on the spot?",
   "card-alltag-werkbank-anpassung":
-    "Are you coming to the Werkbank adjustment we discussed today?",
+    "Are you coming to the Workbench adjustment we discussed today?",
   "card-alltag-delete-id-mitliefern":
     "Delete isn't working right now because after the reload we're missing the ID from the function — without it we don't call DELETE at all. Can you include id and sourceId per item? Then it should work.",
   "card-alltag-werkbank-aura-sodass":

@@ -32,7 +32,66 @@
 
     <p class="fc-hint">{{ bookHint }}</p>
 
-    <ol class="fc-list">
+    <a
+      v-if="bookSourceUrl && !cardSections.length"
+      :href="bookSourceUrl"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="fc-source-link"
+    >
+      <span>{{ bookSourceLabel }}</span>
+      <span class="fc-source-external" aria-hidden="true">↗</span>
+    </a>
+
+    <div v-if="cardSections.length" class="fc-sections">
+      <section
+        v-for="section in cardSections"
+        :key="section.id"
+        class="fc-section"
+        :class="{ 'fc-section--collapsed': !isSectionOpen(section.id) }"
+      >
+        <button
+          type="button"
+          class="fc-section-title"
+          :aria-expanded="isSectionOpen(section.id)"
+          @click="toggleSection(section.id)"
+        >
+          <span class="fc-section-title-main">
+            <span class="block-dot"></span>
+            <span class="fc-section-label">{{ section.title }}</span>
+            <span class="fc-section-count">{{ section.cards.length }}장</span>
+          </span>
+          <span class="fc-chevron" aria-hidden="true"></span>
+        </button>
+        <div v-show="isSectionOpen(section.id)" class="fc-section-body">
+          <a
+            v-if="section.sourceUrl"
+            :href="section.sourceUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="fc-source-link fc-section-source"
+            @click.stop
+          >
+            <span>{{ section.sourceLabel || "원본 영상 보기" }}</span>
+            <span class="fc-source-external" aria-hidden="true">↗</span>
+          </a>
+          <ol class="fc-list">
+            <li v-for="card in section.cards" :key="card.id" class="fc-row">
+              <span class="fc-no" :class="rowClass(card.id)">{{ cardIndex(card.id) + 1 }}</span>
+              <button type="button" class="fc-term-btn" @click="openCard(card.id)">
+                <span class="fc-term">{{ cardPreview(card) }}</span>
+                <span class="fc-due-badge">{{ dueLabel(card.id) }}</span>
+                <span v-if="isTested(card.id)" class="fc-tested-mark">✓✓</span>
+                <span v-else-if="isStudied(card.id)" class="fc-studied-mark">✓</span>
+                <span class="fc-arrow">→</span>
+              </button>
+            </li>
+          </ol>
+        </div>
+      </section>
+    </div>
+
+    <ol v-else class="fc-list">
       <li v-for="(card, idx) in cards" :key="card.id" class="fc-row">
         <span class="fc-no" :class="rowClass(card.id)">{{ idx + 1 }}</span>
         <button type="button" class="fc-term-btn" @click="openCard(card.id)">
@@ -56,6 +115,10 @@ import { expandReviewItems } from "@/utils/flashcardReviewItems";
 import { bookHasDualLang, withLangSrsId } from "@/utils/flashcardSrsId";
 import { getFlashcardLayoutMode } from "@/utils/flashcardLayout";
 import { getFlashcardTargetLang } from "@/utils/flashcardTargetLang";
+import {
+  getFlashcardSectionState,
+  setFlashcardSectionState,
+} from "@/utils/flashcardSectionState";
 
 export default {
   name: "FlashcardHubView",
@@ -67,7 +130,18 @@ export default {
     return {
       layoutMode: getFlashcardLayoutMode(),
       targetLang: getFlashcardTargetLang(this.bookId),
+      expandedSections: {},
     };
+  },
+  watch: {
+    cardSections: {
+      immediate: true,
+      handler(sections) {
+        const sectionIds = sections.map((section) => section.id);
+        if (!sectionIds.length) return;
+        this.expandedSections = getFlashcardSectionState(this.bookId, sectionIds);
+      },
+    },
   },
   computed: {
     book() {
@@ -88,8 +162,30 @@ export default {
       }
       return this.bookMeta?.hint || "카드를 눌러 앞면과 뒷면을 뒤집으며 외우세요.";
     },
+    bookSourceUrl() {
+      return this.bookMeta?.sourceUrl || "";
+    },
+    bookSourceLabel() {
+      return this.bookMeta?.sourceLabel || "원본 영상 보기";
+    },
     cards() {
       return getCardsForBook(this.bookId);
+    },
+    cardSections() {
+      const sections = this.bookMeta?.sections;
+      if (!sections?.length) return [];
+      const cardMap = new Map(this.cards.map((card) => [card.id, card]));
+      return sections
+        .map((section) => ({
+          id: section.id,
+          title: section.title,
+          sourceUrl: section.sourceUrl,
+          sourceLabel: section.sourceLabel,
+          cards: section.cardIds
+            .map((id) => cardMap.get(id))
+            .filter(Boolean),
+        }))
+        .filter((section) => section.cards.length > 0);
     },
     studiedCount() {
       return this.cards.filter((c) => this.isStudied(c.id)).length;
@@ -115,6 +211,24 @@ export default {
     },
   },
   methods: {
+    isSectionOpen(sectionId) {
+      return this.expandedSections[sectionId] === true;
+    },
+    toggleSection(sectionId) {
+      const next = {
+        ...this.expandedSections,
+        [sectionId]: !this.isSectionOpen(sectionId),
+      };
+      this.expandedSections = next;
+      setFlashcardSectionState(
+        this.bookId,
+        next,
+        this.cardSections.map((section) => section.id),
+      );
+    },
+    cardIndex(cardId) {
+      return this.cards.findIndex((card) => card.id === cardId);
+    },
     cardPreview(card) {
       const text = card.term || "";
       return text.length > 56 ? `${text.slice(0, 56)}…` : text;
@@ -237,6 +351,37 @@ export default {
   line-height: 1.5;
 }
 
+.fc-source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0 0 16px;
+  padding: 5px 11px;
+  border-radius: var(--c-radius-pill);
+  border: 1.5px solid #ef4444;
+  background: #fff1f2;
+  color: #dc2626;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: filter 0.15s;
+}
+
+html[data-theme="dark"] .fc-source-link {
+  border-color: #f87171;
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+}
+
+.fc-source-link:hover {
+  filter: brightness(0.93);
+}
+
+.fc-source-external {
+  font-size: 10px;
+  opacity: 0.75;
+}
+
 .back-btn {
   border: none;
   background: none;
@@ -244,6 +389,104 @@ export default {
   font-size: 13px;
   cursor: pointer;
   padding: 0;
+}
+
+.fc-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.fc-section {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border-subtle);
+  border-radius: var(--c-radius-lg);
+  overflow: hidden;
+}
+
+.fc-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  margin: 0;
+  padding: 11px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-text-secondary);
+  background: var(--c-bg);
+  border: none;
+  border-bottom: 1px solid var(--c-border-subtle);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.fc-section--collapsed .fc-section-title {
+  border-bottom: none;
+}
+
+.fc-section-title:hover {
+  background: var(--c-border-subtle);
+}
+
+.fc-section-title-main {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+
+.fc-section-label {
+  letter-spacing: 0.06em;
+}
+
+.fc-section-count {
+  flex-shrink: 0;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--c-text-muted);
+  padding: 2px 7px;
+  border-radius: var(--c-radius-pill);
+  background: var(--c-border-subtle);
+}
+
+.fc-chevron {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--c-text-muted);
+  border-bottom: 2px solid var(--c-text-muted);
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+  margin-top: -3px;
+}
+
+.fc-section-title[aria-expanded="true"] .fc-chevron {
+  transform: rotate(-135deg);
+  margin-top: 3px;
+}
+
+.fc-section-body .fc-list {
+  padding: 10px 12px 12px;
+}
+
+.fc-section-source {
+  margin: 10px 12px 0;
+}
+
+.block-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c-blue);
+  flex-shrink: 0;
 }
 
 .fc-list {

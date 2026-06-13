@@ -357,7 +357,7 @@ export const alltagKoDeCards = [
   {
     id: "card-alltag-delete-id-mitliefern",
     term:
-      "Delete가 지금 안 돼. Reload 후에 함수에서 id가 안 넘어와서 DELETE를 호출할 수가 없거든. Item마다 id랑 sourceId도 같이 보내줄 수 있어? 그러면 될 것 같아.",
+      "Delete가 지금 안 돼, 왜냐하면 Reload 후에 함수에서 id가 빠져있고, 그것이 없이는 DELETE를 호출할 수가 없거든. Item마다 id랑 sourceId도 같이 보내줄 수 있어? 그러면 될 것 같아.",
     explanationDe:
       "Delete klappt gerade nicht, weil uns nach dem Reload die ID aus der Funktion fehlt – ohne sie rufen wir DELETE gar nicht auf. Kannst du pro Item id und sourceId mitliefern? Dann sollte es passen.",
     explanationKo: "aufrufen · mitliefern · pro Item",
@@ -397,7 +397,7 @@ export const alltagKoDeCards = [
   {
     id: "card-alltag-werkbank-aura-sodass",
     term:
-      "Aura Werkbank에서는 우리가 이미 있는 백엔드 URL을 다 쓸 수 있어. 그래야 제대로 동작하거든.",
+      "Aura Werkbank에서는, 우리가 이미 가지고 있는 모든 URL을, 백엔드를 위해 쓸 수 있어. 그래서 그게 제대로 동작하게 된다.",
     explanationDe:
       "In der Werkbank in Aura kannst du alle URLs, die wir schon haben, fürs Backend nutzen, sodass es funktionsfähig ist.",
     explanationKo: "sodass · fürs Backend · funktionsfähig",
@@ -422,7 +422,7 @@ export const alltagKoDeCards = [
   {
     id: "card-alltag-headerfavoriten-einbauen",
     term:
-      "headerFavoriten 오늘 넣을 수 있어? 그러면 업데이트하기 전에 백엔드를 제대로 테스트할 수 있거든. 백엔드는 참고하라고 이미 업데이트해 뒀어.",
+      "headerFavoriten 오늘 넣을 수 있어? 그러면 업데이트하기 전에 백엔드를 제대로 테스트할 수 있거든. 백엔드는 참고하라고 이미 업데이트 되었어.",
     explanationDe:
       "Schaffst du es, headerFavoriten heute einzubauen? Dann kann ich das Backend vernünftig testen, bevor ich ein Update mache — es ist zum Nachschauen schon aktualisiert.",
     explanationKo: "einbauen · vernünftig · zum Nachschauen",
@@ -630,7 +630,72 @@ export const alltagKoDeCards = [
   },
 ];
 
-export const ALLTAG_KO_DE_CARD_IDS = alltagKoDeCards.map((c) => c.id);
+export const alltagKoDeSections = [
+  {
+    id: "section-alltag-team",
+    title: "팀 미팅 · 업무",
+    cardIds: [
+      "card-alltag-praxis-literatur",
+      "card-alltag-preview-stelle",
+      "card-alltag-werkbank-anpassung",
+      "card-alltag-delete-id-mitliefern",
+      "card-alltag-werkbank-aura-sodass",
+      "card-alltag-headerfavoriten-einbauen",
+    ],
+  },
+  {
+    id: "section-alltag-gastrosoft",
+    title: "프로젝트 발표 (Gastrosoft)",
+    cardIds: ["card-alltag-gastrosoft-thema", "card-alltag-gastrosoft-android"],
+  },
+  {
+    id: "section-alltag-thesis",
+    title: "논문 · 챕터 기획",
+    cardIds: [
+      "card-alltag-thema-zu-gross",
+      "card-alltag-ki-kapitel2",
+      "card-alltag-von-vorne",
+      "card-alltag-erste-version-theorie",
+    ],
+  },
+  {
+    id: "section-alltag-paper",
+    title: "교수님 · 논문 문의",
+    cardIds: [
+      "card-alltag-paper-fokus",
+      "card-alltag-paper-titel",
+      "card-alltag-paper-sprachvergleich",
+      "card-alltag-paper-ziel",
+    ],
+  },
+];
+
+const orderAlltagKoDeCards = (cards, sections) => {
+  if (!sections?.length) return cards;
+  const map = new Map(cards.map((card) => [card.id, card]));
+  const ordered = [];
+  const seen = new Set();
+  for (const section of sections) {
+    for (const id of section.cardIds) {
+      const card = map.get(id);
+      if (card && !seen.has(id)) {
+        ordered.push(card);
+        seen.add(id);
+      }
+    }
+  }
+  for (const card of cards) {
+    if (!seen.has(card.id)) ordered.push(card);
+  }
+  return ordered;
+};
+
+export const orderedAlltagKoDeCards = orderAlltagKoDeCards(
+  alltagKoDeCards,
+  alltagKoDeSections,
+);
+
+export const ALLTAG_KO_DE_CARD_IDS = orderedAlltagKoDeCards.map((c) => c.id);
 
 export const getAlltagKoDeCardById = (cardId) =>
   alltagKoDeCards.find((c) => c.id === cardId) || null;
