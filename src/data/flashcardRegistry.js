@@ -93,7 +93,7 @@ export const flashcardBooks = {
     cards: absolutismusCards,
     getCardById: getAbsolutismusCardById,
     labels: { front: "Begriff", back: "Erklärung" },
-    hint: "Absolutismus·Französische Revolution·Karikatur(Methode 117) 주제를 보고 뒷면 설명을 떠올린 뒤, 카드를 뒤집어 확인하세요.",
+    hint: "Karikatur M1: Bild ansehen, Kategorie und Frage beantworten, dann M1-Lösung auf der Rückseite prüfen.",
     showKoOnBack: false,
   },
 };

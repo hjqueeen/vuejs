@@ -7,6 +7,13 @@
     <div class="split-panel split-front">
       <p class="face-label">{{ labels.front }}</p>
       <p v-if="badge" class="face-badge">{{ badge }}</p>
+      <img
+        v-if="card.frontImageUrl"
+        class="term-image"
+        :src="card.frontImageUrl"
+        alt=""
+      />
+      <p v-if="card.frontCategory" class="term-category">{{ card.frontCategory }}</p>
       <p class="term">{{ card.term }}</p>
     </div>
     <div class="split-panel split-back">
@@ -76,6 +83,13 @@
         <div class="flip-face flip-front">
           <p class="face-label">{{ labels.front }}</p>
           <p v-if="badge" class="face-badge">{{ badge }}</p>
+          <img
+            v-if="card.frontImageUrl"
+            class="term-image"
+            :src="card.frontImageUrl"
+            alt=""
+          />
+          <p v-if="card.frontCategory" class="term-category">{{ card.frontCategory }}</p>
           <p class="term">{{ card.term }}</p>
           <p v-if="interactive && !revealed" class="tap-hint">{{ tapHintFront }}</p>
         </div>
@@ -371,6 +385,28 @@ export default {
   font-size: 11px;
   font-weight: 700;
   color: var(--c-amber);
+}
+
+.term-image {
+  display: block;
+  width: 100%;
+  max-width: 220px;
+  max-height: 160px;
+  margin: 0 auto 12px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid var(--c-border);
+  background: #fff;
+}
+
+.term-category {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--c-blue);
+  text-align: left;
+  width: 100%;
 }
 
 .term {
