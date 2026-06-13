@@ -83,11 +83,11 @@ export const liveAcademyToddlerVocabEn = {
     },
   },
   "card-lat-lesson003-3": {
-    "nicht aufhören können, Junkfood zu essen": {
-      wordEn: "can't stop eating junk food",
+    "nicht aufhören können, Snacks zu essen": {
+      wordEn: "can't stop eating snacks",
       examples: [
         {
-          en: "But still, I can't seem to stop eating junk food. It's not good.",
+          en: "But still, I can't seem to stop eating snacks. It's not good.",
         },
       ],
     },

@@ -26,6 +26,11 @@ import {
   latinVocabCards,
   getLatinVocabCardById,
 } from "./latinVocabContent.js";
+import {
+  ABSOLUTISMUS_BOOK_ID,
+  absolutismusCards,
+  getAbsolutismusCardById,
+} from "./absolutismusContent.js";
 
 /** @type {Record<string, { cards: object[], getCardById: (id: string) => object|null, labels: { front: string, back: string }, hint: string, showKoOnBack?: boolean }>} */
 export const flashcardBooks = {
@@ -82,6 +87,13 @@ export const flashcardBooks = {
     getCardById: getLatinVocabCardById,
     labels: { front: "Latein", back: "Form · Deutsch" },
     hint: "라틴어 단어를 보고 변형(활용·품사)과 독일어 뜻을 떠올린 뒤, 카드를 뒤집어 확인하세요.",
+    showKoOnBack: false,
+  },
+  [ABSOLUTISMUS_BOOK_ID]: {
+    cards: absolutismusCards,
+    getCardById: getAbsolutismusCardById,
+    labels: { front: "Begriff", back: "Erklärung" },
+    hint: "Absolutismus·Französische Revolution·Karikatur(Methode 117) 주제를 보고 뒷면 설명을 떠올린 뒤, 카드를 뒤집어 확인하세요.",
     showKoOnBack: false,
   },
 };

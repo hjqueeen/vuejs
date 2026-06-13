@@ -20,6 +20,10 @@ import {
   LATIN_VOCAB_BOOK_ID,
   LATIN_VOCAB_CARD_IDS,
 } from "./latinVocabContent.js";
+import {
+  ABSOLUTISMUS_BOOK_ID,
+  ABSOLUTISMUS_CARD_IDS,
+} from "./absolutismusContent.js";
 export const TONGIL_QUIZ_BOOK_ID = "book-tongil-quiz";
 export const TONGIL_QUIZ_QUESTION_IDS = tongilQuizQuestions.map((q) => q.id);
 
@@ -95,5 +99,15 @@ export const publicBooks = [
       "라틴어 단어 29개. 앞면: 라틴어, 뒷면: 변형(활용·품사)과 독일어 뜻. SM-2 간격 반복(Again/Hard/Good/Easy)으로 복습합니다.",
     coverColor: "book-cover-c",
     cardIds: LATIN_VOCAB_CARD_IDS,
+  },
+  {
+    id: ABSOLUTISMUS_BOOK_ID,
+    templateType: "flashcard",
+    title: "Geschichte · Absolutismus & Revolution",
+    subtitle: "Karteikarten — Begriff → Erklärung",
+    description:
+      "역사 14장: Absolutismus, Französische Revolution, Karikatur untersuchen(Methode 117). 앞면: 주제, 뒷면: 독일어 설명.",
+    coverColor: "book-cover-a",
+    cardIds: ABSOLUTISMUS_CARD_IDS,
   },
 ];

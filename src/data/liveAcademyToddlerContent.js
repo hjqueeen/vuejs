@@ -334,13 +334,12 @@ export const liveAcademyToddlerCards = [
     explanationKo: "no junk food · + It's amazing!",
     vocabulary: [
       {
-        word: "nicht aufhören können, Junkfood zu essen",
-        meaning:
-          "불량식품 먹는 걸 멈추지 못하다 · can't stop eating junk food",
+        word: "nicht aufhören können, Snacks zu essen",
+        meaning: "간식 먹는 걸 멈추지 못하다 · can't stop eating snacks",
         examples: [
           {
-            de: "Trotzdem kann ich nicht aufhören, Junkfood zu essen. Das ist nicht gut.",
-            ko: "그런데도 나는 불량식품 먹는 걸 멈추지 못하겠어요. 이건 좋지 않아요.",
+            de: "Trotzdem kann ich nicht aufhören, Snacks zu essen. Das ist nicht gut.",
+            ko: "그런데도 나는 간식 먹는 걸 멈추지 못하겠어요. 이건 좋지 않아요.",
           },
         ],
       },
