@@ -55,6 +55,33 @@ export const liveAcademyToddlerExplanationEn = {
     "She exercises every day at home by herself.\n+ She's very healthy.\n+ She's in very good shape.",
   "card-lat-lesson003-3":
     "She doesn't eat any junk food.\n+ It's amazing!",
+  "card-lat-lesson004-1": "I drive to work 2 or 3 times a week.",
+  "card-lat-lesson004-2": "She drives to work.",
+  "card-lat-lesson004-3":
+    "I don't drive to work.\nShe doesn't drive to work.",
+  "card-lat-lesson004-4":
+    "I drove to work yesterday / today / this morning.\nShe drove to work.",
+  "card-lat-lesson004-5":
+    "I didn't drive to work.\nShe didn't drive to work.",
+  "card-lat-lesson004-6":
+    "I'm going to drive to work tomorrow.\nShe's going to drive to work.",
+  "card-lat-lesson004-7":
+    "I leave early every day.\nShe leaves early every day.",
+  "card-lat-lesson004-8": "I don't leave early.\nShe doesn't leave early.",
+  "card-lat-lesson004-9":
+    "I left early this morning.\nShe left early.",
+  "card-lat-lesson004-10":
+    "I didn't leave early this morning.\nShe didn't leave early.",
+  "card-lat-lesson004-11":
+    "I'm going to leave early tomorrow.\nShe's going to leave early tomorrow.",
+  "card-lat-lesson004-12":
+    "I'm not going to leave early tomorrow.\nShe's not going to leave early tomorrow.",
+  "card-lat-lesson004-13": "I don't take the subway to work every day.",
+  "card-lat-lesson004-14": "She doesn't drive to work.",
+  "card-lat-lesson004-15": "I didn't go anywhere this summer.",
+  "card-lat-lesson004-16": "She didn't say anything to me.",
+  "card-lat-lesson004-17": "I'm not going to say anything to her.",
+  "card-lat-lesson004-18": "She's not going to believe me.",
 };
 
 /** @type {Record<string, Record<string, { wordEn: string, examples: { en: string }[] }>>} */

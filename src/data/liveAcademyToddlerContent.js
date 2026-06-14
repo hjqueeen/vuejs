@@ -17,6 +17,9 @@ export const LIVE_ACADEMY_TODDLER_LESSON002_SOURCE_URL =
 export const LIVE_ACADEMY_TODDLER_LESSON003_SOURCE_URL =
   "https://youtu.be/0R6tL0ESm_U?si=IpVlCaQJzn64IcP-";
 
+export const LIVE_ACADEMY_TODDLER_LESSON004_SOURCE_URL =
+  "https://youtu.be/c7_IqzxcaS0?si=lifC1ah9GNFUbsPH";
+
 export const liveAcademyToddlerCards = [
   {
     id: "card-alltag-reise-wie-war",
@@ -345,6 +348,114 @@ export const liveAcademyToddlerCards = [
       },
     ],
   },
+  // ── Lesson 004 | 현재 / 과거 / 미래 시제 · drive to work ──
+  {
+    id: "card-lat-lesson004-1",
+    term: "저는 일주일에 두세 번 운전해서 출근해요.",
+    explanationDe: "Ich fahre zwei- oder dreimal die Woche mit dem Auto zur Arbeit.",
+    explanationKo: "present · I drive to work",
+  },
+  {
+    id: "card-lat-lesson004-2",
+    term: "그녀는 운전해서 출근해요.",
+    explanationDe: "Sie fährt mit dem Auto zur Arbeit.",
+    explanationKo: "present · 3rd person · drives",
+  },
+  {
+    id: "card-lat-lesson004-3",
+    term: "나는 운전해서 출근하지 않아요.\n그녀는 운전해서 출근하지 않아요.",
+    explanationDe:
+      "Ich fahre nicht mit dem Auto zur Arbeit.\nSie fährt nicht mit dem Auto zur Arbeit.",
+    explanationKo: "present negative · don't / doesn't drive",
+  },
+  {
+    id: "card-lat-lesson004-4",
+    term:
+      "나는 어제 / 오늘 / 오늘 아침 운전해서 출근했어요.\n그녀는 운전해서 출근했어요.",
+    explanationDe:
+      "Ich bin gestern / heute / heute Morgen mit dem Auto zur Arbeit gefahren.\nSie ist mit dem Auto zur Arbeit gefahren.",
+    explanationKo: "past · drove to work",
+  },
+  {
+    id: "card-lat-lesson004-5",
+    term: "나는 운전해서 출근하지 않았어요.\n그녀는 운전해서 출근하지 않았어요.",
+    explanationDe:
+      "Ich bin nicht mit dem Auto zur Arbeit gefahren.\nSie ist nicht mit dem Auto zur Arbeit gefahren.",
+    explanationKo: "past negative · didn't drive",
+  },
+  {
+    id: "card-lat-lesson004-6",
+    term: "나는 내일 운전해서 출근할 거예요.\n그녀는 운전해서 출근할 거예요.",
+    explanationDe:
+      "Ich werde morgen mit dem Auto zur Arbeit fahren.\nSie wird mit dem Auto zur Arbeit fahren.",
+    explanationKo: "future · be going to · drive",
+  },
+  {
+    id: "card-lat-lesson004-7",
+    term: "저는 매일 일찍 출발해요.\n그녀는 매일 일찍 출발해요.",
+    explanationDe:
+      "Ich gehe jeden Tag früh los.\nSie geht jeden Tag früh los.",
+  },
+  {
+    id: "card-lat-lesson004-8",
+    term: "나는 일찍 출발하지 않아요.\n그녀는 일찍 출발하지 않아요.",
+    explanationDe:
+      "Ich gehe nicht früh los.\nSie geht nicht früh los.",
+  },
+  {
+    id: "card-lat-lesson004-9",
+    term: "나는 오늘 아침 일찍 출발했어요.\n그녀는 일찍 출발했어요.",
+    explanationDe:
+      "Ich bin heute Morgen früh losgegangen.\nSie ist früh losgegangen.",
+  },
+  {
+    id: "card-lat-lesson004-10",
+    term: "나는 오늘 아침 일찍 출발하지 않았어요.\n그녀는 일찍 출발하지 않았어요.",
+    explanationDe:
+      "Ich bin heute Morgen nicht früh losgegangen.\nSie ist nicht früh losgegangen.",
+  },
+  {
+    id: "card-lat-lesson004-11",
+    term: "나는 내일 일찍 출발할 거예요.\n그녀는 내일 일찍 출발할 거예요.",
+    explanationDe:
+      "Ich werde morgen früh losgehen.\nSie wird morgen früh losgehen.",
+  },
+  {
+    id: "card-lat-lesson004-12",
+    term: "나는 내일 일찍 출발하지 않을 거예요.\n그녀는 내일 일찍 출발하지 않을 거예요.",
+    explanationDe:
+      "Ich werde morgen nicht früh losgehen.\nSie wird morgen nicht früh losgehen.",
+  },
+  {
+    id: "card-lat-lesson004-13",
+    term: "저는 매일 지하철로 출근하지는 않아요.",
+    explanationDe: "Ich nehme nicht jeden Tag die U-Bahn zur Arbeit.",
+  },
+  {
+    id: "card-lat-lesson004-14",
+    term: "그녀는 자가용으로 출근하지 않아요.",
+    explanationDe: "Sie fährt nicht mit dem Auto zur Arbeit.",
+  },
+  {
+    id: "card-lat-lesson004-15",
+    term: "저는 올 여름에 아무데도 안 갔어요.",
+    explanationDe: "Ich bin diesen Sommer nirgendwo hingegangen.",
+  },
+  {
+    id: "card-lat-lesson004-16",
+    term: "그녀는 나한테 아무말도 안 했어.",
+    explanationDe: "Sie hat mir nichts gesagt.",
+  },
+  {
+    id: "card-lat-lesson004-17",
+    term: "난 그녀에게 아무말도 안 할 거야.",
+    explanationDe: "Ich werde ihr nichts sagen.",
+  },
+  {
+    id: "card-lat-lesson004-18",
+    term: "그녀는 나를 믿지 않을 거야.",
+    explanationDe: "Sie wird mir nicht glauben.",
+  },
 ];
 
 export const liveAcademyToddlerSections = [
@@ -430,6 +541,32 @@ export const liveAcademyToddlerSections = [
       "card-lat-lesson003-1",
       "card-lat-lesson003-2",
       "card-lat-lesson003-3",
+    ],
+  },
+  {
+    id: "section-lat-6",
+    title: "Lesson 004 | 현재 / 과거 / 미래 시제",
+    sourceUrl: LIVE_ACADEMY_TODDLER_LESSON004_SOURCE_URL,
+    sourceLabel: "Live Academy Toddler · YouTube",
+    cardIds: [
+      "card-lat-lesson004-1",
+      "card-lat-lesson004-2",
+      "card-lat-lesson004-3",
+      "card-lat-lesson004-4",
+      "card-lat-lesson004-5",
+      "card-lat-lesson004-6",
+      "card-lat-lesson004-7",
+      "card-lat-lesson004-8",
+      "card-lat-lesson004-9",
+      "card-lat-lesson004-10",
+      "card-lat-lesson004-11",
+      "card-lat-lesson004-12",
+      "card-lat-lesson004-13",
+      "card-lat-lesson004-14",
+      "card-lat-lesson004-15",
+      "card-lat-lesson004-16",
+      "card-lat-lesson004-17",
+      "card-lat-lesson004-18",
     ],
   },
 ];

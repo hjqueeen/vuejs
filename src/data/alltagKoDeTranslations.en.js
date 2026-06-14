@@ -32,6 +32,8 @@ export const alltagExplanationEn = {
     "Regarding the email to the professor, I'm wondering if I overthought it. If comparing three languages under 6000 words is too much, should we go back to the original Kotlin-and-Swift comparison and focus the paper more on the language comparison itself?",
   "card-alltag-paper-ziel":
     "What does the professor actually expect from us in this paper — and what are the goals we need to achieve?",
+  "card-alltag-workshop-quantum":
+    "This week I went to a workshop and experienced so many fascinating things. I learned about emerging technologies like quantum computing and HPC, and we visited Deutsche Telekom and the Zuse Institute. At Deutsche Telekom we toured the quantum lab — what surprised me was that communication can use logical quantum behavior, not necessarily physical qubits. At the Zuse Institute I saw supercomputers filling the basement; they're managed at the national level, parts are replaced every five years to stay up to date, and they're still in the global top 500. The institute is next to Freie Universität — my first time there, and I loved it. The cafeteria food was really cheap and delicious. We also presented our team project on the quantum protocol.",
 };
 
 /** @type {Record<string, Record<string, { wordEn: string, meaningEn?: string, examples: { en: string }[] }>>} */
@@ -248,6 +250,22 @@ export const alltagVocabEn = {
       examples: [
         { en: "What goals do we have to achieve by the submission deadline?" },
         { en: "With a narrower focus we can achieve our goal more realistically." },
+      ],
+    },
+  },
+  "card-alltag-workshop-quantum": {
+    austauschen: {
+      wordEn: "replace / swap out",
+      examples: [
+        { en: "Every five years parts of the supercomputers are replaced." },
+        { en: "To keep everything up to date, they regularly swap out hardware." },
+      ],
+    },
+    präsentieren: {
+      wordEn: "present",
+      examples: [
+        { en: "At the end of the workshop we presented our team project." },
+        { en: "Tomorrow we'll present our quantum protocol to the group." },
       ],
     },
   },

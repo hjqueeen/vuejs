@@ -151,11 +151,15 @@ function isBenignNavigationError(err) {
   if (
     err.name === "NavigationDuplicated" ||
     err.name === "NavigationCancelled" ||
-    err.name === "NavigationRedirected"
+    err.name === "NavigationRedirected" ||
+    err.name === "NavigationAborted"
   ) {
     return true;
   }
-  return typeof err.message === "string" && err.message.includes("Redirected");
+  if (typeof err.message !== "string") return false;
+  return (
+    err.message.includes("Redirected") || err.message.includes("Navigation aborted")
+  );
 }
 
 function patchRouterNavigation(method) {

@@ -628,6 +628,44 @@ export const alltagKoDeCards = [
       },
     ],
   },
+  {
+    id: "card-alltag-workshop-quantum",
+    term:
+      "이번 주에 워크샵을 다녀오면서 정말 흥미로운 것을 많이 경험했다. 퀀텀컴퓨팅, HPC 등의 신기술에 대해서 배웠고, 도이치 텔레콤과 Zuse Institute도 방문했다. 도이치 텔레콤에서는 퀀텀 랩을 방문했는데, 실제로 물리적인 양자가 아니라 논리적인 양자 행동을 통해서 통신에 이용할 수 있다는 점이 놀라웠다. Zuse Institute에서는 지하를 가득 채운 슈퍼컴퓨터들을 보았는데, 국가 차원에서 관리되고 5년마다 일부를 교체하면서 항상 최신으로 업데이트하고, 현재에도 세계 탑 500 안에 드는 컴퓨터이더라. 또 그 기관은 자유대학교 옆에 있었는데, 처음으로 가봤는데 너무 좋더라. 특히 식당에서 밥도 진짜 싸고 맛있었어. 또 우리는 퀀텀 프로토콜에 대해 팀 프로젝트를 발표했어.",
+    explanationDe:
+      "Diese Woche war ich auf einem Workshop und hab richtig viel Spannendes erlebt. Ich hab neue Technologien wie Quantencomputing und HPC kennengelernt, und wir haben auch die Deutsche Telekom und das Zuse-Institut besucht. Bei der Deutschen Telekom waren wir im Quantum Lab — was mich überrascht hat: Kommunikation kann über logisches Quantenverhalten genutzt werden, nicht unbedingt über physische Qubits. Im Zuse-Institut hab ich Supercomputer gesehen, die den Keller füllen; sie werden auf nationaler Ebene betrieben, alle fünf Jahre werden Teile ausgetauscht, damit alles aktuell bleibt, und die Rechner stehen immer noch in den Top 500 weltweit. Die Einrichtung liegt direkt neben der Freien Universität — war mein erstes Mal dort, und mir hat's richtig gut gefallen. Besonders in der Mensa war das Essen echt günstig und lecker. Außerdem haben wir unser Teamprojekt zum Quantenprotokoll präsentiert.",
+    explanationKo: "Workshop · Deutsche Telekom · Zuse Institute · Teampräsentation",
+    vocabulary: [
+      {
+        word: "austauschen",
+        meaning: "(부품·장비 등을) 교체하다, 바꾸다 · to replace, swap out",
+        examples: [
+          {
+            de: "Alle fünf Jahre werden Teile der Supercomputer ausgetauscht.",
+            ko: "5년마다 슈퍼컴퓨터의 일부가 교체된다.",
+          },
+          {
+            de: "Damit alles aktuell bleibt, tauschen sie regelmäßig Hardware aus.",
+            ko: "모든 것이 최신 상태로 유지되도록 그들은 정기적으로 하드웨어를 교체한다.",
+          },
+        ],
+      },
+      {
+        word: "präsentieren",
+        meaning: "(프로젝트·Ergebnis 등을) 발표하다 · to present",
+        examples: [
+          {
+            de: "Am Ende des Workshops haben wir unser Teamprojekt präsentiert.",
+            ko: "워크샵 마지막에 우리는 팀 프로젝트를 발표했다.",
+          },
+          {
+            de: "Wir präsentieren morgen unser Quantenprotokoll vor der Gruppe.",
+            ko: "우리는 내일 그룹 앞에서 퀀텀 프로토콜을 발표한다.",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export const alltagKoDeSections = [
@@ -667,6 +705,11 @@ export const alltagKoDeSections = [
       "card-alltag-paper-sprachvergleich",
       "card-alltag-paper-ziel",
     ],
+  },
+  {
+    id: "section-alltag-workshop",
+    title: "워크샵 · 퀀텀컴퓨팅",
+    cardIds: ["card-alltag-workshop-quantum"],
   },
 ];
 
