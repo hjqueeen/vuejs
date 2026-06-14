@@ -32,8 +32,16 @@ export const alltagExplanationEn = {
     "Regarding the email to the professor, I'm wondering if I overthought it. If comparing three languages under 6000 words is too much, should we go back to the original Kotlin-and-Swift comparison and focus the paper more on the language comparison itself?",
   "card-alltag-paper-ziel":
     "What does the professor actually expect from us in this paper — and what are the goals we need to achieve?",
-  "card-alltag-workshop-quantum":
-    "This week I went to a workshop and experienced so many fascinating things. I learned about emerging technologies like quantum computing and HPC, and we visited Deutsche Telekom and the Zuse Institute. At Deutsche Telekom we toured the quantum lab — what surprised me was that communication can use logical quantum behavior, not necessarily physical qubits. At the Zuse Institute I saw supercomputers filling the basement; they're managed at the national level, parts are replaced every five years to stay up to date, and they're still in the global top 500. The institute is next to Freie Universität — my first time there, and I loved it. The cafeteria food was really cheap and delicious. We also presented our team project on the quantum protocol.",
+  "card-alltag-workshop-overview":
+    "This week I went to a workshop and experienced so many fascinating things. I learned about emerging technologies like quantum computing and high-performance computing, and we visited Deutsche Telekom and the Zuse Institute.",
+  "card-alltag-workshop-dt-quantumlab":
+    "At Deutsche Telekom we toured the quantum lab — I learned there are two approaches to quantum-safe communication: quantum key distribution (QKD) relies on physical quantum states like photons, while post-quantum cryptography (PQC) uses mathematical algorithms on ordinary networks. Both count as quantum-safe, but they work in completely different ways — that surprised me.",
+  "card-alltag-workshop-zuse-hpc":
+    "At the Zuse Institute I saw supercomputers filling the basement; they're managed at the national level, parts are replaced every five years to stay up to date, and they're still in the global top 500.",
+  "card-alltag-workshop-fu-campus":
+    "The institute is next to Freie Universität — my first time there, and I loved it. The cafeteria food was really cheap and delicious.",
+  "card-alltag-workshop-team-praesentation":
+    "We also presented our team project on the quantum protocol.",
 };
 
 /** @type {Record<string, Record<string, { wordEn: string, meaningEn?: string, examples: { en: string }[] }>>} */
@@ -253,7 +261,47 @@ export const alltagVocabEn = {
       ],
     },
   },
-  "card-alltag-workshop-quantum": {
+  "card-alltag-workshop-overview": {
+    "sein + auf einem Workshop": {
+      wordEn: "be at / attend a workshop (+ Dativ, auf)",
+      examples: [
+        { en: "This week I was at a workshop." },
+        { en: "Next week I'll be at a conference in Berlin." },
+        { en: "Were you at the seminar yesterday too?" },
+      ],
+    },
+    erleben: {
+      wordEn: "experience",
+      examples: [
+        { en: "At the workshop I experienced so many fascinating things." },
+        { en: "During the visit to the quantum lab I experienced something new." },
+      ],
+    },
+    kennenglernen: {
+      wordEn: "get to know / learn about",
+      examples: [
+        { en: "I learned about new technologies like high-performance computing." },
+        { en: "At the workshop we got to know various research institutes." },
+      ],
+    },
+  },
+  "card-alltag-workshop-dt-quantumlab": {
+    "basieren auf": {
+      wordEn: "be based on (+ Dativ)",
+      examples: [
+        { en: "Quantum key distribution (QKD) is based on physical quantum states like photons." },
+        { en: "Post-quantum cryptography (PQC) is based on mathematical algorithms, not on quantum physics." },
+      ],
+    },
+    "sich unterscheiden": {
+      wordEn: "differ / be distinct",
+      examples: [
+        { en: "The two approaches differ fundamentally." },
+        { en: "You have to clearly distinguish quantum key distribution from post-quantum cryptography." },
+      ],
+    },
+  },
+  "card-alltag-workshop-zuse-hpc": {
     austauschen: {
       wordEn: "replace / swap out",
       examples: [
@@ -261,6 +309,31 @@ export const alltagVocabEn = {
         { en: "To keep everything up to date, they regularly swap out hardware." },
       ],
     },
+    betreiben: {
+      wordEn: "operate / run",
+      examples: [
+        { en: "The supercomputers are operated at the national level." },
+        { en: "The institute operates several machines in the top 500." },
+      ],
+    },
+  },
+  "card-alltag-workshop-fu-campus": {
+    gefallen: {
+      wordEn: "like / appeal to",
+      examples: [
+        { en: "I really liked the campus." },
+        { en: "Did you like the location next to the university?" },
+      ],
+    },
+    günstig: {
+      wordEn: "cheap / affordable",
+      examples: [
+        { en: "In the cafeteria the food was really cheap and delicious." },
+        { en: "For students the cafeteria is often cheaper than eating out." },
+      ],
+    },
+  },
+  "card-alltag-workshop-team-praesentation": {
     präsentieren: {
       wordEn: "present",
       examples: [

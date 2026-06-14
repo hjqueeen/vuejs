@@ -629,12 +629,108 @@ export const alltagKoDeCards = [
     ],
   },
   {
-    id: "card-alltag-workshop-quantum",
+    id: "card-alltag-workshop-overview",
     term:
-      "이번 주에 워크샵을 다녀오면서 정말 흥미로운 것을 많이 경험했다. 퀀텀컴퓨팅, HPC 등의 신기술에 대해서 배웠고, 도이치 텔레콤과 Zuse Institute도 방문했다. 도이치 텔레콤에서는 퀀텀 랩을 방문했는데, 실제로 물리적인 양자가 아니라 논리적인 양자 행동을 통해서 통신에 이용할 수 있다는 점이 놀라웠다. Zuse Institute에서는 지하를 가득 채운 슈퍼컴퓨터들을 보았는데, 국가 차원에서 관리되고 5년마다 일부를 교체하면서 항상 최신으로 업데이트하고, 현재에도 세계 탑 500 안에 드는 컴퓨터이더라. 또 그 기관은 자유대학교 옆에 있었는데, 처음으로 가봤는데 너무 좋더라. 특히 식당에서 밥도 진짜 싸고 맛있었어. 또 우리는 퀀텀 프로토콜에 대해 팀 프로젝트를 발표했어.",
+      "이번 주에 워크샵을 다녀오면서 정말 흥미로운 것을 많이 경험했다. 퀀텀컴퓨팅, 고성능 컴퓨팅(HPC) 등의 신기술에 대해서 배웠고, 도이치 텔레콤과 Zuse Institute도 방문했다.",
     explanationDe:
-      "Diese Woche war ich auf einem Workshop und hab richtig viel Spannendes erlebt. Ich hab neue Technologien wie Quantencomputing und HPC kennengelernt, und wir haben auch die Deutsche Telekom und das Zuse-Institut besucht. Bei der Deutschen Telekom waren wir im Quantum Lab — was mich überrascht hat: Kommunikation kann über logisches Quantenverhalten genutzt werden, nicht unbedingt über physische Qubits. Im Zuse-Institut hab ich Supercomputer gesehen, die den Keller füllen; sie werden auf nationaler Ebene betrieben, alle fünf Jahre werden Teile ausgetauscht, damit alles aktuell bleibt, und die Rechner stehen immer noch in den Top 500 weltweit. Die Einrichtung liegt direkt neben der Freien Universität — war mein erstes Mal dort, und mir hat's richtig gut gefallen. Besonders in der Mensa war das Essen echt günstig und lecker. Außerdem haben wir unser Teamprojekt zum Quantenprotokoll präsentiert.",
-    explanationKo: "Workshop · Deutsche Telekom · Zuse Institute · Teampräsentation",
+      "Diese Woche war ich auf einem Workshop und hab richtig viel Spannendes erlebt. Ich hab neue Technologien wie Quantencomputing und High-Performance-Computing kennengelernt, und wir haben auch die Deutsche Telekom und das Zuse-Institut besucht.",
+    explanationKo: "Workshop · Quantencomputing · High-Performance-Computing · besuchen",
+    vocabulary: [
+      {
+        word: "sein + auf einem Workshop",
+        meaning:
+          "워크샵에 (참석·참가)하다 · to be at / attend a workshop (+ Dativ, auf)",
+        examples: [
+          {
+            de: "Diese Woche war ich auf einem Workshop.",
+            ko: "이번 주 워크샵에 다녀왔다.",
+          },
+          {
+            de: "Nächste Woche bin ich auf einer Konferenz in Berlin.",
+            ko: "다음 주 베를린 컨퍼런스에 간다.",
+          },
+          {
+            de: "Warst du auch auf dem Seminar gestern?",
+            ko: "어제 세미나에도 갔어?",
+          },
+        ],
+      },
+      {
+        word: "erleben",
+        meaning: "(경험·사건을) 겪다, 경험하다 · to experience",
+        examples: [
+          {
+            de: "Auf dem Workshop hab ich richtig viel Spannendes erlebt.",
+            ko: "워크샵에서 정말 흥미로운 것을 많이 경험했다.",
+          },
+          {
+            de: "Beim Besuch im Quantum Lab hab ich etwas Neues erlebt.",
+            ko: "퀀텀 랩 방문에서 새로운 것을 경험했다.",
+          },
+        ],
+      },
+      {
+        word: "kennenglernen",
+        meaning: "(새로운 것을) 알게 되다, 익히다 · to get to know, learn about",
+        examples: [
+          {
+            de: "Ich hab neue Technologien wie High-Performance-Computing kennengelernt.",
+            ko: "고성능 컴퓨팅 같은 신기술에 대해 알게 되었다.",
+          },
+          {
+            de: "Beim Workshop haben wir verschiedene Forschungsinstitute kennengelernt.",
+            ko: "워크샵에서 여러 연구 기관을 알게 되었다.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "card-alltag-workshop-dt-quantumlab",
+    term:
+      "도이치 텔레콤 퀀텀 랩을 방문했는데, 양자 보안 통신에는 두 갈래가 있다는 걸 알게 됐어. 양자 키 분배(QKD)는 광자 같은 물리적 양자 상태에 보안이 기반하고, 포스트 양자 암호(PQC)는 일반 네트워크에서 수학 알고리즘만으로 양자 내성을 확보하는 거야. 둘 다 '양자 보안'이지만 원리가 완전히 달라서 놀랐어.",
+    explanationDe:
+      "Bei der Deutschen Telekom waren wir im Quantum Lab — da hab ich gelernt, dass es zwei Wege für quantensichere Kommunikation gibt: Quantenschlüsselverteilung (QKD) basiert auf physischen Quantenzuständen wie Photonen, Post-Quanten-Kryptographie (PQC) dagegen nutzt mathematische Algorithmen auf normalen Netzwerken. Beide gelten als quantensicher, funktionieren aber völlig unterschiedlich — das hat mich überrascht.",
+    explanationKo: "Quantenschlüsselverteilung · Post-Quanten-Kryptographie · basieren auf",
+    vocabulary: [
+      {
+        word: "basieren auf",
+        meaning:
+          "~에 기반하다 · to be based on (+ Dativ)",
+        examples: [
+          {
+            de: "Quantenschlüsselverteilung (QKD) basiert auf physischen Quantenzuständen wie Photonen.",
+            ko: "양자 키 분배(QKD)는 광자 같은 물리적 양자 상태에 기반한다.",
+          },
+          {
+            de: "Post-Quanten-Kryptographie (PQC) basiert auf mathematischen Algorithmen, nicht auf Quantenphysik.",
+            ko: "포스트 양자 암호(PQC)는 양자 물리가 아니라 수학 알고리즘에 기반한다.",
+          },
+        ],
+      },
+      {
+        word: "sich unterscheiden",
+        meaning: "(서로) 다르다, 구별되다 · to differ, be distinct",
+        examples: [
+          {
+            de: "Beide Ansätze unterscheiden sich grundlegend.",
+            ko: "두 접근법은 근본적으로 다르다.",
+          },
+          {
+            de: "Man muss Quantenschlüsselverteilung und Post-Quanten-Kryptographie klar voneinander unterscheiden.",
+            ko: "양자 키 분배와 포스트 양자 암호를 명확히 구별해야 한다.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "card-alltag-workshop-zuse-hpc",
+    term:
+      "Zuse Institute에서는 지하를 가득 채운 슈퍼컴퓨터들을 보았는데, 국가 차원에서 관리되고 5년마다 일부를 교체하면서 항상 최신으로 업데이트하고, 현재에도 세계 탑 500 안에 드는 컴퓨터이더라.",
+    explanationDe:
+      "Im Zuse-Institut hab ich Supercomputer gesehen, die den Keller füllen; sie werden auf nationaler Ebene betrieben, alle fünf Jahre werden Teile ausgetauscht, damit alles aktuell bleibt, und die Rechner stehen immer noch in den Top 500 weltweit.",
+    explanationKo: "Supercomputer · national · austauschen · Top 500",
     vocabulary: [
       {
         word: "austauschen",
@@ -650,6 +746,67 @@ export const alltagKoDeCards = [
           },
         ],
       },
+      {
+        word: "betreiben",
+        meaning: "(시설·System 등을) 운영하다, 가동하다 · to operate, run",
+        examples: [
+          {
+            de: "Die Supercomputer werden auf nationaler Ebene betrieben.",
+            ko: "슈퍼컴퓨터는 국가 차원에서 운영된다.",
+          },
+          {
+            de: "Das Institut betreibt mehrere Rechner in den Top 500.",
+            ko: "그 기관은 탑 500 안에 드는 여러 컴퓨터를 운영한다.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "card-alltag-workshop-fu-campus",
+    term:
+      "또 그 기관은 자유대학교 옆에 있었는데, 처음으로 가봤는데 너무 좋더라. 특히 식당에서 밥도 진짜 싸고 맛있었어.",
+    explanationDe:
+      "Die Einrichtung liegt direkt neben der Freien Universität — war mein erstes Mal dort, und mir hat's richtig gut gefallen. Besonders in der Mensa war das Essen echt günstig und lecker.",
+    explanationKo: "Freie Universität · Mensa · gefallen · günstig",
+    vocabulary: [
+      {
+        word: "gefallen",
+        meaning: "마음에 들다, 좋다 · to like, appeal to (+ Dativ)",
+        examples: [
+          {
+            de: "Mir hat der Campus richtig gut gefallen.",
+            ko: "캠퍼스가 정말 마음에 들었다.",
+          },
+          {
+            de: "Hat dir die Lage neben der Uni gefallen?",
+            ko: "대학교 옆 위치가 마음에 들었어?",
+          },
+        ],
+      },
+      {
+        word: "günstig",
+        meaning: "(가격이) 저렴하다 · cheap, affordable",
+        examples: [
+          {
+            de: "In der Mensa war das Essen echt günstig und lecker.",
+            ko: "학식에서 밥이 정말 싸고 맛있었다.",
+          },
+          {
+            de: "Für Studenten ist die Mensa oft günstiger als draußen.",
+            ko: "학생들에게 학식은 밖보다 종종 더 저렴하다.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "card-alltag-workshop-team-praesentation",
+    term: "또 우리는 퀀텀 프로토콜에 대해 팀 프로젝트를 발표했어.",
+    explanationDe:
+      "Außerdem haben wir unser Teamprojekt zum Quantenprotokoll präsentiert.",
+    explanationKo: "Teamprojekt · Quantenprotokoll · präsentieren",
+    vocabulary: [
       {
         word: "präsentieren",
         meaning: "(프로젝트·Ergebnis 등을) 발표하다 · to present",
@@ -709,7 +866,13 @@ export const alltagKoDeSections = [
   {
     id: "section-alltag-workshop",
     title: "워크샵 · 퀀텀컴퓨팅",
-    cardIds: ["card-alltag-workshop-quantum"],
+    cardIds: [
+      "card-alltag-workshop-overview",
+      "card-alltag-workshop-dt-quantumlab",
+      "card-alltag-workshop-zuse-hpc",
+      "card-alltag-workshop-fu-campus",
+      "card-alltag-workshop-team-praesentation",
+    ],
   },
 ];
 
