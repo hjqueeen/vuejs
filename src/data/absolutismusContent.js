@@ -7,6 +7,7 @@ export const ABSOLUTISMUS_BOOK_ID = "book-absolutismus";
 const KARIKATUR_M1_IMAGE = publicAssetUrl("images/karikatur-m1-trois-ordres.png");
 const KARIKATUR_M2_IMAGE = publicAssetUrl("images/karikatur-m2-reveil-tiers-etat.jpg");
 const KARIKATUR_M3_IMAGE = publicAssetUrl("images/karikatur-m3-ich-wusste-ja.jpg");
+const KARIKATUR_M4_IMAGE = publicAssetUrl("images/karikatur-m4-declaration-droits.jpg");
 
 import { karikaturKoById } from "./absolutismusKarikaturKo.js";
 
@@ -319,6 +320,90 @@ export const absolutismusCards = [
     "11. Welche Wirkung könnte die Karikatur haben?",
     "Hoffnung auf Gleichberechtigung und gesellschaftlichen Wandel; Adel und Klerus sollen den Druck spüren. Das Volk erkennt: Die Revolution verändert die Verhältnisse — der 3. Stand hat eine Stimme.",
   ),
+  karikaturCard(
+    "card-karikatur-m4-frage-1",
+    KARIKATUR_M4_IMAGE,
+    "Ersten Eindruck festhalten",
+    "1. Wie wirkt die Karikatur auf dich?",
+    "Das Bild wirkt feierlich, hoffnungsvoll und ernst zugleich. Die großen Gesetzestafeln und vielen Symbole vermitteln: Etwas Wichtiges und Dauerhaftes wird festgeschrieben — Freiheit und Gleichheit sollen für alle gelten.",
+  ),
+  karikaturCard(
+    "card-karikatur-m4-frage-2",
+    KARIKATUR_M4_IMAGE,
+    "Einzelheiten beschreiben",
+    "2. Welche Personen, Gegenstände und andere Details lassen sich erkennen? Achte auf den Gesichtsausdruck, die Körperhaltung. Beziehe die Bildunterschrift mit ein.",
+    "Oben der Präambel-Text der Déclaration. Links eine weibliche Allegorie (La Monarchie / Frankreich) mit Krone und Zepter, in der Hand zerbrochene Ketten der Tyrannei. Rechts der Génie de la Nation (Genius der Nation) mit Fackel und Zepter der Macht. In der Mitte unten zwei große Tafeln mit den 17 Artikeln der Erklärung, getrennt durch ein Liktorenbündel (Fasces) mit phrygischer Mütze, Eichenlaub und einer sich in den Schwanz beißenden Schlange. Darüber ein strahlendes Auge der Vorsehung im Dreieck. Antikisierende Säulen und feierliche Inschrift — keine satirische Bildunterschrift wie bei M1–M3, sondern der offizielle Titel: Déclaration des Droits de l'Homme et du Citoyen.",
+  ),
+  karikaturCard(
+    "card-karikatur-m4-frage-3",
+    KARIKATUR_M4_IMAGE,
+    "Zusätzliche Informationen heranziehen",
+    "3. Wer ist der Zeichner?",
+    "Jean-Jacques-François Le Barbier (dit l'Aîné, 1738–1826), französischer Historienmaler — zugeschrieben/attributed.",
+  ),
+  karikaturCard(
+    "card-karikatur-m4-frage-4",
+    KARIKATUR_M4_IMAGE,
+    "Zusätzliche Informationen heranziehen",
+    "4. Wann und wo ist die Karikatur entstanden?",
+    "Um 1789, in Paris (Frankreich). Die Erklärung wurde am 26. August 1789 von der Nationalversammlung beschlossen; das Gemälde wurde der Versammlung am 5. November 1790 offiziell übergeben.",
+  ),
+  karikaturCard(
+    "card-karikatur-m4-frage-5",
+    KARIKATUR_M4_IMAGE,
+    "Zusätzliche Informationen heranziehen",
+    "5. Gibt es einen Titel?",
+    "Ja: „Déclaration des Droits de l'Homme et du Citoyen“ — auf Deutsch: „Erklärung der Menschen- und Bürgerrechte“.",
+  ),
+  karikaturCard(
+    "card-karikatur-m4-frage-6",
+    KARIKATUR_M4_IMAGE,
+    "Zusätzliche Informationen heranziehen",
+    "6. Welches Thema hat die Karikatur?",
+    "Die Erklärung der Menschen- und Bürgerrechte von 1789 — die rechtliche Verankerung von Freiheit, Gleichheit und Grundrechten nach den Idealen der Aufklärung und der Französischen Revolution.",
+  ),
+  karikaturCard(
+    "card-karikatur-m4-frage-7",
+    KARIKATUR_M4_IMAGE,
+    "Bildaussage erkennen",
+    "7. Welche Bedeutung haben die Personen und Gegenstände?",
+    "• Weibliche Allegorie (Monarchie/Frankreich) mit zerbrochenen Ketten → Ende der Tyrannei, neuer Staat\n" +
+      "• Génie de la Nation mit Fackel und Zepter → souveränes Volk, Nation als Träger der Macht\n" +
+      "• Zwei Gesetzestafeln mit 17 Artikeln → heilige, verbindliche Grundrechte (Anspielung auf Moses/Gesetzestafeln)\n" +
+      "• Fasces (Liktorenbündel) → Einheit und Stärke des Volkes\n" +
+      "• Phrygische Mütze → Freiheit\n" +
+      "• Schlange, die sich in den Schwanz beißt → Ewigkeit der Rechte\n" +
+      "• Eichenlaub → Sieg der Revolution\n" +
+      "• Auge der Vorsehung im Dreieck → göttliche/vernünftige Ordnung, Gleichheit",
+  ),
+  karikaturCard(
+    "card-karikatur-m4-frage-8",
+    KARIKATUR_M4_IMAGE,
+    "Bildaussage erkennen",
+    "8. Auf welches Ereignis bezieht sich die Karikatur?",
+    "Auf die Verabschiedung der Erklärung der Menschen- und Bürgerrechte am 26. August 1789 durch die Nationalversammlung — ein zentraler Schritt der Französischen Revolution.",
+  ),
+  karikaturCard(
+    "card-karikatur-m4-frage-9",
+    KARIKATUR_M4_IMAGE,
+    "Aussage der Karikatur formulieren",
+    "9. Was ist die Botschaft?",
+    "Alle Menschen sind frei und gleich geboren; ihre Rechte sind unveräußerlich. Die Revolution beendet die Tyrannei und stellt die Rechte des Volkes in den Mittelpunkt — festgeschrieben in einer Verfassung für alle Bürger.",
+  ),
+  karikaturCard(
+    "card-karikatur-m4-frage-10",
+    KARIKATUR_M4_IMAGE,
+    "Aussage der Karikatur formulieren",
+    "10. Was wird kritisiert?",
+    "Die alte absolutistische Ordnung ohne Grundrechte: Willkür des Königs, Ständeprivilegien und fehlende Gleichheit vor dem Gesetz. Stattdessen sollen Freiheit, Eigentum, Sicherheit und Widerstandsrecht für alle gelten.",
+  ),
+  karikaturCard(
+    "card-karikatur-m4-frage-11",
+    KARIKATUR_M4_IMAGE,
+    "Aussage der Karikatur formulieren",
+    "11. Welche Wirkung könnte die Karikatur haben?",
+    "Das Volk erkennt seine neuen Rechte und fühlt sich als Bürger mit Anspruch auf Freiheit und Gleichheit. Die feierliche Darstellung soll Vertrauen in die Revolution wecken und zeigen: Die neue Ordnung ist legitim und dauerhaft.",
+  ),
 ];
 
 export const absolutismusSections = [
@@ -396,6 +481,26 @@ export const absolutismusSections = [
       "card-karikatur-m3-frage-9",
       "card-karikatur-m3-frage-10",
       "card-karikatur-m3-frage-11",
+    ],
+  },
+  {
+    id: "section-geschichte-karikatur-m4",
+    title: "Karikatur · M4",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Declaration_of_the_Rights_of_Man_and_of_the_Citizen_in_1789.jpg",
+    sourceLabel: "Wikimedia · Déclaration des droits de l'homme (1789)",
+    cardIds: [
+      "card-karikatur-m4-frage-1",
+      "card-karikatur-m4-frage-2",
+      "card-karikatur-m4-frage-3",
+      "card-karikatur-m4-frage-4",
+      "card-karikatur-m4-frage-5",
+      "card-karikatur-m4-frage-6",
+      "card-karikatur-m4-frage-7",
+      "card-karikatur-m4-frage-8",
+      "card-karikatur-m4-frage-9",
+      "card-karikatur-m4-frage-10",
+      "card-karikatur-m4-frage-11",
     ],
   },
 ];

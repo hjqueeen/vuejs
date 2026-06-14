@@ -1,4 +1,4 @@
-/** Karikatur M1–M3 — 한국어 설명 (뒷면 하단) */
+/** Karikatur M1–M4 — 한국어 설명 (뒷면 하단) */
 
 /** @type {Record<string, string>} */
 export const karikaturKoById = {
@@ -81,4 +81,34 @@ export const karikaturKoById = {
     "귀족·성직자가 특권을 누리고 3계급이 모든 부담을 진 구체제. 역전을 보여 줌: 이제 상위 계급도 의무를 져야 한다.",
   "card-karikatur-m3-frage-11":
     "평등과 사회 변화에 대한 희망; 귀족·성직자는 압박을 느끼게 된다. 혁명이 관계를 바꾸고 3계급에게 목소리가 생겼음을 사람들이 깨닫는다.",
+
+  "card-karikatur-m4-frage-1":
+    "장엄하고 희망적이면서도 진지하게 느껴진다. 큰 법전(石板)과 많은 상징이 무언가 중요하고 영구적인 것—자유와 평등—이 기록되고 있음을 전한다.",
+  "card-karikatur-m4-frage-2":
+    "위쪽에 선언문 서문. 왼쪽: 왕관·홀을 든 여성(프랑스/군주제 알레고리), 손에는 깨진 폭정의 사슬. 오른쪽: 횃불과 권력 홀을 든 „Génie de la Nation“(국가의 천사). 아래 중앙: 17개 조항이 적힌 두 법전, 가운데 리ktor 번들(Fasces)·프리기아 모자·참나무 잎·꼬리를 문 뱀. 그 위 전지적 눈(삼각형). 고전적 기둥과 엄숙한 글 — M1–M3처럼 풍자적 부제가 아니라 공식 제목 „Déclaration des Droits de l'Homme et du Citoyen“.",
+  "card-karikatur-m4-frage-3":
+    "Jean-Jacques-François Le Barbier (l'Aîné, 1738–1826), 프랑스 역사화가 — 귀속(attribué).",
+  "card-karikatur-m4-frage-4":
+    "약 1789년, 파리(프랑스). 선언은 1789년 8월 26일 국민의회에서 채택; 그림은 1790년 11월 5일 의회에 공식 전달.",
+  "card-karikatur-m4-frage-5":
+    "있음: „Déclaration des Droits de l'Homme et du Citoyen“ — 독일어: „Erklärung der Menschen- und Bürgerrechte“(인간과 시민의 권리 선언).",
+  "card-karikatur-m4-frage-6":
+    "1789년 인간과 시민의 권리 선언 — 계몽주의와 프랑스 혁명의 이상을 법으로 확정한 기본권.",
+  "card-karikatur-m4-frage-7":
+    "• 여성 알레고리(프랑스)+깨진 사슬 → 폭정 종료, 새 국가\n" +
+    "• Génie de la Nation+횃불·홀 → 주권 국민, 국가가 권력의 주체\n" +
+    "• 17조항 법전 두 장 → 신성하고 구속력 있는 기본권(모세/법판 연상)\n" +
+    "• Fasces → 국민의 단결과 힘\n" +
+    "• 프리기아 모자 → 자유\n" +
+    "• 꼬리를 문 뱀 → 권리의 영원성\n" +
+    "• 참나무 잎 → 혁명의 승리\n" +
+    "• 삼각형 속 전지적 눈 → 신성·이성의 질서, 평등",
+  "card-karikatur-m4-frage-8":
+    "1789년 8월 26일 국민의회가 채택한 인간과 시민의 권리 선언 — 프랑스 혁명의 핵심 단계.",
+  "card-karikatur-m4-frage-9":
+    "모든 사람은 자유롭고 평등하게 태어난다; 권리는 양도할 수 없다. 혁명은 폭정을 끝내고 국민의 권리를 헌법에 새긴다.",
+  "card-karikatur-m4-frage-10":
+    "기본권 없는 구 절대주의 질서: 왕의 전제, 계급 특권, 법 앞 평등 부재. 대신 자유·재산·안전·저항권이 모두에게 적용되어야 한다.",
+  "card-karikatur-m4-frage-11":
+    "국민이 새 권리를 인식하고 자유·평등을 주장하는 시민이 된다. 장엄한 표현은 혁명에 대한 신뢰를 키우고 새 질서가 정당하고 지속적임을 보여 준다.",
 };
