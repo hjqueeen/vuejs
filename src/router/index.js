@@ -7,6 +7,7 @@ import {
   learnerIdToRouteSlug,
   getDashboardLocation,
 } from "@/data/bookCatalog";
+import { resolveBookRouteAccess } from "@/utils/bookAccessGuard";
 
 Vue.use(Router);
 
@@ -143,6 +144,48 @@ const router = new Router({
       component: () => import("@/views/NotFoundView.vue"),
     },
   ],
+});
+
+function isBenignNavigationError(err) {
+  if (!err) return false;
+  if (
+    err.name === "NavigationDuplicated" ||
+    err.name === "NavigationCancelled" ||
+    err.name === "NavigationRedirected"
+  ) {
+    return true;
+  }
+  return typeof err.message === "string" && err.message.includes("Redirected");
+}
+
+function patchRouterNavigation(method) {
+  const original = Router.prototype[method];
+  Router.prototype[method] = function patched(location, onResolve, onReject) {
+    if (onResolve || onReject) {
+      return original.call(this, location, onResolve, onReject);
+    }
+    return original.call(this, location).catch((err) => {
+      if (isBenignNavigationError(err)) return err;
+      return Promise.reject(err);
+    });
+  };
+}
+
+patchRouterNavigation("push");
+patchRouterNavigation("replace");
+
+router.beforeEach((to, from, next) => {
+  resolveBookRouteAccess(to, from).then(({ allowed, abort, redirect }) => {
+    if (allowed) {
+      next();
+      return;
+    }
+    if (abort) {
+      next(false);
+      return;
+    }
+    next(redirect);
+  });
 });
 
 export default router;

@@ -125,11 +125,13 @@
       </section>
       <router-view v-else />
     </main>
+    <BookPasswordHost />
   </div>
 </template>
 
 <script>
 import AppHeader from "@/components/layout/AppHeader.vue";
+import BookPasswordHost from "@/components/dashboard/BookPasswordHost.vue";
 import ParagraphDetailView from "@/views/ParagraphDetailView.vue";
 import SentenceDetailView from "@/views/SentenceDetailView.vue";
 import GrammarChapterView from "@/views/GrammarChapterView.vue";
@@ -140,7 +142,14 @@ import { grammarChapters } from "@/data/grammarChapters";
 
 export default {
   name: "App",
-  components: { AppHeader, SentenceDetailView, ParagraphDetailView, GrammarChapterView, QuizChapterView },
+  components: {
+    AppHeader,
+    BookPasswordHost,
+    SentenceDetailView,
+    ParagraphDetailView,
+    GrammarChapterView,
+    QuizChapterView,
+  },
   data() {
     const savedShowToc = localStorage.getItem("ebook-show-toc");
     const savedPageMode = localStorage.getItem("ebook-page-mode");
