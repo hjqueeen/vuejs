@@ -14,6 +14,7 @@
 
 <script>
 import BaseCard from "@/components/common/BaseCard.vue";
+import { getDashboardLocation } from "@/data/bookCatalog";
 
 export default {
   name: "LoginView",
@@ -35,8 +36,8 @@ export default {
           email: this.email,
           password: this.password,
         });
-        const redirect = this.$route.query.redirect || "/dashboard";
-        this.$router.replace(redirect);
+        const redirect = this.$route.query.redirect;
+        this.$router.replace(redirect || getDashboardLocation());
       } catch (error) {
         this.error = error.message || this.$t("auth.loginFailed");
       } finally {

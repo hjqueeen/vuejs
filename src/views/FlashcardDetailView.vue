@@ -73,6 +73,7 @@ import { getCardById, getCardsForBook, getFlashcardBook } from "@/data/flashcard
 import { resolveFlashcardCard } from "@/utils/flashcardCardResolver";
 import { getFlashcardLayoutMode } from "@/utils/flashcardLayout";
 import { getFlashcardTargetLang } from "@/utils/flashcardTargetLang";
+import { guardBookAccess } from "@/utils/bookAccessGuard";
 
 export default {
   name: "FlashcardDetailView",
@@ -93,6 +94,9 @@ export default {
       layoutMode: getFlashcardLayoutMode(),
       targetLang: getFlashcardTargetLang(this.bookId),
     };
+  },
+  created() {
+    guardBookAccess(this.$router, this.bookId);
   },
   computed: {
     bookMeta() {

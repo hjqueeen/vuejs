@@ -8,6 +8,8 @@ const KARIKATUR_M1_IMAGE = publicAssetUrl("images/karikatur-m1-trois-ordres.png"
 const KARIKATUR_M2_IMAGE = publicAssetUrl("images/karikatur-m2-reveil-tiers-etat.jpg");
 const KARIKATUR_M3_IMAGE = publicAssetUrl("images/karikatur-m3-ich-wusste-ja.jpg");
 
+import { karikaturKoById } from "./absolutismusKarikaturKo.js";
+
 /** @param {string} imageUrl @param {string} category @param {string} question @param {string} answer */
 const karikaturCard = (id, imageUrl, category, question, answer) => ({
   id,
@@ -15,6 +17,7 @@ const karikaturCard = (id, imageUrl, category, question, answer) => ({
   frontCategory: category,
   term: question,
   explanationDe: answer,
+  ...(karikaturKoById[id] ? { explanationKo: karikaturKoById[id] } : {}),
 });
 
 export const absolutismusCards = [

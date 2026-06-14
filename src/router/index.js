@@ -1,5 +1,12 @@
 import Vue from "vue";
 import Router from "vue-router";
+import {
+  getStoredDashboardLearner,
+  setStoredDashboardLearner,
+  routeSlugToLearnerId,
+  learnerIdToRouteSlug,
+  getDashboardLocation,
+} from "@/data/bookCatalog";
 
 Vue.use(Router);
 
@@ -8,7 +15,10 @@ const router = new Router({
   routes: [
     {
       path: "/",
-      redirect: "/dashboard",
+      redirect: () => {
+        const learner = getStoredDashboardLearner();
+        return `/dashboard/${learnerIdToRouteSlug(learner)}`;
+      },
     },
     {
       path: "/esd",
@@ -32,8 +42,25 @@ const router = new Router({
     },
         {
       path: "/dashboard",
+      redirect: () => {
+        const learner = getStoredDashboardLearner();
+        return `/dashboard/${learnerIdToRouteSlug(learner)}`;
+      },
+    },
+    {
+      path: "/dashboard/:learner",
       name: "dashboard",
       component: () => import("@/views/DashboardView.vue"),
+      props: true,
+      beforeEnter(to, _from, next) {
+        const learnerId = routeSlugToLearnerId(to.params.learner);
+        if (learnerId) {
+          setStoredDashboardLearner(learnerId);
+          next();
+          return;
+        }
+        next(getDashboardLocation());
+      },
     },
     {
       path: "/tasks",

@@ -95,8 +95,8 @@ export const flashcardBooks = {
     sections: absolutismusSections,
     getCardById: getAbsolutismusCardById,
     labels: { front: "Begriff", back: "Erklärung" },
-    hint: "Karikatur M1–M3: Bild ansehen, Frage beantworten, dann Lösung auf der Rückseite prüfen.",
-    showKoOnBack: false,
+    hint: "Karikatur M1–M3: Bild ansehen, Frage beantworten, dann Lösung (Deutsch + 한국어) prüfen.",
+    showKoOnBack: true,
   },
 };
 

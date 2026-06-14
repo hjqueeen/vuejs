@@ -80,16 +80,20 @@ export const publicBooks = [
     coverColor: "book-cover-e",
     cardIds: ALLTAG_KO_DE_CARD_IDS,
   },
-  // {
-  //   id: WAERME_KARTEIKARTEN_BOOK_ID,
-  //   templateType: "flashcard",
-  //   title: "Physik · Wärme",
-  //   subtitle: "Karteikarten — Klasse 7 · LEK 5.6.",
-  //   description:
-  //     "7학년 LEK Wärmelehre: Ausdehnung, Anwendungen, Begriffe, Wärmeübertragung, Teilchenmodell, Dämmung 등 19장. 독일어·한국어(7학년).",
-  //   coverColor: "book-cover-d",
-  //   cardIds: WAERME_KARTEIKARTEN_CARD_IDS,
-  // },
+  {
+    id: WAERME_KARTEIKARTEN_BOOK_ID,
+    templateType: "flashcard",
+    title: "Physik · Wärme",
+    subtitle: "Karteikarten — Klasse 7 · LEK 5.6.",
+    description:
+      "7학년 LEK Wärmelehre: Ausdehnung, Anwendungen, Begriffe, Wärmeübertragung, Teilchenmodell, Dämmung 등 19장. 독일어·한국어(7학년).",
+    coverColor: "book-cover-d",
+    cardIds: WAERME_KARTEIKARTEN_CARD_IDS,
+    owner: "amin",
+    grade: 7,
+    subjectKey: "physik",
+    subjectLabel: "물리",
+  },
   {
     id: LATIN_VOCAB_BOOK_ID,
     templateType: "flashcard",
@@ -99,6 +103,10 @@ export const publicBooks = [
       "라틴어 단어 29개. 앞면: 라틴어, 뒷면: 변형(활용·품사)과 독일어 뜻. SM-2 간격 반복(Again/Hard/Good/Easy)으로 복습합니다.",
     coverColor: "book-cover-c",
     cardIds: LATIN_VOCAB_CARD_IDS,
+    owner: "amin",
+    grade: 7,
+    subjectKey: "latein",
+    subjectLabel: "라틴어",
   },
   {
     id: ABSOLUTISMUS_BOOK_ID,
@@ -109,5 +117,9 @@ export const publicBooks = [
       "역사 40장 · Absolutismus, Französische Revolution, Karikatur M1–M3. 섹션별로 접어서 공부하세요.",
     coverColor: "book-cover-a",
     cardIds: ABSOLUTISMUS_CARD_IDS,
+    owner: "hangyeol",
+    grade: 8,
+    subjectKey: "geschichte",
+    subjectLabel: "역사",
   },
 ];

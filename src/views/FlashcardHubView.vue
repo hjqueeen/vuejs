@@ -119,6 +119,8 @@ import {
   getFlashcardSectionState,
   setFlashcardSectionState,
 } from "@/utils/flashcardSectionState";
+import { guardBookAccess } from "@/utils/bookAccessGuard";
+import { getDashboardLocation } from "@/data/bookCatalog";
 
 export default {
   name: "FlashcardHubView",
@@ -132,6 +134,9 @@ export default {
       targetLang: getFlashcardTargetLang(this.bookId),
       expandedSections: {},
     };
+  },
+  created() {
+    guardBookAccess(this.$router, this.bookId);
   },
   watch: {
     cardSections: {
@@ -261,7 +266,7 @@ export default {
       });
     },
     goDashboard() {
-      this.$router.push({ name: "dashboard" });
+      this.$router.push(getDashboardLocation());
     },
     onTargetLangChange(lang) {
       this.targetLang = lang;

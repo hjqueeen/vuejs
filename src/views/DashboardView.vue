@@ -3,70 +3,220 @@
     <header class="dash-header">
       <div>
         <p class="dash-eyebrow">English Learning</p>
-        <h1 class="dash-title">나의 학습 서재</h1>
+        <h1 class="dash-title">{{ learnerLabel }}의 학습 서재</h1>
       </div>
       <p class="dash-desc">학습할 책을 선택하세요.</p>
     </header>
 
-    <div class="bookshelf-grid">
-      <article
-        v-for="(book, idx) in books"
-        :key="book.id"
-        class="book-card"
-        @click="openBook(book)"
+    <div class="learner-tabs" role="tablist" aria-label="학습자 선택">
+      <button
+        v-for="profile in learnerProfiles"
+        :key="profile.id"
+        type="button"
+        role="tab"
+        class="learner-tab"
+        :class="{ 'learner-tab--active': activeLearner === profile.id }"
+        :aria-selected="activeLearner === profile.id"
+        @click="selectLearner(profile.id)"
       >
-        <div class="book-spine" :class="`spine-${(idx % 3) + 1}`"></div>
-        <div class="book-body">
-          <div class="book-top">
-            <span class="book-badge">BOOK {{ idx + 1 }}</span>
-            <span class="book-arrow">→</span>
-          </div>
-          <h3 class="book-title">{{ book.title }}</h3>
-          <p class="book-subtitle">{{ book.subtitle }}</p>
-          <p class="book-desc">{{ book.description }}</p>
-          <div v-if="isQuizWorkbook(book) || isFlashcardBook(book)" class="book-progress">
-            <div class="mini-bar">
-              <div class="mini-fill studied" :style="{ width: bookProgress(book).studiedPercent + '%' }"></div>
-            </div>
-            <span class="mini-stat">
-              공부 {{ bookProgress(book).studied }}/{{ bookProgress(book).total }}
-              · 테스트 {{ bookProgress(book).tested }}
-            </span>
-          </div>
+        {{ profile.label }}
+      </button>
+    </div>
+
+    <p v-if="!visibleBooks.length" class="dash-empty">
+      {{ learnerLabel }}님의 책이 없습니다.
+    </p>
+
+    <div v-else class="dash-body" :class="{ 'dash-body--with-nav': showCatalogNav }">
+      <DashboardCatalogNav
+        v-if="showCatalogNav"
+        :nav-tree="navTree"
+        :total-count="visibleBooks.length"
+        :selected-grade="selectedGrade"
+        :selected-subject-key="selectedSubjectKey"
+        @select-all="clearCatalogFilter"
+        @select-grade="selectGrade"
+        @select-subject="selectSubject"
+      />
+
+      <main class="dash-main">
+        <p v-if="filterLabel" class="dash-filter-label">{{ filterLabel }}</p>
+
+        <template v-if="showSectionLayout">
+          <section
+            v-for="gradeGroup in displayGroupedBooks"
+            :key="gradeGroup.grade"
+            class="catalog-grade"
+          >
+            <h2 class="catalog-grade-title">{{ gradeGroup.gradeLabel }}</h2>
+            <section
+              v-for="subject in gradeGroup.subjects"
+              :key="`${gradeGroup.grade}-${subject.subjectKey}`"
+              class="catalog-subject"
+            >
+              <h3 class="catalog-subject-title">{{ subject.subjectLabel }}</h3>
+              <div class="bookshelf-grid">
+                <BookGridCard
+                  v-for="(book, idx) in subject.books"
+                  :key="book.id"
+                  :book="book"
+                  :spine-class="spineClass(idx)"
+                  :show-progress="showBookProgress(book)"
+                  :progress="bookProgress(book)"
+                  @open="openBook"
+                />
+              </div>
+            </section>
+          </section>
+          <p v-if="!displayGroupedBooks.length" class="dash-empty dash-empty--inline">
+            선택한 조건에 맞는 책이 없습니다.
+          </p>
+        </template>
+
+        <div v-else class="bookshelf-grid">
+          <BookGridCard
+            v-for="(book, idx) in visibleBooks"
+            :key="book.id"
+            :book="book"
+            :badge="`BOOK ${idx + 1}`"
+            :spine-class="spineClass(idx)"
+            :show-progress="showBookProgress(book)"
+            :progress="bookProgress(book)"
+            @open="openBook"
+          />
         </div>
-      </article>
+      </main>
     </div>
   </div>
 </template>
 
 <script>
 import { books } from "@/data/books";
+import BookGridCard from "@/components/dashboard/BookGridCard.vue";
+import DashboardCatalogNav from "@/components/dashboard/DashboardCatalogNav.vue";
+import {
+  LEARNER_PROFILES,
+  BOOK_OWNERS,
+  filterBooksByOwner,
+  groupBooksByGradeSubject,
+  routeSlugToLearnerId,
+  setStoredDashboardLearner,
+  getLearnerLabel,
+  getDashboardLocation,
+} from "@/data/bookCatalog";
 
 export default {
   name: "DashboardView",
+  components: { BookGridCard, DashboardCatalogNav },
+  props: {
+    learner: { type: String, required: true },
+  },
   data() {
-    return { books };
+    return {
+      books,
+      learnerProfiles: LEARNER_PROFILES,
+      selectedGrade: null,
+      selectedSubjectKey: null,
+    };
+  },
+  computed: {
+    activeLearner() {
+      return routeSlugToLearnerId(this.learner) || BOOK_OWNERS.HYEJIN;
+    },
+    learnerLabel() {
+      return getLearnerLabel(this.activeLearner);
+    },
+    visibleBooks() {
+      return filterBooksByOwner(this.books, this.activeLearner);
+    },
+    groupedBooks() {
+      return groupBooksByGradeSubject(this.visibleBooks);
+    },
+    navTree() {
+      return this.groupedBooks.filter((g) => g.grade > 0);
+    },
+    showCatalogNav() {
+      return this.navTree.length > 0;
+    },
+    showSectionLayout() {
+      return this.showCatalogNav;
+    },
+    displayGroupedBooks() {
+      let groups = this.groupedBooks.filter((g) => g.grade > 0);
+
+      if (this.selectedGrade != null) {
+        groups = groups.filter((g) => g.grade === this.selectedGrade);
+      }
+
+      return groups
+        .map((g) => ({
+          ...g,
+          subjects:
+            this.selectedSubjectKey != null
+              ? g.subjects.filter((s) => s.subjectKey === this.selectedSubjectKey)
+              : g.subjects,
+        }))
+        .filter((g) => g.subjects.length > 0);
+    },
+    filterLabel() {
+      if (this.selectedGrade == null && !this.selectedSubjectKey) return "";
+
+      const gradeGroup = this.navTree.find((g) => g.grade === this.selectedGrade);
+      if (!gradeGroup) return "";
+
+      if (this.selectedSubjectKey) {
+        const subject = gradeGroup.subjects.find(
+          (s) => s.subjectKey === this.selectedSubjectKey,
+        );
+        if (subject) {
+          return `${gradeGroup.gradeLabel} · ${subject.subjectLabel}`;
+        }
+      }
+
+      return gradeGroup.gradeLabel;
+    },
+  },
+  watch: {
+    activeLearner() {
+      this.clearCatalogFilter();
+    },
   },
   methods: {
-    isQuizWorkbook(book) {
-      return book.templateType === "quiz-workbook";
+    clearCatalogFilter() {
+      this.selectedGrade = null;
+      this.selectedSubjectKey = null;
     },
-    isFlashcardBook(book) {
-      return book.templateType === "flashcard";
+    selectGrade(grade) {
+      this.selectedGrade = grade;
+      this.selectedSubjectKey = null;
+    },
+    selectSubject({ grade, subjectKey }) {
+      this.selectedGrade = grade;
+      this.selectedSubjectKey = subjectKey;
+    },
+    selectLearner(learnerId) {
+      setStoredDashboardLearner(learnerId);
+      this.$router.push(getDashboardLocation(learnerId));
+    },
+    spineClass(idx) {
+      return `spine-${(idx % 3) + 1}`;
+    },
+    showBookProgress(book) {
+      return book.templateType === "quiz-workbook" || book.templateType === "flashcard";
     },
     bookProgress(book) {
       const ids = book.questionIds || book.cardIds || [];
       return this.$store.getters["quizWorkbook/bookProgress"](book.id, ids);
     },
     openBook(book) {
-      if (this.isFlashcardBook(book)) {
+      if (book.templateType === "flashcard") {
         this.$router.push({
           name: "flashcard-hub",
           params: { bookId: book.id },
         });
         return;
       }
-      if (this.isQuizWorkbook(book)) {
+      if (book.templateType === "quiz-workbook") {
         this.$router.push({
           name: "workbook-hub",
           params: { bookId: book.id },
@@ -97,27 +247,20 @@ export default {
 
 <style scoped>
 .dashboard {
-  max-width: 680px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 8px 0 40px;
+  padding: 8px 16px 48px;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
 }
 
-@media (min-width: 768px) {
-  .dashboard {
-    max-width: 1100px;
-    padding: 8px 8px 40px;
-  }
-}
-
-/* ─── Header ── */
 .dash-header {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .dash-eyebrow {
@@ -145,124 +288,132 @@ export default {
   padding-bottom: 2px;
 }
 
-/* ─── Grid ── */
-.bookshelf-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
+.learner-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
 }
 
-/* ─── Card ── */
-.book-card {
-  display: flex;
-  align-items: stretch;
-  background: var(--c-surface);
+.learner-tab {
+  padding: 8px 16px;
   border: 1px solid var(--c-border);
-  border-radius: var(--c-radius-lg);
-  overflow: hidden;
+  border-radius: var(--c-radius-pill);
+  background: var(--c-surface);
+  color: var(--c-text-secondary);
+  font-size: 13px;
+  font-weight: 600;
   cursor: pointer;
-  transition: box-shadow 0.18s, border-color 0.18s;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
 
-.book-card:hover {
+.learner-tab:hover {
   border-color: var(--c-blue-mid);
-  box-shadow: 0 4px 16px rgba(45, 95, 168, 0.10);
+  color: var(--c-text-primary);
 }
 
-/* ─── Spine ── */
-.book-spine {
-  width: 6px;
-  flex-shrink: 0;
+.learner-tab--active {
+  background: var(--c-blue-light);
+  border-color: var(--c-blue-mid);
+  color: var(--c-blue);
 }
 
-.spine-1 { background: var(--c-blue); }
-.spine-2 { background: var(--c-teal); }
-.spine-3 { background: var(--c-amber); }
+.dash-body {
+  display: block;
+}
 
-/* ─── Body ── */
-.book-body {
-  flex: 1;
-  padding: 18px 20px;
+.dash-body--with-nav {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.dash-main {
+  flex: 1;
   min-width: 0;
 }
 
-.book-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 6px;
-}
-
-.book-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 3px 9px;
-  border-radius: var(--c-radius-pill);
-  background: var(--c-amber-light);
-  border: 1px solid var(--c-amber-mid);
-  color: var(--c-amber);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-}
-
-.book-arrow {
-  font-size: 16px;
+.dash-filter-label {
+  margin: 0 0 16px;
+  font-size: 13px;
+  font-weight: 600;
   color: var(--c-text-muted);
-  transition: color 0.15s, transform 0.15s;
 }
 
-.book-card:hover .book-arrow {
-  color: var(--c-blue);
-  transform: translateX(3px);
+.catalog-grade + .catalog-grade {
+  margin-top: 32px;
 }
 
-.book-title {
-  margin: 0;
-  font-size: 16px;
+.catalog-grade-title {
+  margin: 0 0 16px;
+  font-size: 18px;
   font-weight: 700;
   color: var(--c-text-primary);
   letter-spacing: -0.3px;
-  line-height: 1.4;
 }
 
-.book-subtitle {
-  margin: 0;
-  font-size: 12px;
+.catalog-subject + .catalog-subject {
+  margin-top: 24px;
+}
+
+.catalog-subject-title {
+  margin: 0 0 12px;
+  padding-left: 10px;
+  border-left: 3px solid var(--c-teal);
+  font-size: 14px;
+  font-weight: 700;
   color: var(--c-text-secondary);
-  line-height: 1.5;
 }
 
-.book-desc {
-  margin: 6px 0 0;
-  font-size: 12px;
+.bookshelf-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+@media (min-width: 560px) {
+  .bookshelf-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .dash-body--with-nav .bookshelf-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bookshelf-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .dash-body--with-nav .bookshelf-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .bookshelf-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .dash-body--with-nav {
+    flex-direction: column;
+  }
+}
+
+.dash-empty {
+  margin: 24px 0 0;
+  padding: 32px;
+  text-align: center;
   color: var(--c-text-muted);
-  line-height: 1.55;
+  background: var(--c-surface);
+  border: 1px dashed var(--c-border);
+  border-radius: var(--c-radius-lg);
 }
 
-.book-progress {
-  margin-top: 12px;
-}
-
-.mini-bar {
-  height: 4px;
-  background: var(--c-border);
-  border-radius: 2px;
-  overflow: hidden;
-  margin-bottom: 6px;
-}
-
-.mini-fill.studied {
-  height: 100%;
-  background: var(--c-teal);
-  border-radius: 2px;
-}
-
-.mini-stat {
-  font-size: 11px;
-  color: var(--c-text-muted);
+.dash-empty--inline {
+  margin-top: 0;
 }
 </style>

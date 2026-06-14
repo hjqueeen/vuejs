@@ -92,6 +92,7 @@ import {
 } from "@/utils/flashcardReviewItems";
 import { bookHasDualLang } from "@/utils/flashcardSrsId";
 import { getFlashcardTargetLang } from "@/utils/flashcardTargetLang";
+import { guardBookAccess } from "@/utils/bookAccessGuard";
 
 function shuffle(arr) {
   const a = [...arr];
@@ -191,6 +192,7 @@ export default {
     },
   },
   created() {
+    if (!guardBookAccess(this.$router, this.bookId)) return;
     this.buildSession();
   },
   methods: {

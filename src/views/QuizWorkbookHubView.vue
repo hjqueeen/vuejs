@@ -1,7 +1,7 @@
 <template>
   <div class="workbook-hub">
     <header class="hub-header">
-      <button type="button" class="back-btn" @click="$router.push({ name: 'dashboard' })">← 서재</button>
+      <button type="button" class="back-btn" @click="goDashboard">← 서재</button>
       <div>
         <p class="hub-eyebrow">통일골든벨</p>
         <h1>{{ book.title }}</h1>
@@ -90,6 +90,8 @@ import {
   tongilQuizQuestions,
   getTongilQuestionsByChapter,
 } from "@/data/tongilQuizContent";
+import { guardBookAccess } from "@/utils/bookAccessGuard";
+import { getDashboardLocation } from "@/data/bookCatalog";
 
 const BOOK_ID = "book-tongil-quiz";
 
@@ -97,6 +99,9 @@ export default {
   name: "QuizWorkbookHubView",
   props: {
     bookId: { type: String, default: BOOK_ID },
+  },
+  created() {
+    guardBookAccess(this.$router, this.bookId);
   },
   computed: {
     book() {
@@ -116,6 +121,9 @@ export default {
     },
   },
   methods: {
+    goDashboard() {
+      this.$router.push(getDashboardLocation());
+    },
     questionsByChapter(chapterId) {
       return getTongilQuestionsByChapter(chapterId);
     },

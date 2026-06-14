@@ -1,7 +1,7 @@
 <template>
   <header class="app-header">
     <div class="header-left">
-      <router-link class="home-link" to="/dashboard" :aria-label="$t('app.headerAria.dashboardHome')">
+      <router-link class="home-link" :to="dashboardHome" :aria-label="$t('app.headerAria.dashboardHome')">
         <svg class="home-icon" viewBox="0 0 24 24" aria-hidden="true">
           <path
             d="M3 10.5L12 3l9 7.5M5.5 9.5V20h13V9.5M9.5 20v-5.5h5V20"
@@ -169,6 +169,8 @@
 </template>
 
 <script>
+import { getDashboardLocation } from "@/data/bookCatalog";
+
 export default {
   name: "AppHeader",
   props: {
@@ -183,6 +185,9 @@ export default {
     studyTranslationLanguage: { type: String, default: "ko" },
   },
   computed: {
+    dashboardHome() {
+      return getDashboardLocation();
+    },
     reviewLabel() {
       return this.$route && this.$route.path === "/review" ? this.$t("app.nav.dashboard") : this.$t("app.nav.review");
     },

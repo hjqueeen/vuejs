@@ -1,4 +1,5 @@
 <template>
+  <div class="fc-card-panel-wrap">
   <div
     v-if="layoutMode === 'split'"
     class="split-scene"
@@ -7,12 +8,15 @@
     <div class="split-panel split-front">
       <p class="face-label">{{ labels.front }}</p>
       <p v-if="badge" class="face-badge">{{ badge }}</p>
-      <img
+      <button
         v-if="card.frontImageUrl"
-        class="term-image"
-        :src="card.frontImageUrl"
-        alt=""
-      />
+        type="button"
+        class="term-image-btn"
+        aria-label="그림 크게 보기"
+        @click="openImageDialog"
+      >
+        <img class="term-image" :src="card.frontImageUrl" alt="" />
+      </button>
       <p v-if="card.frontCategory" class="term-category">{{ card.frontCategory }}</p>
       <p class="term">{{ card.term }}</p>
     </div>
@@ -86,12 +90,15 @@
         <div class="flip-face flip-front">
           <p class="face-label">{{ labels.front }}</p>
           <p v-if="badge" class="face-badge">{{ badge }}</p>
-          <img
+          <button
             v-if="card.frontImageUrl"
-            class="term-image"
-            :src="card.frontImageUrl"
-            alt=""
-          />
+            type="button"
+            class="term-image-btn"
+            aria-label="그림 크게 보기"
+            @click.stop="openImageDialog"
+          >
+            <img class="term-image" :src="card.frontImageUrl" alt="" />
+          </button>
           <p v-if="card.frontCategory" class="term-category">{{ card.frontCategory }}</p>
           <p class="term">{{ card.term }}</p>
           <p v-if="interactive && !revealed" class="tap-hint">{{ tapHintFront }}</p>
@@ -150,6 +157,33 @@
       </div>
     </div>
   </div>
+
+  <transition name="image-dialog-fade">
+    <div
+      v-if="imageDialogOpen && card.frontImageUrl"
+      class="term-image-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-label="그림 크게 보기"
+      @click.self="closeImageDialog"
+    >
+      <button
+        type="button"
+        class="term-image-dialog-close"
+        aria-label="닫기"
+        @click="closeImageDialog"
+      >
+        ×
+      </button>
+      <img
+        class="term-image-dialog-img"
+        :src="card.frontImageUrl"
+        alt=""
+        @click.stop
+      />
+    </div>
+  </transition>
+  </div>
 </template>
 
 <script>
@@ -178,6 +212,7 @@ export default {
       isPlaying: false,
       currentTime: 0,
       duration: 0,
+      imageDialogOpen: false,
     };
   },
   computed: {
@@ -198,12 +233,26 @@ export default {
   watch: {
     "card.id"() {
       this.resetAudio();
+      this.closeImageDialog();
     },
     "card.normalSpeedUrl"() {
       this.resetAudio();
     },
   },
   methods: {
+    openImageDialog() {
+      if (!this.card.frontImageUrl) return;
+      this.imageDialogOpen = true;
+      document.addEventListener("keydown", this.onImageDialogKeydown);
+    },
+    closeImageDialog() {
+      if (!this.imageDialogOpen) return;
+      this.imageDialogOpen = false;
+      document.removeEventListener("keydown", this.onImageDialogKeydown);
+    },
+    onImageDialogKeydown(e) {
+      if (e.key === "Escape") this.closeImageDialog();
+    },
     onFlipTap() {
       if (!this.interactive || this.layoutMode === "split") return;
       this.$emit("toggle");
@@ -275,6 +324,7 @@ export default {
   },
   beforeDestroy() {
     this.resetAudio();
+    this.closeImageDialog();
   },
 };
 </script>
@@ -403,16 +453,34 @@ export default {
   color: var(--c-amber);
 }
 
+.term-image-btn {
+  display: block;
+  width: 100%;
+  max-width: min(100%, 520px);
+  margin: 0 auto 14px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: zoom-in;
+  border-radius: 10px;
+}
+
+.term-image-btn:focus-visible {
+  outline: 2px solid var(--c-blue);
+  outline-offset: 2px;
+}
+
 .term-image {
   display: block;
   width: 100%;
   max-width: min(100%, 520px);
   max-height: min(42vh, 340px);
-  margin: 0 auto 14px;
+  margin: 0;
   object-fit: contain;
   border-radius: 10px;
   border: 1px solid var(--c-border);
   background: #fff;
+  pointer-events: none;
 }
 
 @media (max-width: 640px) {
@@ -425,6 +493,67 @@ export default {
   .split-scene--with-image {
     min-height: 440px;
   }
+}
+
+.term-image-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(4px);
+}
+
+.term-image-dialog-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--c-text-primary);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.term-image-dialog-close:hover {
+  background: #fff;
+}
+
+.term-image-dialog-img {
+  display: block;
+  max-width: min(96vw, 900px);
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.image-dialog-fade-enter-active,
+.image-dialog-fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.image-dialog-fade-enter-active .term-image-dialog-img,
+.image-dialog-fade-leave-active .term-image-dialog-img {
+  transition: transform 0.2s ease;
+}
+
+.image-dialog-fade-enter,
+.image-dialog-fade-leave-to {
+  opacity: 0;
+}
+
+.image-dialog-fade-enter .term-image-dialog-img,
+.image-dialog-fade-leave-to .term-image-dialog-img {
+  transform: scale(0.96);
 }
 
 .term-category {
