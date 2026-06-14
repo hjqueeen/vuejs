@@ -8,6 +8,8 @@ const KARIKATUR_M1_IMAGE = publicAssetUrl("images/karikatur-m1-trois-ordres.png"
 const KARIKATUR_M2_IMAGE = publicAssetUrl("images/karikatur-m2-reveil-tiers-etat.jpg");
 const KARIKATUR_M3_IMAGE = publicAssetUrl("images/karikatur-m3-ich-wusste-ja.jpg");
 const KARIKATUR_M4_IMAGE = publicAssetUrl("images/karikatur-m4-declaration-droits.jpg");
+const KARIKATUR_M5_IMAGE = publicAssetUrl("images/karikatur-m5-tiers-etat-poids-royaume.jpg");
+const KARIKATUR_M6_IMAGE = publicAssetUrl("images/karikatur-m6-france-globe-trois-ordres.jpg");
 
 import { karikaturKoById } from "./absolutismusKarikaturKo.js";
 
@@ -404,6 +406,170 @@ export const absolutismusCards = [
     "11. Welche Wirkung könnte die Karikatur haben?",
     "Das Volk erkennt seine neuen Rechte und fühlt sich als Bürger mit Anspruch auf Freiheit und Gleichheit. Die feierliche Darstellung soll Vertrauen in die Revolution wecken und zeigen: Die neue Ordnung ist legitim und dauerhaft.",
   ),
+  karikaturCard(
+    "card-karikatur-m5-frage-1",
+    KARIKATUR_M5_IMAGE,
+    "Ersten Eindruck festhalten",
+    "1. Wie wirkt die Karikatur auf dich?",
+    "Die Karikatur wirkt ungerecht und bedrückend. Der Mann in der Mitte leidet sichtbar unter der Last, während die beiden anderen entspannt daneben stehen. Man fühlt Mitgeleid mit dem 3. Stand und erkennt: Die Lastenverteilung ist völlig einseitig.",
+  ),
+  karikaturCard(
+    "card-karikatur-m5-frage-2",
+    KARIKATUR_M5_IMAGE,
+    "Einzelheiten beschreiben",
+    "2. Welche Personen, Gegenstände und andere Details lassen sich erkennen? Achte auf den Gesichtsausdruck, die Körperhaltung. Beziehe die Bildunterschrift mit ein.",
+    "Runde Allegorie mit der Überschrift „EXPLICATION DE L'ALLÉGORIE“. In der Mitte ein gebeugter Mann in einfacher Kleidung (3. Stand), der eine große Kugel mit Lilien (Fleur-de-lis) auf dem Rücken trägt — das Königreich. Links ein gepanzerter Adliger (2. Stand), der sich auf die Kugel stützt und sie zusätzlich drückt. Rechts ein Geistlicher in Soutane (1. Stand), der die Kugel nur mit dem Zeigefinger berührt. Um den Rand der Bilderklärung: „le Tiers-Etat soutient seul le poids du royaume sous lequel il fléchit, un Noble … pèse dessus en s'appuyant, le Prêtre … du bout du doigt.“",
+  ),
+  karikaturCard(
+    "card-karikatur-m5-frage-3",
+    KARIKATUR_M5_IMAGE,
+    "Zusätzliche Informationen heranziehen",
+    "3. Wer ist der Zeichner?",
+    "Unbekannt (anonymer Künstler).",
+  ),
+  karikaturCard(
+    "card-karikatur-m5-frage-4",
+    KARIKATUR_M5_IMAGE,
+    "Zusätzliche Informationen heranziehen",
+    "4. Wann und wo ist die Karikatur entstanden?",
+    "Um 1789, in Frankreich. Kurz vor oder zu Beginn der Französischen Revolution, zur Zeit der Generalstände und der Krise des Ancien Régime.",
+  ),
+  karikaturCard(
+    "card-karikatur-m5-frage-5",
+    KARIKATUR_M5_IMAGE,
+    "Zusätzliche Informationen heranziehen",
+    "5. Gibt es einen Titel?",
+    "Ja, als Überschrift: „EXPLICATION DE L'ALLÉGORIE“ — Erklärung der Allegorie. Der Inhalt beschreibt: „Le Tiers-État soutient le poids du Royaume“ (Der 3. Stand trägt das Gewicht des Königreichs).",
+  ),
+  karikaturCard(
+    "card-karikatur-m5-frage-6",
+    KARIKATUR_M5_IMAGE,
+    "Zusätzliche Informationen heranziehen",
+    "6. Welches Thema hat die Karikatur?",
+    "Die ungerechte Lastenverteilung in der Ständegesellschaft des Ancien Régime: Der 3. Stand allein trägt das Königreich, während Adel und Klerus kaum helfen oder sogar zusätzlich drücken.",
+  ),
+  karikaturCard(
+    "card-karikatur-m5-frage-7",
+    KARIKATUR_M5_IMAGE,
+    "Bildaussage erkennen",
+    "7. Welche Bedeutung haben die Personen und Gegenstände?",
+    "• Gebeugter Mann in der Mitte → 3. Stand (Bauern, Bürger), trägt alle Last\n" +
+      "• Kugel mit Lilien (Fleur-de-lis) → das Königreich Frankreich / Staat\n" +
+      "• Gepanzerter Adliger, der sich aufstützt → 2. Stand drückt zusätzlich, statt zu entlasten\n" +
+      "• Geistlicher mit Zeigefinger → 1. Stand hilft nur symbolisch, nicht wirklich\n" +
+      "• Runde Form + erklärender Text → Allegorie soll auch Analphabeten verständlich sein",
+  ),
+  karikaturCard(
+    "card-karikatur-m5-frage-8",
+    KARIKATUR_M5_IMAGE,
+    "Bildaussage erkennen",
+    "8. Auf welches Ereignis bezieht sich die Karikatur?",
+    "Auf die soziale und wirtschaftliche Krise Frankreichs vor der Revolution 1789 — die Generalstände und die Forderung des 3. Standes nach gleichen Rechten und gerechter Besteuerung.",
+  ),
+  karikaturCard(
+    "card-karikatur-m5-frage-9",
+    KARIKATUR_M5_IMAGE,
+    "Aussage der Karikatur formulieren",
+    "9. Was ist die Botschaft?",
+    "Der 3. Stand kann die Last des Staates nicht allein weiter tragen. Adel und Klerus müssen endlich wirklich mithelfen — durch Steuern, Arbeit und Verzicht auf Privilegien — statt nur zuzuschauen oder noch schwerer zu machen.",
+  ),
+  karikaturCard(
+    "card-karikatur-m5-frage-10",
+    KARIKATUR_M5_IMAGE,
+    "Aussage der Karikatur formulieren",
+    "10. Was wird kritisiert?",
+    "Die Ständegesellschaft: Der 3. Stand zahlt fast alle Steuern und Frondienste, während Adel (2. Stand) und Klerus (1. Stand) privilegiert sind, wenig zahlen und den Staat nicht wirklich stützen — der Adlige drückt sogar noch zusätzlich.",
+  ),
+  karikaturCard(
+    "card-karikatur-m5-frage-11",
+    KARIKATUR_M5_IMAGE,
+    "Aussage der Karikatur formulieren",
+    "11. Welche Wirkung könnte die Karikatur haben?",
+    "Der 3. Stand erkennt das Unrecht und fühlt sich bestätigt in seiner Forderung nach Reform. Die einfache Allegorie mit Erklärungstext macht das Problem klar — und kann Wut und Widerstand gegen Adel und Klerus wecken.",
+  ),
+  karikaturCard(
+    "card-karikatur-m6-frage-1",
+    KARIKATUR_M6_IMAGE,
+    "Ersten Eindruck festhalten",
+    "1. Wie wirkt die Karikatur auf dich?",
+    "Die Karikatur wirkt zunächst hoffnungsvoll — alle drei Stände stützen gemeinsam Frankreich. Gleichzeitig wirkt sie aber auch ungerecht: Der Mann vom Volk kniet und trägt das Hauptgewicht, während Adel und Klerus stehen und nur mithelfen. Man spürt: Einigkeit wird propagiert, aber die Last bleibt beim 3. Stand.",
+  ),
+  karikaturCard(
+    "card-karikatur-m6-frage-2",
+    KARIKATUR_M6_IMAGE,
+    "Einzelheiten beschreiben",
+    "2. Welche Personen, Gegenstände und andere Details lassen sich erkennen? Achte auf den Gesichtsausdruck, die Körperhaltung. Beziehe die Bildunterschrift mit ein.",
+    "Drei Männer stützen eine große blaue Kugel mit goldener Krone und drei Fleur-de-lis (Frankreich). In der Mitte kniet ein Mann in einfacher Kleidung (3. Stand / Peuple), trägt die Kugel mit den Händen. Links ein gepanzerter Adliger mit rotem Umhang und Federhelm (2. Stand), rechts ein Bischof in gold-roter Soutane mit Mitra und Bischofsstab (1. Stand) — beide halten die Kugel mit. Am Boden ein Korb mit Bienenkorb (Ruche) und eine Schaufel. Bildunterschrift: „La France Figurée sous un Globe est soutenu du Peuple — la Noblesse et le Clergé aide au premier — La Ruche represente les trois Ordres reunis.“",
+  ),
+  karikaturCard(
+    "card-karikatur-m6-frage-3",
+    KARIKATUR_M6_IMAGE,
+    "Zusätzliche Informationen heranziehen",
+    "3. Wer ist der Zeichner?",
+    "Unbekannt (anonymer Künstler).",
+  ),
+  karikaturCard(
+    "card-karikatur-m6-frage-4",
+    KARIKATUR_M6_IMAGE,
+    "Zusätzliche Informationen heranziehen",
+    "4. Wann und wo ist die Karikatur entstanden?",
+    "1789, in Frankreich (Paris). Zur Zeit der Generalstände und zu Beginn der Französischen Revolution — als noch Hoffnung auf die Vereinigung der drei Stände bestand.",
+  ),
+  karikaturCard(
+    "card-karikatur-m6-frage-5",
+    KARIKATUR_M6_IMAGE,
+    "Zusätzliche Informationen heranziehen",
+    "5. Gibt es einen Titel?",
+    "Ja, in der Bildunterschrift: „La France Figurée sous un Globe est soutenu du Peuple …“ — auf Deutsch: „Das als Kugel dargestellte Frankreich wird vom Volk getragen …“",
+  ),
+  karikaturCard(
+    "card-karikatur-m6-frage-6",
+    KARIKATUR_M6_IMAGE,
+    "Zusätzliche Informationen heranziehen",
+    "6. Welches Thema hat die Karikatur?",
+    "Die Ständegesellschaft und die Lastenverteilung: Das Volk (3. Stand) trägt Frankreich, Adel und Klerus sollen mithelfen — und der Bienenkorb steht für die vereinten drei Stände.",
+  ),
+  karikaturCard(
+    "card-karikatur-m6-frage-7",
+    KARIKATUR_M6_IMAGE,
+    "Bildaussage erkennen",
+    "7. Welche Bedeutung haben die Personen und Gegenstände?",
+    "• Kniender Mann in einfacher Kleidung → 3. Stand (Peuple), trägt das Hauptgewicht\n" +
+      "• Gepanzerter Adliger mit Schwert → 2. Stand (Noblesse), Militär und Privilegien\n" +
+      "• Bischof mit Bischofsstab → 1. Stand (Klerus), geistliche Macht\n" +
+      "• Kugel mit Krone und Lilien → Königreich Frankreich / Staat\n" +
+      "• Bienenkorb (Ruche) → drei Stände sollen wie Bienen zusammenarbeiten\n" +
+      "• Schaufel am Boden → harte Arbeit des Volkes\n" +
+      "• Olivenzweig → Frieden / Hoffnung auf Einheit",
+  ),
+  karikaturCard(
+    "card-karikatur-m6-frage-8",
+    KARIKATUR_M6_IMAGE,
+    "Bildaussage erkennen",
+    "8. Auf welches Ereignis bezieht sich die Karikatur?",
+    "Auf die Generalstände von 1789 und die Forderung nach Zusammenarbeit der drei Stände — kurz vor oder zu Beginn der Revolution, als eine Vereinigung (union des trois ordres) noch erwartet wurde.",
+  ),
+  karikaturCard(
+    "card-karikatur-m6-frage-9",
+    KARIKATUR_M6_IMAGE,
+    "Aussage der Karikatur formulieren",
+    "9. Was ist die Botschaft?",
+    "Frankreich kann nur stehen, wenn alle drei Stände zusammenhalten — aber das Volk trägt den Staat vor allem allein. Adel und Klerus sollen endlich wirklich mittragen, nicht nur symbolisch helfen.",
+  ),
+  karikaturCard(
+    "card-karikatur-m6-frage-10",
+    KARIKATUR_M6_IMAGE,
+    "Aussage der Karikatur formulieren",
+    "10. Was wird kritisiert?",
+    "Dass der 3. Stand den Staat praktisch allein stützt (Steuern, Arbeit), während Adel und Klerus zwar mithelfen, aber bequemer dastehen und weiter privilegiert sind. Die „Einheit“ der Stände ist noch ungleich.",
+  ),
+  karikaturCard(
+    "card-karikatur-m6-frage-11",
+    KARIKATUR_M6_IMAGE,
+    "Aussage der Karikatur formulieren",
+    "11. Welche Wirkung könnte die Karikatur haben?",
+    "Das Volk erkennt: Wir tragen das Land — ohne uns geht nichts. Adel und Klerus sollen sich verpflichtet fühlen, wirklich mitzuhelfen. Die Allegorie kann Hoffnung auf Einheit wecken, aber auch den Druck auf Reform verstärken.",
+  ),
 ];
 
 export const absolutismusSections = [
@@ -501,6 +667,46 @@ export const absolutismusSections = [
       "card-karikatur-m4-frage-9",
       "card-karikatur-m4-frage-10",
       "card-karikatur-m4-frage-11",
+    ],
+  },
+  {
+    id: "section-geschichte-karikatur-m5",
+    title: "Karikatur · M5",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Le_Tiers-%C3%89tat_soutient_le_poids_du_Royaume.jpg",
+    sourceLabel: "Wikimedia · Le Tiers-État soutient le poids du Royaume (ca. 1789)",
+    cardIds: [
+      "card-karikatur-m5-frage-1",
+      "card-karikatur-m5-frage-2",
+      "card-karikatur-m5-frage-3",
+      "card-karikatur-m5-frage-4",
+      "card-karikatur-m5-frage-5",
+      "card-karikatur-m5-frage-6",
+      "card-karikatur-m5-frage-7",
+      "card-karikatur-m5-frage-8",
+      "card-karikatur-m5-frage-9",
+      "card-karikatur-m5-frage-10",
+      "card-karikatur-m5-frage-11",
+    ],
+  },
+  {
+    id: "section-geschichte-karikatur-m6",
+    title: "Karikatur · M6",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:La_France_Figur%C3%A9e_sous_un_Globe_est_soutenu_du_Peuple_La_Noblesse_et_le_Clerg%C3%A9_aide_au_premier,_la_ruche_represente_les_trois_Ordres_reunies._LCCN2009633457.jpg",
+    sourceLabel: "Wikimedia · La France figurée sous un Globe (1789)",
+    cardIds: [
+      "card-karikatur-m6-frage-1",
+      "card-karikatur-m6-frage-2",
+      "card-karikatur-m6-frage-3",
+      "card-karikatur-m6-frage-4",
+      "card-karikatur-m6-frage-5",
+      "card-karikatur-m6-frage-6",
+      "card-karikatur-m6-frage-7",
+      "card-karikatur-m6-frage-8",
+      "card-karikatur-m6-frage-9",
+      "card-karikatur-m6-frage-10",
+      "card-karikatur-m6-frage-11",
     ],
   },
 ];

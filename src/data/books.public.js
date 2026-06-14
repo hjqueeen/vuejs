@@ -114,7 +114,7 @@ export const publicBooks = [
     title: "Geschichte · Absolutismus & Revolution",
     subtitle: "Karteikarten — Begriff → Erklärung",
     description:
-      "역사 51장 · Absolutismus, Französische Revolution, Karikatur M1–M4. 섹션별로 접어서 공부하세요.",
+      "역사 73장 · Absolutismus, Französische Revolution, Karikatur M1–M6. 섹션별로 접어서 공부하세요.",
     coverColor: "book-cover-a",
     cardIds: ABSOLUTISMUS_CARD_IDS,
     owner: "hangyeol",
