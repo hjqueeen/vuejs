@@ -7,9 +7,11 @@ export const ABSOLUTISMUS_BOOK_ID = "book-absolutismus";
 const KARIKATUR_M1_IMAGE = publicAssetUrl("images/karikatur-m1-trois-ordres.png");
 const KARIKATUR_M2_IMAGE = publicAssetUrl("images/karikatur-m2-reveil-tiers-etat.jpg");
 const KARIKATUR_M3_IMAGE = publicAssetUrl("images/karikatur-m3-ich-wusste-ja.jpg");
-const KARIKATUR_M4_IMAGE = publicAssetUrl("images/karikatur-m4-declaration-droits.jpg");
-const KARIKATUR_M5_IMAGE = publicAssetUrl("images/karikatur-m5-tiers-etat-poids-royaume.jpg");
+// const KARIKATUR_M4_IMAGE = publicAssetUrl("images/karikatur-m4-declaration-droits.jpg");
+// const KARIKATUR_M5_IMAGE = publicAssetUrl("images/karikatur-m5-tiers-etat-poids-royaume.jpg");
 const KARIKATUR_M6_IMAGE = publicAssetUrl("images/karikatur-m6-france-globe-trois-ordres.jpg");
+const KARIKATUR_M7_IMAGE = publicAssetUrl("images/karikatur-m7-taille-impots-corvees.jpg");
+const KARIKATUR_M8_IMAGE = publicAssetUrl("images/karikatur-m8-ordres-femmes.jpg");
 
 import { karikaturKoById } from "./absolutismusKarikaturKo.js";
 
@@ -322,6 +324,7 @@ export const absolutismusCards = [
     "11. Welche Wirkung könnte die Karikatur haben?",
     "Hoffnung auf Gleichberechtigung und gesellschaftlichen Wandel; Adel und Klerus sollen den Druck spüren. Das Volk erkennt: Die Revolution verändert die Verhältnisse — der 3. Stand hat eine Stimme.",
   ),
+  /*
   karikaturCard(
     "card-karikatur-m4-frage-1",
     KARIKATUR_M4_IMAGE,
@@ -487,6 +490,7 @@ export const absolutismusCards = [
     "11. Welche Wirkung könnte die Karikatur haben?",
     "Der 3. Stand erkennt das Unrecht und fühlt sich bestätigt in seiner Forderung nach Reform. Die einfache Allegorie mit Erklärungstext macht das Problem klar — und kann Wut und Widerstand gegen Adel und Klerus wecken.",
   ),
+  */
   karikaturCard(
     "card-karikatur-m6-frage-1",
     KARIKATUR_M6_IMAGE,
@@ -570,6 +574,170 @@ export const absolutismusCards = [
     "11. Welche Wirkung könnte die Karikatur haben?",
     "Das Volk erkennt: Wir tragen das Land — ohne uns geht nichts. Adel und Klerus sollen sich verpflichtet fühlen, wirklich mitzuhelfen. Die Allegorie kann Hoffnung auf Einheit wecken, aber auch den Druck auf Reform verstärken.",
   ),
+  karikaturCard(
+    "card-karikatur-m7-frage-1",
+    KARIKATUR_M7_IMAGE,
+    "Ersten Eindruck festhalten",
+    "1. Wie wirkt die Karikatur auf dich?",
+    "Die Karikatur wirkt brutal ungerecht und bedrückend. Der Bauer liegt am Boden und wird von einem schweren Stein nieder gedrückt, während Geistlicher und Adliger oben darauf stehen. Man fühlt sofort Mitgeleid mit dem 3. Stand und erkennt: Die Lastenverteilung ist völlig einseitig.",
+  ),
+  karikaturCard(
+    "card-karikatur-m7-frage-2",
+    KARIKATUR_M7_IMAGE,
+    "Einzelheiten beschreiben",
+    "2. Welche Personen, Gegenstände und andere Details lassen sich erkennen? Achte auf den Gesichtsausdruck, die Körperhaltung. Beziehe die Bildunterschrift mit ein.",
+    "Auf dem Land liegen drei Figuren: Am Boden ein Bauer in rotem Kittel und Hut, neben ihm eine Hacke (bêche). Ein großer Stein liegt auf seinem Körper — darauf steht „Taille, impôts et corvées“. Auf dem Stein stehen zwei Männer: links ein Priester in langer blauer Robe mit Buch in der Hand, rechts ein Adliger in Uniform mit Schwert an der Seite. Keine separate Bildunterschrift — der Text auf dem Stein ist das zentrale Detail.",
+  ),
+  karikaturCard(
+    "card-karikatur-m7-frage-3",
+    KARIKATUR_M7_IMAGE,
+    "Zusätzliche Informationen heranziehen",
+    "3. Wer ist der Zeichner?",
+    "Unbekannt. Anonyme, kolorierte Gravure (estampe) ohne nennenswerten Künstler.",
+  ),
+  karikaturCard(
+    "card-karikatur-m7-frage-4",
+    KARIKATUR_M7_IMAGE,
+    "Zusätzliche Informationen heranziehen",
+    "4. Wann und wo ist die Karikatur entstanden?",
+    "1789, in Frankreich (Paris). Entstand in den ersten Monaten von 1789, kurz vor der Französischen Revolution — zur Zeit der Generalstände und der Cahiers de doléances. Aufbewahrt im Musée Carnavalet (Paris).",
+  ),
+  karikaturCard(
+    "card-karikatur-m7-frage-5",
+    KARIKATUR_M7_IMAGE,
+    "Zusätzliche Informationen heranziehen",
+    "5. Gibt es einen Titel?",
+    "Nein, kein offizieller Titel. Die zentrale Inschrift auf dem Stein lautet: „Taille, impôts et corvées“ — auf Deutsch: „Taille (Grundsteuer), Abgaben und Frondienst.“",
+  ),
+  karikaturCard(
+    "card-karikatur-m7-frage-6",
+    KARIKATUR_M7_IMAGE,
+    "Zusätzliche Informationen heranziehen",
+    "6. Welches Thema hat die Karikatur?",
+    "Die ungerechte Steuer- und Lastenverteilung in der Ständegesellschaft des Ancien Régime: Der 3. Stand wird von Steuern erdrückt, während Adel und Klerus privilegiert sind und nicht (oder kaum) zahlen.",
+  ),
+  karikaturCard(
+    "card-karikatur-m7-frage-7",
+    KARIKATUR_M7_IMAGE,
+    "Bildaussage erkennen",
+    "7. Welche Bedeutung haben die Personen und Gegenstände?",
+    "• Bauer am Boden in rotem Kittel → 3. Stand (Bauern), wird physisch erdrückt\n" +
+      "• Stein „Taille, impôts et corvées“ → die Lasten des 3. Standes: direkte Steuer (taille), sonstige Abgaben (impôts), Frondienst (corvées)\n" +
+      "• Hacke (bêche) → harte körperliche Arbeit des Bauern\n" +
+      "• Priester mit Buch → 1. Stand (Klerus); zahlt keine Steuern, nimmt Zehnt (dîme) von Bauern\n" +
+      "• Adliger mit Schwert → 2. Stand (Adel); Privilegien, zieht Abgaben und Frondienste von Bauern\n" +
+      "• Zwei oben auf dem Stein → Klerus und Adel „wiegen“ auf den Steuern, ohne selbst zu zahlen",
+  ),
+  karikaturCard(
+    "card-karikatur-m7-frage-8",
+    KARIKATUR_M7_IMAGE,
+    "Bildaussage erkennen",
+    "8. Auf welches Ereignis bezieht sich die Karikatur?",
+    "Auf die Krise des Ancien Régime und die Vorgeschichte der Französischen Revolution 1789 — die Einberufung der Generalstände (5. Mai 1789) und die Cahiers de doléances, in denen der 3. Stand die Ungerechtigkeit der Steuern anprangert.",
+  ),
+  karikaturCard(
+    "card-karikatur-m7-frage-9",
+    KARIKATUR_M7_IMAGE,
+    "Aussage der Karikatur formulieren",
+    "9. Was ist die Botschaft?",
+    "Der 3. Stand wird von Steuern und Frondiensten erdrückt, während Adel und Klerus oben stehen und profitieren. Alle sollten Steuern zahlen — der 3. Stand fordert Gleichheit, beginnend mit Steuergleichheit (égalité fiscale).",
+  ),
+  karikaturCard(
+    "card-karikatur-m7-frage-10",
+    KARIKATUR_M7_IMAGE,
+    "Aussage der Karikatur formulieren",
+    "10. Was wird kritisiert?",
+    "Die Ständegesellschaft und die Steuerordnung: Der 3. Stand zahlt taille, impôts und corvées, während Adel und Klerus keine oder wenig Steuern zahlen und zusätzlich von Bauern profitieren (dîme für den Klerus, Abgaben und Frondienste für die Noblesse).",
+  ),
+  karikaturCard(
+    "card-karikatur-m7-frage-11",
+    KARIKATUR_M7_IMAGE,
+    "Aussage der Karikatur formulieren",
+    "11. Welche Wirkung könnte die Karikatur haben?",
+    "1789 wird die Karikatur zur politischen Sprache: Sie funktioniert wie ein Cahier de doléances in Bildform. Der 3. Stand erkennt seine Unterdrückung und seine berechtigten Forderungen — und kann Widerstand gegen die alte Ordnung wecken.",
+  ),
+  karikaturCard(
+    "card-karikatur-m8-frage-1",
+    KARIKATUR_M8_IMAGE,
+    "Ersten Eindruck festhalten",
+    "1. Wie wirkt die Karikatur auf dich?",
+    "Die Karikatur wirkt ungerecht und bedrückend — ähnlich wie die männliche Version (M1), aber auffällig: Alle Figuren sind Frauen. Die gebeugte Bäuerin leidet sichtbar, während Adelige und Geistliche auf ihrem Rücken entspannt sitzen. Man spürt Mitgeleid und erkennt: Auch Frauen sind von der Ständegesellschaft betroffen.",
+  ),
+  karikaturCard(
+    "card-karikatur-m8-frage-2",
+    KARIKATUR_M8_IMAGE,
+    "Einzelheiten beschreiben",
+    "2. Welche Personen, Gegenstände und andere Details lassen sich erkennen? Achte auf den Gesichtsausdruck, die Körperhaltung. Beziehe die Bildunterschrift mit ein.",
+    "Oben: „Costumes et Caricatures“. Eine gebeugte Bäuerin (Fermière) in einfacher Kleidung stützt sich auf eine Hacke und trägt auf dem Rücken zwei Frauen: eine Nonne/Geistliche in Soutane und eine Adlige in feiner Kleidung. Auf dem Bild stehen die Ziffern „I. 2. 3.“ für die drei Stände. Unten: „La fermière en corvé“ und „Les 3 ordres du temps passé en juin 1789“. Bildunterschrift: „À faut esperer qu'eu se jeu la finira bentot“ (Man muss hoffen, dass dieses Spiel bald ein Ende hat).",
+  ),
+  karikaturCard(
+    "card-karikatur-m8-frage-3",
+    KARIKATUR_M8_IMAGE,
+    "Zusätzliche Informationen heranziehen",
+    "3. Wer ist der Zeichner?",
+    "Unbekannt. Anonyme Gravure, aufbewahrt in der Bibliothèque nationale de France (BnF).",
+  ),
+  karikaturCard(
+    "card-karikatur-m8-frage-4",
+    KARIKATUR_M8_IMAGE,
+    "Zusätzliche Informationen heranziehen",
+    "4. Wann und wo ist die Karikatur entstanden?",
+    "Juni 1789, in Frankreich (Paris). Entstand zur Zeit der Generalstände und der Cahiers de doléances — als „Version Femmes“ (VF) der bekannten Drei-Ordres-Karikatur.",
+  ),
+  karikaturCard(
+    "card-karikatur-m8-frage-5",
+    KARIKATUR_M8_IMAGE,
+    "Zusätzliche Informationen heranziehen",
+    "5. Gibt es einen Titel?",
+    "Ja: „La Fermière en Corvé“ und „Les 3 ordres du temps passé en juin 1789“. Auch bekannt als „Version Femmes“ — die weibliche Variante der Trois-Ordres-Karikatur.",
+  ),
+  karikaturCard(
+    "card-karikatur-m8-frage-6",
+    KARIKATUR_M8_IMAGE,
+    "Zusätzliche Informationen heranziehen",
+    "6. Welches Thema hat die Karikatur?",
+    "Die soziale Ungleichheit in der Ständegesellschaft — dargestellt mit Frauenfiguren. Eine Frau des 3. Standes (Fermière) trägt die Frauen von Adel und Klerus; zugleich die Stellung der Frauen als „quatrième ordre“ (vierte Stand) in der Gesellschaft.",
+  ),
+  karikaturCard(
+    "card-karikatur-m8-frage-7",
+    KARIKATUR_M8_IMAGE,
+    "Bildaussage erkennen",
+    "7. Welche Bedeutung haben die Personen und Gegenstände?",
+    "• Gebeugte Fermière mit Hacke → Frauen des 3. Standes, harte Arbeit und Frondienst (corvée)\n" +
+      "• Nonne/Geistliche auf dem Rücken → 1. Stand (Klerus), auch in weiblicher Form\n" +
+      "• Adlige auf dem Rücken → 2. Stand (Noblesse), privilegiert und faul\n" +
+      "• „I. 2. 3.“ → die drei Stände der Ständegesellschaft\n" +
+      "• Parallele zur männlichen Karikatur (M1) → dieselbe Kritik, aber mit Frauen als Figuren\n" +
+      "• „Version Femmes“ → Frauen sind ebenfalls von der Ungleichheit betroffen und fast unsichtbar in der Politik",
+  ),
+  karikaturCard(
+    "card-karikatur-m8-frage-8",
+    KARIKATUR_M8_IMAGE,
+    "Bildaussage erkennen",
+    "8. Auf welches Ereignis bezieht sich die Karikatur?",
+    "Auf die Generalstände von 1789 und die Cahiers de doléances — einschließlich der Forderungen von Frauen (z. B. Cahier de Madame B.B.), die eine gleiche Vertretung der Frauen verlangten.",
+  ),
+  karikaturCard(
+    "card-karikatur-m8-frage-9",
+    KARIKATUR_M8_IMAGE,
+    "Aussage der Karikatur formulieren",
+    "9. Was ist die Botschaft?",
+    "Auch Frauen leiden unter der Ständegesellschaft — sie sind das „vierte Stand“, das am meisten unterdrückt wird. Wie beim 3. Stand insgesamt muss auch dieses „Spiel“ bald ein Ende haben; Frauen fordern Gleichheit und Anerkennung.",
+  ),
+  karikaturCard(
+    "card-karikatur-m8-frage-10",
+    KARIKATUR_M8_IMAGE,
+    "Aussage der Karikatur formulieren",
+    "10. Was wird kritisiert?",
+    "Die doppelte Ungleichheit: Ständegesellschaft (3. Stand trägt alles) und Geschlechterungleichheit (Frauen haben keine politischen Rechte, werden von Männern nicht vertreten). Privilegierte Frauen von Adel und Klerus profitieren, während die Bäuerin alle Lasten trägt.",
+  ),
+  karikaturCard(
+    "card-karikatur-m8-frage-11",
+    KARIKATUR_M8_IMAGE,
+    "Aussage der Karikatur formulieren",
+    "11. Welche Wirkung könnte die Karikatur haben?",
+    "Frauen erkennen ihre Unterdrückung und den feministischen Impuls der Revolution. Die Karikatur zeigt: Auch Frauen wollen gehört werden — und weckt Hoffnung auf Veränderung, auch wenn die Männer der Revolution den Frauen zunächst wenig Rechte gewähren werden.",
+  ),
 ];
 
 export const absolutismusSections = [
@@ -649,6 +817,7 @@ export const absolutismusSections = [
       "card-karikatur-m3-frage-11",
     ],
   },
+  /*
   {
     id: "section-geschichte-karikatur-m4",
     title: "Karikatur · M4",
@@ -689,6 +858,7 @@ export const absolutismusSections = [
       "card-karikatur-m5-frage-11",
     ],
   },
+  */
   {
     id: "section-geschichte-karikatur-m6",
     title: "Karikatur · M6",
@@ -707,6 +877,46 @@ export const absolutismusSections = [
       "card-karikatur-m6-frage-9",
       "card-karikatur-m6-frage-10",
       "card-karikatur-m6-frage-11",
+    ],
+  },
+  {
+    id: "section-geschichte-karikatur-m7",
+    title: "Karikatur · M7",
+    sourceUrl:
+      "https://histoire-en-citations.fr/WP/lhistoire-en-caricatures-sous-la-revolution/",
+    sourceLabel: "Histoire en Citations · Taille, impôts et corvées (1789)",
+    cardIds: [
+      "card-karikatur-m7-frage-1",
+      "card-karikatur-m7-frage-2",
+      "card-karikatur-m7-frage-3",
+      "card-karikatur-m7-frage-4",
+      "card-karikatur-m7-frage-5",
+      "card-karikatur-m7-frage-6",
+      "card-karikatur-m7-frage-7",
+      "card-karikatur-m7-frage-8",
+      "card-karikatur-m7-frage-9",
+      "card-karikatur-m7-frage-10",
+      "card-karikatur-m7-frage-11",
+    ],
+  },
+  {
+    id: "section-geschichte-karikatur-m8",
+    title: "Karikatur · M8",
+    sourceUrl:
+      "https://histoire-en-citations.fr/WP/lhistoire-en-caricatures-sous-la-revolution/",
+    sourceLabel: "Histoire en Citations · La Fermière en Corvé — Version Femmes (1789)",
+    cardIds: [
+      "card-karikatur-m8-frage-1",
+      "card-karikatur-m8-frage-2",
+      "card-karikatur-m8-frage-3",
+      "card-karikatur-m8-frage-4",
+      "card-karikatur-m8-frage-5",
+      "card-karikatur-m8-frage-6",
+      "card-karikatur-m8-frage-7",
+      "card-karikatur-m8-frage-8",
+      "card-karikatur-m8-frage-9",
+      "card-karikatur-m8-frage-10",
+      "card-karikatur-m8-frage-11",
     ],
   },
 ];
