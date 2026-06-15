@@ -292,7 +292,8 @@ export const absolutismusCards = [
     "• Bauer oben → 3. Stand ist jetzt „an der Reihe“, selbstbewusst und handelnd\n" +
       "• Adel und Klerus unten → verlieren Privilegien, müssen Lasten tragen\n" +
       "• Umkehrung der bekannten M1-Karikatur → Machtverhältnis hat sich gedreht\n" +
-      "• Tote Vögel, Hacke am Boden → Ende der Adelsprivilegien (Jagdrecht), Bauer nicht mehr nur Arbeiter\n" +
+      "• Toter Hase am Schwert „de Courage“ → Im Ancien Régime durfte der Bauer nicht jagen (Wild und Hasen gehörten dem Adel); die erlegte Beute zeigt: Das seigneuriale Jagdrecht ist vorbei (Aufhebung der Feudalrechte, August 1789)\n" +
+      "• Tote Vögel, Hacke am Boden → Ende weiterer Adelsprivilegien; der Bauer ist nicht mehr nur Arbeiter\n" +
       "• Blau-weiß-rote Kokarde → Revolution, Zugehörigkeit zur Nation\n" +
       "• Waage → Gerechtigkeit und Gleichberechtigung",
   ),
