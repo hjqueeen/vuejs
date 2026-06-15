@@ -826,10 +826,11 @@ export const alltagKoDeCards = [
   {
     id: "card-alltag-bootstrap-link-farbe",
     term:
-      "그러면 부트스트랩에서 알스톰 색깔을 오버라이드 하는 것에 대해서 한 번 살펴보겠습니다. 먼저 링크입니다. 부트스트랩의 기본 색깔은 파란색으로 구현되어 있습니다. 여기에 보시면 파란 색깔 링크를 볼 수 있죠. 그리고 네, 다음으로는 기존 코드입니다. 기존 코드는 알스톰 파란색으로 잘 오버라이드 되어 있습니다. 하지만 여기에서는 CSS를 사용하고 있죠? 네, CSS를 오버라이딩해서 색깔을 변형시키고 있습니다. 그리고 새로 작성한 코드에서는 변수를 이용하여 색깔을 오버라이딩 하였습니다.",
+      "그러면 부트스트랩에서 알스톰 색깔을 오버라이드 하는 것에 대해서 한 번 살펴보겠습니다. 먼저 링크입니다. 부트스트랩의 기본 색깔은 파란색으로 구현되어 있습니다. 여기에 보시면 파란 색깔 링크를 볼 수 있죠. 그리고 네, 다음으로는 기존 코드입니다. 기존 코드는 `a`와 `a:hover`에 CSS를 직접 작성하여 알스톰 파란색으로 오버라이드 되어 있습니다. 새로 작성한 코드에서는 `$link-color`와 `$link-hover-color` 변수를 `@import` 전에 설정하여 부트스트랩이 링크 색상을 자동으로 적용하게 했습니다.",
     explanationDe:
-      "Dann schauen wir uns einmal an, wie wir die Alstom-Farben in Bootstrap überschreiben können. Zuerst die Links: Bootstrap ist standardmäßig blau — hier sehen Sie einen blauen Link. Im bisherigen Code ist die Farbe sauber auf Alstom-Blau überschrieben, aber per CSS, also durch direktes Überschreiben der Styles. Im neu geschriebenen Code nutzen wir Sass-Variablen, um die Farben zu überschreiben.",
-    explanationKo: "überschreiben · Sass-Variablen · CSS-Override",
+      "Dann schauen wir uns an, wie wir die Alstom-Farben in Bootstrap überschreiben. Zuerst die Links: Bootstrap ist standardmäßig blau. Im Legacy-Code (`override_legacy.less`) setzen wir `a` und `a:hover` direkt per CSS. Im neuen Code (`override_new.scss`) reichen `$link-color` und `$link-hover-color` vor dem `@import` — Bootstrap übernimmt die Farben in den Reboot-Styles.",
+    explanationKo:
+      "그러면 부트스트랩에서 Alstom 색상을 어떻게 오버라이드하는지 살펴보겠습니다. 먼저 링크입니다: 부트스트랩은 기본적으로 파란색입니다. 레거시 코드(`override_legacy.less`)에서는 `a`와 `a:hover`를 CSS로 직접 설정합니다. 새 코드(`override_new.scss`)에서는 `@import` 전에 `$link-color`와 `$link-hover-color`만 있으면 됩니다 — 부트스트랩이 Reboot 스타일에서 색상을 가져갑니다.",
     vocabulary: [
       {
         word: "überschreiben",
@@ -837,12 +838,12 @@ export const alltagKoDeCards = [
           "(스타일·변수·기본값을) 덮어쓰다, 오버라이드하다 · to override",
         examples: [
           {
-            de: "Im alten Code überschreiben wir die Linkfarbe per CSS.",
-            ko: "기존 코드에서는 CSS로 링크 색상을 오버라이드한다.",
+            de: "Im Legacy-Code überschreiben wir die Linkfarbe per CSS (`a { color: … }`).",
+            ko: "레거시 코드에서는 CSS로 링크 색상을 오버라이드한다.",
           },
           {
-            de: "Mit Sass-Variablen überschreiben wir die Bootstrap-Standardfarben.",
-            ko: "Sass 변수로 부트스트랩 기본 색상을 오버라이드한다.",
+            de: "Im neuen Code überschreiben wir mit `$link-color` vor dem `@import`.",
+            ko: "새 코드에서는 `@import` 전에 `$link-color` 변수로 오버라이드한다.",
           },
         ],
       },
@@ -851,23 +852,24 @@ export const alltagKoDeCards = [
   {
     id: "card-alltag-bootstrap-btn-primary",
     term:
-      "다음입니다. 프라이머리 버튼입니다. 부트스트랩 원래 색깔은 파란색으로 되어있고 포커스가 되어 있을 때는 연한 파란색으로 포커스 링이 되어 있는 것을 볼 수 있습니다. 네, 기존 코드에서는 버튼 색깔을 알스톤 파란색으로 오버라이드 하였지만 기존의 포커스 링은 오버라이드 하지 않고 기본 동작을 사용하고 있습니다. 새로 변경된 코드에서는 버튼 색깔 뿐만 아니라 포커스 링 색깔도 알스톤 컬러로 바뀐 것을 볼 수 있습니다.",
+      "다음입니다. 프라이머리 버튼입니다. 부트스트랩 원래 색깔은 파란색으로 되어있고 포커스가 되어 있을 때는 연한 파란색으로 포커스 링이 되어 있는 것을 볼 수 있습니다. 기존 코드에서는 `background-color`와 `border-color`만 CSS로 오버라이드 했기 때문에 포커스 링(`box-shadow`)은 부트스트랩 기본 파란색이 그대로 남아 있습니다. 새 코드에서는 `button-variant` Mixin을 사용하여 Alstom 색상을 명시적으로 전달하고, Mixin이 포커스 링까지 Alstom 색상 기준으로 계산합니다.",
     explanationDe:
-      "Als Nächstes der Primary-Button. Bootstrap liefert ihn standardmäßig in Blau — beim Fokus sieht man einen hellblauen Focus-Ring. Im alten Code haben wir die Button-Farbe auf Alstom-Blau überschrieben, den Focus-Ring aber nicht angepasst; er bleibt beim Bootstrap-Standard. Im neuen Code sehen Sie, dass nicht nur die Button-Farbe, sondern auch der Focus-Ring in Alstom-Farben umgesetzt ist.",
-    explanationKo: "Primary-Button · Focus-Ring · Bootstrap-Standard",
+      "Als Nächstes der Primary-Button. Bootstrap liefert ihn in Blau — beim Fokus einen hellblauen Focus-Ring (`box-shadow`). Im Legacy-Code überschreiben wir nur `background-color` und `border-color` per CSS — der Focus-Ring bleibt Bootstrap-Standard. Im neuen Code rufen wir `@include button-variant(...)` mit expliziten Alstom-Farben auf; das Mixin berechnet auch den Focus-Ring aus diesen Werten.",
+    explanationKo:
+      "다음은 Primary 버튼입니다. 부트스트랩은 이를 파란색으로 제공합니다 — 포커스 시 연한 파란색 Focus-Ring(`box-shadow`). 레거시 코드에서는 CSS로 `background-color`와 `border-color`만 오버라이드합니다 — Focus-Ring은 부트스트랩 기본값을 유지합니다. 새 코드에서는 명시적인 Alstom 색상으로 `@include button-variant(...)`를 호출합니다; Mixin이 이 값들에서 Focus-Ring도 계산합니다.",
     vocabulary: [
       {
         word: "Focus-Ring",
         meaning:
-          "(키보드 포커스 시 버튼·링크 주변의) 포커스 링 · focus ring (outline)",
+          "(키보드 포커스 시 버튼·링크 주변의) 포커스 링 — `box-shadow` · focus ring (outline)",
         examples: [
           {
-            de: "Im alten Code bleibt der Focus-Ring beim Bootstrap-Standard.",
-            ko: "기존 코드에서는 포커스 링이 부트스트랩 기본값을 유지한다.",
+            de: "Im Legacy-Code bleibt der Focus-Ring beim Bootstrap-Standard, weil nur bg/border überschrieben werden.",
+            ko: "레거시 코드에서는 bg/border만 덮어써서 포커스 링은 부트스트랩 기본값을 유지한다.",
           },
           {
-            de: "Mit Mixins passt sich der Focus-Ring automatisch an die Hintergrundfarbe an.",
-            ko: "믹스인을 쓰면 포커스 링이 배경색에 맞춰 자동으로 조정된다.",
+            de: "Das `button-variant`-Mixin leitet den Focus-Ring aus Hintergrund- und Rahmenfarbe ab.",
+            ko: "`button-variant` Mixin은 배경색·테두리색에서 포커스 링을 도출한다.",
           },
         ],
       },
@@ -876,23 +878,24 @@ export const alltagKoDeCards = [
   {
     id: "card-alltag-bootstrap-mixin-implementierung",
     term:
-      "코드 구현을 살펴보겠습니다. 기존 코드는 CSS에 여러 상태를 각각 따로 정의했다면 새롭게 작성된 코드에서는 사스와 믹스인을 사용하여서 부트스트랩 내에서 자동으로 색깔이 계산되게 되어 있습니다. 그리고 포커스 링의 경우에는 믹스인의 내부 규칙에 따라 배경색을 기준으로 색깔을 변화시켜서 포커스 링의 색깔이 계산되었습니다.",
+      "코드 구현을 살펴보겠습니다. 기존 코드는 `.btn-primary`의 default, hover, focus, active 상태를 CSS에 각각 따로 정의했습니다. 새 코드에서는 `button-variant` Mixin에 Alstom 색상을 파라미터로 넘겨 한 번에 생성하고, focus 배경색만 추가 CSS로 darkblue로 고정합니다. 포커스 링은 Mixin 내부에서 `rgba(mix(...), .5)`로 배경색 기준 자동 계산됩니다.",
     explanationDe:
-      "Schauen wir uns die Implementierung an. Im alten Code wurden alle Zustände im CSS einzeln definiert. Im neuen Code nutzen wir Sass und Mixins, sodass Bootstrap die Farben automatisch berechnet. Beim Focus-Ring passiert das intern über die Mixin-Regeln: anhand der Hintergrundfarbe wird die Ringfarbe abgeleitet.",
-    explanationKo: "Mixin · Zustände · automatisch berechnen",
+      "Zur Implementierung: Im Legacy-Code definiert jeder Zustand (default, hover, focus, active) eine eigene CSS-Regel. Im neuen Code übergibt `@include button-variant($background: …, $hover-background: …, …)` alle Alstom-Farben als Parameter — das Mixin erzeugt die Zustände und den Focus-Ring (`box-shadow`) daraus. Nur die Focus-Hintergrundfarbe wird zusätzlich per CSS auf Darkblue fixiert.",
+    explanationKo:
+      "구현에 대해: 레거시 코드에서는 각 상태(default, hover, focus, active)마다 별도의 CSS 규칙을 정의합니다. 새 코드에서는 `@include button-variant($background: …, $hover-background: …, …)`가 모든 Alstom 색상을 파라미터로 전달합니다 — Mixin이 이로부터 상태와 Focus-Ring(`box-shadow`)을 생성합니다. Focus 배경색만 추가로 CSS로 Darkblue에 고정합니다.",
     vocabulary: [
       {
         word: "Mixin",
         meaning:
-          "(Sass) 믹스인 — 재사용 가능한 스타일 규칙 묶음 · Sass mixin",
+          "(Sass) 믹스인 — `button-variant` 등 재사용 가능한 스타일 규칙 묶음 · Sass mixin",
         examples: [
           {
-            de: "Bootstrap nutzt Mixins, um Button-Farben für alle Zustände zu berechnen.",
-            ko: "부트스트랩은 모든 상태의 버튼 색상을 계산하기 위해 믹스인을 쓴다.",
+            de: "`@include button-variant(...)` erzeugt alle Button-Zustände aus den übergebenen Farben.",
+            ko: "`@include button-variant(...)`는 전달한 색상으로 모든 버튼 상태를 생성한다.",
           },
           {
-            de: "Mit Mixins ist der Code aufgeräumter als mit einzelnen CSS-Overrides.",
-            ko: "믹스인을 쓰면 개별 CSS 오버라이드보다 코드가 깔끔하다.",
+            de: "Im Legacy-Code brauchten wir dafür viele einzelne CSS-Regeln.",
+            ko: "레거시 코드에서는 이를 위해 여러 개의 CSS 규칙이 필요했다.",
           },
         ],
       },
@@ -901,39 +904,42 @@ export const alltagKoDeCards = [
   {
     id: "card-alltag-bootstrap-btn-outline",
     term:
-      "아웃라인 프라이머리 버튼도 마찬가지입니다. 부트스트랩 기본 컴포넌트는 파란색으로 구현되어 있고요. 그리고 기존 코드에서는 알스톰 파란색으로 오버라이드 하였지만 마찬가지로 포커스 링은 색깔을 변화시킬 수 없었습니다. 새로 작성된 코드에서는 믹스인을 사용하여 전체 색깔을 알스톰 컬러로 변화시킨 것을 볼 수 있습니다.",
+      "아웃라인 프라이머리 버튼도 마찬가지입니다. 부트스트랩 기본 컴포넌트는 파란색으로 구현되어 있고요. 기존 코드에서는 각 상태를 CSS로 오버라이드 했지만 포커스 링은 건드리지 않아 부트스트랩 기본 색이 남습니다. 새 코드에서는 `button-outline-variant` Mixin으로 테두리·텍스트·포커스 링을 Alstom 색상으로 생성하고, hover 배경색 등 Mixin이 맞추지 못하는 부분만 추가 CSS로 보완합니다.",
     explanationDe:
-      "Beim Outline-Primary-Button ist es dasselbe. Bootstrap liefert die Komponente standardmäßig in Blau. Im alten Code haben wir auf Alstom-Blau überschrieben, konnten den Focus-Ring aber wieder nicht mit anpassen. Im neuen Code sieht man mit Mixins die komplette Farbpalette in Alstom-Farben.",
-    explanationKo: "Outline-Primary · Farbpalette · überschreiben",
+      "Beim Outline-Primary-Button gilt dasselbe. Bootstrap liefert die Komponente in Blau. Im Legacy-Code überschreiben wir jeden Zustand per CSS, lassen den Focus-Ring aber unverändert. Im neuen Code erzeugt `@include button-outline-variant(...)` Rahmen, Text und Focus-Ring in Alstom-Farben; nur Hover-Hintergrund und Active-Textfarbe werden zusätzlich per CSS ergänzt.",
+    explanationKo:
+      "Outline-Primary 버튼도 마찬가지입니다. 부트스트랩은 컴포넌트를 파란색으로 제공합니다. 레거시 코드에서는 각 상태를 CSS로 오버라이드하지만 Focus-Ring은 변경하지 않습니다. 새 코드에서는 `@include button-outline-variant(...)`가 테두리, 텍스트, Focus-Ring을 Alstom 색상으로 생성합니다; Hover 배경과 Active 텍스트 색만 추가로 CSS로 보완합니다.",
   },
   {
     id: "card-alltag-bootstrap-outline-code",
     term:
-      "다음으로는 코드 구현을 살펴보겠습니다. 여기에서도 마찬가지로 이전 코드는 CSS를 오버라이딩하는 것으로 작성되어 있고 새로 작성된 코드에서는 믹스인 규칙을 사용하여서 좀 더 깔끔하게 정리되었습니다.",
+      "코드 구현을 살보면, 기존 코드는 `.btn-outline-primary`의 default, focus, hover, active를 모두 CSS로 작성했습니다. 새 코드에서는 `button-outline-variant` Mixin이 기본·포커스 링을 처리하고, hover 배경(`$alstom-bluegrey`)과 active 텍스트 색만 CSS로 남겨 두었습니다.",
     explanationDe:
-      "Und noch mal die Code-Implementierung: auch hier war der alte Ansatz reines CSS-Override, der neue nutzt die Mixin-Regeln — dadurch ist alles deutlich aufgeräumter.",
-    explanationKo: "CSS-Override · Mixin-Regeln · aufgeräumter",
+      "Zur Code-Implementierung: Im Legacy-Code steht für jeden Zustand (default, focus, hover, active) eine eigene CSS-Regel. Im neuen Code übernimmt `button-outline-variant` Basis und Focus-Ring; nur Hover-Hintergrund (`$alstom-bluegrey`) und Active-Textfarbe bleiben als kleine CSS-Ergänzungen.",
+    explanationKo:
+      "코드 구현에 대해: 레거시 코드에서는 각 상태(default, focus, hover, active)마다 별도의 CSS 규칙이 있습니다. 새 코드에서는 `button-outline-variant`가 기본과 Focus-Ring을 처리합니다; Hover 배경(`$alstom-bluegrey`)과 Active 텍스트 색만 작은 CSS 보완으로 남습니다.",
   },
   {
     id: "card-alltag-bootstrap-fokus-ring-hinweis",
     term:
-      "그러나 한 가지 질문이 있습니다. 여기에 기존 코드의 색상처럼 포커스 링을 부트스트랩의 기본 색깔로 사용하기 원한다면 사스와 믹스인을 사용하지 않는 방법을 추천합니다. 왜냐하면 믹스인에서 계산되는 방식은 배경색에 지정된 색깔에서 자동으로 계산되어서 포커스 링의 색깔을 맞추기 때문에 우리가 프라이머리 색깔을 부트스트랩 기준으로 오버라이딩 하기 원한다면 포커스 링의 색깔이 변화되는 것을 받아들여야 할 것 같습니다.",
+      "한 가지 질문이 있습니다. Alstom 버튼 색상을 쓰면서 포커스 링은 부트스트랩 기본 파란색을 유지하고 싶다면, 레거시처럼 `background-color`/`border-color`만 CSS로 오버라이드하고 `box-shadow`는 건드리지 않는 방식이 맞습니다. `button-variant` Mixin을 쓰면 포커스 링도 Alstom 색상 기준으로 재계산되므로, Mixin을 쓰면서 기본 파란 링을 유지하려면 `box-shadow`를 별도로 오버라이드해야 합니다.",
     explanationDe:
-      "Eine Frage aber noch: Wenn ihr den Focus-Ring wie im alten Code bei den Bootstrap-Standardfarben belassen wollt, empfehle ich, ohne Sass und Mixins zu arbeiten. Denn die Mixins leiten die Ringfarbe automatisch aus der Hintergrundfarbe ab — wenn wir Primary auf Alstom setzen, müsst ihr akzeptieren, dass sich auch der Focus-Ring mit ändert.",
-    explanationKo: "empfehlen · ableiten · akzeptieren",
+      "Eine Frage: Wenn ihr Alstom-Buttonfarben wollt, aber den Focus-Ring bei Bootstrap-Blau belassen möchtet, ist der Legacy-Ansatz richtig — nur `background-color`/`border-color` per CSS überschreiben, `box-shadow` nicht anfassen. Mit `button-variant` wird der Focus-Ring aus den Alstom-Farben neu berechnet; wollt ihr trotzdem Bootstrap-Blau, müsst ihr `box-shadow` explizit überschreiben.",
+    explanationKo:
+      "질문 하나: Alstom 버튼 색상을 원하지만 Focus-Ring은 부트스트랩 파란색으로 유지하고 싶다면, 레거시 방식이 맞습니다 — CSS로 `background-color`/`border-color`만 오버라이드하고 `box-shadow`는 건드리지 않습니다. `button-variant`를 쓰면 Focus-Ring이 Alstom 색상에서 재계산됩니다; 그래도 부트스트랩 파란색을 원한다면 `box-shadow`를 명시적으로 오버라이드해야 합니다.",
     vocabulary: [
       {
         word: "ableiten",
         meaning:
-          "(다른 값·규칙에서) 도출하다, 유도하다 · to derive, infer",
+          "(Mixin 등에서 다른 값·규칙으로부터) 도출하다, 유도하다 · to derive, infer",
         examples: [
           {
-            de: "Die Mixins leiten die Focus-Ring-Farbe aus der Hintergrundfarbe ab.",
-            ko: "믹스인은 포커스 링 색상을 배경색에서 도출한다.",
+            de: "Das Mixin leitet den Focus-Ring aus Hintergrund- und Rahmenfarbe ab.",
+            ko: "Mixin은 배경색·테두리색에서 포커스 링을 도출한다.",
           },
           {
-            de: "Bootstrap berechnet Hover-Farben automatisch aus der Primary-Farbe.",
-            ko: "부트스트랩은 Primary 색상에서 호버 색상을 자동으로 계산한다.",
+            de: "Ohne Mixin bleibt der Bootstrap-`box-shadow` unverändert.",
+            ko: "Mixin 없이는 부트스트랩 `box-shadow`가 그대로 남는다.",
           },
         ],
       },
@@ -942,18 +948,20 @@ export const alltagKoDeCards = [
   {
     id: "card-alltag-bootstrap-dropdown",
     term:
-      "드롭다운도 링크와 마찬가지로 기존 부트스트랩의 기본 컬러는 이렇게 생겼고 기존 코드에서는 CSS 오버라이딩을 이용하여서 다음과 같이 구현했다면 새로 작성된 코드에서는 변수 하나만을 지정하여서 색깔을 변경하였습니다.",
+      "드롭다운도 마찬가지입니다. 기존 코드에서는 `.dropdown-item.active`에 CSS로 `background-color`를 직접 지정했습니다. 새 코드에서는 `$dropdown-link-active-bg: $alstom-darkblue` 변수 하나만 `@import` 전에 설정하여 동일한 결과를 얻습니다.",
     explanationDe:
-      "Beim Dropdown gilt dasselbe wie bei den Links: Bootstrap liefert die Standardfarben so, im alten Code haben wir per CSS überschrieben, im neuen reicht eine einzige Variable, um die Farben zu ändern.",
-    explanationKo: "Dropdown · Standardfarben · eine Variable",
+      "Beim Dropdown: Im Legacy-Code setzen wir `.dropdown-item.active { background-color: … }` per CSS. Im neuen Code reicht `$dropdown-link-active-bg: $alstom-darkblue` vor dem `@import` — dieselbe Farbe, ohne extra CSS.",
+    explanationKo:
+      "드롭다운: 레거시 코드에서는 CSS로 `.dropdown-item.active { background-color: … }`를 설정합니다. 새 코드에서는 `@import` 전에 `$dropdown-link-active-bg: $alstom-darkblue`만 있으면 됩니다 — 같은 색상, 추가 CSS 없이.",
   },
   {
     id: "card-alltag-bootstrap-btn-link",
     term:
-      "버튼 링크는 변수와 믹스인 규칙이 존재하지 않기 때문에 기존 레거시 코드와 동일하게 작성이 되었고, 단지 변수를 설정하는 부분에서 @기호만 달러기호로 변경되었습니다.",
+      "버튼 링크는 부트스트랩에 전용 변수나 Mixin이 없습니다. 그래서 기존·새 코드 모두 `.btn-link`에 CSS 오버라이드를 사용하며, default와 hover 모두 `$alstom-bluegrey`로 동일하게 설정합니다. 문법만 LESS의 `@`에서 Sass의 `$`로 바뀌었습니다.",
     explanationDe:
-      "Bei Button-Links gibt es keine Variablen und keine Mixin-Regeln — deshalb bleibt der Code gleich wie im Legacy, nur dass beim Setzen der Variablen das @ durch $ ersetzt wird (LESS → Sass).",
-    explanationKo: "Button-Link · Legacy · LESS → Sass",
+      "Bei Button-Links gibt es in Bootstrap keine eigenen Variablen oder Mixins. Deshalb nutzen Legacy und neuer Code dieselbe CSS-Überschreibung — default und hover beide `$alstom-bluegrey`. Einziger Unterschied: `@` (LESS) wurde zu `$` (Sass).",
+    explanationKo:
+      "버튼 링크: 부트스트랩에는 전용 변수나 Mixin이 없습니다. 그래서 레거시와 새 코드 모두 같은 CSS 오버라이드를 사용합니다 — default와 hover 모두 `$alstom-bluegrey`. 유일한 차이: `@`(LESS)가 `$`(Sass)로 바뀌었습니다.",
   },
 ];
 

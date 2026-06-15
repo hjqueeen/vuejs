@@ -1,0 +1,67 @@
+// RTC-594902, RTC-594909, RTC-594911
+// Overwriting primary color from bootstrap with Alstom colors
+
+// --- Alstom brand palette ---
+$alstom-red: #d62f20;
+$alstom-redgrey: #eb827d;
+$alstom-darkblue: #162134;
+$alstom-bluegrey: #788291;
+$alstom-darkgreen: #19aa6e;
+$alstom-greengrey: #73cdaa;
+
+// --- Bootstrap Sass variables ---
+$blue: $alstom-darkblue;
+$red: $alstom-red;
+$primary: $alstom-darkblue;
+$link-color: $alstom-darkblue;
+$link-hover-color: $alstom-bluegrey;
+$dropdown-link-active-bg: $alstom-darkblue;
+
+@import "bootstrap/scss/bootstrap";
+
+// btn-primary
+.btn-primary {
+  @include button-variant(
+          $background:        $alstom-darkblue,
+          $border:            $alstom-darkblue,
+          $hover-background:  $alstom-bluegrey,
+          $hover-border:      $alstom-bluegrey,
+          $active-background: $alstom-darkblue,
+          $active-border:     $alstom-darkblue
+  );
+
+  &:focus,
+  &.focus {
+    background-color: $alstom-darkblue;
+    border-color:     $alstom-darkblue;
+  }
+}
+
+// btn-outline-primary
+.btn-outline-primary {
+  @include button-outline-variant(
+          $color:             $alstom-darkblue,
+          $color-hover:       $alstom-darkblue,
+          $active-background: $alstom-darkblue,
+          $active-border:     $alstom-darkblue
+  );
+
+  &:hover {
+    background-color: $alstom-bluegrey;
+    border-color:     $alstom-bluegrey;
+  }
+
+  &:active:focus,
+  &.active:focus {
+    color: $alstom-bluegrey;
+  }
+}
+
+// btn-link
+.btn-link, .btn-link:hover {
+  color: $alstom-bluegrey;
+}
+//.btn-link {
+//  color: $alstom-bluegrey;
+//  &:hover { color: $alstom-bluegrey; }
+//}

@@ -43,21 +43,21 @@ export const alltagExplanationEn = {
   "card-alltag-workshop-team-praesentation":
     "We also presented our team project on the quantum protocol.",
   "card-alltag-bootstrap-link-farbe":
-    "Let's take a look at how we can override Alstom colors in Bootstrap. First, links: Bootstrap defaults to blue — here you see a blue link. In the existing code the color is cleanly overridden to Alstom blue, but via CSS, by directly overriding the styles. In the newly written code we use Sass variables to override the colors.",
+    "Let's look at how we override Alstom colors in Bootstrap. First, links: Bootstrap defaults to blue. In the legacy code (`override_legacy.less`) we set `a` and `a:hover` directly via CSS. In the new code (`override_new.scss`) we set `$link-color` and `$link-hover-color` before `@import` — Bootstrap applies them in the reboot styles.",
   "card-alltag-bootstrap-btn-primary":
-    "Next, the primary button. Bootstrap delivers it in blue by default — on focus you see a light blue focus ring. In the old code we overrode the button color to Alstom blue but didn't adjust the focus ring; it stays at the Bootstrap default. In the new code you can see that not only the button color but also the focus ring is implemented in Alstom colors.",
+    "Next, the primary button. Bootstrap delivers it in blue with a light blue focus ring (`box-shadow`) on focus. In the legacy code we only override `background-color` and `border-color` via CSS — the focus ring stays at Bootstrap default. In the new code we call `@include button-variant(...)` with explicit Alstom colors; the mixin also calculates the focus ring from those values.",
   "card-alltag-bootstrap-mixin-implementierung":
-    "Let's look at the implementation. In the old code all states were defined individually in CSS. In the new code we use Sass and mixins so Bootstrap calculates the colors automatically. For the focus ring this happens internally via the mixin rules: the ring color is derived from the background color.",
+    "On implementation: in the legacy code each state (default, hover, focus, active) has its own CSS rule. In the new code `@include button-variant($background: …, $hover-background: …, …)` passes all Alstom colors as parameters — the mixin generates the states and focus ring (`box-shadow`) from them. Only the focus background color is additionally fixed to dark blue via CSS.",
   "card-alltag-bootstrap-btn-outline":
-    "It's the same for the outline primary button. Bootstrap delivers the component in blue by default. In the old code we overrode to Alstom blue but again couldn't adjust the focus ring. In the new code you can see the complete color palette in Alstom colors via mixins.",
+    "Same for the outline primary button. Bootstrap delivers it in blue. In the legacy code we override each state via CSS but leave the focus ring untouched. In the new code `@include button-outline-variant(...)` generates border, text, and focus ring in Alstom colors; only hover background and active text color are supplemented via CSS.",
   "card-alltag-bootstrap-outline-code":
-    "And again the code implementation: here too the old approach was pure CSS override, the new one uses mixin rules — making everything much cleaner.",
+    "On code implementation: in the legacy code each state (default, focus, hover, active) has its own CSS rule. In the new code `button-outline-variant` handles base and focus ring; only hover background (`$alstom-bluegrey`) and active text color remain as small CSS additions.",
   "card-alltag-bootstrap-fokus-ring-hinweis":
-    "One question though: if you want to keep the focus ring at Bootstrap's default colors like in the old code, I recommend working without Sass and mixins. Because the mixins automatically derive the ring color from the background color — if we set primary to Alstom, you have to accept that the focus ring changes too.",
+    "One question: if you want Alstom button colors but keep the focus ring at Bootstrap blue, the legacy approach is right — only override `background-color`/`border-color` via CSS, don't touch `box-shadow`. With `button-variant` the focus ring is recalculated from Alstom colors; if you still want Bootstrap blue, you must explicitly override `box-shadow`.",
   "card-alltag-bootstrap-dropdown":
-    "For dropdowns it's the same as for links: Bootstrap delivers the default colors like this, in the old code we overrode via CSS, in the new code a single variable is enough to change the colors.",
+    "For dropdowns: in the legacy code we set `.dropdown-item.active { background-color: … }` via CSS. In the new code `$dropdown-link-active-bg: $alstom-darkblue` before `@import` is enough — same color, no extra CSS.",
   "card-alltag-bootstrap-btn-link":
-    "For button links there are no variables and no mixin rules — so the code stays the same as in the legacy version, only when setting variables the @ is replaced by $ (LESS → Sass).",
+    "Button links have no dedicated Bootstrap variables or mixins. So both legacy and new code use the same CSS override — default and hover both `$alstom-bluegrey`. The only difference: `@` (LESS) became `$` (Sass).",
 };
 
 /** @type {Record<string, Record<string, { wordEn: string, meaningEn?: string, examples: { en: string }[] }>>} */
@@ -362,26 +362,26 @@ export const alltagVocabEn = {
     überschreiben: {
       wordEn: "override",
       examples: [
-        { en: "In the old code we override the link color via CSS." },
-        { en: "With Sass variables we override Bootstrap's default colors." },
+        { en: "In the legacy code we override the link color via CSS (`a { color: … }`)." },
+        { en: "In the new code we override with `$link-color` before `@import`." },
       ],
     },
   },
   "card-alltag-bootstrap-btn-primary": {
     "Focus-Ring": {
-      wordEn: "focus ring (outline)",
+      wordEn: "focus ring (`box-shadow`)",
       examples: [
-        { en: "In the old code the focus ring stays at the Bootstrap default." },
-        { en: "With mixins the focus ring automatically adapts to the background color." },
+        { en: "In the legacy code the focus ring stays at Bootstrap default because only bg/border are overridden." },
+        { en: "The `button-variant` mixin derives the focus ring from background and border color." },
       ],
     },
   },
   "card-alltag-bootstrap-mixin-implementierung": {
     Mixin: {
-      wordEn: "Sass mixin",
+      wordEn: "Sass mixin (`button-variant`)",
       examples: [
-        { en: "Bootstrap uses mixins to calculate button colors for all states." },
-        { en: "With mixins the code is cleaner than with individual CSS overrides." },
+        { en: "`@include button-variant(...)` generates all button states from the passed colors." },
+        { en: "In the legacy code we needed many separate CSS rules for that." },
       ],
     },
   },
@@ -389,8 +389,8 @@ export const alltagVocabEn = {
     ableiten: {
       wordEn: "derive / infer",
       examples: [
-        { en: "The mixins derive the focus ring color from the background color." },
-        { en: "Bootstrap automatically calculates hover colors from the primary color." },
+        { en: "The mixin derives the focus ring from background and border color." },
+        { en: "Without the mixin the Bootstrap `box-shadow` stays unchanged." },
       ],
     },
   },
