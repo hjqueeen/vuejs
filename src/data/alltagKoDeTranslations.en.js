@@ -42,6 +42,22 @@ export const alltagExplanationEn = {
     "The institute is next to Freie Universität — my first time there, and I loved it. The cafeteria food was really cheap and delicious.",
   "card-alltag-workshop-team-praesentation":
     "We also presented our team project on the quantum protocol.",
+  "card-alltag-bootstrap-link-farbe":
+    "Let's take a look at how we can override Alstom colors in Bootstrap. First, links: Bootstrap defaults to blue — here you see a blue link. In the existing code the color is cleanly overridden to Alstom blue, but via CSS, by directly overriding the styles. In the newly written code we use Sass variables to override the colors.",
+  "card-alltag-bootstrap-btn-primary":
+    "Next, the primary button. Bootstrap delivers it in blue by default — on focus you see a light blue focus ring. In the old code we overrode the button color to Alstom blue but didn't adjust the focus ring; it stays at the Bootstrap default. In the new code you can see that not only the button color but also the focus ring is implemented in Alstom colors.",
+  "card-alltag-bootstrap-mixin-implementierung":
+    "Let's look at the implementation. In the old code all states were defined individually in CSS. In the new code we use Sass and mixins so Bootstrap calculates the colors automatically. For the focus ring this happens internally via the mixin rules: the ring color is derived from the background color.",
+  "card-alltag-bootstrap-btn-outline":
+    "It's the same for the outline primary button. Bootstrap delivers the component in blue by default. In the old code we overrode to Alstom blue but again couldn't adjust the focus ring. In the new code you can see the complete color palette in Alstom colors via mixins.",
+  "card-alltag-bootstrap-outline-code":
+    "And again the code implementation: here too the old approach was pure CSS override, the new one uses mixin rules — making everything much cleaner.",
+  "card-alltag-bootstrap-fokus-ring-hinweis":
+    "One question though: if you want to keep the focus ring at Bootstrap's default colors like in the old code, I recommend working without Sass and mixins. Because the mixins automatically derive the ring color from the background color — if we set primary to Alstom, you have to accept that the focus ring changes too.",
+  "card-alltag-bootstrap-dropdown":
+    "For dropdowns it's the same as for links: Bootstrap delivers the default colors like this, in the old code we overrode via CSS, in the new code a single variable is enough to change the colors.",
+  "card-alltag-bootstrap-btn-link":
+    "For button links there are no variables and no mixin rules — so the code stays the same as in the legacy version, only when setting variables the @ is replaced by $ (LESS → Sass).",
 };
 
 /** @type {Record<string, Record<string, { wordEn: string, meaningEn?: string, examples: { en: string }[] }>>} */
@@ -339,6 +355,42 @@ export const alltagVocabEn = {
       examples: [
         { en: "At the end of the workshop we presented our team project." },
         { en: "Tomorrow we'll present our quantum protocol to the group." },
+      ],
+    },
+  },
+  "card-alltag-bootstrap-link-farbe": {
+    überschreiben: {
+      wordEn: "override",
+      examples: [
+        { en: "In the old code we override the link color via CSS." },
+        { en: "With Sass variables we override Bootstrap's default colors." },
+      ],
+    },
+  },
+  "card-alltag-bootstrap-btn-primary": {
+    "Focus-Ring": {
+      wordEn: "focus ring (outline)",
+      examples: [
+        { en: "In the old code the focus ring stays at the Bootstrap default." },
+        { en: "With mixins the focus ring automatically adapts to the background color." },
+      ],
+    },
+  },
+  "card-alltag-bootstrap-mixin-implementierung": {
+    Mixin: {
+      wordEn: "Sass mixin",
+      examples: [
+        { en: "Bootstrap uses mixins to calculate button colors for all states." },
+        { en: "With mixins the code is cleaner than with individual CSS overrides." },
+      ],
+    },
+  },
+  "card-alltag-bootstrap-fokus-ring-hinweis": {
+    ableiten: {
+      wordEn: "derive / infer",
+      examples: [
+        { en: "The mixins derive the focus ring color from the background color." },
+        { en: "Bootstrap automatically calculates hover colors from the primary color." },
       ],
     },
   },
