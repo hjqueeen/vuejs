@@ -8,12 +8,36 @@
         <p class="ws-sub">{{ page.titleKo }}</p>
       </div>
       <div class="ws-actions">
-        <button type="button" class="btn-primary" @click="toggleAnswers">
+        <button type="button" class="btn-primary" @click="showAnswers ? hideAnswers() : openPinDialog()">
           {{ showAnswers ? "정답 숨기기" : "정답 확인" }}
         </button>
         <button v-if="showAnswers" type="button" class="btn-secondary" @click="resetAll">다시 풀기</button>
       </div>
     </header>
+
+    <!-- PIN 다이얼로그 -->
+    <transition name="dialog-fade">
+      <div v-if="pinDialogOpen" class="pin-overlay" @click.self="closePinDialog">
+        <div class="pin-box">
+          <p class="pin-title">비밀번호를 입력하세요</p>
+          <input
+            ref="pinInput"
+            v-model="pinValue"
+            type="password"
+            inputmode="numeric"
+            maxlength="10"
+            class="pin-input"
+            placeholder="••••"
+            @keyup.enter="submitPin"
+          />
+          <p v-if="pinError" class="pin-error">비밀번호가 틀렸습니다.</p>
+          <div class="pin-actions">
+            <button type="button" class="btn-secondary" @click="closePinDialog">취소</button>
+            <button type="button" class="btn-primary" @click="submitPin">확인</button>
+          </div>
+        </div>
+      </div>
+    </transition>
 
     <article
       v-for="exercise in page.exercises"
@@ -290,9 +314,10 @@ export default {
   data() {
     return {
       answers: {},
-      checked: false,
-      showHints: false,
-      results: {},
+      showAnswers: false,
+      pinDialogOpen: false,
+      pinValue: "",
+      pinError: false,
     };
   },
   computed: {
@@ -302,32 +327,11 @@ export default {
     page() {
       return getMathWorksheetPageById(this.pageId);
     },
-    totalItems() {
-      if (!this.page) return 0;
-      let n = 0;
-      for (const ex of this.page.exercises) {
-        if (ex.type === "expand-rectangle") n += ex.items.length;
-        else if (ex.type === "match") n += ex.top.length;
-        else if (ex.type === "fill-blank") {
-          for (const item of ex.items) {
-            n += item.parts.filter((p) => p.type === "blank").length;
-          }
-        }
-      }
-      return n;
-    },
-    correctCount() {
-      return Object.values(this.results).filter(Boolean).length;
-    },
-    scoreClass() {
-      if (this.correctCount === this.totalItems) return "score-banner--full";
-      if (this.correctCount >= this.totalItems * 0.7) return "score-banner--good";
-      return "score-banner--low";
-    },
   },
   watch: {
     pageId() {
-      this.resetAll();
+      this.answers = {};
+      this.showAnswers = false;
     },
   },
   created() {
@@ -340,79 +344,33 @@ export default {
     key(exerciseId, itemId) {
       return `${exerciseId}::${itemId}`;
     },
-    normalize(val) {
-      return String(val || "")
-        .trim()
-        .replace(/\s+/g, "")
-        .replace(/·/g, "")
-        .replace(/,/g, ".")
-        .replace(/−/g, "-")
-        .replace(/²/g, "^2")
-        .toLowerCase();
+    openPinDialog() {
+      this.pinValue = "";
+      this.pinError = false;
+      this.pinDialogOpen = true;
+      this.$nextTick(() => this.$refs.pinInput?.focus());
     },
-    matchesAnswer(userVal, part) {
-      const user = this.normalize(userVal);
-      if (!user) return false;
-      const candidates = [part.answer, ...(part.accept || [])].map((a) =>
-        this.normalize(a),
-      );
-      return candidates.some((c) => c === user || c.includes(user) || user.includes(c));
+    closePinDialog() {
+      this.pinDialogOpen = false;
+      this.pinValue = "";
+      this.pinError = false;
     },
-    isExpandCorrect(exercise, item) {
-      return Boolean(this.results[this.key(exercise.id, item.id)]);
-    },
-    isFillRowCorrect(exercise, item) {
-      const blanks = item.parts.filter((p) => p.type === "blank");
-      return blanks.every((b) => this.results[this.key(exercise.id, b.id)]);
-    },
-    fillRowClass(exercise, item) {
-      if (!this.checked) return "";
-      return this.isFillRowCorrect(exercise, item) ? "item--correct" : "item--wrong";
-    },
-    itemResultClass(exerciseId, itemId) {
-      if (!this.checked) return "";
-      const k = this.key(exerciseId, itemId);
-      if (this.results[k] === true) return "item--correct";
-      if (this.results[k] === false) return "item--wrong";
-      return "";
-    },
-    checkAll() {
-      this.results = {};
-      if (!this.page) return;
-
-      for (const ex of this.page.exercises) {
-        if (ex.type === "expand-rectangle") {
-          for (const item of ex.items) {
-            const k = this.key(ex.id, item.id);
-            const user = this.normalize(this.answers[k]);
-            const ok = this.normalize(item.answer) === user;
-            this.results[k] = ok;
-          }
-        } else if (ex.type === "match") {
-          for (const top of ex.top) {
-            const k = this.key(ex.id, top.id);
-            const selected = this.answers[k];
-            this.results[k] = selected === ex.answers[top.id];
-          }
-        } else if (ex.type === "fill-blank") {
-          for (const item of ex.items) {
-            for (const part of item.parts) {
-              if (part.type !== "blank") continue;
-              const k = this.key(ex.id, part.id);
-              this.results[k] = this.matchesAnswer(this.answers[k], part);
-            }
-          }
-        }
+    submitPin() {
+      if (this.pinValue === "0127") {
+        this.showAnswers = true;
+        this.closePinDialog();
+      } else {
+        this.pinError = true;
+        this.pinValue = "";
+        this.$nextTick(() => this.$refs.pinInput?.focus());
       }
-      this.checked = true;
+    },
+    hideAnswers() {
+      this.showAnswers = false;
     },
     resetAll() {
       this.answers = {};
-      this.results = {};
-      this.checked = false;
-    },
-    toggleHints() {
-      this.showHints = !this.showHints;
+      this.showAnswers = false;
     },
     goDashboard() {
       this.$router.push(getDashboardLocation());
@@ -648,15 +606,6 @@ export default {
   font-size: 13px;
 }
 
-.match-cell.item--correct {
-  border-color: rgba(34, 197, 94, 0.5);
-  background: rgba(34, 197, 94, 0.06);
-}
-
-.match-cell.item--wrong {
-  border-color: rgba(239, 68, 68, 0.45);
-  background: rgba(239, 68, 68, 0.04);
-}
 
 .match-idx,
 .match-letter {
@@ -700,13 +649,6 @@ export default {
   border-bottom: none;
 }
 
-.fill-item.item--correct {
-  background: rgba(34, 197, 94, 0.04);
-}
-
-.fill-item.item--wrong {
-  background: rgba(239, 68, 68, 0.03);
-}
 
 .fill-line {
   display: flex;
@@ -731,24 +673,97 @@ export default {
   min-width: 3ch;
 }
 
-.hint {
+.answer-reveal {
   margin: 8px 0 0;
-  font-size: 12px;
-  color: var(--c-text-muted);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-blue);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
-.ok-mark {
-  position: absolute;
-  top: 8px;
-  right: 10px;
-  margin: 0;
-  color: #22c55e;
-  font-weight: 700;
+.answer-token {
+  background: rgba(45, 95, 168, 0.1);
+  border: 1px solid rgba(45, 95, 168, 0.25);
+  border-radius: 4px;
+  padding: 1px 7px;
 }
 
 .not-found {
   text-align: center;
   padding: 48px;
   color: var(--c-text-muted);
+}
+
+/* PIN 다이얼로그 */
+.pin-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.pin-box {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--c-radius-lg);
+  padding: 28px 28px 24px;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pin-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.pin-input {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 22px;
+  text-align: center;
+  letter-spacing: 6px;
+  border: 1px solid var(--c-border);
+  border-radius: var(--c-radius-md);
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.pin-input:focus {
+  outline: none;
+  border-color: var(--c-blue);
+}
+
+.pin-error {
+  margin: 0;
+  font-size: 13px;
+  color: #dc2626;
+  text-align: center;
+}
+
+.pin-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.pin-actions button {
+  flex: 1;
+}
+
+.dialog-fade-enter-active,
+.dialog-fade-leave-active {
+  transition: opacity 0.15s;
+}
+.dialog-fade-enter,
+.dialog-fade-leave-to {
+  opacity: 0;
 }
 </style>
