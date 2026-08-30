@@ -112,6 +112,12 @@ const router = new Router({
       props: true,
     },
     {
+      path: "/workbook/:bookId/worksheet/:pageId",
+      name: "math-worksheet",
+      component: () => import("@/views/MathWorksheetView.vue"),
+      props: true,
+    },
+    {
       path: "/flashcards/:bookId",
       name: "flashcard-hub",
       component: () => import("@/views/FlashcardHubView.vue"),

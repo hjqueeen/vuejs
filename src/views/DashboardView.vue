@@ -95,6 +95,10 @@ import { books } from "@/data/books";
 import BookGridCard from "@/components/dashboard/BookGridCard.vue";
 import DashboardCatalogNav from "@/components/dashboard/DashboardCatalogNav.vue";
 import {
+  MATH_QUIZ_BOOK_ID,
+  getDefaultMathWorksheetPageId,
+} from "@/data/mathQuizContent";
+import {
   LEARNER_PROFILES,
   BOOK_OWNERS,
   filterBooksByOwner,
@@ -217,6 +221,16 @@ export default {
         return;
       }
       if (book.templateType === "quiz-workbook") {
+        if (book.id === MATH_QUIZ_BOOK_ID) {
+          const pageId = getDefaultMathWorksheetPageId();
+          if (pageId) {
+            this.$router.push({
+              name: "math-worksheet",
+              params: { bookId: book.id, pageId },
+            });
+            return;
+          }
+        }
         this.$router.push({
           name: "workbook-hub",
           params: { bookId: book.id },

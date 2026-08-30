@@ -3,7 +3,7 @@
     <header class="hub-header">
       <button type="button" class="back-btn" @click="goDashboard">← 서재</button>
       <div>
-        <p class="hub-eyebrow">통일골든벨</p>
+        <p class="hub-eyebrow">{{ workbookEyebrow }}</p>
         <h1>{{ book.title }}</h1>
         <p class="hub-sub">{{ book.subtitle }}</p>
       </div>
@@ -85,33 +85,33 @@
 
 <script>
 import { getBookById } from "@/data/books";
-import {
-  tongilQuizChapters,
-  tongilQuizQuestions,
-  getTongilQuestionsByChapter,
-} from "@/data/tongilQuizContent";
+import { getQuizWorkbookContent } from "@/data/quizWorkbookRegistry";
 import { guardBookAccess } from "@/utils/bookAccessGuard";
 import { getDashboardLocation } from "@/data/bookCatalog";
-
-const BOOK_ID = "book-tongil-quiz";
 
 export default {
   name: "QuizWorkbookHubView",
   props: {
-    bookId: { type: String, default: BOOK_ID },
+    bookId: { type: String, required: true },
   },
   created() {
     guardBookAccess(this.$router, this.bookId);
   },
   computed: {
     book() {
-      return getBookById(this.bookId) || { title: "통일골든벨", subtitle: "" };
+      return getBookById(this.bookId) || { title: "문제집", subtitle: "" };
+    },
+    workbookContent() {
+      return getQuizWorkbookContent(this.bookId);
+    },
+    workbookEyebrow() {
+      return this.workbookContent?.eyebrow || this.book.subjectLabel || "문제집";
     },
     chapters() {
-      return tongilQuizChapters;
+      return this.workbookContent?.chapters || [];
     },
     questionIds() {
-      return tongilQuizQuestions.map((q) => q.id);
+      return (this.workbookContent?.questions || []).map((q) => q.id);
     },
     progress() {
       return this.$store.getters["quizWorkbook/bookProgress"](this.bookId, this.questionIds);
@@ -125,10 +125,10 @@ export default {
       this.$router.push(getDashboardLocation());
     },
     questionsByChapter(chapterId) {
-      return getTongilQuestionsByChapter(chapterId);
+      return this.workbookContent?.getQuestionsByChapter(chapterId) || [];
     },
     chapterProgress(chapterId) {
-      const ids = getTongilQuestionsByChapter(chapterId).map((q) => q.id);
+      const ids = this.questionsByChapter(chapterId).map((q) => q.id);
       return this.$store.getters["quizWorkbook/chapterProgress"](this.bookId, ids);
     },
     isStudied(questionId) {

@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { tongilQuizQuestions } from "@/data/tongilQuizContent";
+import { getQuizWorkbookContent } from "@/data/quizWorkbookRegistry";
 import QuizRandomCard from "@/components/quiz/QuizRandomCard.vue";
 
 function shuffle(arr) {
@@ -64,7 +64,8 @@ export default {
   methods: {
     buildSession() {
       const studiedIds = this.$store.getters["quizWorkbook/studiedIds"](this.bookId);
-      const pool = tongilQuizQuestions.filter((q) => studiedIds.includes(q.id));
+      const questions = getQuizWorkbookContent(this.bookId)?.questions || [];
+      const pool = questions.filter((q) => studiedIds.includes(q.id));
       const picked = shuffle(pool).slice(0, Math.min(10, pool.length));
       this.sessionQuestions = picked;
       this.currentIndex = 0;

@@ -24,7 +24,12 @@ import {
   ABSOLUTISMUS_BOOK_ID,
   ABSOLUTISMUS_CARD_IDS,
 } from "./absolutismusContent.js";
-export const TONGIL_QUIZ_BOOK_ID = "book-tongil-quiz";
+import {
+  MATH_QUIZ_BOOK_ID,
+  MATH_QUIZ_QUESTION_IDS,
+  MATH_WORKSHEET_PAGE_IDS,
+} from "./mathQuizContent.js";
+export { TONGIL_QUIZ_BOOK_ID } from "./quizWorkbookRegistry.js";
 export const TONGIL_QUIZ_QUESTION_IDS = tongilQuizQuestions.map((q) => q.id);
 
 export const publicBooks = [
@@ -121,5 +126,20 @@ export const publicBooks = [
     grade: 8,
     subjectKey: "geschichte",
     subjectLabel: "역사",
+  },
+  {
+    id: MATH_QUIZ_BOOK_ID,
+    templateType: "quiz-workbook",
+    title: "Mathe · Aufgaben",
+    subtitle: "8학년 수학 — 문제 · 풀이 · 테스트",
+    description:
+      "8학년 수학 워크시트. 한 페이지에 여러 문제(괄호 풀기, 항 연결, 빈칸 채우기)를 함께 풀 수 있습니다.",
+    coverColor: "book-cover-b",
+    questionIds: MATH_QUIZ_QUESTION_IDS,
+    worksheetPageIds: MATH_WORKSHEET_PAGE_IDS,
+    owner: "amin",
+    grade: 8,
+    subjectKey: "mathe",
+    subjectLabel: "수학",
   },
 ];

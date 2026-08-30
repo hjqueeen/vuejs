@@ -85,7 +85,7 @@
 </template>
 
 <script>
-import { getTongilQuestionById, tongilQuizQuestions } from "@/data/tongilQuizContent";
+import { getQuizWorkbookContent, getQuizQuestionById } from "@/data/quizWorkbookRegistry";
 
 export default {
   name: "QuizQuestionView",
@@ -106,8 +106,11 @@ export default {
     mode() {
       return this.$route.query.mode === "test" ? "test" : "study";
     },
+    workbookContent() {
+      return getQuizWorkbookContent(this.bookId);
+    },
     question() {
-      return getTongilQuestionById(this.questionId);
+      return getQuizQuestionById(this.bookId, this.questionId);
     },
     isStudied() {
       return this.$store.getters["quizWorkbook/isStudied"](this.bookId, this.questionId);
@@ -130,7 +133,7 @@ export default {
       return Boolean(this.shortInput.trim());
     },
     orderedIds() {
-      return tongilQuizQuestions.map((q) => q.id);
+      return (this.workbookContent?.questions || []).map((q) => q.id);
     },
     currentIndex() {
       return this.orderedIds.indexOf(this.questionId);
