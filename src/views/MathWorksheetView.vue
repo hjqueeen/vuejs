@@ -68,76 +68,84 @@
                 parts  = 세로(높이) 분할  → 구분선은 가로(수평), 라벨은 직사각형 오른쪽
                 예: 5(x + 3y)  →  폭=5(아래), 높이=x+3y(오른쪽 눈금)
               -->
+              <!--
+                outerW + 덧셈: 높이를 균등 분할, 각 구간을 오른쪽 치수선으로 표시
+                outerW + 뺄셈: 전체높이(parts[0])는 외부 큰 치수선, 뺄 구간(parts[1])은 내부 작은 치수선
+              -->
+
+              <!-- outerW + 덧셈 -->
               <svg
-                v-if="item.diagram.outerW"
+                v-if="item.diagram.outerW && !item.diagram.parts.some(p => p.sign === '−')"
                 class="rect-svg"
-                viewBox="0 0 190 145"
+                viewBox="0 0 210 145"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <!-- 직사각형 본체 -->
-                <rect x="20" y="12" width="130" height="100" rx="2"
-                  fill="rgba(45,95,168,0.05)" stroke="#2d5fa8" stroke-width="2"/>
-
-                <!-- 가로(outerW) 치수선 — 아래쪽 -->
+                <rect
+                  v-for="(part, pi) in item.diagram.parts" :key="'bg'+pi"
+                  x="20" :y="12 + pOffset(item.diagram.parts, 100, pi)"
+                  width="130" :height="pSize(item.diagram.parts, 100, pi)"
+                  fill="rgba(45,95,168,0.05)"
+                />
+                <rect x="20" y="12" width="130" height="100" rx="2" fill="none" stroke="#2d5fa8" stroke-width="2"/>
+                <!-- outerW 치수선 아래 -->
                 <line x1="20" y1="122" x2="150" y2="122" stroke="#2d5fa8" stroke-width="1.5"/>
                 <line x1="20" y1="116" x2="20" y2="128" stroke="#2d5fa8" stroke-width="1.2"/>
                 <line x1="150" y1="116" x2="150" y2="128" stroke="#2d5fa8" stroke-width="1.2"/>
-                <text x="85" y="139" text-anchor="middle" font-size="13" font-weight="700"
-                  fill="#2d5fa8">{{ item.diagram.outerW }}</text>
+                <text x="85" y="139" text-anchor="middle" font-size="13" font-weight="700" fill="#2d5fa8">{{ item.diagram.outerW }}</text>
+                <!-- 구분선 -->
+                <line v-for="(part, pi) in item.diagram.parts.slice(0,-1)" :key="'div'+pi"
+                  x1="20" :y1="12 + pOffset(item.diagram.parts, 100, pi+1)"
+                  x2="150" :y2="12 + pOffset(item.diagram.parts, 100, pi+1)"
+                  stroke="#2d5fa8" stroke-width="1" stroke-dasharray="5 3"/>
+                <!-- 오른쪽 치수선 -->
+                <line v-for="(part, pi) in item.diagram.parts" :key="'rl'+pi"
+                  x1="162" :y1="12 + pOffset(item.diagram.parts,100,pi)+3"
+                  x2="162" :y2="12 + pOffset(item.diagram.parts,100,pi)+pSize(item.diagram.parts,100,pi)-3"
+                  stroke="#888" stroke-width="1"/>
+                <line v-for="(part, pi) in item.diagram.parts" :key="'rt1'+pi"
+                  x1="158" x2="166"
+                  :y1="12 + pOffset(item.diagram.parts,100,pi)+3"
+                  :y2="12 + pOffset(item.diagram.parts,100,pi)+3"
+                  stroke="#888" stroke-width="1"/>
+                <line v-for="(part, pi) in item.diagram.parts" :key="'rt2'+pi"
+                  x1="158" x2="166"
+                  :y1="12 + pOffset(item.diagram.parts,100,pi)+pSize(item.diagram.parts,100,pi)-3"
+                  :y2="12 + pOffset(item.diagram.parts,100,pi)+pSize(item.diagram.parts,100,pi)-3"
+                  stroke="#888" stroke-width="1"/>
+                <text v-for="(part, pi) in item.diagram.parts" :key="'rlbl'+pi"
+                  x="180" :y="12 + pOffset(item.diagram.parts,100,pi)+pSize(item.diagram.parts,100,pi)/2+5"
+                  text-anchor="middle" font-size="12" font-weight="600" fill="#333">{{ part.len }}</text>
+              </svg>
 
-                <!-- 파트 구분선: 수평선으로 세로 분할 (마지막 제외) -->
-                <line
-                  v-for="(part, pi) in item.diagram.parts.slice(0, -1)"
-                  :key="'div' + pi"
-                  x1="20"
-                  :y1="12 + (100 / item.diagram.parts.length) * (pi + 1)"
-                  x2="150"
-                  :y2="12 + (100 / item.diagram.parts.length) * (pi + 1)"
-                  stroke="#2d5fa8"
-                  stroke-width="1"
-                  stroke-dasharray="5 3"
-                />
-
-                <!-- 파트 치수선 — 오른쪽, 각 세그먼트 높이 표시 -->
-                <line
-                  v-for="(part, pi) in item.diagram.parts"
-                  :key="'rline' + pi"
-                  x1="162"
-                  :y1="12 + (100 / item.diagram.parts.length) * pi + 3"
-                  x2="162"
-                  :y2="12 + (100 / item.diagram.parts.length) * (pi + 1) - 3"
-                  stroke="#888"
-                  stroke-width="1"
-                />
-                <line
-                  v-for="(part, pi) in item.diagram.parts"
-                  :key="'rtick1' + pi"
-                  x1="158"
-                  :y1="12 + (100 / item.diagram.parts.length) * pi + 3"
-                  x2="166"
-                  :y2="12 + (100 / item.diagram.parts.length) * pi + 3"
-                  stroke="#888"
-                  stroke-width="1"
-                />
-                <line
-                  v-for="(part, pi) in item.diagram.parts"
-                  :key="'rtick2' + pi"
-                  x1="158"
-                  :y1="12 + (100 / item.diagram.parts.length) * (pi + 1) - 3"
-                  x2="166"
-                  :y2="12 + (100 / item.diagram.parts.length) * (pi + 1) - 3"
-                  stroke="#888"
-                  stroke-width="1"
-                />
-                <text
-                  v-for="(part, pi) in item.diagram.parts"
-                  :key="'rlbl' + pi"
-                  x="176"
-                  :y="12 + (100 / item.diagram.parts.length) * (pi + 0.5) + 5"
-                  text-anchor="middle"
-                  font-size="12"
-                  :fill="part.sign === '−' ? '#c0392b' : '#444'"
-                >{{ part.sign === "−" ? "−" : "" }}{{ part.len }}</text>
+              <!-- outerW + 뺄셈: parts[0]=전체높이, parts[1]=뺄 구간 -->
+              <svg
+                v-else-if="item.diagram.outerW && item.diagram.parts.some(p => p.sign === '−')"
+                class="rect-svg"
+                viewBox="0 0 220 145"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <!-- 배경 -->
+                <rect x="20" y="12" width="130" height="100" rx="2" fill="rgba(45,95,168,0.05)"/>
+                <!-- 외곽선 -->
+                <rect x="20" y="12" width="130" height="100" rx="2" fill="none" stroke="#2d5fa8" stroke-width="2"/>
+                <!-- 구분선 (아래 28%에서) -->
+                <line x1="20" y1="84" x2="150" y2="84" stroke="#2d5fa8" stroke-width="1" stroke-dasharray="5 3"/>
+                <!-- outerW 치수선 아래 -->
+                <line x1="20" y1="122" x2="150" y2="122" stroke="#2d5fa8" stroke-width="1.5"/>
+                <line x1="20" y1="116" x2="20" y2="128" stroke="#2d5fa8" stroke-width="1.2"/>
+                <line x1="150" y1="116" x2="150" y2="128" stroke="#2d5fa8" stroke-width="1.2"/>
+                <text x="85" y="139" text-anchor="middle" font-size="13" font-weight="700" fill="#2d5fa8">{{ item.diagram.outerW }}</text>
+                <!-- 외부 치수선 (전체 높이 = parts[0].len) -->
+                <line x1="163" y1="12" x2="163" y2="112" stroke="#2d5fa8" stroke-width="1.5"/>
+                <line x1="158" y1="12" x2="168" y2="12" stroke="#2d5fa8" stroke-width="1.2"/>
+                <line x1="158" y1="112" x2="168" y2="112" stroke="#2d5fa8" stroke-width="1.2"/>
+                <text x="178" y="66" text-anchor="middle" font-size="12" font-weight="700"
+                  fill="#2d5fa8" transform="rotate(90 178 66)">{{ item.diagram.parts[0].len }}</text>
+                <!-- 내부 치수선 (뺄 구간 = parts.find(sign−).len) -->
+                <line x1="176" y1="84" x2="176" y2="112" stroke="#c0392b" stroke-width="1.5"/>
+                <line x1="171" y1="84" x2="181" y2="84" stroke="#c0392b" stroke-width="1.2"/>
+                <line x1="171" y1="112" x2="181" y2="112" stroke="#c0392b" stroke-width="1.2"/>
+                <text x="192" y="98" text-anchor="middle" font-size="12" font-weight="700" fill="#c0392b">{{ item.diagram.parts.find(p => p.sign === '−').len }}</text>
               </svg>
 
               <!--
@@ -145,76 +153,76 @@
                 parts  = 가로(폭) 분할      → 구분선은 세로(수직), 라벨은 직사각형 아래
                 예: 2x(3y + 4)  →  높이=2x(왼쪽), 폭=3y+4(아래 눈금)
               -->
+              <!-- outerH + 덧셈 -->
               <svg
-                v-else
+                v-else-if="!item.diagram.outerW && !item.diagram.parts.some(p => p.sign === '−')"
                 class="rect-svg"
-                viewBox="0 0 200 145"
+                viewBox="0 0 215 145"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <!-- 직사각형 본체 -->
-                <rect x="36" y="12" width="130" height="100" rx="2"
-                  fill="rgba(45,143,111,0.05)" stroke="#2d8f6f" stroke-width="2"/>
-
-                <!-- 세로(outerH) 치수선 — 왼쪽 -->
+                <rect v-for="(part, pi) in item.diagram.parts" :key="'bg'+pi"
+                  :x="36 + pOffset(item.diagram.parts,130,pi)" y="12"
+                  :width="pSize(item.diagram.parts,130,pi)" height="100"
+                  fill="rgba(45,143,111,0.05)"/>
+                <rect x="36" y="12" width="130" height="100" rx="2" fill="none" stroke="#2d8f6f" stroke-width="2"/>
+                <!-- outerH 치수선 왼쪽 -->
                 <line x1="24" y1="12" x2="24" y2="112" stroke="#2d8f6f" stroke-width="1.5"/>
                 <line x1="18" y1="12" x2="30" y2="12" stroke="#2d8f6f" stroke-width="1.2"/>
                 <line x1="18" y1="112" x2="30" y2="112" stroke="#2d8f6f" stroke-width="1.2"/>
                 <text x="12" y="62" text-anchor="middle" font-size="13" font-weight="700"
                   fill="#2d8f6f" transform="rotate(-90 12 62)">{{ item.diagram.outerH }}</text>
+                <!-- 구분선 -->
+                <line v-for="(part, pi) in item.diagram.parts.slice(0,-1)" :key="'div'+pi"
+                  :x1="36 + pOffset(item.diagram.parts,130,pi+1)" y1="12"
+                  :x2="36 + pOffset(item.diagram.parts,130,pi+1)" y2="112"
+                  stroke="#2d8f6f" stroke-width="1" stroke-dasharray="5 3"/>
+                <!-- 아래쪽 치수선 -->
+                <line v-for="(part, pi) in item.diagram.parts" :key="'bl'+pi"
+                  :x1="36 + pOffset(item.diagram.parts,130,pi)+3" y1="124"
+                  :x2="36 + pOffset(item.diagram.parts,130,pi)+pSize(item.diagram.parts,130,pi)-3" y2="124"
+                  stroke="#888" stroke-width="1"/>
+                <line v-for="(part, pi) in item.diagram.parts" :key="'bt1'+pi"
+                  :x1="36 + pOffset(item.diagram.parts,130,pi)+3" y1="119"
+                  :x2="36 + pOffset(item.diagram.parts,130,pi)+3" y2="129"
+                  stroke="#888" stroke-width="1"/>
+                <line v-for="(part, pi) in item.diagram.parts" :key="'bt2'+pi"
+                  :x1="36 + pOffset(item.diagram.parts,130,pi)+pSize(item.diagram.parts,130,pi)-3" y1="119"
+                  :x2="36 + pOffset(item.diagram.parts,130,pi)+pSize(item.diagram.parts,130,pi)-3" y2="129"
+                  stroke="#888" stroke-width="1"/>
+                <text v-for="(part, pi) in item.diagram.parts" :key="'blbl'+pi"
+                  :x="36 + pOffset(item.diagram.parts,130,pi)+pSize(item.diagram.parts,130,pi)/2"
+                  y="141" text-anchor="middle" font-size="12" font-weight="600" fill="#333">{{ part.len }}</text>
+              </svg>
 
-                <!-- 파트 구분선: 수직선으로 가로 분할 (마지막 제외) -->
-                <line
-                  v-for="(part, pi) in item.diagram.parts.slice(0, -1)"
-                  :key="'div' + pi"
-                  :x1="36 + (130 / item.diagram.parts.length) * (pi + 1)"
-                  y1="12"
-                  :x2="36 + (130 / item.diagram.parts.length) * (pi + 1)"
-                  y2="112"
-                  stroke="#2d8f6f"
-                  stroke-width="1"
-                  stroke-dasharray="5 3"
-                />
-
-                <!-- 파트 치수선 — 아래쪽, 각 세그먼트 폭 표시 -->
-                <line
-                  v-for="(part, pi) in item.diagram.parts"
-                  :key="'bline' + pi"
-                  :x1="36 + (130 / item.diagram.parts.length) * pi + 3"
-                  y1="124"
-                  :x2="36 + (130 / item.diagram.parts.length) * (pi + 1) - 3"
-                  y2="124"
-                  stroke="#888"
-                  stroke-width="1"
-                />
-                <line
-                  v-for="(part, pi) in item.diagram.parts"
-                  :key="'btick1' + pi"
-                  :x1="36 + (130 / item.diagram.parts.length) * pi + 3"
-                  y1="119"
-                  :x2="36 + (130 / item.diagram.parts.length) * pi + 3"
-                  y2="129"
-                  stroke="#888"
-                  stroke-width="1"
-                />
-                <line
-                  v-for="(part, pi) in item.diagram.parts"
-                  :key="'btick2' + pi"
-                  :x1="36 + (130 / item.diagram.parts.length) * (pi + 1) - 3"
-                  y1="119"
-                  :x2="36 + (130 / item.diagram.parts.length) * (pi + 1) - 3"
-                  y2="129"
-                  stroke="#888"
-                  stroke-width="1"
-                />
-                <text
-                  v-for="(part, pi) in item.diagram.parts"
-                  :key="'blbl' + pi"
-                  :x="36 + (130 / item.diagram.parts.length) * (pi + 0.5)"
-                  y="141"
-                  text-anchor="middle"
-                  font-size="12"
-                  :fill="part.sign === '−' ? '#c0392b' : '#444'"
-                >{{ part.sign === "−" ? "−" : "" }}{{ part.len }}</text>
+              <!-- outerH + 뺄셈: parts[0]=전체폭, parts[1]=뺄 구간 -->
+              <svg
+                v-else
+                class="rect-svg"
+                viewBox="0 0 215 155"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <!-- 배경 -->
+                <rect x="36" y="12" width="130" height="100" rx="2" fill="rgba(45,143,111,0.05)"/>
+                <!-- 외곽선 -->
+                <rect x="36" y="12" width="130" height="100" rx="2" fill="none" stroke="#2d8f6f" stroke-width="2"/>
+                <!-- 구분선 -->
+                <line x1="130" y1="12" x2="130" y2="112" stroke="#2d8f6f" stroke-width="1" stroke-dasharray="5 3"/>
+                <!-- outerH 치수선 왼쪽 -->
+                <line x1="24" y1="12" x2="24" y2="112" stroke="#2d8f6f" stroke-width="1.5"/>
+                <line x1="18" y1="12" x2="30" y2="12" stroke="#2d8f6f" stroke-width="1.2"/>
+                <line x1="18" y1="112" x2="30" y2="112" stroke="#2d8f6f" stroke-width="1.2"/>
+                <text x="12" y="62" text-anchor="middle" font-size="13" font-weight="700"
+                  fill="#2d8f6f" transform="rotate(-90 12 62)">{{ item.diagram.outerH }}</text>
+                <!-- 외부 치수선 — 전체 폭(2y), 직사각형 바로 아래 -->
+                <line x1="36" y1="122" x2="166" y2="122" stroke="#2d8f6f" stroke-width="1.5"/>
+                <line x1="36" y1="116" x2="36" y2="128" stroke="#2d8f6f" stroke-width="1.2"/>
+                <line x1="166" y1="116" x2="166" y2="128" stroke="#2d8f6f" stroke-width="1.2"/>
+                <text x="101" y="138" text-anchor="middle" font-size="12" font-weight="700" fill="#2d8f6f">{{ item.diagram.parts[0].len }}</text>
+                <!-- 내부 치수선 — 뺄 구간(x), 한 단 더 아래 -->
+                <line x1="130" y1="144" x2="166" y2="144" stroke="#c0392b" stroke-width="1.5"/>
+                <line x1="130" y1="138" x2="130" y2="150" stroke="#c0392b" stroke-width="1.2"/>
+                <line x1="166" y1="138" x2="166" y2="150" stroke="#c0392b" stroke-width="1.2"/>
+                <text x="148" y="155" text-anchor="middle" font-size="12" font-weight="700" fill="#c0392b">{{ item.diagram.parts.find(p => p.sign === '−').len }}</text>
               </svg>
             </div>
             <input
@@ -347,6 +355,18 @@ export default {
   methods: {
     key(exerciseId, itemId) {
       return `${exerciseId}::${itemId}`;
+    },
+    /** 뺄셈 항은 30%, 덧셈 항은 70% (2-part 기준) */
+    pSize(parts, totalLen, idx) {
+      const hasMinus = parts.some(p => p.sign === "−");
+      if (!hasMinus) return totalLen / parts.length;
+      return parts[idx].sign === "−" ? totalLen * 0.28 : totalLen * 0.72;
+    },
+    /** idx번째 파트까지의 누적 오프셋 */
+    pOffset(parts, totalLen, idx) {
+      let off = 0;
+      for (let i = 0; i < idx; i++) off += this.pSize(parts, totalLen, i);
+      return off;
     },
     openPinDialog() {
       this.pinValue = "";
