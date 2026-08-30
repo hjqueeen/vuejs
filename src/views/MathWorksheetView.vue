@@ -278,6 +278,10 @@
           <span class="fill-line">
             <template v-for="(part, pi) in item.parts">
               <span v-if="part.type === 'text'" :key="pi" class="fill-text">{{ part.value }}</span>
+              <span v-else-if="part.type === 'frac'" :key="'frac' + pi" class="frac">
+                <span class="frac-num">{{ part.num }}</span>
+                <span class="frac-den">{{ part.den }}</span>
+              </span>
               <input
                 v-else
                 :key="part.id"
@@ -660,6 +664,27 @@ export default {
 
 .fill-text {
   white-space: pre;
+}
+
+.frac {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  margin: 0 2px;
+  line-height: 1.1;
+  font-size: 0.9em;
+}
+
+.frac-num {
+  border-bottom: 1.5px solid currentColor;
+  padding: 0 4px 2px;
+  text-align: center;
+}
+
+.frac-den {
+  padding: 2px 4px 0;
+  text-align: center;
 }
 
 .fill-input {
