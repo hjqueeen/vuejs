@@ -1,4 +1,7 @@
 import { LATIN_VOCAB_BOOK_ID } from "./latinVocabContent.js";
+import { LATIN_VOCAB_L14_BOOK_ID } from "./latinVocabL14Content.js";
+import { LATIN_VOCAB_L15_BOOK_ID } from "./latinVocabL15Content.js";
+import { LATIN_VOCAB_L16_BOOK_ID } from "./latinVocabL16Content.js";
 import { ABSOLUTISMUS_BOOK_ID } from "./absolutismusContent.js";
 
 /** @typedef {'hyejin'|'hangyeol'|'amin'} BookOwnerId */
@@ -22,6 +25,24 @@ export const BOOK_CATALOG_META = {
   [LATIN_VOCAB_BOOK_ID]: {
     owner: BOOK_OWNERS.AMIN,
     grade: 7,
+    subjectKey: "latein",
+    subjectLabel: "라틴어",
+  },
+  [LATIN_VOCAB_L14_BOOK_ID]: {
+    owner: BOOK_OWNERS.AMIN,
+    grade: 8,
+    subjectKey: "latein",
+    subjectLabel: "라틴어",
+  },
+  [LATIN_VOCAB_L15_BOOK_ID]: {
+    owner: BOOK_OWNERS.AMIN,
+    grade: 8,
+    subjectKey: "latein",
+    subjectLabel: "라틴어",
+  },
+  [LATIN_VOCAB_L16_BOOK_ID]: {
+    owner: BOOK_OWNERS.AMIN,
+    grade: 8,
     subjectKey: "latein",
     subjectLabel: "라틴어",
   },

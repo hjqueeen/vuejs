@@ -27,6 +27,24 @@ import {
   getLatinVocabCardById,
 } from "./latinVocabContent.js";
 import {
+  LATIN_VOCAB_L14_BOOK_ID,
+  latinVocabL14Sections,
+  orderedLatinVocabL14Cards,
+  getLatinVocabL14CardById,
+} from "./latinVocabL14Content.js";
+import {
+  LATIN_VOCAB_L15_BOOK_ID,
+  latinVocabL15Sections,
+  orderedLatinVocabL15Cards,
+  getLatinVocabL15CardById,
+} from "./latinVocabL15Content.js";
+import {
+  LATIN_VOCAB_L16_BOOK_ID,
+  latinVocabL16Sections,
+  orderedLatinVocabL16Cards,
+  getLatinVocabL16CardById,
+} from "./latinVocabL16Content.js";
+import {
   ABSOLUTISMUS_BOOK_ID,
   absolutismusSections,
   orderedAbsolutismusCards,
@@ -86,6 +104,30 @@ export const flashcardBooks = {
   [LATIN_VOCAB_BOOK_ID]: {
     cards: latinVocabCards,
     getCardById: getLatinVocabCardById,
+    labels: { front: "Latein", back: "Form · Deutsch" },
+    hint: "라틴어 단어를 보고 변형(활용·품사)과 독일어 뜻을 떠올린 뒤, 카드를 뒤집어 확인하세요.",
+    showKoOnBack: false,
+  },
+  [LATIN_VOCAB_L14_BOOK_ID]: {
+    cards: orderedLatinVocabL14Cards,
+    sections: latinVocabL14Sections,
+    getCardById: getLatinVocabL14CardById,
+    labels: { front: "Latein", back: "Form · Deutsch" },
+    hint: "라틴어 단어를 보고 변형(활용·품사)과 독일어 뜻을 떠올린 뒤, 카드를 뒤집어 확인하세요.",
+    showKoOnBack: false,
+  },
+  [LATIN_VOCAB_L15_BOOK_ID]: {
+    cards: orderedLatinVocabL15Cards,
+    sections: latinVocabL15Sections,
+    getCardById: getLatinVocabL15CardById,
+    labels: { front: "Latein", back: "Form · Deutsch" },
+    hint: "라틴어 단어를 보고 변형(활용·품사)과 독일어 뜻을 떠올린 뒤, 카드를 뒤집어 확인하세요.",
+    showKoOnBack: false,
+  },
+  [LATIN_VOCAB_L16_BOOK_ID]: {
+    cards: orderedLatinVocabL16Cards,
+    sections: latinVocabL16Sections,
+    getCardById: getLatinVocabL16CardById,
     labels: { front: "Latein", back: "Form · Deutsch" },
     hint: "라틴어 단어를 보고 변형(활용·품사)과 독일어 뜻을 떠올린 뒤, 카드를 뒤집어 확인하세요.",
     showKoOnBack: false,

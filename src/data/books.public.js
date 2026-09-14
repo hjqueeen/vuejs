@@ -21,6 +21,18 @@ import {
   LATIN_VOCAB_CARD_IDS,
 } from "./latinVocabContent.js";
 import {
+  LATIN_VOCAB_L14_BOOK_ID,
+  LATIN_VOCAB_L14_CARD_IDS,
+} from "./latinVocabL14Content.js";
+import {
+  LATIN_VOCAB_L15_BOOK_ID,
+  LATIN_VOCAB_L15_CARD_IDS,
+} from "./latinVocabL15Content.js";
+import {
+  LATIN_VOCAB_L16_BOOK_ID,
+  LATIN_VOCAB_L16_CARD_IDS,
+} from "./latinVocabL16Content.js";
+import {
   ABSOLUTISMUS_BOOK_ID,
   ABSOLUTISMUS_CARD_IDS,
 } from "./absolutismusContent.js";
@@ -110,6 +122,48 @@ export const publicBooks = [
     cardIds: LATIN_VOCAB_CARD_IDS,
     owner: "amin",
     grade: 7,
+    subjectKey: "latein",
+    subjectLabel: "라틴어",
+  },
+  {
+    id: LATIN_VOCAB_L14_BOOK_ID,
+    templateType: "flashcard",
+    title: "Latein · Lektion 14",
+    subtitle: "Bauern und Adlige · Latein → Deutsch",
+    description:
+      "8학년 라틴어 Lektion 14 단어 36장 (Wiederholung + Lektionstext + Vokabular 14 + Wendungen). 앞면: 라틴어, 뒷면: 변형·독일어 뜻.",
+    coverColor: "book-cover-b",
+    cardIds: LATIN_VOCAB_L14_CARD_IDS,
+    owner: "amin",
+    grade: 8,
+    subjectKey: "latein",
+    subjectLabel: "라틴어",
+  },
+  {
+    id: LATIN_VOCAB_L15_BOOK_ID,
+    templateType: "flashcard",
+    title: "Latein · Lektion 15",
+    subtitle: "Römische exempla · Latein → Deutsch",
+    description:
+      "8학년 라틴어 Lektion 15 단어 65장 (Wiederholung + Lektionstext + Vokabular + Wendungen + Übungen/PPP). 앞면: 라틴어, 뒷면: 변형·독일어 뜻.",
+    coverColor: "book-cover-d",
+    cardIds: LATIN_VOCAB_L15_CARD_IDS,
+    owner: "amin",
+    grade: 8,
+    subjectKey: "latein",
+    subjectLabel: "라틴어",
+  },
+  {
+    id: LATIN_VOCAB_L16_BOOK_ID,
+    templateType: "flashcard",
+    title: "Latein · Lektion 16",
+    subtitle: "Geben und Nehmen: Politik in Rom · Latein → Deutsch",
+    description:
+      "8학년 라틴어 Lektion 16 단어 39장 (Wiederholung + Lektionstext + Vokabular 16). 앞면: 라틴어, 뒷면: 변형·독일어 뜻.",
+    coverColor: "book-cover-a",
+    cardIds: LATIN_VOCAB_L16_CARD_IDS,
+    owner: "amin",
+    grade: 8,
     subjectKey: "latein",
     subjectLabel: "라틴어",
   },
