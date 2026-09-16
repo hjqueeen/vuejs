@@ -150,8 +150,8 @@ export const flashcardBooks = {
     cards: orderedSpanishLluviasCards,
     sections: spanishLluviasSections,
     getCardById: getSpanishLluviasCardById,
-    labels: { front: "Español", back: "Deutsch" },
-    hint: "스페인어 표현을 보고 독일어 뜻을 떠올린 뒤, 카드를 뒤집어 확인하세요.",
+    labels: { front: "Deutsch", back: "Español" },
+    hint: "독일어를 보고 스페인어 표현을 떠올린 뒤, 카드를 뒤집어 확인하세요.",
     showKoOnBack: false,
   },
 };

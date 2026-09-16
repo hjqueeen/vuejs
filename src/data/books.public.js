@@ -189,9 +189,9 @@ export const publicBooks = [
     id: SPANISH_LLUVIAS_BOOK_ID,
     templateType: "flashcard",
     title: "Español · Lluvias tropicales",
-    subtitle: "Vocabulario · Español → Deutsch",
+    subtitle: "Vocabulario · Deutsch → Español",
     description:
-      "9학년 스페인어 Lluvias tropicales 표현 37장 (가족 상황 · Chacho와 Efraín · 책/이야기 말하기). 앞면: 스페인어, 뒷면: 독일어.",
+      "9학년 스페인어 Lluvias tropicales 표현 37장 (가족 상황 · Chacho와 Efraín · 책/이야기 말하기). 앞면: 독일어, 뒷면: 스페인어.",
     coverColor: "book-cover-e",
     cardIds: SPANISH_LLUVIAS_CARD_IDS,
     owner: "hangyeol",

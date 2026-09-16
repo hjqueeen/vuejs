@@ -1,190 +1,190 @@
-/** Español · Lluvias tropicales — Karteikarten (Español → Deutsch)
+/** Español · Lluvias tropicales — Karteikarten (Deutsch → Español)
  *  Klasse 9 · Hangyeol
  */
 
 export const SPANISH_LLUVIAS_BOOK_ID = "book-spanish-lluvias-tropicales";
 
-/** @param {string} id @param {string} term @param {string} meaning */
-const card = (id, term, meaning) => ({
+/** @param {string} id @param {string} de @param {string} es */
+const card = (id, de, es) => ({
   id,
-  term,
-  explanationDe: meaning,
+  term: de,
+  explanationDe: es,
 });
 
 export const spanishLluviasCards = [
   // —— 1. la situación familiar de Chacho ——
   card(
     "card-es-lluvias-tener-familia",
-    "(no) tener familia",
     "(keine) Familie haben",
+    "(no) tener familia",
   ),
   card(
     "card-es-lluvias-tener-hermano",
-    "(no) tener una hermana / un hermano / hermanas/os",
     "(keine) Schwester / (keinen) Bruder / Geschwister haben",
+    "(no) tener una hermana / un hermano / hermanas/os",
   ),
   card(
     "card-es-lluvias-vivir-lejos",
-    "vivir lejos de su familia",
     "weit weg von seiner/ihrer Familie leben",
+    "vivir lejos de su familia",
   ),
   card(
     "card-es-lluvias-sentirse-solo",
-    "sentirse o estar solo/a",
     "sich allein fühlen oder allein sein",
+    "sentirse o estar solo/a",
   ),
   card(
     "card-es-lluvias-buscar",
-    "buscar a alguien",
     "jemanden suchen",
+    "buscar a alguien",
   ),
   card(
     "card-es-lluvias-encontrar",
-    "encontrar a alguien",
     "jemanden finden",
+    "encontrar a alguien",
   ),
   card(
     "card-es-lluvias-trabajar-plantacion",
-    "trabajar (en una plantación)",
     "(auf einer Plantage) arbeiten",
+    "trabajar (en una plantación)",
   ),
   card(
     "card-es-lluvias-tener-casa",
-    "(no) tener casa / vivir en la calle",
     "(kein) Haus haben / auf der Straße leben",
+    "(no) tener casa / vivir en la calle",
   ),
   card(
     "card-es-lluvias-dificultades",
-    "(no) tener dificultades",
     "(keine) Schwierigkeiten haben",
+    "(no) tener dificultades",
   ),
 
   // —— 2. Chacho y Efraín, su relación ——
   card(
     "card-es-lluvias-cabana",
-    "vivir en una cabaña",
     "in einer Hütte leben",
+    "vivir en una cabaña",
   ),
   card(
     "card-es-lluvias-persona-mayor",
-    "ser una persona mayor (vieja)",
     "eine ältere (alte) Person sein",
+    "ser una persona mayor (vieja)",
   ),
   card(
     "card-es-lluvias-conocerse",
-    "conocerse (se conocen / se han conocido)",
     "sich kennen(lernen) (sie kennen sich / sie haben sich kennengelernt)",
+    "conocerse (se conocen / se han conocido)",
   ),
   card(
     "card-es-lluvias-hacerse-amigos",
-    "hacerse amigos (se hacen amigos / se han hecho amigos)",
     "Freunde werden (sie werden Freunde / sie sind Freunde geworden)",
+    "hacerse amigos (se hacen amigos / se han hecho amigos)",
   ),
   card(
     "card-es-lluvias-desarrollar-amistad",
-    "desarrollar una amistad entre …",
     "eine Freundschaft zwischen … entwickeln",
+    "desarrollar una amistad entre …",
   ),
-  card("card-es-lluvias-ser-pobre", "ser pobre(s)", "arm sein"),
+  card("card-es-lluvias-ser-pobre", "arm sein", "ser pobre(s)"),
   card(
     "card-es-lluvias-condiciones-humildes",
-    "vivir en condiciones humildes",
     "in bescheidenen Verhältnissen leben",
+    "vivir en condiciones humildes",
   ),
   card(
     "card-es-lluvias-trabajar-duro",
-    "trabajar mucho / duro",
     "viel / hart arbeiten",
+    "trabajar mucho / duro",
   ),
   card(
     "card-es-lluvias-vender-cocos",
-    "vender cocos a los turistas",
     "Kokosnüsse an Touristen verkaufen",
+    "vender cocos a los turistas",
   ),
-  card("card-es-lluvias-convivir", "convivir", "zusammenleben"),
+  card("card-es-lluvias-convivir", "zusammenleben", "convivir"),
   card(
     "card-es-lluvias-llevarse-bien",
-    "llevarse bien (ellos se llevan bien)",
     "sich gut verstehen (sie verstehen sich gut)",
+    "llevarse bien (ellos se llevan bien)",
   ),
   card(
     "card-es-lluvias-buen-equipo",
-    "formar un buen equipo",
     "ein gutes Team bilden",
+    "formar un buen equipo",
   ),
   card(
     "card-es-lluvias-ganar-dinero",
-    "recibir / ganar dinero",
     "Geld bekommen / verdienen",
+    "recibir / ganar dinero",
   ),
 
   // —— 3. Hablar sobre un libro/cuento/texto ——
   card(
     "card-es-lluvias-protagonista",
-    "el / la protagonista / los/las protagonistas",
     "der / die Protagonist(in) / die Protagonisten",
+    "el / la protagonista / los/las protagonistas",
   ),
   card(
     "card-es-lluvias-autor",
-    "el autor / la autora",
     "der Autor / die Autorin",
+    "el autor / la autora",
   ),
   card(
     "card-es-lluvias-dibujo",
-    "el dibujo / la ilustración",
     "die Zeichnung / die Illustration",
+    "el dibujo / la ilustración",
   ),
   card(
     "card-es-lluvias-cuento",
-    "el cuento / la novela / la historia",
     "die Erzählung / der Roman / die Geschichte",
+    "el cuento / la novela / la historia",
   ),
   card(
     "card-es-lluvias-narrador",
-    "el narrador / la narradora (yo / personal)",
     "der Erzähler / die Erzählerin (Ich-Erzähler / personal)",
+    "el narrador / la narradora (yo / personal)",
   ),
-  card("card-es-lluvias-capitulo", "el capítulo", "das Kapitel"),
-  card("card-es-lluvias-parrafo", "el párrafo", "der Absatz"),
+  card("card-es-lluvias-capitulo", "das Kapitel", "el capítulo"),
+  card("card-es-lluvias-parrafo", "der Absatz", "el párrafo"),
   card(
     "card-es-lluvias-principio-final",
-    "al principio / al final",
     "am Anfang / am Ende",
+    "al principio / al final",
   ),
   card(
     "card-es-lluvias-ficcion",
-    "ser una historia de ficción / inventada",
     "eine fiktionale / erfundene Geschichte sein",
+    "ser una historia de ficción / inventada",
   ),
   card(
     "card-es-lluvias-historia-real",
-    "ser una historia real / con un trasfondo real",
     "eine wahre Geschichte / mit realem Hintergrund sein",
+    "ser una historia real / con un trasfondo real",
   ),
   card(
     "card-es-lluvias-tematizar",
-    "tematizar (el libro tematiza / los cuentos tematizan)",
     "thematisieren (das Buch thematisiert / die Erzählungen thematisieren)",
+    "tematizar (el libro tematiza / los cuentos tematizan)",
   ),
   card(
     "card-es-lluvias-tratar-de",
-    "tratar de (el libro / la historia trata de …)",
     "handeln von (das Buch / die Geschichte handelt von …)",
+    "tratar de (el libro / la historia trata de …)",
   ),
   card(
     "card-es-lluvias-crear-historia",
-    "crear una historia",
     "eine Geschichte erschaffen / erfinden",
+    "crear una historia",
   ),
   card(
     "card-es-lluvias-lector",
-    "el lector / la lectora",
     "der Leser / die Leserin",
+    "el lector / la lectora",
   ),
   card(
     "card-es-lluvias-transmitir",
-    "transmitir algo (un sentimiento / ambiente / …)",
     "etwas vermitteln (ein Gefühl / eine Atmosphäre / …)",
+    "transmitir algo (un sentimiento / ambiente / …)",
   ),
 ];
 
