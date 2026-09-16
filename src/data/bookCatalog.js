@@ -3,6 +3,7 @@ import { LATIN_VOCAB_L14_BOOK_ID } from "./latinVocabL14Content.js";
 import { LATIN_VOCAB_L15_BOOK_ID } from "./latinVocabL15Content.js";
 import { LATIN_VOCAB_L16_BOOK_ID } from "./latinVocabL16Content.js";
 import { ABSOLUTISMUS_BOOK_ID } from "./absolutismusContent.js";
+import { SPANISH_LLUVIAS_BOOK_ID } from "./spanishLluviasContent.js";
 
 /** @typedef {'hyejin'|'hangyeol'|'amin'} BookOwnerId */
 
@@ -51,6 +52,12 @@ export const BOOK_CATALOG_META = {
     grade: 8,
     subjectKey: "geschichte",
     subjectLabel: "역사",
+  },
+  [SPANISH_LLUVIAS_BOOK_ID]: {
+    owner: BOOK_OWNERS.HANGYEOL,
+    grade: 9,
+    subjectKey: "spanisch",
+    subjectLabel: "스페인어",
   },
 };
 

@@ -37,6 +37,10 @@ import {
   ABSOLUTISMUS_CARD_IDS,
 } from "./absolutismusContent.js";
 import {
+  SPANISH_LLUVIAS_BOOK_ID,
+  SPANISH_LLUVIAS_CARD_IDS,
+} from "./spanishLluviasContent.js";
+import {
   MATH_QUIZ_BOOK_ID,
   MATH_QUIZ_QUESTION_IDS,
   MATH_WORKSHEET_PAGE_IDS,
@@ -180,6 +184,20 @@ export const publicBooks = [
     grade: 8,
     subjectKey: "geschichte",
     subjectLabel: "역사",
+  },
+  {
+    id: SPANISH_LLUVIAS_BOOK_ID,
+    templateType: "flashcard",
+    title: "Español · Lluvias tropicales",
+    subtitle: "Vocabulario · Español → Deutsch",
+    description:
+      "9학년 스페인어 Lluvias tropicales 표현 37장 (가족 상황 · Chacho와 Efraín · 책/이야기 말하기). 앞면: 스페인어, 뒷면: 독일어.",
+    coverColor: "book-cover-e",
+    cardIds: SPANISH_LLUVIAS_CARD_IDS,
+    owner: "hangyeol",
+    grade: 9,
+    subjectKey: "spanisch",
+    subjectLabel: "스페인어",
   },
   {
     id: MATH_QUIZ_BOOK_ID,

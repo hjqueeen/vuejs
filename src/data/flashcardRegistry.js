@@ -50,6 +50,12 @@ import {
   orderedAbsolutismusCards,
   getAbsolutismusCardById,
 } from "./absolutismusContent.js";
+import {
+  SPANISH_LLUVIAS_BOOK_ID,
+  spanishLluviasSections,
+  orderedSpanishLluviasCards,
+  getSpanishLluviasCardById,
+} from "./spanishLluviasContent.js";
 
 /** @type {Record<string, { cards: object[], getCardById: (id: string) => object|null, labels: { front: string, back: string }, hint: string, showKoOnBack?: boolean }>} */
 export const flashcardBooks = {
@@ -139,6 +145,14 @@ export const flashcardBooks = {
     labels: { front: "Begriff", back: "Erklärung" },
     hint: "Karikatur M1–M3: Bild ansehen, Frage beantworten, dann Lösung (Deutsch + 한국어) prüfen.",
     showKoOnBack: true,
+  },
+  [SPANISH_LLUVIAS_BOOK_ID]: {
+    cards: orderedSpanishLluviasCards,
+    sections: spanishLluviasSections,
+    getCardById: getSpanishLluviasCardById,
+    labels: { front: "Español", back: "Deutsch" },
+    hint: "스페인어 표현을 보고 독일어 뜻을 떠올린 뒤, 카드를 뒤집어 확인하세요.",
+    showKoOnBack: false,
   },
 };
 
