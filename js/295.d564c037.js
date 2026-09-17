@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkvue2_learning_project"]=self["webpackChunkvue2_learning_project"]||[]).push([[295],{9295(t,e,n){n.r(e),n.d(e,{default:()=>_});var s=function(){var t=this,e=t._self._c;return e("div",{staticClass:"page"},[e("h2",[t._v("404")]),e("p",[t._v(t._s(t.$t("notFound.message")))]),e("router-link",{attrs:{to:"/dashboard"}},[t._v(t._s(t.$t("notFound.toDashboard")))])],1)},a=[];const o={name:"NotFoundView"},r=o;var u=n(1656),l=(0,u.A)(r,s,a,!1,null,null,null);const _=l.exports}}]);
+//# sourceMappingURL=295.d564c037.js.map
