@@ -7,6 +7,8 @@
       <FlashcardTargetLangToggle
         v-if="supportsTargetLang"
         :book-id="bookId"
+        :options="langToggleOptions"
+        :aria-label="langToggleAriaLabel"
         @change="onTargetLangChange"
       />
       <div class="fc-nav-btns">
@@ -75,6 +77,11 @@ import { getFlashcardLayoutMode } from "@/utils/flashcardLayout";
 import { getFlashcardTargetLang } from "@/utils/flashcardTargetLang";
 import { guardBookAccess } from "@/utils/bookAccessGuard";
 
+const DEFAULT_LANG_OPTIONS = [
+  { value: "de", label: "Deutsch" },
+  { value: "en", label: "English" },
+];
+
 export default {
   name: "FlashcardDetailView",
   components: {
@@ -92,15 +99,28 @@ export default {
     return {
       flipped: false,
       layoutMode: getFlashcardLayoutMode(),
-      targetLang: getFlashcardTargetLang(this.bookId),
+      targetLang: "de",
     };
   },
   created() {
     guardBookAccess(this.$router, this.bookId);
+    this.targetLang = getFlashcardTargetLang(this.bookId, this.allowedLangs);
   },
   computed: {
     bookMeta() {
       return getFlashcardBook(this.bookId);
+    },
+    langToggleOptions() {
+      return this.bookMeta?.langToggleOptions || DEFAULT_LANG_OPTIONS;
+    },
+    langToggleAriaLabel() {
+      return this.bookMeta?.langToggleAriaLabel || "공부할 언어";
+    },
+    allowedLangs() {
+      return (
+        this.bookMeta?.targetLanguages ||
+        this.langToggleOptions.map((o) => o.value)
+      );
     },
     supportsTargetLang() {
       return (this.bookMeta?.targetLanguages?.length || 0) > 1;
@@ -152,6 +172,9 @@ export default {
   watch: {
     cardId() {
       this.flipped = false;
+    },
+    bookId() {
+      this.targetLang = getFlashcardTargetLang(this.bookId, this.allowedLangs);
     },
   },
   methods: {

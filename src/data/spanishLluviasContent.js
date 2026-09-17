@@ -1,12 +1,19 @@
-/** Español · Lluvias tropicales — Karteikarten (Deutsch → Español)
+/** Español · Lluvias tropicales — Karteikarten (Deutsch ↔ Español)
  *  Klasse 9 · Hangyeol
  */
 
 export const SPANISH_LLUVIAS_BOOK_ID = "book-spanish-lluvias-tropicales";
 
-/** @param {string} id @param {string} de @param {string} es */
+/**
+ * @param {string} id
+ * @param {string} de — Deutsch
+ * @param {string} es — Español
+ */
 const card = (id, de, es) => ({
   id,
+  termDe: de,
+  termEs: es,
+  /** 기본 표시: Deutsch → Español */
   term: de,
   explanationDe: es,
 });
@@ -187,6 +194,21 @@ export const spanishLluviasCards = [
     "transmitir algo (un sentimiento / ambiente / …)",
   ),
 ];
+
+/**
+ * frontLang: "de" = Deutsch 앞면 / "es" = Español 앞면
+ * @param {object} card
+ * @param {"de"|"es"} frontLang
+ */
+export function enrichSpanishLluviasCardForLang(card, frontLang) {
+  if (!card) return null;
+  const de = card.termDe || card.term || "";
+  const es = card.termEs || card.explanationDe || "";
+  if (frontLang === "es") {
+    return { ...card, term: es, explanationDe: de };
+  }
+  return { ...card, term: de, explanationDe: es };
+}
 
 export const spanishLluviasSections = [
   {

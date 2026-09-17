@@ -6,13 +6,15 @@
         <div>
           <h1>복습 세션</h1>
           <p class="rev-desc">
-            FSRS(Anki) — 선택한 언어(Deutsch/English) 카드만 복습합니다. 간격은 언어별로 따로 저장됩니다.
+            FSRS(Anki) — 선택한 방향의 카드만 복습합니다. 간격은 방향별로 따로 저장됩니다.
           </p>
         </div>
         <FlashcardLayoutToggle @change="layoutMode = $event" />
         <FlashcardTargetLangToggle
           v-if="supportsTargetLang"
           :book-id="bookId"
+          :options="langToggleOptions"
+          :aria-label="langToggleAriaLabel"
           @change="onTargetLangChange"
         />
       </div>
@@ -94,6 +96,11 @@ import { bookHasDualLang } from "@/utils/flashcardSrsId";
 import { getFlashcardTargetLang } from "@/utils/flashcardTargetLang";
 import { guardBookAccess } from "@/utils/bookAccessGuard";
 
+const DEFAULT_LANG_OPTIONS = [
+  { value: "de", label: "Deutsch" },
+  { value: "en", label: "English" },
+];
+
 function shuffle(arr) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -122,12 +129,24 @@ export default {
       finished: false,
       nextDueHint: "",
       layoutMode: getFlashcardLayoutMode(),
-      targetLang: getFlashcardTargetLang(this.bookId),
+      targetLang: "de",
     };
   },
   computed: {
     bookMeta() {
       return getFlashcardBook(this.bookId);
+    },
+    langToggleOptions() {
+      return this.bookMeta?.langToggleOptions || DEFAULT_LANG_OPTIONS;
+    },
+    langToggleAriaLabel() {
+      return this.bookMeta?.langToggleAriaLabel || "공부할 언어";
+    },
+    allowedLangs() {
+      return (
+        this.bookMeta?.targetLanguages ||
+        this.langToggleOptions.map((o) => o.value)
+      );
     },
     supportsTargetLang() {
       return bookHasDualLang(this.bookMeta);
@@ -193,6 +212,7 @@ export default {
   },
   created() {
     if (!guardBookAccess(this.$router, this.bookId)) return;
+    this.targetLang = getFlashcardTargetLang(this.bookId, this.allowedLangs);
     this.buildSession();
   },
   methods: {

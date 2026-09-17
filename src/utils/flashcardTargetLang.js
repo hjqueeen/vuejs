@@ -1,14 +1,29 @@
 const STORAGE_PREFIX = "flashcard-target-lang";
 
-/** @returns {"de" | "en"} */
-export function getFlashcardTargetLang(bookId) {
-  if (typeof localStorage === "undefined") return "de";
+/** @typedef {"de"|"en"|"es"} FlashcardLang */
+
+/**
+ * @param {string} bookId
+ * @param {FlashcardLang[]} [allowed]
+ * @returns {FlashcardLang}
+ */
+export function getFlashcardTargetLang(bookId, allowed = ["de", "en"]) {
+  const fallback = allowed[0] || "de";
+  if (typeof localStorage === "undefined") return fallback;
   const saved = localStorage.getItem(`${STORAGE_PREFIX}:${bookId}`);
-  return saved === "en" ? "en" : "de";
+  if (saved && allowed.includes(/** @type {FlashcardLang} */ (saved))) {
+    return /** @type {FlashcardLang} */ (saved);
+  }
+  return fallback;
 }
 
-/** @param {"de" | "en"} lang */
-export function setFlashcardTargetLang(bookId, lang) {
+/**
+ * @param {string} bookId
+ * @param {FlashcardLang} lang
+ * @param {FlashcardLang[]} [allowed]
+ */
+export function setFlashcardTargetLang(bookId, lang, allowed = ["de", "en"]) {
   if (typeof localStorage === "undefined") return;
-  localStorage.setItem(`${STORAGE_PREFIX}:${bookId}`, lang === "en" ? "en" : "de");
+  const next = allowed.includes(lang) ? lang : allowed[0] || "de";
+  localStorage.setItem(`${STORAGE_PREFIX}:${bookId}`, next);
 }

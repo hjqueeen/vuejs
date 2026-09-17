@@ -11,6 +11,8 @@
         <FlashcardTargetLangToggle
           v-if="supportsTargetLang"
           :book-id="bookId"
+          :options="langToggleOptions"
+          :aria-label="langToggleAriaLabel"
           @change="onTargetLangChange"
         />
       </div>
@@ -18,7 +20,7 @@
         공부함 {{ studiedCount }} / {{ cards.length }}
         <span v-if="studiedCount">({{ studiedPercent }}%)</span>
         · 복습 대기 {{ dueCount }}장
-        <span v-if="dualLang">({{ targetLang === "en" ? "English" : "Deutsch" }})</span>
+        <span v-if="dualLang">({{ targetLangLabel }})</span>
       </p>
     </header>
 
@@ -115,12 +117,18 @@ import { expandReviewItems } from "@/utils/flashcardReviewItems";
 import { bookHasDualLang, withLangSrsId } from "@/utils/flashcardSrsId";
 import { getFlashcardLayoutMode } from "@/utils/flashcardLayout";
 import { getFlashcardTargetLang } from "@/utils/flashcardTargetLang";
+import { resolveFlashcardCard } from "@/utils/flashcardCardResolver";
 import {
   getFlashcardSectionState,
   setFlashcardSectionState,
 } from "@/utils/flashcardSectionState";
 import { guardBookAccess } from "@/utils/bookAccessGuard";
 import { getDashboardLocation } from "@/data/bookCatalog";
+
+const DEFAULT_LANG_OPTIONS = [
+  { value: "de", label: "Deutsch" },
+  { value: "en", label: "English" },
+];
 
 export default {
   name: "FlashcardHubView",
@@ -131,14 +139,18 @@ export default {
   data() {
     return {
       layoutMode: getFlashcardLayoutMode(),
-      targetLang: getFlashcardTargetLang(this.bookId),
+      targetLang: "de",
       expandedSections: {},
     };
   },
   created() {
     guardBookAccess(this.$router, this.bookId);
+    this.targetLang = getFlashcardTargetLang(this.bookId, this.allowedLangs);
   },
   watch: {
+    bookId() {
+      this.targetLang = getFlashcardTargetLang(this.bookId, this.allowedLangs);
+    },
     cardSections: {
       immediate: true,
       handler(sections) {
@@ -155,11 +167,29 @@ export default {
     bookMeta() {
       return getFlashcardBook(this.bookId);
     },
+    langToggleOptions() {
+      return this.bookMeta?.langToggleOptions || DEFAULT_LANG_OPTIONS;
+    },
+    langToggleAriaLabel() {
+      return this.bookMeta?.langToggleAriaLabel || "공부할 언어";
+    },
+    allowedLangs() {
+      return (
+        this.bookMeta?.targetLanguages ||
+        this.langToggleOptions.map((o) => o.value)
+      );
+    },
     supportsTargetLang() {
       return bookHasDualLang(this.bookMeta);
     },
     dualLang() {
       return bookHasDualLang(this.bookMeta);
+    },
+    targetLangLabel() {
+      return (
+        this.langToggleOptions.find((o) => o.value === this.targetLang)?.label ||
+        this.targetLang
+      );
     },
     bookHint() {
       if (this.bookMeta?.hintForLang) {
@@ -235,7 +265,8 @@ export default {
       return this.cards.findIndex((card) => card.id === cardId);
     },
     cardPreview(card) {
-      const text = card.term || "";
+      const resolved = resolveFlashcardCard(card, this.bookId, this.targetLang) || card;
+      const text = resolved.term || "";
       return text.length > 56 ? `${text.slice(0, 56)}…` : text;
     },
     isStudied(cardId) {

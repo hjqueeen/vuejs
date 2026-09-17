@@ -1,22 +1,15 @@
 <template>
-  <div class="fc-target-lang" role="group" aria-label="공부할 언어">
+  <div class="fc-target-lang" role="group" :aria-label="ariaLabel">
     <button
+      v-for="opt in options"
+      :key="opt.value"
       type="button"
       class="lang-btn"
-      :class="{ active: lang === 'de' }"
-      :aria-pressed="lang === 'de'"
-      @click="setLang('de')"
+      :class="{ active: lang === opt.value }"
+      :aria-pressed="lang === opt.value"
+      @click="setLang(opt.value)"
     >
-      Deutsch
-    </button>
-    <button
-      type="button"
-      class="lang-btn"
-      :class="{ active: lang === 'en' }"
-      :aria-pressed="lang === 'en'"
-      @click="setLang('en')"
-    >
-      English
+      {{ opt.label }}
     </button>
   </div>
 </template>
@@ -24,18 +17,44 @@
 <script>
 import { getFlashcardTargetLang, setFlashcardTargetLang } from "@/utils/flashcardTargetLang";
 
+const DEFAULT_OPTIONS = [
+  { value: "de", label: "Deutsch" },
+  { value: "en", label: "English" },
+];
+
 export default {
   name: "FlashcardTargetLangToggle",
   props: {
     bookId: { type: String, required: true },
+    /** @type {{ value: string, label: string }[]} */
+    options: {
+      type: Array,
+      default: () => DEFAULT_OPTIONS,
+    },
+    ariaLabel: {
+      type: String,
+      default: "공부할 언어",
+    },
   },
   data() {
-    return { lang: getFlashcardTargetLang(this.bookId) };
+    return {
+      lang: getFlashcardTargetLang(this.bookId, this.allowedValues),
+    };
+  },
+  computed: {
+    allowedValues() {
+      return this.options.map((o) => o.value);
+    },
+  },
+  watch: {
+    bookId() {
+      this.lang = getFlashcardTargetLang(this.bookId, this.allowedValues);
+    },
   },
   methods: {
     setLang(lang) {
       this.lang = lang;
-      setFlashcardTargetLang(this.bookId, lang);
+      setFlashcardTargetLang(this.bookId, lang, this.allowedValues);
       this.$emit("change", lang);
     },
   },

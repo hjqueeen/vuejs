@@ -21,13 +21,14 @@ export function bookHasDualLang(bookMeta) {
   return (bookMeta?.targetLanguages?.length || 0) > 1;
 }
 
-/** @param {object|null} card @param {"de"|"en"} targetLang */
+/** @param {object|null} card @param {string} targetLang */
 export function mainCardHasLangContent(card, targetLang) {
   if (!card) return false;
   if (targetLang === "en") {
-    return Boolean(card.explanationEn?.trim());
+    return Boolean(card.explanationEn?.trim() || card.explanationDe?.trim());
   }
-  return Boolean(card.explanationDe?.trim());
+  // de / es 등: 해석 텍스트가 있으면 복습 가능
+  return Boolean(card.explanationDe?.trim() || card.termEs?.trim() || card.termDe?.trim());
 }
 
 /** @param {object} example @param {"de"|"en"} targetLang */

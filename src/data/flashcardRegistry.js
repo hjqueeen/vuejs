@@ -150,8 +150,22 @@ export const flashcardBooks = {
     cards: orderedSpanishLluviasCards,
     sections: spanishLluviasSections,
     getCardById: getSpanishLluviasCardById,
+    targetLanguages: ["de", "es"],
+    langToggleOptions: [
+      { value: "de", label: "Deutsch" },
+      { value: "es", label: "Español" },
+    ],
+    langToggleAriaLabel: "앞면 언어",
+    labelsForLang: (lang) =>
+      lang === "es"
+        ? { front: "Español", back: "Deutsch" }
+        : { front: "Deutsch", back: "Español" },
+    hintForLang: (lang) =>
+      lang === "es"
+        ? "스페인어를 보고 독일어를 떠올린 뒤, 카드를 뒤집어 확인하세요."
+        : "독일어를 보고 스페인어를 떠올린 뒤, 카드를 뒤집어 확인하세요.",
     labels: { front: "Deutsch", back: "Español" },
-    hint: "독일어를 보고 스페인어 표현을 떠올린 뒤, 카드를 뒤집어 확인하세요.",
+    hint: "헤더에서 앞면 언어(Deutsch / Español)를 선택한 뒤 카드를 뒤집으며 외우세요.",
     showKoOnBack: false,
   },
 };
