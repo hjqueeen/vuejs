@@ -270,6 +270,7 @@ import {
   loadProbeAttempts,
   submitProbeAttempt,
 } from "@/utils/flashcardProbeAttempts";
+import { getProbeMarkMap } from "@/utils/flashcardProbeGrading";
 import { PHYSIK_PROBE_FEEDBACK_META } from "@/data/physikProbeFeedbackContent.js";
 
 const DEFAULT_LANG_OPTIONS = [
@@ -410,7 +411,12 @@ export default {
       return getLatestProbeAttempt(this.bookId);
     },
     markMap() {
+      void this.answerTick;
       void this.attemptTick;
+      void this.feedbackTick;
+      // 현재 답안+피드백으로 즉시 색 구분 (채점 기록 없어도 동작)
+      const live = getProbeMarkMap(this.bookId, this.cards);
+      if (Object.keys(live).length) return live;
       return getLatestAttemptMarkMap(this.bookId);
     },
     bookSourceUrl() {
@@ -514,6 +520,11 @@ export default {
       if (mark === "wrong") return "wrong";
       if (mark === "ok") return "ok";
       if (this.isTested(cardId)) return "tested";
+      // Probe 책에서는 ‘답안만 있음’을 초록 studied로 쓰지 않음 (채점색과 혼동)
+      if (this.probeAnswersEnabled) {
+        if (this.isStudied(cardId) && !this.isAnswered(cardId)) return "studied";
+        return "";
+      }
       if (this.isStudied(cardId) || this.isAnswered(cardId)) return "studied";
       return "";
     },
@@ -1097,9 +1108,16 @@ html[data-theme="dark"] .fc-source-link {
   gap: 10px;
 }
 
+.fc-row {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+}
+
 .fc-row--partial .fc-term-btn {
-  background: rgba(194, 65, 12, 0.08);
-  border-color: rgba(194, 65, 12, 0.35);
+  background: rgba(194, 65, 12, 0.1);
+  border-color: rgba(194, 65, 12, 0.45);
+  border-width: 1.5px;
 }
 
 .fc-row--partial .fc-term {
@@ -1108,16 +1126,21 @@ html[data-theme="dark"] .fc-source-link {
 
 .fc-row--partial .fc-term-btn:hover {
   border-color: #c2410c;
-  box-shadow: 0 2px 10px rgba(194, 65, 12, 0.12);
+  box-shadow: 0 2px 10px rgba(194, 65, 12, 0.14);
 }
 
 .fc-row--wrong .fc-term-btn {
-  background: rgba(220, 38, 38, 0.06);
-  border-color: rgba(220, 38, 38, 0.28);
+  background: rgba(220, 38, 38, 0.07);
+  border-color: rgba(220, 38, 38, 0.35);
+}
+
+.fc-row--wrong .fc-term {
+  color: #991b1b;
 }
 
 .fc-row--ok .fc-term-btn {
-  border-color: rgba(15, 118, 110, 0.22);
+  border-color: var(--c-border);
+  background: var(--c-surface);
 }
 
 .fc-no {
@@ -1144,18 +1167,18 @@ html[data-theme="dark"] .fc-source-link {
 }
 
 .fc-no.partial {
-  background: rgba(194, 65, 12, 0.16);
-  color: #c2410c;
+  background: #c2410c;
+  color: #fff;
 }
 
 .fc-no.wrong {
-  background: rgba(220, 38, 38, 0.14);
-  color: #dc2626;
+  background: rgba(220, 38, 38, 0.9);
+  color: #fff;
 }
 
 .fc-no.ok {
-  background: rgba(15, 118, 110, 0.14);
-  color: var(--c-teal);
+  background: var(--c-border-subtle);
+  color: var(--c-text-muted);
 }
 
 .fc-term-btn {

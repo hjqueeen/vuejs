@@ -87,3 +87,24 @@ export function gradeProbeAnswers(bookId, cards) {
     items,
   };
 }
+
+/**
+ * 카드별 mark 맵 (현재 답안 + 피드백 기준)
+ * @param {string} bookId
+ * @param {object[]} cards
+ * @returns {Record<string, string>}
+ */
+export function getProbeMarkMap(bookId, cards) {
+  const graded = gradeProbeAnswers(bookId, cards);
+  /** @type {Record<string, string>} */
+  const map = {};
+  for (const item of graded.items) {
+    if (item.cardId && item.mark && item.mark !== "empty") {
+      map[item.cardId] = item.mark;
+    } else if (item.cardId && item.answered) {
+      // 답은 있는데 미채점이면 empty로 두지 않고 표시 안 함
+      map[item.cardId] = item.mark || "empty";
+    }
+  }
+  return map;
+}
