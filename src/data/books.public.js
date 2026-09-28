@@ -45,6 +45,10 @@ import {
   PHYSIK_MAGNETISMUS_CARD_IDS,
 } from "./physikMagnetismusContent.js";
 import {
+  PHYSIK_K9_NOTES_BOOK_ID,
+  PHYSIK_K9_NOTES_RELATED_FLASHCARD_ID,
+} from "./physikKlasse9NotesContent.js";
+import {
   MATH_QUIZ_BOOK_ID,
   MATH_QUIZ_QUESTION_IDS,
   MATH_WORKSHEET_PAGE_IDS,
@@ -204,6 +208,20 @@ export const publicBooks = [
     subjectLabel: "스페인어",
   },
   {
+    id: PHYSIK_K9_NOTES_BOOK_ID,
+    templateType: "study-notes",
+    title: "Physik · Klasse 9 Notizen",
+    subtitle: "수업 노트 읽기 — Strom · Magnetismus · Elektromagnet",
+    description:
+      "9학년 물리 수업 노트(독·한). 챕터별 스크롤 읽기, DE / KO / 양쪽 전환. 이해한 뒤 플래시카드로 암기하세요.",
+    coverColor: "book-cover-c",
+    relatedFlashcardBookId: PHYSIK_K9_NOTES_RELATED_FLASHCARD_ID,
+    owner: "hangyeol",
+    grade: 9,
+    subjectKey: "physik",
+    subjectLabel: "물리",
+  },
+  {
     id: PHYSIK_MAGNETISMUS_BOOK_ID,
     templateType: "flashcard",
     title: "Physik · Magnetismus",
@@ -212,6 +230,7 @@ export const publicBooks = [
       "9학년 물리: 전류 복습, 자극·자기력선·소자석·지구자기장·코일·전자석. 앞면 독일어 문단, 뒷면 한국어. 다이어그램 포함.",
     coverColor: "book-cover-d",
     cardIds: PHYSIK_MAGNETISMUS_CARD_IDS,
+    relatedNotesBookId: PHYSIK_K9_NOTES_BOOK_ID,
     owner: "hangyeol",
     grade: 9,
     subjectKey: "physik",

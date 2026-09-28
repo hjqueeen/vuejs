@@ -34,6 +34,16 @@
 
     <p class="fc-hint">{{ bookHint }}</p>
 
+    <button
+      v-if="relatedNotesBookId"
+      type="button"
+      class="fc-notes-link"
+      @click="goNotes"
+    >
+      📖 수업 노트 먼저 읽기
+      <span class="fc-notes-arrow" aria-hidden="true">→</span>
+    </button>
+
     <a
       v-if="bookSourceUrl && !cardSections.length"
       :href="bookSourceUrl"
@@ -197,6 +207,9 @@ export default {
       }
       return this.bookMeta?.hint || "카드를 눌러 앞면과 뒷면을 뒤집으며 외우세요.";
     },
+    relatedNotesBookId() {
+      return this.book?.relatedNotesBookId || "";
+    },
     bookSourceUrl() {
       return this.bookMeta?.sourceUrl || "";
     },
@@ -299,6 +312,13 @@ export default {
     goDashboard() {
       this.$router.push(getDashboardLocation());
     },
+    goNotes() {
+      if (!this.relatedNotesBookId) return;
+      this.$router.push({
+        name: "study-notes",
+        params: { bookId: this.relatedNotesBookId },
+      });
+    },
     onTargetLangChange(lang) {
       this.targetLang = lang;
     },
@@ -385,6 +405,31 @@ export default {
   font-size: 13px;
   color: var(--c-text-muted);
   line-height: 1.5;
+}
+
+.fc-notes-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 16px;
+  padding: 6px 12px;
+  border-radius: var(--c-radius-pill);
+  border: 1.5px solid var(--c-blue-mid);
+  background: rgba(45, 95, 168, 0.06);
+  color: var(--c-blue-mid);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+
+.fc-notes-link:hover {
+  filter: brightness(0.95);
+}
+
+.fc-notes-arrow {
+  font-size: 12px;
+  opacity: 0.8;
 }
 
 .fc-source-link {

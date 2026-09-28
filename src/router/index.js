@@ -118,6 +118,12 @@ const router = new Router({
       props: true,
     },
     {
+      path: "/notes/:bookId",
+      name: "study-notes",
+      component: () => import("@/views/StudyNotesView.vue"),
+      props: true,
+    },
+    {
       path: "/flashcards/:bookId",
       name: "flashcard-hub",
       component: () => import("@/views/FlashcardHubView.vue"),

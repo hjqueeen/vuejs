@@ -213,6 +213,13 @@ export default {
       return this.$store.getters["quizWorkbook/bookProgress"](book.id, ids);
     },
     openBook(book) {
+      if (book.templateType === "study-notes") {
+        this.$router.push({
+          name: "study-notes",
+          params: { bookId: book.id },
+        });
+        return;
+      }
       if (book.templateType === "flashcard") {
         this.$router.push({
           name: "flashcard-hub",
