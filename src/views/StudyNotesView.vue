@@ -184,6 +184,9 @@ export default {
         /* ignore */
       }
     },
+    "$route.query.chapter"(chapterId) {
+      if (chapterId) this.$nextTick(() => this.scrollToChapter(chapterId));
+    },
   },
   mounted() {
     if (this.chapters.length) {
@@ -191,6 +194,14 @@ export default {
     }
     this._onScroll = () => this.updateActiveFromScroll();
     window.addEventListener("scroll", this._onScroll, { passive: true });
+    const fromQuery = this.$route.query.chapter;
+    const fromHash = (this.$route.hash || "").replace(/^#/, "");
+    const target = fromQuery || fromHash;
+    if (target) {
+      this.$nextTick(() => {
+        setTimeout(() => this.scrollToChapter(target), 50);
+      });
+    }
   },
   beforeDestroy() {
     window.removeEventListener("scroll", this._onScroll);

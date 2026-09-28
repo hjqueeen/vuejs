@@ -38,6 +38,14 @@
         @saved="onProbeAnswerSaved"
       />
 
+      <FlashcardProbeFeedback
+        v-if="showProbeFeedback"
+        :feedback="probeFeedback"
+        :student-answer="probeStudentAnswer"
+        class="fc-probe-slot"
+        @open-note="openNoteChapter"
+      />
+
       <aside v-if="hasWritingPractice" class="fc-writing-aside">
         <FlashcardWritingPractice :practice="displayCard.writingPractice" />
       </aside>
@@ -57,7 +65,7 @@
           class="flip-btn"
           @click="toggleFlip"
         >
-          {{ flipped ? "앞면 보기" : "설명 보기 (뒤집기)" }}
+          {{ flipped ? "앞면 보기" : (probeAnswersEnabled ? "내 답 · 피드백 보기" : "설명 보기 (뒤집기)") }}
         </button>
         <button
           type="button"
@@ -80,12 +88,19 @@ import FlashcardVocabulary from "@/components/flashcard/FlashcardVocabulary.vue"
 import FlashcardTargetLangToggle from "@/components/flashcard/FlashcardTargetLangToggle.vue";
 import FlashcardWritingPractice from "@/components/flashcard/FlashcardWritingPractice.vue";
 import FlashcardProbeAnswer from "@/components/flashcard/FlashcardProbeAnswer.vue";
+import FlashcardProbeFeedback from "@/components/flashcard/FlashcardProbeFeedback.vue";
 import { getCardById, getCardsForBook, getFlashcardBook } from "@/data/flashcardRegistry";
 import { resolveFlashcardCard } from "@/utils/flashcardCardResolver";
 import { getProbeAnswer } from "@/utils/flashcardProbeAnswers";
+import {
+  getProbeFeedback,
+  isProbeFeedbackEnabled,
+} from "@/utils/flashcardProbeFeedback";
+import { PHYSIK_K9_NOTES_BOOK_ID } from "@/data/physikKlasse9NotesContent.js";
 import { getFlashcardLayoutMode } from "@/utils/flashcardLayout";
 import { getFlashcardTargetLang } from "@/utils/flashcardTargetLang";
 import { guardBookAccess } from "@/utils/bookAccessGuard";
+import { getBookById } from "@/data/books";
 
 const DEFAULT_LANG_OPTIONS = [
   { value: "de", label: "Deutsch" },
@@ -100,6 +115,7 @@ export default {
     FlashcardVocabulary,
     FlashcardWritingPractice,
     FlashcardProbeAnswer,
+    FlashcardProbeFeedback,
     FlashcardTargetLangToggle,
   },
   props: {
@@ -121,6 +137,9 @@ export default {
   computed: {
     bookMeta() {
       return getFlashcardBook(this.bookId);
+    },
+    book() {
+      return getBookById(this.bookId);
     },
     langToggleOptions() {
       return this.bookMeta?.langToggleOptions || DEFAULT_LANG_OPTIONS;
@@ -148,6 +167,22 @@ export default {
     },
     probeAnswersEnabled() {
       return Boolean(this.bookMeta?.probeAnswers);
+    },
+    probeFeedbackEnabled() {
+      return this.probeAnswersEnabled && isProbeFeedbackEnabled(this.bookId);
+    },
+    probeStudentAnswer() {
+      void this.probeAnswerTick;
+      return getProbeAnswer(this.bookId, this.cardId);
+    },
+    probeFeedback() {
+      void this.probeAnswerTick;
+      if (!this.probeFeedbackEnabled) return null;
+      return getProbeFeedback(this.bookId, this.cardId);
+    },
+    showProbeFeedback() {
+      if (!this.probeFeedback) return false;
+      return Boolean(this.probeFeedback.modelDe || this.probeFeedback.commentKo);
     },
     allCards() {
       return getCardsForBook(this.bookId);
@@ -226,6 +261,16 @@ export default {
           questionId: this.cardId,
         });
       }
+    },
+    openNoteChapter(chapterId) {
+      const notesBookId =
+        this.book?.relatedNotesBookId || PHYSIK_K9_NOTES_BOOK_ID;
+      this.$router.push({
+        name: "study-notes",
+        params: { bookId: notesBookId },
+        query: { chapter: chapterId || undefined },
+        hash: chapterId ? `#${chapterId}` : undefined,
+      });
     },
     goHub() {
       this.$router.push({ name: "flashcard-hub", params: { bookId: this.bookId } });

@@ -48,6 +48,7 @@
       <p class="probe-submit-stat">
         답안 작성 {{ answeredCount }} / {{ cards.length }}
         <span v-if="answeredCount">({{ answeredPercent }}%)</span>
+        <span v-if="feedbackEnabled"> · 피드백 ON</span>
       </p>
       <div class="probe-submit-actions">
         <button
@@ -58,6 +59,22 @@
         >
           답안 제출 · JSON 내보내기
         </button>
+        <button type="button" class="probe-import-btn" @click="pickAnswersFile">
+          답안 JSON 불러오기
+        </button>
+        <button type="button" class="probe-import-btn" @click="pickFeedbackFile">
+          피드백 JSON 불러오기
+        </button>
+        <button type="button" class="probe-import-btn" @click="applyBundledFeedback">
+          기본 피드백 적용
+        </button>
+        <button
+          type="button"
+          class="probe-clear-all-btn"
+          @click="toggleFeedback"
+        >
+          피드백 {{ feedbackEnabled ? "끄기" : "켜기" }}
+        </button>
         <button
           type="button"
           class="probe-clear-all-btn"
@@ -67,7 +84,24 @@
           답안 전체 삭제
         </button>
       </div>
+      <input
+        ref="answersFileInput"
+        type="file"
+        accept="application/json,.json"
+        class="probe-file-input"
+        @change="onAnswersFile"
+      />
+      <input
+        ref="feedbackFileInput"
+        type="file"
+        accept="application/json,.json"
+        class="probe-file-input"
+        @change="onFeedbackFile"
+      />
       <p v-if="exportMessage" class="probe-export-msg">{{ exportMessage }}</p>
+      <p class="probe-fb-hint">
+        카드를 열고 뒤집으면 모범답·코멘트가 보입니다. JSON을 불러오거나 「기본 피드백 적용」을 누르세요.
+      </p>
     </section>
 
     <a
@@ -169,6 +203,14 @@ import {
   downloadProbeAnswersJson,
   getProbeAnswer,
 } from "@/utils/flashcardProbeAnswers";
+import {
+  applyBundledFeedbackToStorage,
+  importProbeAnswersPayload,
+  importProbeFeedbackPayload,
+  isProbeFeedbackEnabled,
+  setProbeFeedbackEnabled,
+} from "@/utils/flashcardProbeFeedback";
+import { PHYSIK_PROBE_FEEDBACK_META } from "@/data/physikProbeFeedbackContent.js";
 
 const DEFAULT_LANG_OPTIONS = [
   { value: "de", label: "Deutsch" },
@@ -188,11 +230,16 @@ export default {
       expandedSections: {},
       answerTick: 0,
       exportMessage: "",
+      feedbackTick: 0,
     };
   },
   created() {
     guardBookAccess(this.$router, this.bookId);
     this.targetLang = getFlashcardTargetLang(this.bookId, this.allowedLangs);
+    if (this.probeAnswersEnabled) {
+      applyBundledFeedbackToStorage(this.bookId);
+      this.feedbackTick += 1;
+    }
   },
   activated() {
     this.answerTick += 1;
@@ -257,6 +304,10 @@ export default {
     },
     probeAnswersEnabled() {
       return Boolean(this.bookMeta?.probeAnswers);
+    },
+    feedbackEnabled() {
+      void this.feedbackTick;
+      return this.probeAnswersEnabled && isProbeFeedbackEnabled(this.bookId);
     },
     answeredCount() {
       void this.answerTick;
@@ -407,6 +458,75 @@ export default {
       this.answerTick += 1;
       this.exportMessage = "답안을 모두 삭제했습니다.";
     },
+    pickAnswersFile() {
+      this.$refs.answersFileInput?.click();
+    },
+    pickFeedbackFile() {
+      this.$refs.feedbackFileInput?.click();
+    },
+    readJsonFile(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          try {
+            resolve(JSON.parse(String(reader.result || "")));
+          } catch (err) {
+            reject(err);
+          }
+        };
+        reader.onerror = () => reject(reader.error || new Error("파일 읽기 실패"));
+        reader.readAsText(file);
+      });
+    },
+    async onAnswersFile(event) {
+      const file = event.target.files?.[0];
+      event.target.value = "";
+      if (!file) return;
+      try {
+        const payload = await this.readJsonFile(file);
+        const result = importProbeAnswersPayload(payload);
+        this.answerTick += 1;
+        this.exportMessage = `답안 불러옴: ${result.imported}문항 (${result.bookId})`;
+      } catch (err) {
+        this.exportMessage = `불러오기 실패: ${err.message || err}`;
+      }
+    },
+    async onFeedbackFile(event) {
+      const file = event.target.files?.[0];
+      event.target.value = "";
+      if (!file) return;
+      try {
+        const payload = await this.readJsonFile(file);
+        // 답안 JSON이면 자동으로 답안 import + 기본 피드백 적용
+        if (Array.isArray(payload.answers) && !payload.items && !payload.feedback) {
+          const result = importProbeAnswersPayload(payload);
+          applyBundledFeedbackToStorage(result.bookId || this.bookId);
+          setProbeFeedbackEnabled(this.bookId, true);
+          this.answerTick += 1;
+          this.feedbackTick += 1;
+          this.exportMessage = `답안 ${result.imported}문항 + 기본 피드백 적용됨. 카드를 뒤집어 보세요.`;
+          return;
+        }
+        const result = importProbeFeedbackPayload(payload);
+        this.feedbackTick += 1;
+        this.exportMessage = `피드백 불러옴: ${result.count}문항`;
+      } catch (err) {
+        this.exportMessage = `불러오기 실패: ${err.message || err}`;
+      }
+    },
+    applyBundledFeedback() {
+      applyBundledFeedbackToStorage(this.bookId);
+      setProbeFeedbackEnabled(this.bookId, true);
+      this.feedbackTick += 1;
+      this.exportMessage = `기본 피드백 적용 (${PHYSIK_PROBE_FEEDBACK_META.reviewedAt} 리뷰)`;
+    },
+    toggleFeedback() {
+      const next = !isProbeFeedbackEnabled(this.bookId);
+      setProbeFeedbackEnabled(this.bookId, next);
+      if (next) applyBundledFeedbackToStorage(this.bookId);
+      this.feedbackTick += 1;
+      this.exportMessage = next ? "피드백 표시 ON" : "피드백 표시 OFF";
+    },
     onTargetLangChange(lang) {
       this.targetLang = lang;
     },
@@ -530,6 +650,28 @@ export default {
 .probe-export-btn:disabled {
   opacity: 0.45;
   cursor: not-allowed;
+}
+
+.probe-import-btn {
+  border: 1px solid var(--c-blue-mid);
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: rgba(45, 95, 168, 0.06);
+  color: var(--c-blue-mid);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.probe-file-input {
+  display: none;
+}
+
+.probe-fb-hint {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: var(--c-text-muted);
+  line-height: 1.45;
 }
 
 .probe-clear-all-btn {

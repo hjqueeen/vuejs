@@ -204,7 +204,7 @@ export const flashcardBooks = {
         ? "앞면(독+한 질문)을 보고 아래에 답을 입력하세요. 자동 저장되며, 목록에서 JSON으로 제출할 수 있습니다."
         : "앞면(독일어 질문)을 보고 아래에 답을 입력하세요. 자동 저장되며, 목록에서 JSON으로 제출할 수 있습니다.",
     labels: { front: "Frage", back: "Meine Antwort" },
-    hint: "질문을 보고 아래에 답을 입력하세요. 로컬에 저장되고, 마지막에 JSON으로 내보낼 수 있습니다.",
+    hint: "질문을 보고 아래에 답을 입력하세요. 뒤집으면 모범답·피드백을 볼 수 있습니다. 목록에서 JSON 불러오기/내보내기 가능.",
     showKoOnBack: false,
     probeAnswers: true,
   },

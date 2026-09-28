@@ -30,6 +30,11 @@ function setProbeAnswersMap(bookId, map) {
   localStorage.setItem(storageKey(bookId), JSON.stringify(map));
 }
 
+/** @param {string} bookId @param {ProbeAnswerMap} map */
+export function setProbeAnswersMapBulk(bookId, map) {
+  setProbeAnswersMap(bookId, map);
+}
+
 /** @param {string} bookId @param {string} cardId */
 export function getProbeAnswer(bookId, cardId) {
   const entry = getProbeAnswersMap(bookId)[cardId];

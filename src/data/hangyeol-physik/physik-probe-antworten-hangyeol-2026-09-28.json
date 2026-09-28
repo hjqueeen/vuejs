@@ -1,0 +1,496 @@
+{
+  "bookId": "book-physik-probe-fragen-k9",
+  "bookTitle": "Physik · Probe-Fragen",
+  "learner": "hangyeol",
+  "exportedAt": "2026-09-28T11:57:55.387Z",
+  "answeredCount": 31,
+  "totalCount": 54,
+  "answers": [
+    {
+      "cardId": "card-ppf-a1",
+      "category": "A · Strom",
+      "questionDe": "Wie werden Amperemeter und Voltmeter geschaltet?",
+      "questionKo": "전류계와 전압계는 어떻게 연결하는가?",
+      "answer": "Ampermeter wird in Reihe, und Voltmeter wird Parallel geschaltet.",
+      "updatedAt": "2026-09-28T11:30:45.650Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-a2",
+      "category": "A · Strom",
+      "questionDe": "Was versteht man unter elektrischem Strom?",
+      "questionKo": "전류란 무엇인가?",
+      "answer": "fliessende Elektronen",
+      "updatedAt": "2026-09-28T11:31:11.366Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-a3",
+      "category": "A · Strom",
+      "questionDe": "In welche Richtung zeigt die technische Stromrichtung?",
+      "questionKo": "기술 전류 방향은 어느 쪽인가?",
+      "answer": "von plus zur minuspol",
+      "updatedAt": "2026-09-28T11:31:32.502Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-a4",
+      "category": "A · Strom",
+      "questionDe": "In welche Richtung bewegen sich die Elektronen in einem Metalldraht?",
+      "questionKo": "금속 도선에서 전자는 어느 쪽으로 움직이는가?",
+      "answer": "entgegen der technischen stromrichtung, also von minus zum pluspol",
+      "updatedAt": "2026-09-28T11:32:09.562Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-a5",
+      "category": "A · Strom",
+      "questionDe": "Warum hat Ampère die Stromrichtung vom „+“ zum „−“ festgelegt?",
+      "questionKo": "왜 앙페르는 +→− 방향으로 전류를 정했는가?",
+      "answer": "Ampère definiert die Stromrichtung am Hofmannschen Wasserzersetzungsapparat: Am Pluspol entsteht Sauerstoff (O₂), am Minuspol Wasserstoff (H₂). Die Richtung geht vom „Sauerstoffdraht“ zum „Wasserstoffdraht",
+      "updatedAt": "2026-09-28T11:32:48.821Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-a6",
+      "category": "A · Strom",
+      "questionDe": "Warum stellt man die Stromrichtung heute nicht um? Nenne zwei Gründe.",
+      "questionKo": "왜 오늘날 전류 방향을 바꾸지 않는가? 이유 두 가지.",
+      "answer": "Weil die Umkerhung sehr aufwending sein wird da die Elektronik und das Maxwellsche gleichung auf amperes definition folgen",
+      "updatedAt": "2026-09-28T11:34:26.650Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-a7",
+      "category": "A · Strom",
+      "questionDe": "Warum tragen Elektronen eine negative Ladung (im Zusammenhang mit der Stromrichtung)?",
+      "questionKo": "전류 방향과 관련해, 전자가 음전하를 띠는 이유는?",
+      "answer": "Weil die Elektronen gegen den Technischen Stromrichtung fliessen.",
+      "updatedAt": "2026-09-28T11:34:53.958Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-a8",
+      "category": "A · Strom",
+      "questionDe": "Was bedeutet die Formel U = R · I qualitativ (ohne Rechnung)?",
+      "questionKo": "공식 U = R · I가 의미하는 바는? (계산 없이)",
+      "answer": "Es ist porpotional",
+      "updatedAt": "2026-09-28T11:35:58.598Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-b1",
+      "category": "B · Pole",
+      "questionDe": "Was sind magnetische Pole?",
+      "questionKo": "자기 극이란 무엇인가?",
+      "answer": "Der magnetische suedpol ist der geographische nordpol und der magnetische nordpol ist der magnetische suedpol",
+      "updatedAt": "2026-09-28T11:36:29.966Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-b2",
+      "category": "B · Pole",
+      "questionDe": "Welche Farbe hat oft der Nordpol, welche der Südpol? (Merkregel)",
+      "questionKo": "북극·남극 색 암기법은?",
+      "answer": "Nord hat rot und Sued blau/gruen",
+      "updatedAt": "2026-09-28T11:36:48.440Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-b3",
+      "category": "B · Pole",
+      "questionDe": "Warum bleiben Büroklammern vor allem an den Enden eines Stabmagneten hängen?",
+      "questionKo": "왜 클립이 막대자석 양끝에 주로 붙는가?",
+      "answer": "Weil mit der Magnetfeld des Stabmagnet wird das Bueroklammer selbst magnetisch.",
+      "updatedAt": "2026-09-28T11:37:41.540Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-b4",
+      "category": "B · Pole",
+      "questionDe": "Was geschieht, wenn man zwei gleiche Pole zusammenbringt?",
+      "questionKo": "같은 극을 가까이하면?",
+      "answer": "Sie Stossen gegeneinander ab",
+      "updatedAt": "2026-09-28T11:37:56.702Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-b5",
+      "category": "B · Pole",
+      "questionDe": "Was geschieht, wenn man verschiedene Pole zusammenbringt?",
+      "questionKo": "다른 극을 가까이하면?",
+      "answer": "Sie ziehen sich gegenseitig an",
+      "updatedAt": "2026-09-28T11:38:07.932Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-b6",
+      "category": "B · Pole",
+      "questionDe": "Wie hängt die Kraftwirkung vom Abstand der Pole ab?",
+      "questionKo": "극 사이 거리와 힘의 관계는?",
+      "answer": "Es liegt an den Staerke des Feldlinie, ob das magnet ein entferntes pol anziehen kann",
+      "updatedAt": "2026-09-28T11:38:58.190Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-b7",
+      "category": "B · Pole",
+      "questionDe": "Formuliere die Beobachtungsregel für Magnetpole in einem Satz.",
+      "questionKo": "자극에 대한 관찰 규칙을 한 문장으로.",
+      "answer": "Gleiche Polen stossen sich ab, gleiche ziehen sich an, wird der abstand groesser ,desto schwacher der Kraft",
+      "updatedAt": "2026-09-28T11:39:57.934Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-c1",
+      "category": "C · Stoffe",
+      "questionDe": "Was sind magnetisierbare Stoffe? Nenne Beispiele.",
+      "questionKo": "자화 가능 물질이란? 예시는?",
+      "answer": "Eisen, Nickel, Cobalt",
+      "updatedAt": "2026-09-28T11:40:26.017Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-c2",
+      "category": "C · Stoffe",
+      "questionDe": "Was ist ein Dauermagnet?",
+      "questionKo": "영구자석이란?",
+      "answer": "Sie sind magnete wessen ihre Kraefte lange behaelt.",
+      "updatedAt": "2026-09-28T11:41:09.245Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-c3",
+      "category": "C · Stoffe",
+      "questionDe": "Wird ein magnetisierbarer, aber nicht magnetischer Gegenstand von einem Magneten angezogen oder abgestoßen?",
+      "questionKo": "자화 가능하지만 자석이 아닌 물체는 끌리는가, 밀리는가?",
+      "answer": "Es liegt an den Polen ob es angezogen wird oder nicht",
+      "updatedAt": "2026-09-28T11:42:00.833Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-c4",
+      "category": "C · Stoffe",
+      "questionDe": "Wirkt die magnetische Kraft nur bei Berührung?",
+      "questionKo": "자기력은 접촉할 때만 작용하는가?",
+      "answer": "Nein es liegt an der Feldlinie/Magnetische Felder",
+      "updatedAt": "2026-09-28T11:42:24.697Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-c5",
+      "category": "C · Stoffe",
+      "questionDe": "Welche Formen von Magneten kennst du?",
+      "questionKo": "자석 형태에는 어떤 것이 있는가?",
+      "answer": "Stabmagnet, Elektromagnet, Hufeisenmagnet, Scheibenmagnet, Spule, Lasthebemagnet",
+      "updatedAt": "2026-09-28T11:42:49.045Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-c6",
+      "category": "C · Stoffe",
+      "questionDe": "Teile Büroklammern, Papier und Magneten in Kategorien ein.",
+      "questionKo": "클립, 종이, 자석을 분류하면?",
+      "answer": "Bueroklammer - magnetisierbar\nPapier - nichtmagnetisierbar\nMagnet - Dauerlich Magnetisch",
+      "updatedAt": "2026-09-28T11:43:36.073Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-d1",
+      "category": "D · Elementarmagnete",
+      "questionDe": "Was besagt das Modell der Elementarmagnete?",
+      "questionKo": "소자석 모델은 무엇을 말하는가?",
+      "answer": "Alle magnetisierbaren Stoffe bestehen aus winzigen Bereichen, die sich wie kleine Magnete verhalten",
+      "updatedAt": "2026-09-28T11:43:58.496Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-d2",
+      "category": "D · Elementarmagnete",
+      "questionDe": "Wann ist ein Körper kein Magnet / wann wirkt er als Magnet? (Elementarmagnete)",
+      "questionKo": "소자석이 무질서/정렬일 때 차이는?",
+      "answer": "wenn es ungeordnet ist ist es kein magnet, wenn es geordnet ist ist es ein magnet",
+      "updatedAt": "2026-09-28T11:44:40.498Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-d3",
+      "category": "D · Elementarmagnete",
+      "questionDe": "Was passiert, wenn man einen Magneten teilt?",
+      "questionKo": "자석을 자르면?",
+      "answer": "Dann entstehen wieder Sued und Nordpole",
+      "updatedAt": "2026-09-28T11:45:52.000Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-d4",
+      "category": "D · Elementarmagnete",
+      "questionDe": "Was ist magnetische Influenz?",
+      "questionKo": "자기 유도란?",
+      "answer": "Im äußeren Magnetfeld werden Elementarmagnete eines Eisenstücks gleichgerichtet ,das Eisen wird selbst zum Magneten. Das heißt magnetische Influenz.",
+      "updatedAt": "2026-09-28T11:51:53.412Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-d5",
+      "category": "D · Elementarmagnete",
+      "questionDe": "Welche Probe aus dem Experiment zeigt magnetische Influenz?",
+      "questionKo": "실험에서 자기 유도가 나타나는 시료는?",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    },
+    {
+      "cardId": "card-ppf-d6",
+      "category": "D · Elementarmagnete",
+      "questionDe": "Beschreibe die Elementarmagnete in einer Büroklammer ohne / mit Magnetfeld.",
+      "questionKo": "자기장 없을 때/있을 때 클립의 소자석은?",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    },
+    {
+      "cardId": "card-ppf-d7",
+      "category": "D · Elementarmagnete",
+      "questionDe": "Was bedeutet magnetisch weich / magnetisch hart?",
+      "questionKo": "연자성 / 경자성이란?",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    },
+    {
+      "cardId": "card-ppf-d8",
+      "category": "D · Elementarmagnete",
+      "questionDe": "Nenne zwei Möglichkeiten, einem Magneten die magnetischen Eigenschaften zu nehmen.",
+      "questionKo": "자석을 탈자화하는 방법 두 가지.",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    },
+    {
+      "cardId": "card-ppf-e1",
+      "category": "E · Feldlinien",
+      "questionDe": "Was ist ein magnetisches Feld?",
+      "questionKo": "자기장이란?",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    },
+    {
+      "cardId": "card-ppf-e2",
+      "category": "E · Feldlinien",
+      "questionDe": "Wird das Magnetfeld durch Vakuum oder Luft verändert?",
+      "questionKo": "진공·공기가 자기장을 바꾸는가?",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    },
+    {
+      "cardId": "card-ppf-e3",
+      "category": "E · Feldlinien",
+      "questionDe": "Was sind magnetische Feldlinien?",
+      "questionKo": "자기력선이란?",
+      "answer": "Sie verlaufen von Nordpol zur Suedpol und kreuzen sich nie, viele Linien ergeben eine Feldlinie",
+      "updatedAt": "2026-09-28T11:53:51.866Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-e4",
+      "category": "E · Feldlinien",
+      "questionDe": "In welcher Richtung verlaufen magnetische Feldlinien immer?",
+      "questionKo": "자기력선은 항상 어느 방향인가?",
+      "answer": "von N nach S",
+      "updatedAt": "2026-09-28T11:53:59.727Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-e5",
+      "category": "E · Feldlinien",
+      "questionDe": "Warum kreuzen sich Feldlinien nie?",
+      "questionKo": "왜 자기력선은 교차하지 않는가?",
+      "answer": "?",
+      "updatedAt": "2026-09-28T11:54:05.886Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-e6",
+      "category": "E · Feldlinien",
+      "questionDe": "Woran erkennt man, dass ein Magnetfeld besonders stark ist?",
+      "questionKo": "자기장이 특히 세다는 것을 어떻게 아는가?",
+      "answer": "Wenn die Linien dichter werden",
+      "updatedAt": "2026-09-28T11:54:26.943Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-e7",
+      "category": "E · Feldlinien",
+      "questionDe": "Beschreibe kurz die Feldlinien bei Stab-, Hufeisen- und Scheibenmagnet.",
+      "questionKo": "막대·말굽·원판 자석의 자기력선은?",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    },
+    {
+      "cardId": "card-ppf-e8",
+      "category": "E · Feldlinien",
+      "questionDe": "Was ist der Unterschied zwischen magnetischen und elektrischen Feldlinien? (kurze Schülerantwort)",
+      "questionKo": "자기력선과 전기력선의 차이는? (짧게)",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    },
+    {
+      "cardId": "card-ppf-f1",
+      "category": "F · Erdmagnetfeld",
+      "questionDe": "Woran erkennt man, dass die Erde ein Magnetfeld hat?",
+      "questionKo": "지구에 자기장이 있음을 어떻게 아는가?",
+      "answer": "Weil der Kompassnadel von Nord-Sued richtet",
+      "updatedAt": "2026-09-28T11:55:35.776Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-f2",
+      "category": "F · Erdmagnetfeld",
+      "questionDe": "Wo liegt der magnetische Südpol der Erde?",
+      "questionKo": "지구의 자기 남극은 어디에 있는가?",
+      "answer": "an der geographischen Nordpol",
+      "updatedAt": "2026-09-28T11:55:47.953Z",
+      "answered": true
+    },
+    {
+      "cardId": "card-ppf-f3",
+      "category": "F · Erdmagnetfeld",
+      "questionDe": "Was ist die Missweisung (Deklination)?",
+      "questionKo": "편각이란?",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    },
+    {
+      "cardId": "card-ppf-f4",
+      "category": "F · Erdmagnetfeld",
+      "questionDe": "Was ist die Inklination?",
+      "questionKo": "복각이란?",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    },
+    {
+      "cardId": "card-ppf-f5",
+      "category": "F · Erdmagnetfeld",
+      "questionDe": "Wie entsteht das Erdmagnetfeld? Warum reicht das Elementarmagnet-Modell nicht?",
+      "questionKo": "지구자기장은 어떻게 생기며, 왜 소자석 모델로 부족한가?",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    },
+    {
+      "cardId": "card-ppf-f6",
+      "category": "F · Erdmagnetfeld",
+      "questionDe": "Woran kann man belegen, dass sich das Erdmagnetfeld regelmäßig umpolt?",
+      "questionKo": "지구자기장이 규칙적으로 극전환한다는 증거는?",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    },
+    {
+      "cardId": "card-ppf-f7",
+      "category": "F · Erdmagnetfeld",
+      "questionDe": "Nenne eine wichtige Tatsache zu Polwechseln.",
+      "questionKo": "극전환에 대한 중요 사실 하나.",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    },
+    {
+      "cardId": "card-ppf-g1",
+      "category": "G · Spule",
+      "questionDe": "Wann entsteht um einen Leiter ein Magnetfeld?",
+      "questionKo": "도체 주위에 자기장이 언제 생기는가?",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    },
+    {
+      "cardId": "card-ppf-g2",
+      "category": "G · Spule",
+      "questionDe": "Wie bestimmt man die Richtung des Magnetfeldes um einen stromdurchflossenen Leiter?",
+      "questionKo": "전류가 흐르는 도체 주위 자기장 방향은 어떻게 정하는가?",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    },
+    {
+      "cardId": "card-ppf-g3",
+      "category": "G · Spule",
+      "questionDe": "Welches Material verstärkt das Magnetfeld einer Spule im Inneren?",
+      "questionKo": "코일 안쪽에 넣어 자기장을 세게 하는 재료는?",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    },
+    {
+      "cardId": "card-ppf-g4",
+      "category": "G · Spule",
+      "questionDe": "Nenne drei Möglichkeiten, das Magnetfeld einer stromdurchflossenen Spule zu verstärken.",
+      "questionKo": "전류가 흐르는 코일 자기장을 세게 하는 방법 3가지.",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    },
+    {
+      "cardId": "card-ppf-g5",
+      "category": "G · Spule",
+      "questionDe": "Welche Gemeinsamkeiten haben eine stromdurchflossene Spule und ein Stabmagnet?",
+      "questionKo": "전류가 흐르는 코일과 막대자석의 공통점은?",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    },
+    {
+      "cardId": "card-ppf-g6",
+      "category": "G · Spule",
+      "questionDe": "Welche Unterschiede gibt es zwischen Spule und Stabmagnet?",
+      "questionKo": "코일과 막대자석의 차이점은?",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    },
+    {
+      "cardId": "card-ppf-g7",
+      "category": "G · Spule",
+      "questionDe": "Was ist ein geschlossener Eisenkern und warum verstärkt er das Feld stärker?",
+      "questionKo": "폐쇄 철심이란, 왜 장을 더 세게 하는가?",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    },
+    {
+      "cardId": "card-ppf-h1",
+      "category": "H · Elektromagnet",
+      "questionDe": "Was ist ein Elektromagnet?",
+      "questionKo": "전자석이란?",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    },
+    {
+      "cardId": "card-ppf-h2",
+      "category": "H · Elektromagnet",
+      "questionDe": "Welche Art von Magnet wird bei Lasthebemagneten auf Schrottplätzen genutzt? Warum?",
+      "questionKo": "고철장 하중 인양 자석에는 어떤 자석? 왜?",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    },
+    {
+      "cardId": "card-ppf-h3",
+      "category": "H · Elektromagnet",
+      "questionDe": "Erkläre knapp die Funktionsweise eines Lasthebemagneten.",
+      "questionKo": "하중 인양 자석의 작동을 짧게 설명하시오.",
+      "answer": "",
+      "updatedAt": null,
+      "answered": false
+    }
+  ]
+}
