@@ -66,7 +66,6 @@ export default {
       justSaved: false,
       saving: false,
       errorMsg: "",
-      saveTimer: null,
       statusTimer: null,
     };
   },
@@ -119,7 +118,6 @@ export default {
     },
   },
   beforeDestroy() {
-    this.clearTimer();
     this.clearStatusTimer();
     if (this.dirty && !this.saving) {
       this.persist();
@@ -127,7 +125,6 @@ export default {
   },
   methods: {
     load() {
-      this.clearTimer();
       this.clearStatusTimer();
       const entry = getProbeAnswerEntry(this.bookId, this.cardId);
       this.draft = entry?.text || "";
@@ -142,20 +139,17 @@ export default {
       this.dirty = this.draft !== this.savedText;
       this.justSaved = false;
       this.errorMsg = "";
-      this.clearTimer();
-      this.saveTimer = setTimeout(() => this.persist(), 800);
     },
     onBlur() {
+      // 입력 중에는 저장하지 않음. 포커스를 뺄 때만 자동 저장.
       if (this.dirty) this.saveNow();
     },
     saveNow() {
-      this.clearTimer();
       return this.persist();
     },
     async persist() {
       if (this.saving) return null;
       const next = this.draft;
-      // 내용 변화 없으면 스킵 (단, 강제 저장 호출은 dirty일 때만 옴)
       if (next === this.savedText && !this.dirty) return null;
 
       this.saving = true;
@@ -188,7 +182,6 @@ export default {
     async clearAnswer() {
       if (!this.draft.trim() && !this.hasSaved) return;
       if (!window.confirm("이 문항의 답안을 삭제할까요?")) return;
-      this.clearTimer();
       this.draft = "";
       this.dirty = true;
       this.saving = true;
@@ -215,12 +208,6 @@ export default {
         }, 1800);
       } finally {
         this.saving = false;
-      }
-    },
-    clearTimer() {
-      if (this.saveTimer) {
-        clearTimeout(this.saveTimer);
-        this.saveTimer = null;
       }
     },
     clearStatusTimer() {
