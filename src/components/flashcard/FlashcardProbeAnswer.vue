@@ -5,7 +5,9 @@
       <span class="probe-answer-status" :class="statusClass">{{ statusLabel }}</span>
     </div>
     <label class="probe-answer-label" :for="inputId">
-      독일어로 답을 적어 보세요 (로컬에만 저장됩니다)
+      독일어로 답을 적고 저장하세요. 수정·삭제도 가능합니다
+      <template v-if="cloudReady"> (로컬 + 클라우드)</template>
+      <template v-else> (이 기기 로컬)</template>
     </label>
     <textarea
       :id="inputId"
@@ -14,28 +16,40 @@
       class="probe-answer-input"
       rows="5"
       placeholder="Hier antworten…"
+      :disabled="saving"
       @input="onInput"
-      @blur="saveNow"
+      @blur="onBlur"
     ></textarea>
     <div class="probe-answer-actions">
-      <button type="button" class="probe-save-btn" @click="saveNow">저장</button>
+      <button
+        type="button"
+        class="probe-save-btn"
+        :disabled="saving || !dirty"
+        @click="saveNow"
+      >
+        {{ saving ? "저장 중…" : hasSaved ? "수정 저장" : "저장" }}
+      </button>
       <button
         type="button"
         class="probe-clear-btn"
-        :disabled="!draft.trim()"
+        :disabled="saving || (!draft.trim() && !hasSaved)"
         @click="clearAnswer"
       >
-        지우기
+        삭제
       </button>
     </div>
+    <p v-if="errorMsg" class="probe-answer-error">{{ errorMsg }}</p>
+    <p v-else-if="savedAtLabel" class="probe-answer-meta">{{ savedAtLabel }}</p>
   </section>
 </template>
 
 <script>
 import {
-  getProbeAnswer,
+  getProbeAnswerEntry,
   setProbeAnswer,
+  deleteProbeAnswer,
 } from "@/utils/flashcardProbeAnswers";
+import { isSupabaseConfigured } from "@/services/supabaseClient";
 
 export default {
   name: "FlashcardProbeAnswer",
@@ -47,26 +61,50 @@ export default {
     return {
       draft: "",
       savedText: "",
+      savedAt: "",
       dirty: false,
       justSaved: false,
+      saving: false,
+      errorMsg: "",
       saveTimer: null,
+      statusTimer: null,
     };
   },
   computed: {
     inputId() {
       return `probe-answer-${this.cardId}`;
     },
+    cloudReady() {
+      return isSupabaseConfigured;
+    },
+    hasSaved() {
+      return Boolean(this.savedText.trim());
+    },
     statusClass() {
+      if (this.saving) return "is-saving";
+      if (this.errorMsg) return "is-error";
       if (this.justSaved) return "is-saved";
       if (this.dirty) return "is-dirty";
-      if (this.savedText.trim()) return "is-saved";
+      if (this.hasSaved) return "is-saved";
       return "is-empty";
     },
     statusLabel() {
-      if (this.justSaved) return "저장됨";
-      if (this.dirty) return "저장 안 됨";
-      if (this.savedText.trim()) return "저장됨";
+      if (this.saving) return "저장 중…";
+      if (this.errorMsg) return "저장 실패";
+      if (this.justSaved) return this.cloudReady ? "클라우드 저장됨" : "저장됨";
+      if (this.dirty) return "수정됨 · 미저장";
+      if (this.hasSaved) return "저장됨";
       return "미작성";
+    },
+    savedAtLabel() {
+      if (!this.savedAt || !this.hasSaved) return "";
+      try {
+        const d = new Date(this.savedAt);
+        if (Number.isNaN(d.getTime())) return "";
+        return `마지막 저장: ${d.toLocaleString()}`;
+      } catch {
+        return "";
+      }
     },
   },
   watch: {
@@ -82,50 +120,113 @@ export default {
   },
   beforeDestroy() {
     this.clearTimer();
-    if (this.dirty) this.persist();
+    this.clearStatusTimer();
+    if (this.dirty && !this.saving) {
+      this.persist();
+    }
   },
   methods: {
     load() {
       this.clearTimer();
-      const text = getProbeAnswer(this.bookId, this.cardId);
-      this.draft = text;
-      this.savedText = text;
+      this.clearStatusTimer();
+      const entry = getProbeAnswerEntry(this.bookId, this.cardId);
+      this.draft = entry?.text || "";
+      this.savedText = this.draft;
+      this.savedAt = entry?.updatedAt || "";
       this.dirty = false;
       this.justSaved = false;
+      this.saving = false;
+      this.errorMsg = "";
     },
     onInput() {
       this.dirty = this.draft !== this.savedText;
       this.justSaved = false;
+      this.errorMsg = "";
       this.clearTimer();
-      this.saveTimer = setTimeout(() => this.persist(), 600);
+      this.saveTimer = setTimeout(() => this.persist(), 800);
+    },
+    onBlur() {
+      if (this.dirty) this.saveNow();
     },
     saveNow() {
       this.clearTimer();
-      this.persist();
+      return this.persist();
     },
-    persist() {
-      setProbeAnswer(this.bookId, this.cardId, this.draft);
-      this.savedText = this.draft;
-      this.dirty = false;
-      this.justSaved = true;
-      this.$emit("saved", {
-        cardId: this.cardId,
-        text: this.draft,
-        answered: Boolean(this.draft.trim()),
-      });
-      setTimeout(() => {
-        this.justSaved = false;
-      }, 1500);
+    async persist() {
+      if (this.saving) return null;
+      const next = this.draft;
+      // 내용 변화 없으면 스킵 (단, 강제 저장 호출은 dirty일 때만 옴)
+      if (next === this.savedText && !this.dirty) return null;
+
+      this.saving = true;
+      this.errorMsg = "";
+      try {
+        const result = await setProbeAnswer(this.bookId, this.cardId, next);
+        this.savedText = next.trim() ? next : "";
+        this.savedAt = result.entry?.updatedAt || (result.deleted ? "" : this.savedAt);
+        this.dirty = false;
+        this.justSaved = true;
+        if (!result.remoteSkipped && !result.remoteOk) {
+          this.errorMsg = `로컬은 저장됨 · 클라우드 실패: ${result.error || "알 수 없음"}`;
+        }
+        this.$emit("saved", {
+          cardId: this.cardId,
+          text: this.savedText,
+          answered: Boolean(this.savedText.trim()),
+          deleted: result.deleted,
+          remoteOk: result.remoteOk,
+        });
+        this.clearStatusTimer();
+        this.statusTimer = setTimeout(() => {
+          this.justSaved = false;
+        }, 1800);
+        return result;
+      } finally {
+        this.saving = false;
+      }
     },
-    clearAnswer() {
-      this.draft = "";
+    async clearAnswer() {
+      if (!this.draft.trim() && !this.hasSaved) return;
+      if (!window.confirm("이 문항의 답안을 삭제할까요?")) return;
       this.clearTimer();
-      this.persist();
+      this.draft = "";
+      this.dirty = true;
+      this.saving = true;
+      this.errorMsg = "";
+      try {
+        const result = await deleteProbeAnswer(this.bookId, this.cardId);
+        this.savedText = "";
+        this.savedAt = "";
+        this.dirty = false;
+        this.justSaved = true;
+        if (!result.remoteSkipped && !result.remoteOk) {
+          this.errorMsg = `로컬은 삭제됨 · 클라우드 실패: ${result.error || "알 수 없음"}`;
+        }
+        this.$emit("saved", {
+          cardId: this.cardId,
+          text: "",
+          answered: false,
+          deleted: true,
+          remoteOk: result.remoteOk,
+        });
+        this.clearStatusTimer();
+        this.statusTimer = setTimeout(() => {
+          this.justSaved = false;
+        }, 1800);
+      } finally {
+        this.saving = false;
+      }
     },
     clearTimer() {
       if (this.saveTimer) {
         clearTimeout(this.saveTimer);
         this.saveTimer = null;
+      }
+    },
+    clearStatusTimer() {
+      if (this.statusTimer) {
+        clearTimeout(this.statusTimer);
+        this.statusTimer = null;
       }
     },
   },
@@ -173,6 +274,14 @@ export default {
   color: var(--c-teal);
 }
 
+.probe-answer-status.is-saving {
+  color: var(--c-blue-mid);
+}
+
+.probe-answer-status.is-error {
+  color: #b91c1c;
+}
+
 .probe-answer-label {
   display: block;
   margin-bottom: 8px;
@@ -202,6 +311,10 @@ export default {
   box-shadow: 0 0 0 3px rgba(45, 95, 168, 0.15);
 }
 
+.probe-answer-input:disabled {
+  opacity: 0.7;
+}
+
 .probe-answer-actions {
   display: flex;
   gap: 8px;
@@ -223,14 +336,32 @@ export default {
   color: #fff;
 }
 
+.probe-save-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
 .probe-clear-btn {
-  border: 1px solid var(--c-border);
+  border: 1px solid #f1c0c0;
   background: transparent;
-  color: var(--c-text-secondary);
+  color: #b91c1c;
 }
 
 .probe-clear-btn:disabled {
   opacity: 0.4;
   cursor: default;
+}
+
+.probe-answer-error {
+  margin: 8px 0 0;
+  font-size: 11px;
+  color: #b91c1c;
+  line-height: 1.4;
+}
+
+.probe-answer-meta {
+  margin: 8px 0 0;
+  font-size: 11px;
+  color: var(--c-text-muted);
 }
 </style>

@@ -1,11 +1,21 @@
-/** Probe-Fragen 피드백 — bundled + localStorage override · JSON import */
+/** Probe-Fragen 피드백 — bundled + localStorage override · JSON import · Supabase */
 
 import {
   PHYSIK_PROBE_FEEDBACK_META,
   getBundledProbeFeedback,
   getAllBundledProbeFeedback,
 } from "@/data/physikProbeFeedbackContent.js";
-import { setProbeAnswersMapBulk, getProbeAnswersMap } from "@/utils/flashcardProbeAnswers";
+import {
+  setProbeAnswersMapBulk,
+  getProbeAnswersMap,
+  syncProbeAnswersWithSupabase,
+  resolveProbeLearnerId,
+} from "@/utils/flashcardProbeAnswers";
+import { isSupabaseConfigured } from "@/services/supabaseClient";
+import {
+  fetchProbeFeedbackRemote,
+  upsertProbeFeedbackBulkRemote,
+} from "@/services/probeFeedbackApi";
 
 const FEEDBACK_STORAGE_PREFIX = "flashcard-probe-feedback";
 const FEEDBACK_ENABLED_KEY = "flashcard-probe-feedback-enabled";
@@ -114,7 +124,14 @@ export function importProbeAnswersPayload(payload) {
     imported += 1;
   }
   setProbeAnswersMapBulk(bookId, map);
-  return { imported, bookId, total: payload.answers.length };
+  const result = { imported, bookId, total: payload.answers.length };
+  if (isSupabaseConfigured) {
+    // 백그라운드 업로드
+    syncProbeAnswersWithSupabase(bookId, {
+      learnerId: payload.learner || undefined,
+    }).catch(() => {});
+  }
+  return result;
 }
 
 /**
@@ -152,7 +169,105 @@ export function importProbeFeedbackPayload(payload) {
 
   setImportedFeedbackMap(bookId, map);
   setProbeFeedbackEnabled(bookId, true);
+  if (isSupabaseConfigured) {
+    upsertProbeFeedbackBulkRemote(
+      bookId,
+      resolveProbeLearnerId(),
+      map,
+    ).catch(() => {});
+  }
   return { bookId, count: Object.keys(map).length };
+}
+
+/**
+ * 번들/로컬 피드백을 Supabase에 푸시하고, 원격 최신분을 로컬로 병합
+ * @param {string} bookId
+ * @param {{ learnerId?: string, pushLocal?: boolean }} [opts]
+ */
+export async function syncProbeFeedbackWithSupabase(bookId, opts = {}) {
+  if (!isSupabaseConfigured) {
+    return {
+      ok: false,
+      reason: "not_configured",
+      message: "Supabase URL/anon key가 .env에 없습니다.",
+    };
+  }
+  const learnerId = resolveProbeLearnerId(opts.learnerId);
+  try {
+    const remote = await fetchProbeFeedbackRemote(bookId, learnerId);
+    const local = getImportedFeedbackMap(bookId);
+    const bundled = getAllBundledProbeFeedback();
+    /** @type {Record<string, object>} */
+    const merged = { ...bundled, ...local };
+
+    let pulled = 0;
+    for (const [cardId, remoteEntry] of Object.entries(remote)) {
+      const localEntry = local[cardId];
+      const remoteTs = Date.parse(remoteEntry.updatedAt || "") || 0;
+      const localTs = Date.parse(localEntry?.updatedAt || "") || 0;
+      if (!localEntry || remoteTs >= localTs) {
+        merged[cardId] = {
+          mark: remoteEntry.mark,
+          modelDe: remoteEntry.modelDe,
+          commentKo: remoteEntry.commentKo,
+          noteChapterId: remoteEntry.noteChapterId,
+          noteDe: remoteEntry.noteDe,
+          noteKo: remoteEntry.noteKo,
+          updatedAt: remoteEntry.updatedAt,
+        };
+        if (
+          !localEntry ||
+          localEntry.modelDe !== remoteEntry.modelDe ||
+          localEntry.commentKo !== remoteEntry.commentKo ||
+          localEntry.mark !== remoteEntry.mark
+        ) {
+          pulled += 1;
+        }
+      }
+    }
+
+    setImportedFeedbackMap(bookId, merged);
+    setProbeFeedbackEnabled(bookId, true);
+
+    let pushed = 0;
+    if (opts.pushLocal !== false) {
+      /** @type {Record<string, object>} */
+      const toPush = {};
+      for (const [cardId, entry] of Object.entries(merged)) {
+        const remoteEntry = remote[cardId];
+        if (
+          !remoteEntry ||
+          entry.modelDe !== remoteEntry.modelDe ||
+          entry.commentKo !== remoteEntry.commentKo ||
+          entry.mark !== remoteEntry.mark
+        ) {
+          toPush[cardId] = entry;
+        }
+      }
+      if (Object.keys(toPush).length) {
+        const result = await upsertProbeFeedbackBulkRemote(
+          bookId,
+          learnerId,
+          toPush,
+        );
+        pushed = result.upserted;
+      }
+    }
+
+    return {
+      ok: true,
+      learnerId,
+      pulled,
+      pushed,
+      localCount: Object.keys(merged).length,
+    };
+  } catch (err) {
+    return {
+      ok: false,
+      reason: "error",
+      message: err?.message || String(err),
+    };
+  }
 }
 
 export { PHYSIK_PROBE_FEEDBACK_META };

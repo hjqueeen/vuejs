@@ -50,7 +50,21 @@
         <span v-if="answeredCount">({{ answeredPercent }}%)</span>
         <span v-if="feedbackEnabled"> · 피드백 ON</span>
       </p>
+      <p class="probe-supabase-status" :class="{ ok: supabaseReady }">
+        Supabase:
+        <template v-if="supabaseReady">연결됨 · learner={{ probeLearnerId }}</template>
+        <template v-else>미설정 (VUE_APP_SUPABASE_ANON_KEY 필요)</template>
+      </p>
       <div class="probe-submit-actions">
+        <!--
+        <button
+          type="button"
+          class="probe-export-btn"
+          :disabled="!supabaseReady || syncing"
+          @click="syncSupabase"
+        >
+          {{ syncing ? "동기화 중…" : "Supabase 동기화" }}
+        </button>
         <button
           type="button"
           class="probe-export-btn"
@@ -75,6 +89,7 @@
         >
           피드백 {{ feedbackEnabled ? "끄기" : "켜기" }}
         </button>
+        -->
         <button
           type="button"
           class="probe-clear-all-btn"
@@ -84,6 +99,7 @@
           답안 전체 삭제
         </button>
       </div>
+      <!--
       <input
         ref="answersFileInput"
         type="file"
@@ -98,10 +114,18 @@
         class="probe-file-input"
         @change="onFeedbackFile"
       />
+      -->
       <p v-if="exportMessage" class="probe-export-msg">{{ exportMessage }}</p>
       <p class="probe-fb-hint">
-        카드를 열고 뒤집으면 모범답·코멘트가 보입니다. JSON을 불러오거나 「기본 피드백 적용」을 누르세요.
+        카드에서 답안을 저장·수정·삭제하거나, 아래에서 바로 관리할 수 있습니다. 클라우드 연결 시 Supabase에도 반영됩니다.
       </p>
+      <FlashcardProbeAnswerManager
+        :book-id="bookId"
+        :cards="cards"
+        :refresh-key="answerTick"
+        @changed="onAnswerManagerChanged"
+        @open-card="openCard"
+      />
     </section>
 
     <a
@@ -185,6 +209,7 @@ import { getBookById } from "@/data/books";
 import { getCardsForBook, getFlashcardBook } from "@/data/flashcardRegistry";
 import FlashcardLayoutToggle from "@/components/flashcard/FlashcardLayoutToggle.vue";
 import FlashcardTargetLangToggle from "@/components/flashcard/FlashcardTargetLangToggle.vue";
+import FlashcardProbeAnswerManager from "@/components/flashcard/FlashcardProbeAnswerManager.vue";
 import { expandReviewItems } from "@/utils/flashcardReviewItems";
 import { bookHasDualLang, withLangSrsId } from "@/utils/flashcardSrsId";
 import { getFlashcardLayoutMode } from "@/utils/flashcardLayout";
@@ -202,13 +227,17 @@ import {
   countAnsweredProbeCards,
   downloadProbeAnswersJson,
   getProbeAnswer,
+  resolveProbeLearnerId,
+  syncProbeAnswersWithSupabase,
 } from "@/utils/flashcardProbeAnswers";
+import { isSupabaseConfigured } from "@/services/supabaseClient";
 import {
   applyBundledFeedbackToStorage,
   importProbeAnswersPayload,
   importProbeFeedbackPayload,
   isProbeFeedbackEnabled,
   setProbeFeedbackEnabled,
+  syncProbeFeedbackWithSupabase,
 } from "@/utils/flashcardProbeFeedback";
 import { PHYSIK_PROBE_FEEDBACK_META } from "@/data/physikProbeFeedbackContent.js";
 
@@ -219,7 +248,7 @@ const DEFAULT_LANG_OPTIONS = [
 
 export default {
   name: "FlashcardHubView",
-  components: { FlashcardLayoutToggle, FlashcardTargetLangToggle },
+  components: { FlashcardLayoutToggle, FlashcardTargetLangToggle, FlashcardProbeAnswerManager },
   props: {
     bookId: { type: String, required: true },
   },
@@ -231,6 +260,7 @@ export default {
       answerTick: 0,
       exportMessage: "",
       feedbackTick: 0,
+      syncing: false,
     };
   },
   created() {
@@ -239,6 +269,9 @@ export default {
     if (this.probeAnswersEnabled) {
       applyBundledFeedbackToStorage(this.bookId);
       this.feedbackTick += 1;
+      if (isSupabaseConfigured) {
+        this.syncSupabase({ silent: true });
+      }
     }
   },
   activated() {
@@ -304,6 +337,12 @@ export default {
     },
     probeAnswersEnabled() {
       return Boolean(this.bookMeta?.probeAnswers);
+    },
+    supabaseReady() {
+      return isSupabaseConfigured;
+    },
+    probeLearnerId() {
+      return resolveProbeLearnerId();
     },
     feedbackEnabled() {
       void this.feedbackTick;
@@ -437,26 +476,63 @@ export default {
         bookId: this.bookId,
         bookTitle: this.book?.title || this.bookId,
         cards: this.cards,
-        learner: "hangyeol",
+        learner: this.probeLearnerId,
       });
       const date = (payload.exportedAt || "").slice(0, 10);
       downloadProbeAnswersJson(
         payload,
-        `physik-probe-antworten-hangyeol-${date}.json`,
+        `physik-probe-antworten-${this.probeLearnerId}-${date}.json`,
       );
       this.exportMessage = `내보냄: ${payload.answeredCount}/${payload.totalCount}문항 · ${date}`;
     },
-    clearAllAnswers() {
+    async syncSupabase(opts = {}) {
+      if (!isSupabaseConfigured || this.syncing) return;
+      this.syncing = true;
+      try {
+        const result = await syncProbeAnswersWithSupabase(this.bookId, {
+          learnerId: this.probeLearnerId,
+        });
+        const fb = await syncProbeFeedbackWithSupabase(this.bookId, {
+          learnerId: this.probeLearnerId,
+        });
+        this.answerTick += 1;
+        this.feedbackTick += 1;
+        if (!opts.silent) {
+          if (result.ok) {
+            const fbPart = fb.ok
+              ? ` · 피드백 ↓${fb.pulled} ↑${fb.pushed}`
+              : ` · 피드백 실패(${fb.message || fb.reason})`;
+            this.exportMessage = `Supabase 동기화: ↓${result.pulled} ↑${result.pushed} · 로컬 ${result.localCount}문항${fbPart}`;
+          } else {
+            this.exportMessage = `동기화 실패: ${result.message || result.reason}`;
+          }
+        }
+      } finally {
+        this.syncing = false;
+      }
+    },
+    async clearAllAnswers() {
       if (
         !window.confirm(
-          "이 책의 저장된 답안을 모두 삭제할까요? (로컬에서만 지워집니다)",
+          "이 책의 저장된 답안을 모두 삭제할까요? (로컬 + 클라우드)",
         )
       ) {
         return;
       }
-      clearProbeAnswers(this.bookId);
+      const result = await clearProbeAnswers(this.bookId, {
+        learnerId: this.probeLearnerId,
+      });
       this.answerTick += 1;
-      this.exportMessage = "답안을 모두 삭제했습니다.";
+      if (result.remoteSkipped) {
+        this.exportMessage = "답안을 모두 삭제했습니다 (로컬).";
+      } else if (result.remoteOk) {
+        this.exportMessage = "답안을 모두 삭제했습니다 (로컬 + 클라우드).";
+      } else {
+        this.exportMessage = `로컬 삭제됨 · 클라우드 실패: ${result.error || ""}`;
+      }
+    },
+    onAnswerManagerChanged() {
+      this.answerTick += 1;
     },
     pickAnswersFile() {
       this.$refs.answersFileInput?.click();
@@ -634,6 +710,17 @@ export default {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+}
+
+.probe-supabase-status {
+  margin: 0 0 10px;
+  font-size: 12px;
+  color: #c2410c;
+  font-weight: 600;
+}
+
+.probe-supabase-status.ok {
+  color: var(--c-teal);
 }
 
 .probe-export-btn {

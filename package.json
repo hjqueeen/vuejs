@@ -8,9 +8,11 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "tts:generate": "node scripts/generate-tts.js",
-    "tts:generate:bb84": "TTS_TARGET=bb84 node scripts/generate-tts.js"
+    "tts:generate:bb84": "TTS_TARGET=bb84 node scripts/generate-tts.js",
+    "seed:probe": "node scripts/seed-probe-to-supabase.js"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.117.2",
     "axios": "^1.7.7",
     "bootstrap": "^4.4.1",
     "core-js": "^3.38.1",
