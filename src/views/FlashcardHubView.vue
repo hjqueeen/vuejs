@@ -122,7 +122,7 @@
       <p class="probe-submit-stat">
         답안 작성 {{ answeredCount }} / {{ cards.length }}
         <span v-if="answeredCount">({{ answeredPercent }}%)</span>
-        <span v-if="feedbackEnabled"> · 피드백 ON</span>
+        <!-- <span v-if="feedbackEnabled"> · 피드백 ON</span> -->
       </p>
       <p class="probe-supabase-status" :class="{ ok: supabaseReady }">
         Supabase:

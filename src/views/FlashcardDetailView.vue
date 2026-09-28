@@ -38,6 +38,7 @@
         @saved="onProbeAnswerSaved"
       />
 
+      <!-- 피드백·모범답안 비표시
       <FlashcardProbeFeedback
         v-if="showProbeFeedback"
         :feedback="probeFeedback"
@@ -45,6 +46,7 @@
         class="fc-probe-slot"
         @open-note="openNoteChapter"
       />
+      -->
 
       <aside v-if="hasWritingPractice" class="fc-writing-aside">
         <FlashcardWritingPractice :practice="displayCard.writingPractice" />
@@ -65,7 +67,7 @@
           class="flip-btn"
           @click="toggleFlip"
         >
-          {{ flipped ? "앞면 보기" : (probeAnswersEnabled ? "내 답 · 피드백 보기" : "설명 보기 (뒤집기)") }}
+          {{ flipped ? "앞면 보기" : (probeAnswersEnabled ? "내 답 보기" : "설명 보기 (뒤집기)") }}
         </button>
         <button
           type="button"
