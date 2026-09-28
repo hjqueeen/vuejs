@@ -88,7 +88,12 @@
             <span class="fc-source-external" aria-hidden="true">↗</span>
           </a>
           <ol class="fc-list">
-            <li v-for="card in section.cards" :key="card.id" class="fc-row">
+            <li
+              v-for="card in section.cards"
+              :key="card.id"
+              class="fc-row"
+              :class="rowMarkClass(card.id)"
+            >
               <span class="fc-no" :class="rowClass(card.id)">{{ cardIndex(card.id) + 1 }}</span>
               <button type="button" class="fc-term-btn" @click="openCard(card.id)">
                 <span class="fc-term">{{ cardPreview(card) }}</span>
@@ -110,7 +115,12 @@
     </div>
 
     <ol v-else class="fc-list">
-      <li v-for="(card, idx) in cards" :key="card.id" class="fc-row">
+      <li
+        v-for="(card, idx) in cards"
+        :key="card.id"
+        class="fc-row"
+        :class="rowMarkClass(card.id)"
+      >
         <span class="fc-no" :class="rowClass(card.id)">{{ idx + 1 }}</span>
         <button type="button" class="fc-term-btn" @click="openCard(card.id)">
           <span class="fc-term">{{ cardPreview(card) }}</span>
@@ -499,8 +509,19 @@ export default {
       return MARK_SHORT[m] || "";
     },
     rowClass(cardId) {
+      const mark = this.markFor(cardId);
+      if (mark === "partial") return "partial";
+      if (mark === "wrong") return "wrong";
+      if (mark === "ok") return "ok";
       if (this.isTested(cardId)) return "tested";
       if (this.isStudied(cardId) || this.isAnswered(cardId)) return "studied";
+      return "";
+    },
+    rowMarkClass(cardId) {
+      const mark = this.markFor(cardId);
+      if (mark === "partial") return "fc-row--partial";
+      if (mark === "wrong") return "fc-row--wrong";
+      if (mark === "ok") return "fc-row--ok";
       return "";
     },
     openCard(cardId) {
@@ -1076,6 +1097,29 @@ html[data-theme="dark"] .fc-source-link {
   gap: 10px;
 }
 
+.fc-row--partial .fc-term-btn {
+  background: rgba(194, 65, 12, 0.08);
+  border-color: rgba(194, 65, 12, 0.35);
+}
+
+.fc-row--partial .fc-term {
+  color: #9a3412;
+}
+
+.fc-row--partial .fc-term-btn:hover {
+  border-color: #c2410c;
+  box-shadow: 0 2px 10px rgba(194, 65, 12, 0.12);
+}
+
+.fc-row--wrong .fc-term-btn {
+  background: rgba(220, 38, 38, 0.06);
+  border-color: rgba(220, 38, 38, 0.28);
+}
+
+.fc-row--ok .fc-term-btn {
+  border-color: rgba(15, 118, 110, 0.22);
+}
+
 .fc-no {
   flex-shrink: 0;
   width: 28px;
@@ -1097,6 +1141,21 @@ html[data-theme="dark"] .fc-source-link {
 .fc-no.tested {
   background: rgba(45, 95, 168, 0.15);
   color: var(--c-blue);
+}
+
+.fc-no.partial {
+  background: rgba(194, 65, 12, 0.16);
+  color: #c2410c;
+}
+
+.fc-no.wrong {
+  background: rgba(220, 38, 38, 0.14);
+  color: #dc2626;
+}
+
+.fc-no.ok {
+  background: rgba(15, 118, 110, 0.14);
+  color: var(--c-teal);
 }
 
 .fc-term-btn {

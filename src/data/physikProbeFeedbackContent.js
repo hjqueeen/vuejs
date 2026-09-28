@@ -337,36 +337,42 @@ export const physikProbeFeedbackByCardId = {
     commentKo: "잘 씀.",
   },
   "card-ppf-d5": {
-    mark: "empty",
+    mark: "ok",
     modelDe:
       "Die Büroklammern, weil sie magnetisierbar sind und im Magnetfeld selbst magnetisch werden.",
+    commentKo: "핵심 맞음.",
   },
   "card-ppf-d6": {
-    mark: "empty",
+    mark: "ok",
     modelDe:
       "Ohne Magnetfeld: Elementarmagnete ungeordnet. Mit Magnetfeld: ausgerichtet → Büroklammer wird selbst magnetisch.",
+    commentKo: "잘 씀.",
   },
   "card-ppf-d7": {
-    mark: "empty",
+    mark: "ok",
     modelDe:
       "Magnetisch weich: leicht ausrichtbar, Ausrichtung geht leicht verloren. Magnetisch hart: schwer veränderbar → Dauermagnete.",
+    commentKo: "맞음.",
   },
   "card-ppf-d8": {
-    mark: "empty",
+    mark: "partial",
     modelDe:
       "Starkes Erhitzen (über ca. 800 °C) und starke Erschütterungen (z. B. Hämmern).",
+    commentKo: "가열은 맞음. 두 번째(강한 충격/해머링)가 비어 있음.",
   },
 
   // ─── E ───
   "card-ppf-e1": {
-    mark: "empty",
+    mark: "partial",
     modelDe:
       "Das magnetische Feld ist der Wirkungsbereich eines Magneten, in dem Kräfte wirken.",
+    commentKo: "방향은 맞지만 한 문장 정의로. ‘Kräfte wirken’을 넣으세요.",
   },
   "card-ppf-e2": {
-    mark: "empty",
+    mark: "ok",
     modelDe:
       "Nein. Vakuum und Luft verändern das Magnetfeld nicht.",
+    commentKo: "맞음.",
   },
   "card-ppf-e3": {
     mark: "partial",
@@ -392,14 +398,16 @@ export const physikProbeFeedbackByCardId = {
     commentKo: "맞음.",
   },
   "card-ppf-e7": {
-    mark: "empty",
+    mark: "partial",
     modelDe:
       "Stab: N→S bogenförmig. Hufeisen: über den Polspalt. Scheiben: von der N-Seite zur S-Seite.",
+    commentKo: "Stab·Scheiben OK. Hufeisen은 ‘두 막대 사이’보다 Polspalt(극 사이 틈)로.",
   },
   "card-ppf-e8": {
-    mark: "empty",
+    mark: "ok",
     modelDe:
       "Magnetische Feldlinien: Kraftfeld des Magneten. Elektrische: Potenzialdifferenz (Spannung).",
+    commentKo: "핵심 맞음.",
   },
 
   // ─── F ───
@@ -416,80 +424,95 @@ export const physikProbeFeedbackByCardId = {
     commentKo: "맞음.",
   },
   "card-ppf-f3": {
-    mark: "empty",
+    mark: "ok",
     modelDe:
       "Missweisung ist die Abweichung zwischen geografischem Nord und der Kompassrichtung (magnetisch).",
+    commentKo: "맞음.",
   },
   "card-ppf-f4": {
-    mark: "empty",
+    mark: "ok",
     modelDe:
       "Inklination ist die Neigung der Feldlinien gegenüber der Horizontalen.",
+    commentKo: "맞음.",
   },
   "card-ppf-f5": {
-    mark: "empty",
+    mark: "ok",
     modelDe:
       "Durch elektrische Ströme im flüssigen Eisenkern (Geodynamo). Elementarmagnete reichen nicht, weil der Kern flüssig ist.",
+    commentKo: "핵심 잘 잡음.",
   },
   "card-ppf-f6": {
-    mark: "empty",
+    mark: "ok",
     modelDe:
       "Abkühlende Lava / Basalt speichert die damalige Magnetisierung — wechselnde Magnetisierung im Gestein.",
+    commentKo: "맞음.",
   },
   "card-ppf-f7": {
-    mark: "empty",
+    mark: "ok",
     modelDe:
       "In den letzten 100 Mio. Jahren gab es mind. ca. 170 Polwechsel; der letzte vor ca. 730 000 Jahren.",
+    commentKo: "맞음.",
   },
 
   // ─── G ───
   "card-ppf-g1": {
-    mark: "empty",
+    mark: "ok",
     modelDe: "Bewegte Ladungen (Strom) erzeugen ein Magnetfeld.",
+    commentKo: "맞음.",
   },
   "card-ppf-g2": {
-    mark: "empty",
+    mark: "ok",
     modelDe:
       "Linke-Hand-Regel: Daumen = Elektronenfluss, Finger = Feldlinienrichtung.",
+    commentKo: "맞음.",
   },
   "card-ppf-g3": {
-    mark: "empty",
+    mark: "ok",
     modelDe: "Ein Eisenkern.",
+    commentKo: "맞음.",
   },
   "card-ppf-g4": {
-    mark: "empty",
+    mark: "partial",
     modelDe:
       "Stromstärke erhöhen, Windungszahl vergrößern, Spule verkürzen.",
+    commentKo: "전류·짧은 코일은 OK. ‘Windungszahl(감은 수)’도 넣으세요. Eisenkern은 별도 문항.",
   },
   "card-ppf-g5": {
-    mark: "empty",
+    mark: "ok",
     modelDe: "Ähnliche Feldlinien, Magnetfeld, entgegengesetzte Pole (N/S).",
+    commentKo: "맞음.",
   },
   "card-ppf-g6": {
-    mark: "empty",
+    mark: "ok",
     modelDe:
       "Stabmagnet dauerhaft / Elementarmagnete; Spule ein-/ausschaltbar und verstärkbar.",
+    commentKo: "맞음.",
   },
   "card-ppf-g7": {
-    mark: "empty",
+    mark: "wrong",
     modelDe:
       "Geschlossener Eisenkern führt Feldlinien im Kern — stärkeres Feld als offener Kern.",
+    commentKo: "전자석 정의를 씀. 이 문항은 ‘폐쇄 철심이 장을 더 세게 하는 이유’입니다.",
   },
 
   // ─── H ───
   "card-ppf-h1": {
-    mark: "empty",
+    mark: "ok",
     modelDe:
       "Eine stromdurchflossene Spule (oft mit Eisenkern), deren Magnetfeld man ein- und ausschalten kann.",
+    commentKo: "방향 맞음. ‘stromdurchflossen / ein-ausschaltbar’를 넣으면 더 좋음.",
   },
   "card-ppf-h2": {
-    mark: "empty",
+    mark: "ok",
     modelDe:
       "Elektromagnet — weil man ihn zum Anheben einschalten und zum Ablegen ausschalten kann.",
+    commentKo: "맞음.",
   },
   "card-ppf-h3": {
-    mark: "empty",
+    mark: "ok",
     modelDe:
       "Strom ein → starkes Feld → Last angezogen. Strom aus → Feld weg → Last ablegbar.",
+    commentKo: "맞음.",
   },
 };
 
