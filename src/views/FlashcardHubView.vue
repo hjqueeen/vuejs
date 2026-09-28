@@ -44,6 +44,32 @@
       <span class="fc-notes-arrow" aria-hidden="true">→</span>
     </button>
 
+    <section v-if="probeAnswersEnabled" class="probe-submit-panel">
+      <p class="probe-submit-stat">
+        답안 작성 {{ answeredCount }} / {{ cards.length }}
+        <span v-if="answeredCount">({{ answeredPercent }}%)</span>
+      </p>
+      <div class="probe-submit-actions">
+        <button
+          type="button"
+          class="probe-export-btn"
+          :disabled="answeredCount < 1"
+          @click="exportAnswers"
+        >
+          답안 제출 · JSON 내보내기
+        </button>
+        <button
+          type="button"
+          class="probe-clear-all-btn"
+          :disabled="answeredCount < 1"
+          @click="clearAllAnswers"
+        >
+          답안 전체 삭제
+        </button>
+      </div>
+      <p v-if="exportMessage" class="probe-export-msg">{{ exportMessage }}</p>
+    </section>
+
     <a
       v-if="bookSourceUrl && !cardSections.length"
       :href="bookSourceUrl"
@@ -93,6 +119,7 @@
               <button type="button" class="fc-term-btn" @click="openCard(card.id)">
                 <span class="fc-term">{{ cardPreview(card) }}</span>
                 <span class="fc-due-badge">{{ dueLabel(card.id) }}</span>
+                <span v-if="isAnswered(card.id)" class="fc-answered-mark">✎</span>
                 <span v-if="isTested(card.id)" class="fc-tested-mark">✓✓</span>
                 <span v-else-if="isStudied(card.id)" class="fc-studied-mark">✓</span>
                 <span class="fc-arrow">→</span>
@@ -109,6 +136,7 @@
         <button type="button" class="fc-term-btn" @click="openCard(card.id)">
           <span class="fc-term">{{ cardPreview(card) }}</span>
           <span class="fc-due-badge">{{ dueLabel(card.id) }}</span>
+          <span v-if="isAnswered(card.id)" class="fc-answered-mark">✎</span>
           <span v-if="isTested(card.id)" class="fc-tested-mark">✓✓</span>
           <span v-else-if="isStudied(card.id)" class="fc-studied-mark">✓</span>
           <span class="fc-arrow">→</span>
@@ -134,6 +162,13 @@ import {
 } from "@/utils/flashcardSectionState";
 import { guardBookAccess } from "@/utils/bookAccessGuard";
 import { getDashboardLocation } from "@/data/bookCatalog";
+import {
+  buildProbeAnswersExportPayload,
+  clearProbeAnswers,
+  countAnsweredProbeCards,
+  downloadProbeAnswersJson,
+  getProbeAnswer,
+} from "@/utils/flashcardProbeAnswers";
 
 const DEFAULT_LANG_OPTIONS = [
   { value: "de", label: "Deutsch" },
@@ -151,15 +186,25 @@ export default {
       layoutMode: getFlashcardLayoutMode(),
       targetLang: "de",
       expandedSections: {},
+      answerTick: 0,
+      exportMessage: "",
     };
   },
   created() {
     guardBookAccess(this.$router, this.bookId);
     this.targetLang = getFlashcardTargetLang(this.bookId, this.allowedLangs);
   },
+  activated() {
+    this.answerTick += 1;
+  },
   watch: {
     bookId() {
       this.targetLang = getFlashcardTargetLang(this.bookId, this.allowedLangs);
+      this.answerTick += 1;
+      this.exportMessage = "";
+    },
+    $route() {
+      this.answerTick += 1;
     },
     cardSections: {
       immediate: true,
@@ -209,6 +254,18 @@ export default {
     },
     relatedNotesBookId() {
       return this.book?.relatedNotesBookId || "";
+    },
+    probeAnswersEnabled() {
+      return Boolean(this.bookMeta?.probeAnswers);
+    },
+    answeredCount() {
+      void this.answerTick;
+      if (!this.probeAnswersEnabled) return 0;
+      return countAnsweredProbeCards(this.bookId, this.cards);
+    },
+    answeredPercent() {
+      if (!this.cards.length) return 0;
+      return Math.round((this.answeredCount / this.cards.length) * 100);
     },
     bookSourceUrl() {
       return this.bookMeta?.sourceUrl || "";
@@ -292,9 +349,14 @@ export default {
       const srsId = withLangSrsId(cardId, this.targetLang, this.dualLang);
       return this.$store.getters["flashcardSrs/dueLabel"](this.bookId, srsId);
     },
+    isAnswered(cardId) {
+      if (!this.probeAnswersEnabled) return false;
+      void this.answerTick;
+      return Boolean(getProbeAnswer(this.bookId, cardId).trim());
+    },
     rowClass(cardId) {
       if (this.isTested(cardId)) return "tested";
-      if (this.isStudied(cardId)) return "studied";
+      if (this.isStudied(cardId) || this.isAnswered(cardId)) return "studied";
       return "";
     },
     openCard(cardId) {
@@ -318,6 +380,32 @@ export default {
         name: "study-notes",
         params: { bookId: this.relatedNotesBookId },
       });
+    },
+    exportAnswers() {
+      const payload = buildProbeAnswersExportPayload({
+        bookId: this.bookId,
+        bookTitle: this.book?.title || this.bookId,
+        cards: this.cards,
+        learner: "hangyeol",
+      });
+      const date = (payload.exportedAt || "").slice(0, 10);
+      downloadProbeAnswersJson(
+        payload,
+        `physik-probe-antworten-hangyeol-${date}.json`,
+      );
+      this.exportMessage = `내보냄: ${payload.answeredCount}/${payload.totalCount}문항 · ${date}`;
+    },
+    clearAllAnswers() {
+      if (
+        !window.confirm(
+          "이 책의 저장된 답안을 모두 삭제할까요? (로컬에서만 지워집니다)",
+        )
+      ) {
+        return;
+      }
+      clearProbeAnswers(this.bookId);
+      this.answerTick += 1;
+      this.exportMessage = "답안을 모두 삭제했습니다.";
     },
     onTargetLangChange(lang) {
       this.targetLang = lang;
@@ -405,6 +493,66 @@ export default {
   font-size: 13px;
   color: var(--c-text-muted);
   line-height: 1.5;
+}
+
+.probe-submit-panel {
+  margin: 0 0 18px;
+  padding: 14px 14px 12px;
+  border: 1px solid var(--c-border);
+  border-radius: var(--c-radius-lg);
+  background: var(--c-surface);
+}
+
+.probe-submit-stat {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--c-text-primary);
+}
+
+.probe-submit-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.probe-export-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: var(--c-blue);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.probe-export-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.probe-clear-all-btn {
+  border: 1px solid var(--c-border);
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: transparent;
+  color: var(--c-text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.probe-clear-all-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.probe-export-msg {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: var(--c-teal);
+  font-weight: 600;
 }
 
 .fc-notes-link {
@@ -648,6 +796,12 @@ html[data-theme="dark"] .fc-source-link {
 .fc-studied-mark {
   font-size: 12px;
   color: var(--c-teal);
+  font-weight: 700;
+}
+
+.fc-answered-mark {
+  font-size: 12px;
+  color: var(--c-blue-mid);
   font-weight: 700;
 }
 

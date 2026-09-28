@@ -198,14 +198,15 @@ export const flashcardBooks = {
       { value: "deko", label: "DE+KO" },
     ],
     langToggleAriaLabel: "앞면 표시",
-    labelsForLang: () => ({ front: "Frage", back: "Antwort (leer)" }),
+    labelsForLang: () => ({ front: "Frage", back: "Meine Antwort" }),
     hintForLang: (lang) =>
       lang === "deko"
-        ? "앞면(독+한 질문)을 보고 답을 말로/글로 만든 뒤 뒤집으세요. 뒷면은 비어 있습니다 — 노트·모범답으로 스스로 채점하세요."
-        : "앞면(독일어 질문)을 보고 답을 말로/글로 만든 뒤 뒤집으세요. 뒷면은 비어 있습니다 — 노트·모범답으로 스스로 채점하세요.",
-    labels: { front: "Frage", back: "Antwort (leer)" },
-    hint: "질문만 보고 답을 스스로 만든 뒤 뒤집으세요. 뒷면은 비어 있습니다.",
+        ? "앞면(독+한 질문)을 보고 아래에 답을 입력하세요. 자동 저장되며, 목록에서 JSON으로 제출할 수 있습니다."
+        : "앞면(독일어 질문)을 보고 아래에 답을 입력하세요. 자동 저장되며, 목록에서 JSON으로 제출할 수 있습니다.",
+    labels: { front: "Frage", back: "Meine Antwort" },
+    hint: "질문을 보고 아래에 답을 입력하세요. 로컬에 저장되고, 마지막에 JSON으로 내보낼 수 있습니다.",
     showKoOnBack: false,
+    probeAnswers: true,
   },
 };
 

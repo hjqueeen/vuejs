@@ -246,7 +246,7 @@ export const publicBooks = [
     title: "Physik · Probe-Fragen",
     subtitle: "Frage vorne · Antwort leer — selbst formulieren",
     description:
-      "9학년 물리 시험 연습: 질문만 앞면(DE 또는 DE+KO). 뒷면은 비어 있음 — 답을 스스로 만든 뒤 노트/모범답으로 채점하세요. 54문항.",
+      "9학년 물리 시험 연습: 질문만 앞면(DE 또는 DE+KO). 답을 입력하면 로컬에 저장되고, 마지막에 JSON으로 제출(내보내기)할 수 있습니다. 54문항.",
     coverColor: "book-cover-a",
     cardIds: PHYSIK_PROBE_FRAGEN_CARD_IDS,
     relatedNotesBookId: PHYSIK_K9_NOTES_BOOK_ID,

@@ -30,6 +30,14 @@
         @toggle="toggleFlip"
       />
 
+      <FlashcardProbeAnswer
+        v-if="probeAnswersEnabled"
+        :book-id="bookId"
+        :card-id="cardId"
+        class="fc-probe-slot"
+        @saved="onProbeAnswerSaved"
+      />
+
       <aside v-if="hasWritingPractice" class="fc-writing-aside">
         <FlashcardWritingPractice :practice="displayCard.writingPractice" />
       </aside>
@@ -71,8 +79,10 @@ import FlashcardLayoutToggle from "@/components/flashcard/FlashcardLayoutToggle.
 import FlashcardVocabulary from "@/components/flashcard/FlashcardVocabulary.vue";
 import FlashcardTargetLangToggle from "@/components/flashcard/FlashcardTargetLangToggle.vue";
 import FlashcardWritingPractice from "@/components/flashcard/FlashcardWritingPractice.vue";
+import FlashcardProbeAnswer from "@/components/flashcard/FlashcardProbeAnswer.vue";
 import { getCardById, getCardsForBook, getFlashcardBook } from "@/data/flashcardRegistry";
 import { resolveFlashcardCard } from "@/utils/flashcardCardResolver";
+import { getProbeAnswer } from "@/utils/flashcardProbeAnswers";
 import { getFlashcardLayoutMode } from "@/utils/flashcardLayout";
 import { getFlashcardTargetLang } from "@/utils/flashcardTargetLang";
 import { guardBookAccess } from "@/utils/bookAccessGuard";
@@ -89,6 +99,7 @@ export default {
     FlashcardLayoutToggle,
     FlashcardVocabulary,
     FlashcardWritingPractice,
+    FlashcardProbeAnswer,
     FlashcardTargetLangToggle,
   },
   props: {
@@ -100,6 +111,7 @@ export default {
       flipped: false,
       layoutMode: getFlashcardLayoutMode(),
       targetLang: "de",
+      probeAnswerTick: 0,
     };
   },
   created() {
@@ -134,6 +146,9 @@ export default {
     showKoOnBack() {
       return this.bookMeta?.showKoOnBack !== false;
     },
+    probeAnswersEnabled() {
+      return Boolean(this.bookMeta?.probeAnswers);
+    },
     allCards() {
       return getCardsForBook(this.bookId);
     },
@@ -141,7 +156,16 @@ export default {
       return getCardById(this.bookId, this.cardId);
     },
     displayCard() {
-      return resolveFlashcardCard(this.card, this.bookId, this.targetLang) || this.card;
+      const resolved =
+        resolveFlashcardCard(this.card, this.bookId, this.targetLang) || this.card;
+      if (!this.probeAnswersEnabled || !resolved) return resolved;
+      // probeAnswerTick: 저장 시 뒷면에 반영
+      void this.probeAnswerTick;
+      const answer = getProbeAnswer(this.bookId, this.cardId);
+      return {
+        ...resolved,
+        explanationDe: answer,
+      };
     },
     cardIndex() {
       return this.allCards.findIndex((c) => c.id === this.cardId);
@@ -194,6 +218,15 @@ export default {
         questionId: this.cardId,
       });
     },
+    onProbeAnswerSaved({ answered }) {
+      this.probeAnswerTick += 1;
+      if (answered && !this.isStudied) {
+        this.$store.dispatch("quizWorkbook/toggleStudied", {
+          bookId: this.bookId,
+          questionId: this.cardId,
+        });
+      }
+    },
     goHub() {
       this.$router.push({ name: "flashcard-hub", params: { bookId: this.bookId } });
     },
@@ -210,9 +243,13 @@ export default {
 
 <style scoped>
 .flashcard-detail {
-  max-width: 480px;
+  max-width: 560px;
   margin: 0 auto;
   padding: 8px 16px 40px;
+}
+
+.fc-probe-slot {
+  width: 100%;
 }
 
 .fc-body {
