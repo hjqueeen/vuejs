@@ -62,6 +62,12 @@ import {
   orderedPhysikMagnetismusCards,
   getPhysikMagnetismusCardById,
 } from "./physikMagnetismusContent.js";
+import {
+  PHYSIK_PROBE_FRAGEN_BOOK_ID,
+  physikProbeFragenSections,
+  orderedPhysikProbeFragenCards,
+  getPhysikProbeFragenCardById,
+} from "./physikProbeFragenContent.js";
 
 /** @type {Record<string, { cards: object[], getCardById: (id: string) => object|null, labels: { front: string, back: string }, hint: string, showKoOnBack?: boolean }>} */
 export const flashcardBooks = {
@@ -180,6 +186,25 @@ export const flashcardBooks = {
     getCardById: getPhysikMagnetismusCardById,
     labels: { front: "Deutsch", back: "한국어" },
     hint: "독일어 문단을 읽고 뜻을 떠올린 뒤, 카드를 뒤집어 한국어를 확인하세요. 그림이 있으면 눌러 확대해 보세요.",
+    showKoOnBack: false,
+  },
+  [PHYSIK_PROBE_FRAGEN_BOOK_ID]: {
+    cards: orderedPhysikProbeFragenCards,
+    sections: physikProbeFragenSections,
+    getCardById: getPhysikProbeFragenCardById,
+    targetLanguages: ["de", "deko"],
+    langToggleOptions: [
+      { value: "de", label: "DE" },
+      { value: "deko", label: "DE+KO" },
+    ],
+    langToggleAriaLabel: "앞면 표시",
+    labelsForLang: () => ({ front: "Frage", back: "Antwort (leer)" }),
+    hintForLang: (lang) =>
+      lang === "deko"
+        ? "앞면(독+한 질문)을 보고 답을 말로/글로 만든 뒤 뒤집으세요. 뒷면은 비어 있습니다 — 노트·모범답으로 스스로 채점하세요."
+        : "앞면(독일어 질문)을 보고 답을 말로/글로 만든 뒤 뒤집으세요. 뒷면은 비어 있습니다 — 노트·모범답으로 스스로 채점하세요.",
+    labels: { front: "Frage", back: "Antwort (leer)" },
+    hint: "질문만 보고 답을 스스로 만든 뒤 뒤집으세요. 뒷면은 비어 있습니다.",
     showKoOnBack: false,
   },
 };

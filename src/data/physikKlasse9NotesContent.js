@@ -5,8 +5,9 @@
 
 export const PHYSIK_K9_NOTES_BOOK_ID = "book-physik-klasse9-notes";
 
-/** 읽기 후 암기용 플래시카드 책 (physikMagnetismusContent) */
-export const PHYSIK_K9_NOTES_RELATED_FLASHCARD_ID = "book-physik-magnetismus-k9";
+/** 읽기 후 연습용 플래시카드 (Probe-Fragen · 질문만) */
+export const PHYSIK_K9_NOTES_RELATED_FLASHCARD_ID = "book-physik-probe-fragen-k9";
+// 모범답 카드(숨김): "book-physik-magnetismus-k9"
 
 /**
  * @typedef {'p'|'h3'|'ul'|'ol'|'callout'|'meta'} NoteBlockType

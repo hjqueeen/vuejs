@@ -40,14 +40,18 @@ import {
   SPANISH_LLUVIAS_BOOK_ID,
   SPANISH_LLUVIAS_CARD_IDS,
 } from "./spanishLluviasContent.js";
-import {
-  PHYSIK_MAGNETISMUS_BOOK_ID,
-  PHYSIK_MAGNETISMUS_CARD_IDS,
-} from "./physikMagnetismusContent.js";
+// import {
+//   PHYSIK_MAGNETISMUS_BOOK_ID,
+//   PHYSIK_MAGNETISMUS_CARD_IDS,
+// } from "./physikMagnetismusContent.js";
 import {
   PHYSIK_K9_NOTES_BOOK_ID,
   PHYSIK_K9_NOTES_RELATED_FLASHCARD_ID,
 } from "./physikKlasse9NotesContent.js";
+import {
+  PHYSIK_PROBE_FRAGEN_BOOK_ID,
+  PHYSIK_PROBE_FRAGEN_CARD_IDS,
+} from "./physikProbeFragenContent.js";
 import {
   MATH_QUIZ_BOOK_ID,
   MATH_QUIZ_QUESTION_IDS,
@@ -221,15 +225,30 @@ export const publicBooks = [
     subjectKey: "physik",
     subjectLabel: "물리",
   },
+  // {
+  //   id: PHYSIK_MAGNETISMUS_BOOK_ID,
+  //   templateType: "flashcard",
+  //   title: "Physik · Magnetismus",
+  //   subtitle: "Karteikarten — Klasse 9 · Strom · Magnet · Elektromagnet",
+  //   description:
+  //     "9학년 물리: 전류 복습, 자극·자기력선·소자석·지구자기장·코일·전자석. 앞면 독일어 문단, 뒷면 한국어. 다이어그램 포함.",
+  //   coverColor: "book-cover-d",
+  //   cardIds: PHYSIK_MAGNETISMUS_CARD_IDS,
+  //   relatedNotesBookId: PHYSIK_K9_NOTES_BOOK_ID,
+  //   owner: "hangyeol",
+  //   grade: 9,
+  //   subjectKey: "physik",
+  //   subjectLabel: "물리",
+  // },
   {
-    id: PHYSIK_MAGNETISMUS_BOOK_ID,
+    id: PHYSIK_PROBE_FRAGEN_BOOK_ID,
     templateType: "flashcard",
-    title: "Physik · Magnetismus",
-    subtitle: "Karteikarten — Klasse 9 · Strom · Magnet · Elektromagnet",
+    title: "Physik · Probe-Fragen",
+    subtitle: "Frage vorne · Antwort leer — selbst formulieren",
     description:
-      "9학년 물리: 전류 복습, 자극·자기력선·소자석·지구자기장·코일·전자석. 앞면 독일어 문단, 뒷면 한국어. 다이어그램 포함.",
-    coverColor: "book-cover-d",
-    cardIds: PHYSIK_MAGNETISMUS_CARD_IDS,
+      "9학년 물리 시험 연습: 질문만 앞면(DE 또는 DE+KO). 뒷면은 비어 있음 — 답을 스스로 만든 뒤 노트/모범답으로 채점하세요. 54문항.",
+    coverColor: "book-cover-a",
+    cardIds: PHYSIK_PROBE_FRAGEN_CARD_IDS,
     relatedNotesBookId: PHYSIK_K9_NOTES_BOOK_ID,
     owner: "hangyeol",
     grade: 9,

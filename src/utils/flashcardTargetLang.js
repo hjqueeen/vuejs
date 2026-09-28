@@ -1,6 +1,6 @@
 const STORAGE_PREFIX = "flashcard-target-lang";
 
-/** @typedef {"de"|"en"|"es"} FlashcardLang */
+/** @typedef {"de"|"en"|"es"|"deko"} FlashcardLang */
 
 /**
  * @param {string} bookId

@@ -65,7 +65,8 @@
           @pause="onPause"
         ></audio>
       </div>
-      <p class="explanation de">{{ backExplanation }}</p>
+      <p v-if="backExplanation" class="explanation de">{{ backExplanation }}</p>
+      <p v-else class="explanation empty-back">Antwort selbst formulieren.</p>
       <p v-if="showKoOnBack && card.explanationKo" class="explanation ko">
         {{ card.explanationKo }}
       </p>
@@ -148,7 +149,8 @@
               @pause="onPause"
             ></audio>
           </div>
-          <p class="explanation de">{{ backExplanation }}</p>
+          <p v-if="backExplanation" class="explanation de">{{ backExplanation }}</p>
+          <p v-else class="explanation empty-back">Antwort selbst formulieren.</p>
           <p v-if="showKoOnBack && card.explanationKo" class="explanation ko">
             {{ card.explanationKo }}
           </p>
@@ -590,6 +592,12 @@ export default {
 .explanation.de {
   color: var(--c-text-primary);
   font-weight: 500;
+}
+
+.explanation.empty-back {
+  color: var(--c-text-muted);
+  font-style: italic;
+  font-weight: 400;
 }
 
 .explanation.ko {

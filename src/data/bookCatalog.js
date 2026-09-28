@@ -6,6 +6,7 @@ import { ABSOLUTISMUS_BOOK_ID } from "./absolutismusContent.js";
 import { SPANISH_LLUVIAS_BOOK_ID } from "./spanishLluviasContent.js";
 import { PHYSIK_MAGNETISMUS_BOOK_ID } from "./physikMagnetismusContent.js";
 import { PHYSIK_K9_NOTES_BOOK_ID } from "./physikKlasse9NotesContent.js";
+import { PHYSIK_PROBE_FRAGEN_BOOK_ID } from "./physikProbeFragenContent.js";
 
 /** @typedef {'hyejin'|'hangyeol'|'amin'} BookOwnerId */
 
@@ -73,6 +74,12 @@ export const BOOK_CATALOG_META = {
     subjectKey: "physik",
     subjectLabel: "물리",
   },
+  [PHYSIK_PROBE_FRAGEN_BOOK_ID]: {
+    owner: BOOK_OWNERS.HANGYEOL,
+    grade: 9,
+    subjectKey: "physik",
+    subjectLabel: "물리",
+  },
 };
 
 /** @param {object} book */
@@ -116,7 +123,7 @@ export function groupBooksByGradeSubject(bookList) {
   }
 
   return [...byGrade.entries()]
-    .sort(([a], [b]) => a - b)
+    .sort(([a], [b]) => b - a)
     .map(([grade, subjectMap]) => ({
       grade,
       gradeLabel: `${grade}학년`,

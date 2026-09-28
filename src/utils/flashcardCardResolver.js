@@ -4,6 +4,10 @@ import {
   SPANISH_LLUVIAS_BOOK_ID,
   enrichSpanishLluviasCardForLang,
 } from "@/data/spanishLluviasContent.js";
+import {
+  PHYSIK_PROBE_FRAGEN_BOOK_ID,
+  enrichPhysikProbeFragenCardForLang,
+} from "@/data/physikProbeFragenContent.js";
 import { enrichAlltagCardForLang } from "@/data/alltagKoDeTranslations.en.js";
 import { enrichLiveAcademyToddlerCardForLang } from "@/data/liveAcademyToddlerTranslations.en.js";
 
@@ -18,6 +22,9 @@ export function resolveFlashcardCard(card, bookId, targetLang) {
   }
   if (bookId === SPANISH_LLUVIAS_BOOK_ID) {
     return enrichSpanishLluviasCardForLang(card, targetLang);
+  }
+  if (bookId === PHYSIK_PROBE_FRAGEN_BOOK_ID) {
+    return enrichPhysikProbeFragenCardForLang(card, targetLang);
   }
   return card;
 }
