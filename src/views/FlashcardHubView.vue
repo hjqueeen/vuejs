@@ -44,7 +44,81 @@
       <span class="fc-notes-arrow" aria-hidden="true">→</span>
     </button>
 
-    <section v-if="probeAnswersEnabled" class="probe-submit-panel">
+    <a
+      v-if="bookSourceUrl && !cardSections.length"
+      :href="bookSourceUrl"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="fc-source-link"
+    >
+      <span>{{ bookSourceLabel }}</span>
+      <span class="fc-source-external" aria-hidden="true">↗</span>
+    </a>
+
+    <div v-if="cardSections.length" class="fc-sections">
+      <section
+        v-for="section in cardSections"
+        :key="section.id"
+        class="fc-section"
+        :class="{ 'fc-section--collapsed': !isSectionOpen(section.id) }"
+      >
+        <button
+          type="button"
+          class="fc-section-title"
+          :aria-expanded="isSectionOpen(section.id)"
+          @click="toggleSection(section.id)"
+        >
+          <span class="fc-section-title-main">
+            <span class="block-dot"></span>
+            <span class="fc-section-label">{{ section.title }}</span>
+            <span class="fc-section-count">{{ section.cards.length }}장</span>
+          </span>
+          <span class="fc-chevron" aria-hidden="true"></span>
+        </button>
+        <div v-show="isSectionOpen(section.id)" class="fc-section-body">
+          <a
+            v-if="section.sourceUrl"
+            :href="section.sourceUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="fc-source-link fc-section-source"
+            @click.stop
+          >
+            <span>{{ section.sourceLabel || "원본 영상 보기" }}</span>
+            <span class="fc-source-external" aria-hidden="true">↗</span>
+          </a>
+          <ol class="fc-list">
+            <li v-for="card in section.cards" :key="card.id" class="fc-row">
+              <span class="fc-no" :class="rowClass(card.id)">{{ cardIndex(card.id) + 1 }}</span>
+              <button type="button" class="fc-term-btn" @click="openCard(card.id)">
+                <span class="fc-term">{{ cardPreview(card) }}</span>
+                <span class="fc-due-badge">{{ dueLabel(card.id) }}</span>
+                <span v-if="isAnswered(card.id)" class="fc-answered-mark">✎</span>
+                <span v-if="isTested(card.id)" class="fc-tested-mark">✓✓</span>
+                <span v-else-if="isStudied(card.id)" class="fc-studied-mark">✓</span>
+                <span class="fc-arrow">→</span>
+              </button>
+            </li>
+          </ol>
+        </div>
+      </section>
+    </div>
+
+    <ol v-else class="fc-list">
+      <li v-for="(card, idx) in cards" :key="card.id" class="fc-row">
+        <span class="fc-no" :class="rowClass(card.id)">{{ idx + 1 }}</span>
+        <button type="button" class="fc-term-btn" @click="openCard(card.id)">
+          <span class="fc-term">{{ cardPreview(card) }}</span>
+          <span class="fc-due-badge">{{ dueLabel(card.id) }}</span>
+          <span v-if="isAnswered(card.id)" class="fc-answered-mark">✎</span>
+          <span v-if="isTested(card.id)" class="fc-tested-mark">✓✓</span>
+          <span v-else-if="isStudied(card.id)" class="fc-studied-mark">✓</span>
+          <span class="fc-arrow">→</span>
+        </button>
+      </li>
+    </ol>
+
+    <section v-if="probeAnswersEnabled" class="probe-submit-panel probe-submit-panel--below">
       <p class="probe-submit-stat">
         답안 작성 {{ answeredCount }} / {{ cards.length }}
         <span v-if="answeredCount">({{ answeredPercent }}%)</span>
@@ -127,80 +201,6 @@
         @open-card="openCard"
       />
     </section>
-
-    <a
-      v-if="bookSourceUrl && !cardSections.length"
-      :href="bookSourceUrl"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="fc-source-link"
-    >
-      <span>{{ bookSourceLabel }}</span>
-      <span class="fc-source-external" aria-hidden="true">↗</span>
-    </a>
-
-    <div v-if="cardSections.length" class="fc-sections">
-      <section
-        v-for="section in cardSections"
-        :key="section.id"
-        class="fc-section"
-        :class="{ 'fc-section--collapsed': !isSectionOpen(section.id) }"
-      >
-        <button
-          type="button"
-          class="fc-section-title"
-          :aria-expanded="isSectionOpen(section.id)"
-          @click="toggleSection(section.id)"
-        >
-          <span class="fc-section-title-main">
-            <span class="block-dot"></span>
-            <span class="fc-section-label">{{ section.title }}</span>
-            <span class="fc-section-count">{{ section.cards.length }}장</span>
-          </span>
-          <span class="fc-chevron" aria-hidden="true"></span>
-        </button>
-        <div v-show="isSectionOpen(section.id)" class="fc-section-body">
-          <a
-            v-if="section.sourceUrl"
-            :href="section.sourceUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="fc-source-link fc-section-source"
-            @click.stop
-          >
-            <span>{{ section.sourceLabel || "원본 영상 보기" }}</span>
-            <span class="fc-source-external" aria-hidden="true">↗</span>
-          </a>
-          <ol class="fc-list">
-            <li v-for="card in section.cards" :key="card.id" class="fc-row">
-              <span class="fc-no" :class="rowClass(card.id)">{{ cardIndex(card.id) + 1 }}</span>
-              <button type="button" class="fc-term-btn" @click="openCard(card.id)">
-                <span class="fc-term">{{ cardPreview(card) }}</span>
-                <span class="fc-due-badge">{{ dueLabel(card.id) }}</span>
-                <span v-if="isAnswered(card.id)" class="fc-answered-mark">✎</span>
-                <span v-if="isTested(card.id)" class="fc-tested-mark">✓✓</span>
-                <span v-else-if="isStudied(card.id)" class="fc-studied-mark">✓</span>
-                <span class="fc-arrow">→</span>
-              </button>
-            </li>
-          </ol>
-        </div>
-      </section>
-    </div>
-
-    <ol v-else class="fc-list">
-      <li v-for="(card, idx) in cards" :key="card.id" class="fc-row">
-        <span class="fc-no" :class="rowClass(card.id)">{{ idx + 1 }}</span>
-        <button type="button" class="fc-term-btn" @click="openCard(card.id)">
-          <span class="fc-term">{{ cardPreview(card) }}</span>
-          <span class="fc-due-badge">{{ dueLabel(card.id) }}</span>
-          <span v-if="isAnswered(card.id)" class="fc-answered-mark">✎</span>
-          <span v-if="isTested(card.id)" class="fc-tested-mark">✓✓</span>
-          <span v-else-if="isStudied(card.id)" class="fc-studied-mark">✓</span>
-          <span class="fc-arrow">→</span>
-        </button>
-      </li>
-    </ol>
   </div>
 </template>
 
@@ -697,6 +697,10 @@ export default {
   border: 1px solid var(--c-border);
   border-radius: var(--c-radius-lg);
   background: var(--c-surface);
+}
+
+.probe-submit-panel--below {
+  margin: 24px 0 8px;
 }
 
 .probe-submit-stat {
