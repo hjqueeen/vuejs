@@ -56,6 +56,12 @@ import {
   orderedSpanishLluviasCards,
   getSpanishLluviasCardById,
 } from "./spanishLluviasContent.js";
+import {
+  PHYSIK_MAGNETISMUS_BOOK_ID,
+  physikMagnetismusSections,
+  orderedPhysikMagnetismusCards,
+  getPhysikMagnetismusCardById,
+} from "./physikMagnetismusContent.js";
 
 /** @type {Record<string, { cards: object[], getCardById: (id: string) => object|null, labels: { front: string, back: string }, hint: string, showKoOnBack?: boolean }>} */
 export const flashcardBooks = {
@@ -166,6 +172,14 @@ export const flashcardBooks = {
         : "독일어를 보고 스페인어를 떠올린 뒤, 카드를 뒤집어 확인하세요.",
     labels: { front: "Deutsch", back: "Español" },
     hint: "헤더에서 앞면 언어(Deutsch / Español)를 선택한 뒤 카드를 뒤집으며 외우세요.",
+    showKoOnBack: false,
+  },
+  [PHYSIK_MAGNETISMUS_BOOK_ID]: {
+    cards: orderedPhysikMagnetismusCards,
+    sections: physikMagnetismusSections,
+    getCardById: getPhysikMagnetismusCardById,
+    labels: { front: "Deutsch", back: "한국어" },
+    hint: "독일어 문단을 읽고 뜻을 떠올린 뒤, 카드를 뒤집어 한국어를 확인하세요. 그림이 있으면 눌러 확대해 보세요.",
     showKoOnBack: false,
   },
 };

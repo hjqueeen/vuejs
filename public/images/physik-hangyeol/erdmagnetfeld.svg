@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 340" width="480" height="340">
+  <rect width="480" height="340" fill="#f7f4ef"/>
+  <text x="240" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#1a1a1a">Erdmagnetfeld</text>
+  <!-- Earth -->
+  <circle cx="240" cy="175" r="90" fill="#90cdf4" stroke="#2b6cb0" stroke-width="2"/>
+  <ellipse cx="240" cy="175" rx="90" ry="30" fill="none" stroke="#2b6cb0" stroke-width="1" opacity="0.5"/>
+  <line x1="240" y1="85" x2="240" y2="265" stroke="#1a1a1a" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="240" y="78" text-anchor="middle" font-size="11" fill="#1a1a1a" font-family="system-ui,sans-serif">geografischer Nordpol</text>
+  <text x="240" y="295" text-anchor="middle" font-size="11" fill="#1a1a1a" font-family="system-ui,sans-serif">geografischer Südpol</text>
+  <!-- magnetic poles labels -->
+  <text x="240" y="105" text-anchor="middle" font-size="13" font-weight="700" fill="#2b6cb0" font-family="system-ui,sans-serif">magnetischer SÜDPOL</text>
+  <text x="240" y="255" text-anchor="middle" font-size="13" font-weight="700" fill="#c53030" font-family="system-ui,sans-serif">magnetischer NORDPOL</text>
+  <!-- field lines -->
+  <defs>
+    <marker id="e" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#dd6b20"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="#dd6b20" stroke-width="1.6" marker-end="url(#e)">
+    <path d="M200 100 C 80 120, 80 230, 200 250"/>
+    <path d="M280 100 C 400 120, 400 230, 280 250"/>
+    <path d="M220 95 C 140 110, 140 240, 220 255"/>
+    <path d="M260 95 C 340 110, 340 240, 260 255"/>
+  </g>
+  <text x="240" y="325" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#444">Kompass-N zeigt zum magnetischen Südpol</text>
+</svg>

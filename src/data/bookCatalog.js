@@ -4,6 +4,7 @@ import { LATIN_VOCAB_L15_BOOK_ID } from "./latinVocabL15Content.js";
 import { LATIN_VOCAB_L16_BOOK_ID } from "./latinVocabL16Content.js";
 import { ABSOLUTISMUS_BOOK_ID } from "./absolutismusContent.js";
 import { SPANISH_LLUVIAS_BOOK_ID } from "./spanishLluviasContent.js";
+import { PHYSIK_MAGNETISMUS_BOOK_ID } from "./physikMagnetismusContent.js";
 
 /** @typedef {'hyejin'|'hangyeol'|'amin'} BookOwnerId */
 
@@ -58,6 +59,12 @@ export const BOOK_CATALOG_META = {
     grade: 9,
     subjectKey: "spanisch",
     subjectLabel: "스페인어",
+  },
+  [PHYSIK_MAGNETISMUS_BOOK_ID]: {
+    owner: BOOK_OWNERS.HANGYEOL,
+    grade: 9,
+    subjectKey: "physik",
+    subjectLabel: "물리",
   },
 };
 

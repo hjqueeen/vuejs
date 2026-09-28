@@ -41,6 +41,10 @@ import {
   SPANISH_LLUVIAS_CARD_IDS,
 } from "./spanishLluviasContent.js";
 import {
+  PHYSIK_MAGNETISMUS_BOOK_ID,
+  PHYSIK_MAGNETISMUS_CARD_IDS,
+} from "./physikMagnetismusContent.js";
+import {
   MATH_QUIZ_BOOK_ID,
   MATH_QUIZ_QUESTION_IDS,
   MATH_WORKSHEET_PAGE_IDS,
@@ -198,6 +202,20 @@ export const publicBooks = [
     grade: 9,
     subjectKey: "spanisch",
     subjectLabel: "스페인어",
+  },
+  {
+    id: PHYSIK_MAGNETISMUS_BOOK_ID,
+    templateType: "flashcard",
+    title: "Physik · Magnetismus",
+    subtitle: "Karteikarten — Klasse 9 · Strom · Magnet · Elektromagnet",
+    description:
+      "9학년 물리: 전류 복습, 자극·자기력선·소자석·지구자기장·코일·전자석. 앞면 독일어 문단, 뒷면 한국어. 다이어그램 포함.",
+    coverColor: "book-cover-d",
+    cardIds: PHYSIK_MAGNETISMUS_CARD_IDS,
+    owner: "hangyeol",
+    grade: 9,
+    subjectKey: "physik",
+    subjectLabel: "물리",
   },
   {
     id: MATH_QUIZ_BOOK_ID,
