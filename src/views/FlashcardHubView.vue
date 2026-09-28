@@ -94,6 +94,11 @@
                 <span class="fc-term">{{ cardPreview(card) }}</span>
                 <span class="fc-due-badge">{{ dueLabel(card.id) }}</span>
                 <span v-if="isAnswered(card.id)" class="fc-answered-mark">✎</span>
+                <span
+                  v-if="markFor(card.id)"
+                  class="fc-mark-badge"
+                  :class="`mark-${markFor(card.id)}`"
+                >{{ markShort(card.id) }}</span>
                 <span v-if="isTested(card.id)" class="fc-tested-mark">✓✓</span>
                 <span v-else-if="isStudied(card.id)" class="fc-studied-mark">✓</span>
                 <span class="fc-arrow">→</span>
@@ -111,6 +116,11 @@
           <span class="fc-term">{{ cardPreview(card) }}</span>
           <span class="fc-due-badge">{{ dueLabel(card.id) }}</span>
           <span v-if="isAnswered(card.id)" class="fc-answered-mark">✎</span>
+          <span
+            v-if="markFor(card.id)"
+            class="fc-mark-badge"
+            :class="`mark-${markFor(card.id)}`"
+          >{{ markShort(card.id) }}</span>
           <span v-if="isTested(card.id)" class="fc-tested-mark">✓✓</span>
           <span v-else-if="isStudied(card.id)" class="fc-studied-mark">✓</span>
           <span class="fc-arrow">→</span>
@@ -122,7 +132,7 @@
       <p class="probe-submit-stat">
         답안 작성 {{ answeredCount }} / {{ cards.length }}
         <span v-if="answeredCount">({{ answeredPercent }}%)</span>
-        <!-- <span v-if="feedbackEnabled"> · 피드백 ON</span> -->
+        <span v-if="latestAttempt"> · 점수 {{ latestAttempt.scorePercent }}%</span>
       </p>
       <p class="probe-supabase-status" :class="{ ok: supabaseReady }">
         Supabase:
@@ -130,6 +140,22 @@
         <template v-else>미설정 (VUE_APP_SUPABASE_ANON_KEY 필요)</template>
       </p>
       <div class="probe-submit-actions">
+        <button
+          type="button"
+          class="probe-export-btn"
+          :disabled="!supabaseReady || grading"
+          @click="pullAndGrade"
+        >
+          {{ grading ? "채점 중…" : "클라우드 불러와 채점·기록" }}
+        </button>
+        <button
+          type="button"
+          class="probe-import-btn"
+          :disabled="answeredCount < 1 || grading"
+          @click="gradeLocalOnly"
+        >
+          현재 답안 채점·기록
+        </button>
         <!--
         <button
           type="button"
@@ -173,26 +199,14 @@
           답안 전체 삭제
         </button>
       </div>
-      <!--
-      <input
-        ref="answersFileInput"
-        type="file"
-        accept="application/json,.json"
-        class="probe-file-input"
-        @change="onAnswersFile"
-      />
-      <input
-        ref="feedbackFileInput"
-        type="file"
-        accept="application/json,.json"
-        class="probe-file-input"
-        @change="onFeedbackFile"
-      />
-      -->
       <p v-if="exportMessage" class="probe-export-msg">{{ exportMessage }}</p>
       <p class="probe-fb-hint">
-        카드에서 답안을 저장·수정·삭제하거나, 아래에서 바로 관리할 수 있습니다. 클라우드 연결 시 Supabase에도 반영됩니다.
+        「클라우드 불러와 채점·기록」하면 서버 답안을 가져와 모범답·코멘트로 채점하고, 풀이 기록에 남깁니다. 카드에서 피드백을 볼 수 있습니다.
       </p>
+      <FlashcardProbeScorePanel
+        :latest="latestAttempt"
+        :attempts="attemptList"
+      />
       <FlashcardProbeAnswerManager
         :book-id="bookId"
         :cards="cards"
@@ -210,6 +224,7 @@ import { getCardsForBook, getFlashcardBook } from "@/data/flashcardRegistry";
 import FlashcardLayoutToggle from "@/components/flashcard/FlashcardLayoutToggle.vue";
 import FlashcardTargetLangToggle from "@/components/flashcard/FlashcardTargetLangToggle.vue";
 import FlashcardProbeAnswerManager from "@/components/flashcard/FlashcardProbeAnswerManager.vue";
+import FlashcardProbeScorePanel from "@/components/flashcard/FlashcardProbeScorePanel.vue";
 import { expandReviewItems } from "@/utils/flashcardReviewItems";
 import { bookHasDualLang, withLangSrsId } from "@/utils/flashcardSrsId";
 import { getFlashcardLayoutMode } from "@/utils/flashcardLayout";
@@ -239,6 +254,12 @@ import {
   setProbeFeedbackEnabled,
   syncProbeFeedbackWithSupabase,
 } from "@/utils/flashcardProbeFeedback";
+import {
+  getLatestAttemptMarkMap,
+  getLatestProbeAttempt,
+  loadProbeAttempts,
+  submitProbeAttempt,
+} from "@/utils/flashcardProbeAttempts";
 import { PHYSIK_PROBE_FEEDBACK_META } from "@/data/physikProbeFeedbackContent.js";
 
 const DEFAULT_LANG_OPTIONS = [
@@ -246,9 +267,21 @@ const DEFAULT_LANG_OPTIONS = [
   { value: "en", label: "English" },
 ];
 
+const MARK_SHORT = {
+  ok: "✓",
+  partial: "△",
+  wrong: "✗",
+  empty: "·",
+};
+
 export default {
   name: "FlashcardHubView",
-  components: { FlashcardLayoutToggle, FlashcardTargetLangToggle, FlashcardProbeAnswerManager },
+  components: {
+    FlashcardLayoutToggle,
+    FlashcardTargetLangToggle,
+    FlashcardProbeAnswerManager,
+    FlashcardProbeScorePanel,
+  },
   props: {
     bookId: { type: String, required: true },
   },
@@ -261,6 +294,9 @@ export default {
       exportMessage: "",
       feedbackTick: 0,
       syncing: false,
+      grading: false,
+      attemptTick: 0,
+      attemptList: [],
     };
   },
   created() {
@@ -268,7 +304,9 @@ export default {
     this.targetLang = getFlashcardTargetLang(this.bookId, this.allowedLangs);
     if (this.probeAnswersEnabled) {
       applyBundledFeedbackToStorage(this.bookId);
+      setProbeFeedbackEnabled(this.bookId, true);
       this.feedbackTick += 1;
+      this.refreshAttempts({ silent: true });
       if (isSupabaseConfigured) {
         this.syncSupabase({ silent: true });
       }
@@ -357,6 +395,14 @@ export default {
       if (!this.cards.length) return 0;
       return Math.round((this.answeredCount / this.cards.length) * 100);
     },
+    latestAttempt() {
+      void this.attemptTick;
+      return getLatestProbeAttempt(this.bookId);
+    },
+    markMap() {
+      void this.attemptTick;
+      return getLatestAttemptMarkMap(this.bookId);
+    },
     bookSourceUrl() {
       return this.bookMeta?.sourceUrl || "";
     },
@@ -443,6 +489,14 @@ export default {
       if (!this.probeAnswersEnabled) return false;
       void this.answerTick;
       return Boolean(getProbeAnswer(this.bookId, cardId).trim());
+    },
+    markFor(cardId) {
+      void this.attemptTick;
+      return this.markMap[cardId] || "";
+    },
+    markShort(cardId) {
+      const m = this.markFor(cardId);
+      return MARK_SHORT[m] || "";
     },
     rowClass(cardId) {
       if (this.isTested(cardId)) return "tested";
@@ -533,6 +587,62 @@ export default {
     },
     onAnswerManagerChanged() {
       this.answerTick += 1;
+    },
+    async refreshAttempts(opts = {}) {
+      const result = await loadProbeAttempts(this.bookId, {
+        learnerId: this.probeLearnerId,
+      });
+      this.attemptList = result.attempts || [];
+      this.attemptTick += 1;
+      if (!opts.silent && result.remoteError) {
+        this.exportMessage = `기록 불러오기 경고: ${result.remoteError}`;
+      }
+    },
+    async gradeAndRecord(opts = {}) {
+      applyBundledFeedbackToStorage(this.bookId);
+      setProbeFeedbackEnabled(this.bookId, true);
+      this.feedbackTick += 1;
+      const result = await submitProbeAttempt(this.bookId, this.cards, {
+        learnerId: this.probeLearnerId,
+      });
+      await this.refreshAttempts({ silent: true });
+      const a = result.attempt;
+      const cloudNote = result.remoteOk
+        ? " · 클라우드 기록됨"
+        : result.remoteSkipped
+          ? " · 로컬 기록 (probe_attempts 테이블 없으면 SQL 실행 필요)"
+          : ` · 클라우드 실패: ${result.remoteError || ""}`;
+      this.exportMessage = `채점 ${a.scorePercent}% (${a.scorePoints}/${a.scoreMax}) · ✓${a.markOk} △${a.markPartial} ✗${a.markWrong}${cloudNote}`;
+      if (opts.fromCloud) {
+        this.exportMessage = `클라우드 답안 반영 후 ${this.exportMessage}`;
+      }
+      return result;
+    },
+    async pullAndGrade() {
+      if (!isSupabaseConfigured || this.grading) return;
+      this.grading = true;
+      try {
+        const sync = await syncProbeAnswersWithSupabase(this.bookId, {
+          learnerId: this.probeLearnerId,
+        });
+        this.answerTick += 1;
+        if (!sync.ok) {
+          this.exportMessage = `클라우드 불러오기 실패: ${sync.message || sync.reason}`;
+          return;
+        }
+        await this.gradeAndRecord({ fromCloud: true });
+      } finally {
+        this.grading = false;
+      }
+    },
+    async gradeLocalOnly() {
+      if (this.grading) return;
+      this.grading = true;
+      try {
+        await this.gradeAndRecord();
+      } finally {
+        this.grading = false;
+      }
     },
     pickAnswersFile() {
       this.$refs.answersFileInput?.click();
@@ -1033,6 +1143,45 @@ html[data-theme="dark"] .fc-source-link {
 }
 
 .fc-answered-mark {
+  color: var(--c-teal);
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.fc-mark-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  margin-left: 4px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.fc-mark-badge.mark-ok {
+  background: rgba(15, 118, 110, 0.14);
+  color: var(--c-teal);
+}
+
+.fc-mark-badge.mark-partial {
+  background: rgba(194, 65, 12, 0.14);
+  color: #c2410c;
+}
+
+.fc-mark-badge.mark-wrong {
+  background: rgba(220, 38, 38, 0.14);
+  color: #dc2626;
+}
+
+.fc-mark-badge.mark-empty {
+  background: var(--c-border-subtle);
+  color: var(--c-text-muted);
+}
+
+.fc-studied-mark {
   font-size: 12px;
   color: var(--c-blue-mid);
   font-weight: 700;

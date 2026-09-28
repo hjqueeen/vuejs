@@ -1,0 +1,503 @@
+{
+  "book_id": "book-physik-probe-fragen-k9",
+  "learner_id": "hangyeol",
+  "submitted_at": "2026-09-28T13:58:00.437Z",
+  "answered_count": 54,
+  "total_count": 54,
+  "score_points": 22,
+  "score_max": 54,
+  "score_percent": 40.7,
+  "mark_ok": 19,
+  "mark_partial": 6,
+  "mark_wrong": 6,
+  "mark_empty": 23,
+  "snapshot": [
+    {
+      "cardId": "card-ppf-a1",
+      "answer": "Ampermeter wird in Reihe, und Voltmeter wird Parallel geschaltet.",
+      "answered": true,
+      "mark": "ok",
+      "points": 1,
+      "modelDe": "Strommesser (Amperemeter) werden immer in Reihe geschaltet. Spannungsmesser (Voltmeter) werden immer parallel geschaltet.",
+      "commentKo": "내용 맞음. 철자: Amperemeter, parallel(소문자)."
+    },
+    {
+      "cardId": "card-ppf-a2",
+      "answer": "fliessende Elektronen",
+      "answered": true,
+      "mark": "partial",
+      "points": 0.5,
+      "modelDe": "Unter elektrischem Strom versteht man die gerichtete Bewegung von Ladungsträgern, in Metallen vor allem von Elektronen.",
+      "commentKo": "방향은 맞지만 정의가 짧음. ‘gerichtete Bewegung von Ladungsträgern’를 넣으세요."
+    },
+    {
+      "cardId": "card-ppf-a3",
+      "answer": "von plus zur minuspol",
+      "answered": true,
+      "mark": "ok",
+      "points": 1,
+      "modelDe": "Die technische Stromrichtung zeigt vom Pluspol (+) zum Minuspol (−).",
+      "commentKo": "맞음. Pluspol / Minuspol로 쓰면 더 좋아요."
+    },
+    {
+      "cardId": "card-ppf-a4",
+      "answer": "entgegen der technischen stromrichtung, also von minus zum pluspol",
+      "answered": true,
+      "mark": "ok",
+      "points": 1,
+      "modelDe": "Die Elektronen bewegen sich vom Minuspol (−) zum Pluspol (+), also entgegen der technischen Stromrichtung.",
+      "commentKo": "핵심 정확히 맞음."
+    },
+    {
+      "cardId": "card-ppf-a5",
+      "answer": "Ampère definiert die Stromrichtung am Hofmannschen Wasserzersetzungsapparat: Am Pluspol entsteht Sauerstoff (O₂), am Minuspol Wasserstoff (H₂). Die Richtung geht vom „Sauerstoffdraht“ zum „Wasserstoffdraht",
+      "answered": true,
+      "mark": "ok",
+      "points": 1,
+      "modelDe": "Ampère orientierte sich am Hofmannschen Wasserzersetzungsapparat: Am Pluspol entsteht Sauerstoff, am Minuspol Wasserstoff. Die Richtung geht vom „Sauerstoffdraht“ zum „Wasserstoffdraht“.",
+      "commentKo": "내용 좋음. 문장 끝 따옴표만 닫으면 됩니다."
+    },
+    {
+      "cardId": "card-ppf-a6",
+      "answer": "Weil die Umkerhung sehr aufwending sein wird da die Elektronik und das Maxwellsche gleichung auf amperes definition folgen",
+      "answered": true,
+      "mark": "partial",
+      "points": 0.5,
+      "modelDe": "1) In Halbleitern und Elektrolyten bewegen sich auch positive Ladungsträger vom „+“ zum „−“. 2) Elektrotechnik und Maxwellsche Gleichungen beruhen auf Ampères Definition — eine Umstellung wäre sehr aufwendig.",
+      "commentKo": "이유 ‘두 가지’가 필요함. 지금은 문헌/Maxwell 쪽만 있음. 반도체·전해질 이유도 추가하세요."
+    },
+    {
+      "cardId": "card-ppf-a7",
+      "answer": "Weil die Elektronen gegen den Technischen Stromrichtung fliessen.",
+      "answered": true,
+      "mark": "ok",
+      "points": 1,
+      "modelDe": "Die Elektronen tragen eine negative Ladung, weil sie sich entgegen der technischen Stromrichtung bewegen.",
+      "commentKo": "맞음."
+    },
+    {
+      "cardId": "card-ppf-a8",
+      "answer": "Es ist porpotional",
+      "answered": true,
+      "mark": "partial",
+      "points": 0.5,
+      "modelDe": "Bei gleichem Widerstand ist die Stromstärke proportional zur Spannung (U = R · I).",
+      "commentKo": "‘비례’만으로는 부족. U·R·I 관계를 한 문장으로."
+    },
+    {
+      "cardId": "card-ppf-b1",
+      "answer": "Der magnetische suedpol ist der geographische nordpol und der magnetische nordpol ist der magnetische suedpol",
+      "answered": true,
+      "mark": "wrong",
+      "points": 0,
+      "modelDe": "Die Stellen stärkster Anziehung eines Magneten nennt man magnetische Pole. Es gibt Nordpol und Südpol.",
+      "commentKo": "질문과 다른 단원(지구자기장) 답을 씀. ‘자극 = 인력이 가장 센 곳’으로 다시 쓰세요."
+    },
+    {
+      "cardId": "card-ppf-b2",
+      "answer": "Nord hat rot und Sued blau/gruen",
+      "answered": true,
+      "mark": "ok",
+      "points": 1,
+      "modelDe": "Nordpol ↔ rot, Südpol ↔ grün.",
+      "commentKo": "맞음. 수업 Merkregel은 초록(grün)."
+    },
+    {
+      "cardId": "card-ppf-b3",
+      "answer": "Weil mit der Magnetfeld des Stabmagnet wird das Bueroklammer selbst magnetisch.",
+      "answered": true,
+      "mark": "wrong",
+      "points": 0,
+      "modelDe": "An den Polen ist die Anziehung am stärksten. In der Mitte des Magneten ist die Kraft viel kleiner.",
+      "commentKo": "Influenz 설명이 아니라, 이 문항은 ‘극에서 인력이 가장 세다’가 정답."
+    },
+    {
+      "cardId": "card-ppf-b4",
+      "answer": "Sie Stossen gegeneinander ab",
+      "answered": true,
+      "mark": "ok",
+      "points": 1,
+      "modelDe": "Gleichartige Pole (N–N oder S–S) stoßen sich ab.",
+      "commentKo": "맞음."
+    },
+    {
+      "cardId": "card-ppf-b5",
+      "answer": "Sie ziehen sich gegenseitig an",
+      "answered": true,
+      "mark": "ok",
+      "points": 1,
+      "modelDe": "Verschiedenartige Pole (N–S) ziehen sich an.",
+      "commentKo": "맞음."
+    },
+    {
+      "cardId": "card-ppf-b6",
+      "answer": "Es liegt an den Staerke des Feldlinie, ob das magnet ein entferntes pol anziehen kann",
+      "answered": true,
+      "mark": "wrong",
+      "points": 0,
+      "modelDe": "Je größer der Abstand zwischen den Polen ist, desto geringer ist die Kraftwirkung.",
+      "commentKo": "거리↑ → 힘↓ 한 문장으로. 장의 ‘세기’ 이야기만으로는 부족."
+    },
+    {
+      "cardId": "card-ppf-b7",
+      "answer": "Gleiche Polen stossen sich ab, gleiche ziehen sich an, wird der abstand groesser ,desto schwacher der Kraft",
+      "answered": true,
+      "mark": "wrong",
+      "points": 0,
+      "modelDe": "Gleichartige Pole stoßen sich ab, verschiedenartige Pole ziehen sich an.",
+      "commentKo": "‘gleiche ziehen sich an’은 오류 → verschiedenartige. 거리 규칙은 보너스."
+    },
+    {
+      "cardId": "card-ppf-c1",
+      "answer": "Eisen, Nickel, Cobalt",
+      "answered": true,
+      "mark": "partial",
+      "points": 0.5,
+      "modelDe": "Magnetisierbare Stoffe können von einem Magneten angezogen werden, z. B. Eisen, Nickel und Cobalt.",
+      "commentKo": "예시는 맞음. 정의 한 줄을 앞에 붙이세요."
+    },
+    {
+      "cardId": "card-ppf-c2",
+      "answer": "Sie sind magnete wessen ihre Kraefte lange behaelt.",
+      "answered": true,
+      "mark": "ok",
+      "points": 1,
+      "modelDe": "Ein Dauermagnet ist ein Magnet, dessen magnetische Wirkung lange Zeit erhalten bleibt.",
+      "commentKo": "내용 OK."
+    },
+    {
+      "cardId": "card-ppf-c3",
+      "answer": "Es liegt an den Polen ob es angezogen wird oder nicht",
+      "answered": true,
+      "mark": "wrong",
+      "points": 0,
+      "modelDe": "Er wird immer angezogen, nie abgestoßen.",
+      "commentKo": "극에 따라 다르지 않음. 자화 가능 비자성체는 항상 끌림."
+    },
+    {
+      "cardId": "card-ppf-c4",
+      "answer": "Nein es liegt an der Feldlinie/Magnetische Felder",
+      "answered": true,
+      "mark": "ok",
+      "points": 1,
+      "modelDe": "Nein. Die magnetische Kraft wirkt ohne Berührung. Ihr Betrag hängt vom Abstand ab.",
+      "commentKo": "방향 맞음. ‘ohne Berührung’을 명시하면 더 좋음."
+    },
+    {
+      "cardId": "card-ppf-c5",
+      "answer": "Stabmagnet, Elektromagnet, Hufeisenmagnet, Scheibenmagnet, Spule, Lasthebemagnet",
+      "answered": true,
+      "mark": "partial",
+      "points": 0.5,
+      "modelDe": "Stabmagnet, Hufeisenmagnet, Ringmagnet, Topfmagnet, Scheibenmagnet.",
+      "commentKo": "형태만. Elektromagnet/Spule/Lasthebemagnet는 형태가 아님."
+    },
+    {
+      "cardId": "card-ppf-c6",
+      "answer": "Bueroklammer - magnetisierbar\nPapier - nichtmagnetisierbar\nMagnet - Dauerlich Magnetisch",
+      "answered": true,
+      "mark": "ok",
+      "points": 1,
+      "modelDe": "Büroklammern → magnetisierbare Stoffe; Papier → Nicht-Magnete; Magneten → dauermagnetisierte Stoffe.",
+      "commentKo": "분류 맞음."
+    },
+    {
+      "cardId": "card-ppf-d1",
+      "answer": "Alle magnetisierbaren Stoffe bestehen aus winzigen Bereichen, die sich wie kleine Magnete verhalten",
+      "answered": true,
+      "mark": "ok",
+      "points": 1,
+      "modelDe": "Alle magnetisierbaren Stoffe bestehen aus winzigen Bereichen, die sich wie kleine Magnete verhalten und ordnen können.",
+      "commentKo": "좋음."
+    },
+    {
+      "cardId": "card-ppf-d2",
+      "answer": "wenn es ungeordnet ist ist es kein magnet, wenn es geordnet ist ist es ein magnet",
+      "answered": true,
+      "mark": "ok",
+      "points": 1,
+      "modelDe": "Ungeordnet: Wirkungen heben sich auf → kein Magnet. Ausgerichtet → Körper wirkt als Magnet.",
+      "commentKo": "맞음."
+    },
+    {
+      "cardId": "card-ppf-d3",
+      "answer": "Dann entstehen wieder Sued und Nordpole",
+      "answered": true,
+      "mark": "ok",
+      "points": 1,
+      "modelDe": "Es entstehen zwei neue Magnete, jeweils mit Nord- und Südpol.",
+      "commentKo": "맞음. ‘reine N-/S-Pole gibt es nicht’까지 쓰면 만점."
+    },
+    {
+      "cardId": "card-ppf-d4",
+      "answer": "Im äußeren Magnetfeld werden Elementarmagnete eines Eisenstücks gleichgerichtet ,das Eisen wird selbst zum Magneten. Das heißt magnetische Influenz.",
+      "answered": true,
+      "mark": "ok",
+      "points": 1,
+      "modelDe": "Magnetische Influenz ist die Magnetisierung eines magnetisierbaren Stoffes durch ein äußeres Magnetfeld.",
+      "commentKo": "잘 씀."
+    },
+    {
+      "cardId": "card-ppf-d5",
+      "answer": "Die Büroklammern, weil sie magnetisierbar sind und im Magnetfeld selbst magnetisch werden.\n",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "Die Büroklammern, weil sie magnetisierbar sind und im Magnetfeld selbst magnetisch werden.",
+      "commentKo": ""
+    },
+    {
+      "cardId": "card-ppf-d6",
+      "answer": "Ohne Magnetfeld: Elementarmagnete ungeordnet. Mit Magnetfeld: ausgerichtet → Büroklammer wird selbst magnetisch.\n\n",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "Ohne Magnetfeld: Elementarmagnete ungeordnet. Mit Magnetfeld: ausgerichtet → Büroklammer wird selbst magnetisch.",
+      "commentKo": ""
+    },
+    {
+      "cardId": "card-ppf-d7",
+      "answer": "Magnetisch weich: leicht ausrichtbar, Ausrichtung geht leicht verloren. Magnetisch hart: schwer veränderbar → Dauermagnete.\n",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "Magnetisch weich: leicht ausrichtbar, Ausrichtung geht leicht verloren. Magnetisch hart: schwer veränderbar → Dauermagnete.",
+      "commentKo": ""
+    },
+    {
+      "cardId": "card-ppf-d8",
+      "answer": "Starkes Erhitzen und Starkes ",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "Starkes Erhitzen (über ca. 800 °C) und starke Erschütterungen (z. B. Hämmern).",
+      "commentKo": ""
+    },
+    {
+      "cardId": "card-ppf-e1",
+      "answer": "Wirkungsbereich/Linie/Feld der magneten",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "Das magnetische Feld ist der Wirkungsbereich eines Magneten, in dem Kräfte wirken.",
+      "commentKo": ""
+    },
+    {
+      "cardId": "card-ppf-e2",
+      "answer": "Nein, das magnetfeld wird nicht durch vakuum oder luft veraendert.",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "Nein. Vakuum und Luft verändern das Magnetfeld nicht.",
+      "commentKo": ""
+    },
+    {
+      "cardId": "card-ppf-e3",
+      "answer": "Sie verlaufen von Nordpol zur Suedpol und kreuzen sich nie, viele Linien ergeben eine Feldlinie",
+      "answered": true,
+      "mark": "partial",
+      "points": 0.5,
+      "modelDe": "Magnetische Feldlinien beschreiben die Umgebung eines Magneten. Sie zeigen die Ausrichtung von Magnetnadeln und die Kraftrichtung auf den Nordpol.",
+      "commentKo": "N→S·교차 없음은 맞음. ‘viele Linien = eine Feldlinie’는 Feldlinienbild로 고치세요."
+    },
+    {
+      "cardId": "card-ppf-e4",
+      "answer": "von N nach S",
+      "answered": true,
+      "mark": "ok",
+      "points": 1,
+      "modelDe": "Jede Feldlinie verläuft vom Nordpol zum Südpol.",
+      "commentKo": "맞음."
+    },
+    {
+      "cardId": "card-ppf-e5",
+      "answer": "?",
+      "answered": true,
+      "mark": "wrong",
+      "points": 0,
+      "modelDe": "Feldlinien kreuzen sich nie, weil das zwei verschiedene Kraftrichtungen an einem Ort bedeuten würde.",
+      "commentKo": "답을 써야 함. 위 모범 문장을 외우세요."
+    },
+    {
+      "cardId": "card-ppf-e6",
+      "answer": "Wenn die Linien dichter werden",
+      "answered": true,
+      "mark": "ok",
+      "points": 1,
+      "modelDe": "Dort verlaufen die Feldlinien dichter (viele Linien auf engem Raum).",
+      "commentKo": "맞음."
+    },
+    {
+      "cardId": "card-ppf-e7",
+      "answer": "Stab - bogenform\nScheiben- Von Nordpolseite zur Suedpolseite\nHufeisen- ueber die Zwei Staebe\n",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "Stab: N→S bogenförmig. Hufeisen: über den Polspalt. Scheiben: von der N-Seite zur S-Seite.",
+      "commentKo": ""
+    },
+    {
+      "cardId": "card-ppf-e8",
+      "answer": "Bei magnetischen Feldlinien versteht man die Kraftfeld des Magneten, bei den elektrischen Feldlinien die Potenziale Differenz.",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "Magnetische Feldlinien: Kraftfeld des Magneten. Elektrische: Potenzialdifferenz (Spannung).",
+      "commentKo": ""
+    },
+    {
+      "cardId": "card-ppf-f1",
+      "answer": "Weil der Kompassnadel von Nord-Sued richtet",
+      "answered": true,
+      "mark": "ok",
+      "points": 1,
+      "modelDe": "Drehbare Magnete (Kompassnadeln) richten sich in Nord-Süd-Richtung aus.",
+      "commentKo": "맞음."
+    },
+    {
+      "cardId": "card-ppf-f2",
+      "answer": "an der geographischen Nordpol",
+      "answered": true,
+      "mark": "ok",
+      "points": 1,
+      "modelDe": "Der magnetische Südpol liegt in der Nähe des geografischen Nordpols.",
+      "commentKo": "맞음."
+    },
+    {
+      "cardId": "card-ppf-f3",
+      "answer": "Abweichung zwischen den geographischen Nord und der Kompassrichtung.",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "Missweisung ist die Abweichung zwischen geografischem Nord und der Kompassrichtung (magnetisch).",
+      "commentKo": ""
+    },
+    {
+      "cardId": "card-ppf-f4",
+      "answer": "Neigung der Feldlinien ueber der Horizontalen",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "Inklination ist die Neigung der Feldlinien gegenüber der Horizontalen.",
+      "commentKo": ""
+    },
+    {
+      "cardId": "card-ppf-f5",
+      "answer": "Weil die elektrischen stroeme im fluessigen kern fliessen und die Elementarmagneten nicht fluessig sind, reichen sie auch nicht.",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "Durch elektrische Ströme im flüssigen Eisenkern (Geodynamo). Elementarmagnete reichen nicht, weil der Kern flüssig ist.",
+      "commentKo": ""
+    },
+    {
+      "cardId": "card-ppf-f6",
+      "answer": "Kuehlung des Lava, speicherung des damaligen magnetisierung, wechseln der magnetisierung im gestein",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "Abkühlende Lava / Basalt speichert die damalige Magnetisierung — wechselnde Magnetisierung im Gestein.",
+      "commentKo": ""
+    },
+    {
+      "cardId": "card-ppf-f7",
+      "answer": "In den letzten 100 Mio. Jahren gab es mind. ca. 170 Polwechsel; der letzte vor ca. 730 000 Jahren.\n",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "In den letzten 100 Mio. Jahren gab es mind. ca. 170 Polwechsel; der letzte vor ca. 730 000 Jahren.",
+      "commentKo": ""
+    },
+    {
+      "cardId": "card-ppf-g1",
+      "answer": "bewegten ladungen, sozusagen Strom erschaffen ein magnetfeld",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "Bewegte Ladungen (Strom) erzeugen ein Magnetfeld.",
+      "commentKo": ""
+    },
+    {
+      "cardId": "card-ppf-g2",
+      "answer": "Mit der Linke Hand regel, Daumen ist Elektronenfluss und Finger Feldlinienrichtung..",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "Linke-Hand-Regel: Daumen = Elektronenfluss, Finger = Feldlinienrichtung.",
+      "commentKo": ""
+    },
+    {
+      "cardId": "card-ppf-g3",
+      "answer": "Eisenkern.",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "Ein Eisenkern.",
+      "commentKo": ""
+    },
+    {
+      "cardId": "card-ppf-g4",
+      "answer": "Eisenkern, kuerzere Spule, verstaerkung des Strom.",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "Stromstärke erhöhen, Windungszahl vergrößern, Spule verkürzen.",
+      "commentKo": ""
+    },
+    {
+      "cardId": "card-ppf-g5",
+      "answer": "Aehnliche feldlinien, entgegengesetzte Pole, Magnetfelder..",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "Ähnliche Feldlinien, Magnetfeld, entgegengesetzte Pole (N/S).",
+      "commentKo": ""
+    },
+    {
+      "cardId": "card-ppf-g6",
+      "answer": "Stabmagnet - Dauermagnet, kann nicht verstaerkt werder\nSpule - an und ausschaltbar, kann verstaerkt werden.",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "Stabmagnet dauerhaft / Elementarmagnete; Spule ein-/ausschaltbar und verstärkbar.",
+      "commentKo": ""
+    },
+    {
+      "cardId": "card-ppf-g7",
+      "answer": "Eine stormdurchflossene Spule, denen magnetfeld man ein und ausschalten kann..",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "Geschlossener Eisenkern führt Feldlinien im Kern — stärkeres Feld als offener Kern.",
+      "commentKo": ""
+    },
+    {
+      "cardId": "card-ppf-h1",
+      "answer": "Meistens eine Spule, es ist ein Magnet was durch Strom funktioniert.",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "Eine stromdurchflossene Spule (oft mit Eisenkern), deren Magnetfeld man ein- und ausschalten kann.",
+      "commentKo": ""
+    },
+    {
+      "cardId": "card-ppf-h2",
+      "answer": "Elektromagnet, weil man es an und ausschalten kann und auch verstaerkt werden kann\n",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "Elektromagnet — weil man ihn zum Anheben einschalten und zum Ablegen ausschalten kann.",
+      "commentKo": ""
+    },
+    {
+      "cardId": "card-ppf-h3",
+      "answer": "Strom ein, spule wird eingeschaltet, Last angeheben. Strom aus, Spule/Feld weg, Last wird abgelegt.",
+      "answered": true,
+      "mark": "empty",
+      "points": 0,
+      "modelDe": "Strom ein → starkes Feld → Last angezogen. Strom aus → Feld weg → Last ablegbar.",
+      "commentKo": ""
+    }
+  ],
+  "id": "local-1790603880516"
+}
