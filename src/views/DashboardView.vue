@@ -220,6 +220,13 @@ export default {
         });
         return;
       }
+      if (book.templateType === "day-vocab") {
+        this.$router.push({
+          name: "day-vocab",
+          params: { bookId: book.id },
+        });
+        return;
+      }
       if (book.templateType === "flashcard") {
         this.$router.push({
           name: "flashcard-hub",

@@ -947,6 +947,258 @@ export const alltagKoDeCards = [
     explanationDe:
       "Bei Button-Links gibt es in Bootstrap keine eigenen Variablen oder Mixins. Deshalb nutzen Legacy und neuer Code dieselbe CSS-Überschreibung — default und hover beide `$alstom-bluegrey`. Einziger Unterschied: `@` (LESS) wurde zu `$` (Sass).",
   },
+  {
+    id: "card-alltag-eskaliert",
+    term: "갈등이 격화되고 있다.",
+    explanationDe: "Der Konflikt eskaliert.",
+    explanationKo: "eskalieren · 격화되다",
+    vocabulary: [
+      {
+        word: "eskalieren",
+        meaning:
+          "(갈등·상황 등이) 악화되다, 격화되다 · to escalate",
+        examples: [
+          {
+            de: "Der Konflikt eskaliert.",
+            ko: "갈등이 격화되고 있다.",
+          },
+          {
+            de: "Ohne Klärung kann die Situation schnell eskalieren.",
+            ko: "정리하지 않으면 상황이 빨리 악화될 수 있다.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "card-alltag-datenleck",
+    term: "데이터 유출이 있었다.",
+    explanationDe: "Es gab ein Datenleck.",
+    explanationKo: "Datenleck · 데이터 유출",
+    vocabulary: [
+      {
+        word: "Datenleck",
+        meaning: "데이터 유출, 정보 유출 · data leak / data breach",
+        examples: [
+          {
+            de: "Es gab ein Datenleck.",
+            ko: "데이터 유출이 있었다.",
+          },
+          {
+            de: "Nach dem Datenleck müssen wir die Passwörter ändern.",
+            ko: "데이터 유출 후에 우리는 비밀번호를 바꿔야 한다.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "card-alltag-verstreut",
+    term: "작은 일들이 많고, 우리는 여기저기에 흩어져 있어.",
+    explanationDe:
+      "Viele kleine, viele kleinere Aufgaben — wir sind einfach überall irgendwie verstreut.",
+    explanationKo: "verstreut · 흩어져 있다",
+    vocabulary: [
+      {
+        word: "verstreut",
+        meaning:
+          "흩어져 있는, 여기저기 퍼져 있는 · scattered, spread out",
+        examples: [
+          {
+            de: "Unsere Aufgaben sind irgendwie überall verstreut.",
+            ko: "우리 일들이 여기저기에 흩어져 있다.",
+          },
+          {
+            de: "Die Infos sind über viele Dokumente verstreut.",
+            ko: "정보가 여러 문서에 흩어져 있다.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "card-alltag-einraeumen-zugeben",
+    term: "너희도 그때는 시간이 있다는 걸 인정해야 할 거다.",
+    explanationDe:
+      "Ihr werdet einräumen müssen, dass ihr dann Zeit habt.",
+    explanationKo: "einräumen, dass … · 인정하다",
+    vocabulary: [
+      {
+        word: "einräumen, dass …",
+        meaning:
+          "(사실·주장을) 인정하다, 받아들이다 · to concede / admit that …",
+        examples: [
+          {
+            de: "Ich muss einräumen, dass du recht hast.",
+            ko: "네가 맞다는 걸 인정해야겠다.",
+          },
+          {
+            de: "Ihr werdet einräumen müssen, dass ihr Zeit dafür habt.",
+            ko: "너희는 그걸 위한 시간이 있다는 걸 인정해야 할 거다.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "card-alltag-zeit-einraeumen",
+    term: "그걸 위해 우리는 시간을 내야 한다.",
+    explanationDe: "Dafür müssen wir uns Zeit einräumen.",
+    explanationKo: "Zeit einräumen · 시간을 할애하다",
+    vocabulary: [
+      {
+        word: "Zeit einräumen",
+        meaning:
+          "(어떤 일에) 시간을 할애하다, 시간을 내다 · to set aside / allocate time",
+        examples: [
+          {
+            de: "Dafür müssen wir uns Zeit einräumen.",
+            ko: "그걸 위해 우리는 시간을 내야 한다.",
+          },
+          {
+            de: "Für Feedback sollten wir mehr Zeit einräumen.",
+            ko: "피드백을 위해 더 많은 시간을 할애해야 한다.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "card-alltag-faellt-weg",
+    term: "그건 빠진다. / 그건 치운다.",
+    explanationDe: "Das fällt weg. / Das kommt weg.",
+    explanationKo: "wegfallen · wegkommen · ❌ Das kommt wegfallen",
+    vocabulary: [
+      {
+        word: "wegfallen",
+        meaning:
+          "빠지다, 제외되다, 취소되다 · to be dropped / omitted (Das fällt weg.)",
+        examples: [
+          {
+            de: "Das fällt weg.",
+            ko: "그건 빠진다 / 제외된다.",
+          },
+          {
+            de: "Der Punkt wird wegfallen.",
+            ko: "그 항목은 빠지게 될 거다.",
+          },
+        ],
+      },
+      {
+        word: "wegkommen",
+        meaning:
+          "(물건·항목을) 치우다, 없애다 · to go away / be removed (Das kommt weg.)",
+        examples: [
+          {
+            de: "Das kommt weg.",
+            ko: "그건 치운다 / 없앤다.",
+          },
+          {
+            de: "Der alte Button kommt weg.",
+            ko: "예전 버튼은 없앤다.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "card-alltag-rueberwerfen",
+    term: "그걸 그냥 대충 넘겨버릴 수는 없어.",
+    explanationDe: "Die kann ich nicht einfach rüberwerfen.",
+    explanationKo: "rüberwerfen · 대충 넘겨버리다",
+    vocabulary: [
+      {
+        word: "rüberwerfen",
+        meaning:
+          "(일·책임을) 대충 넘겨버리다, 던져 넘기다 · to casually throw over / dump on someone",
+        examples: [
+          {
+            de: "Die kann ich nicht einfach rüberwerfen.",
+            ko: "그걸 그냥 대충 넘겨버릴 수는 없어.",
+          },
+          {
+            de: "Das Thema können wir nicht einfach rüberwerfen.",
+            ko: "그 주제를 그냥 대충 넘겨서 끝낼 수는 없다.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "card-alltag-flaschenhals",
+    term: "지금 우리가 살짝 병목 구간에 있어.",
+    explanationDe: "Wir sind grad so’n bisschen im Flaschenhals.",
+    explanationKo: "Flaschenhals · 병목",
+    vocabulary: [
+      {
+        word: "Flaschenhals",
+        meaning: "병목 (일이 막히는 지점) · bottleneck",
+        examples: [
+          {
+            de: "Wir sind grad so’n bisschen im Flaschenhals.",
+            ko: "지금 우리가 살짝 병목 구간에 있어.",
+          },
+          {
+            de: "Da steckt gerade ein Flaschenhals.",
+            ko: "지금 거기에 병목이 있어.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "card-alltag-anweisung-annehmen",
+    term:
+      "그냥 그런 거야. 이런 이상한 점이 전형적이지 — 그냥 지시를 받아들이고, 별로 따져보지 않은 채 그대로 해버리는 거.",
+    explanationDe:
+      "Das ist halt so. So ’ne Skurrilität ist typisch: dass man einfach die Anweisung annimmt und die dann nicht groß hinterfragt, sondern einfach macht.",
+    explanationKo: "Skurrilität · Anweisung annehmen · hinterfragen",
+    vocabulary: [
+      {
+        word: "Skurrilität",
+        meaning: "기이함, 이상한 점, 특이한 현상 · quirk / peculiarity",
+        examples: [
+          {
+            de: "So ’ne Skurrilität ist typisch in großen Organisationen.",
+            ko: "이런 이상한 점은 큰 조직에서 전형적이다.",
+          },
+          {
+            de: "Das ist halt so — eine kleine Skurrilität.",
+            ko: "그냥 그런 거야 — 작은 이상한 점이지.",
+          },
+        ],
+      },
+      {
+        word: "die Anweisung annehmen",
+        meaning: "지시를 받아들이다 · to accept / take the instruction",
+        examples: [
+          {
+            de: "Er nimmt die Anweisung einfach an und macht weiter.",
+            ko: "그는 그냥 지시를 받아들이고 계속한다.",
+          },
+          {
+            de: "Viele nehmen die Anweisung an, ohne nachzufragen.",
+            ko: "많은 사람들이 물어보지 않고 지시를 받아들인다.",
+          },
+        ],
+      },
+      {
+        word: "nicht groß hinterfragen",
+        meaning:
+          "별로 따져보지 않다, 크게 의문을 제기하지 않다 · not really question it",
+        examples: [
+          {
+            de: "Man nimmt die Anweisung an und hinterfragt sie nicht groß.",
+            ko: "지시를 받아들이고 별로 따져보지 않는다.",
+          },
+          {
+            de: "Das sollte man ruhig mal hinterfragen.",
+            ko: "그건 한번 따져봐도 된다.",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export const alltagKoDeSections = [
@@ -960,6 +1212,21 @@ export const alltagKoDeSections = [
       "card-alltag-delete-id-mitliefern",
       "card-alltag-werkbank-aura-sodass",
       "card-alltag-headerfavoriten-einbauen",
+    ],
+  },
+  {
+    id: "section-alltag-meeting-0930",
+    title: "팀 미팅 · 표현 (9/30)",
+    cardIds: [
+      "card-alltag-eskaliert",
+      "card-alltag-datenleck",
+      "card-alltag-verstreut",
+      "card-alltag-einraeumen-zugeben",
+      "card-alltag-zeit-einraeumen",
+      "card-alltag-faellt-weg",
+      "card-alltag-rueberwerfen",
+      "card-alltag-flaschenhals",
+      "card-alltag-anweisung-annehmen",
     ],
   },
   {

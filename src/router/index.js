@@ -152,6 +152,16 @@ const router = new Router({
       component: () => import("@/views/BootstrapThemePreview.vue"),
     },
     {
+      path: "/vocab-day-preview",
+      redirect: { name: "day-vocab", params: { bookId: "book-day-vocab" } },
+    },
+    {
+      path: "/vocab-day/:bookId",
+      name: "day-vocab",
+      component: () => import("@/views/DayVocabPreviewView.vue"),
+      props: true,
+    },
+    {
       path: "*",
       component: () => import("@/views/NotFoundView.vue"),
     },

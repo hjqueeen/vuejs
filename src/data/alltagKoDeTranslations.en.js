@@ -58,6 +58,18 @@ export const alltagExplanationEn = {
     "For dropdowns: in the legacy code we set `.dropdown-item.active { background-color: … }` via CSS. In the new code `$dropdown-link-active-bg: $alstom-darkblue` before `@import` is enough — same color, no extra CSS.",
   "card-alltag-bootstrap-btn-link":
     "Button links have no dedicated Bootstrap variables or mixins. So both legacy and new code use the same CSS override — default and hover both `$alstom-bluegrey`. The only difference: `@` (LESS) became `$` (Sass).",
+  "card-alltag-eskaliert": "The conflict is escalating.",
+  "card-alltag-datenleck": "There was a data leak.",
+  "card-alltag-verstreut":
+    "Lots of small tasks — we're somehow scattered all over the place.",
+  "card-alltag-einraeumen-zugeben":
+    "You'll have to admit that you then have time.",
+  "card-alltag-zeit-einraeumen": "We need to set aside time for that.",
+  "card-alltag-faellt-weg": "That gets dropped. / That comes out.",
+  "card-alltag-rueberwerfen": "I can't just casually throw that over.",
+  "card-alltag-flaschenhals": "We're currently a bit in a bottleneck.",
+  "card-alltag-anweisung-annehmen":
+    "That's just how it is. That kind of quirk is typical: people simply accept the instruction and don't really question it — they just do it.",
 };
 
 /** @type {Record<string, Record<string, { wordEn: string, meaningEn?: string, examples: { en: string }[] }>>} */
@@ -391,6 +403,108 @@ export const alltagVocabEn = {
       examples: [
         { en: "The mixin derives the focus ring from background and border color." },
         { en: "Without the mixin the Bootstrap `box-shadow` stays unchanged." },
+      ],
+    },
+  },
+  "card-alltag-eskaliert": {
+    eskalieren: {
+      wordEn: "escalate",
+      examples: [
+        { en: "The conflict is escalating." },
+        { en: "Without clarification the situation can escalate quickly." },
+      ],
+    },
+  },
+  "card-alltag-datenleck": {
+    Datenleck: {
+      wordEn: "data leak / data breach",
+      examples: [
+        { en: "There was a data leak." },
+        { en: "After the data leak we have to change the passwords." },
+      ],
+    },
+  },
+  "card-alltag-verstreut": {
+    verstreut: {
+      wordEn: "scattered / spread out",
+      examples: [
+        { en: "Our tasks are somehow scattered all over." },
+        { en: "The info is scattered across many documents." },
+      ],
+    },
+  },
+  "card-alltag-einraeumen-zugeben": {
+    "einräumen, dass …": {
+      wordEn: "concede / admit that …",
+      examples: [
+        { en: "I have to admit that you're right." },
+        { en: "You'll have to admit that you have time for it." },
+      ],
+    },
+  },
+  "card-alltag-zeit-einraeumen": {
+    "Zeit einräumen": {
+      wordEn: "set aside / allocate time",
+      examples: [
+        { en: "For that we need to set aside time." },
+        { en: "We should allocate more time for feedback." },
+      ],
+    },
+  },
+  "card-alltag-faellt-weg": {
+    wegfallen: {
+      wordEn: "be dropped / omitted",
+      examples: [
+        { en: "That drops out." },
+        { en: "That point will be dropped." },
+      ],
+    },
+    wegkommen: {
+      wordEn: "get removed / go away",
+      examples: [
+        { en: "That gets removed." },
+        { en: "The old button gets removed." },
+      ],
+    },
+  },
+  "card-alltag-rueberwerfen": {
+    rüberwerfen: {
+      wordEn: "casually throw over / dump on someone",
+      examples: [
+        { en: "I can't just casually throw that over." },
+        { en: "We can't just casually dump that topic." },
+      ],
+    },
+  },
+  "card-alltag-flaschenhals": {
+    Flaschenhals: {
+      wordEn: "bottleneck",
+      examples: [
+        { en: "We're currently a bit stuck in a bottleneck." },
+        { en: "There's a bottleneck there right now." },
+      ],
+    },
+  },
+  "card-alltag-anweisung-annehmen": {
+    Skurrilität: {
+      wordEn: "quirk / peculiarity",
+      examples: [
+        { en: "Such a quirk is typical in large organizations." },
+        { en: "That's just how it is — a little quirk." },
+      ],
+    },
+    "die Anweisung annehmen": {
+      wordEn: "accept / take the instruction",
+      examples: [
+        { en: "He simply accepts the instruction and carries on." },
+        { en: "Many people accept the instruction without asking." },
+      ],
+    },
+    "nicht groß hinterfragen": {
+      wordEn: "not really question it",
+      examples: [
+        { en: "You accept the instruction and don't really question it." },
+        { en: "You should feel free to question that." },
       ],
     },
   },

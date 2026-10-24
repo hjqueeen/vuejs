@@ -8,6 +8,7 @@ import {
   ALLTAG_KO_DE_BOOK_ID,
   ALLTAG_KO_DE_CARD_IDS,
 } from "./alltagKoDeContent.js";
+import { DAY_VOCAB_BOOK_ID } from "./dayVocabSample.js";
 import {
   WAERME_KARTEIKARTEN_BOOK_ID,
   WAERME_KARTEIKARTEN_CARD_IDS,
@@ -112,6 +113,16 @@ export const publicBooks = [
       "일상에서 말하고 싶은 한국어 문장을 독일어 또는 영어로 외웁니다. 헤더에서 공부할 언어를 선택하세요. SM-2 간격 반복(Again/Hard/Good/Easy)으로 복습합니다.",
     coverColor: "book-cover-e",
     cardIds: ALLTAG_KO_DE_CARD_IDS,
+  },
+  {
+    id: DAY_VOCAB_BOOK_ID,
+    templateType: "day-vocab",
+    title: "DAY 단어장",
+    subtitle: "날짜별 · 독→한 / 영→독",
+    description:
+      "그날 공부한 단어를 날짜별로 모아 둡니다. 독일어(한글 해석)와 영어(독일어 해석)를 전환하고, 예문 연습으로 복습합니다.",
+    coverColor: "book-cover-a",
+    owner: "hyejin",
   },
   {
     id: WAERME_KARTEIKARTEN_BOOK_ID,
