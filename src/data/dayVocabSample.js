@@ -1001,7 +1001,6 @@ const day02Pairs = [
       headword: "verleugnen",
       meaning: [
         "부인하다, 부정하다; (사람·관계를) 모른 척하다, 배신하다",
-        "ich wurde verleugnet: 나는 부인당했다 / 모른 척당했다",
       ],
       synonyms: ["leugnen", "abweisen"],
       examples: [
@@ -1023,7 +1022,6 @@ const day02Pairs = [
       headword: "deny / disown / renounce",
       meaning: [
         "verleugnen: abstreiten; jdn. verleugnen = sich von jdm. distanzieren",
-        "I was denied / disowned: Ich wurde verleugnet.",
       ],
       synonyms: ["disown", "repudiate"],
       examples: [
@@ -1088,6 +1086,693 @@ const day02Pairs = [
       derivatives: [
         { word: "way", pos: "명", meaning: "der Weg" },
         { word: "get out of the way", pos: "구", meaning: "aus dem Weg gehen" },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY2,
+    slot: 2,
+    pos: "동",
+    de: {
+      headword: "anheuern",
+      meaning: ["(사람·선원 등을) 고용하다, 채용하다"],
+      synonyms: ["engagieren", "einstellen"],
+      examples: [
+        {
+          de: "Sie haben mich angeheuert / engagiert.",
+          ko: "나를 고용·기용했다.",
+        },
+        {
+          de: "Die Firma hat neue Leute angeheuert.",
+          ko: "그 회사가 새 사람들을 채용했다.",
+        },
+      ],
+      derivatives: [
+        { word: "angeheuert", pos: "동", meaning: "고용했다 (Partizip II)" },
+        {
+          word: "sich engagieren",
+          pos: "동",
+          meaning: "사회·정치 등에 적극 참여하다 (anheuern과 다른 뜻)",
+        },
+      ],
+    },
+    en: {
+      headword: "hire / take on",
+      meaning: ["anheuern: jdn. einstellen"],
+      synonyms: ["employ", "engage"],
+      examples: [
+        {
+          en: "They hired / engaged me.",
+          de: "Sie haben mich angeheuert / engagiert.",
+        },
+        {
+          en: "The company hired new people.",
+          de: "Die Firma hat neue Leute angeheuert.",
+        },
+      ],
+      derivatives: [
+        { word: "hire", pos: "동", meaning: "anheuern, einstellen" },
+        {
+          word: "get involved / commit oneself",
+          pos: "동",
+          meaning: "sich engagieren (sozial/politisch — anderer Sinn)",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY2,
+    slot: 3,
+    pos: "부",
+    de: {
+      headword: "ausgerechnet",
+      meaning: [
+        "하필, 하필이면, 공교롭게도 (부사 · 일상에서 가장 흔함)",
+        "참고: ausrechnen의 과거분사 — 계산된, 계산했다",
+      ],
+      synonyms: ["gerade", "ironischerweise"],
+      examples: [
+        {
+          de: "Der Schlüssel zur Weltherrschaft ist ausgerechnet ein Schlüssel.",
+          ko: "세계 지배의 열쇠가 하필 열쇠이다.",
+        },
+        {
+          de: "Ausgerechnet heute habe ich meinen Ausweis vergessen.",
+          ko: "하필 오늘 신분증을 잊어버렸다.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "ausrechnen",
+          pos: "동",
+          meaning: "계산하다 (예: Die Kosten sind ausgerechnet.)",
+        },
+      ],
+    },
+    en: {
+      headword: "of all things / of all people / wouldn't you know",
+      meaning: [
+        "ausgerechnet (Adv.): of all things — betont das Unerwartete",
+        "auch zu ausrechnen: calculated",
+      ],
+      synonyms: ["ironically", "of all places"],
+      examples: [
+        {
+          en: "The key to world domination is, of all things, a key.",
+          de: "Der Schlüssel zur Weltherrschaft ist ausgerechnet ein Schlüssel.",
+        },
+        {
+          en: "Of all days, I forgot my ID today.",
+          de: "Ausgerechnet heute habe ich meinen Ausweis vergessen.",
+        },
+      ],
+      derivatives: [
+        { word: "calculate", pos: "동", meaning: "ausrechnen" },
+        { word: "of all things", pos: "구", meaning: "ausgerechnet (Adv.)" },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY2,
+    slot: 4,
+    pos: "구",
+    de: {
+      headword: "zur Sache kommen",
+      meaning: "본론으로 들어가다, 요점으로 넘어가다",
+      synonyms: ["zum Punkt kommen"],
+      examples: [
+        {
+          de: "Kommen wir zur Sache, wenn’s recht ist.",
+          ko: "괜찮으시다면, 본론으로 들어가죠.",
+        },
+      ],
+      derivatives: [
+        { word: "die Sache", pos: "명", meaning: "일, 문제, 주제" },
+        { word: "zur Sache", pos: "구", meaning: "본론으로, 주제에" },
+      ],
+    },
+    en: {
+      headword: "get down to business / come to the point",
+      meaning: ["zur Sache kommen", "zum Punkt kommen"],
+      synonyms: ["cut to the chase"],
+      examples: [
+        {
+          en: "Let's get down to business, if that's all right.",
+          de: "Kommen wir zur Sache, wenn’s recht ist.",
+        },
+      ],
+      derivatives: [
+        { word: "matter / business", pos: "명", meaning: "die Sache" },
+        { word: "to the point", pos: "구", meaning: "zur Sache" },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY2,
+    slot: 5,
+    pos: "구",
+    de: {
+      headword: "wenn’s recht ist",
+      meaning: [
+        "괜찮으시다면, 실례가 안 된다면",
+        "wenn es recht ist 의 구어 축약 — 상대 동의를 구하는 완충 표현",
+      ],
+      synonyms: ["wenn es Ihnen recht ist", "falls Sie nichts dagegen haben"],
+      examples: [
+        {
+          de: "Ich gehe schon mal vor, wenn’s recht ist.",
+          ko: "괜찮으시다면, 저 먼저 가 볼게요.",
+        },
+      ],
+      derivatives: [
+        { word: "wenn es recht ist", pos: "구", meaning: "정식 표기 (축약 전)" },
+        { word: "recht sein", pos: "동", meaning: "괜찮다, 마음에 들다" },
+      ],
+    },
+    en: {
+      headword: "if that's all right / if you don't mind",
+      meaning: [
+        "wenn’s recht ist (= wenn es recht ist)",
+        "höfliche Absicherung",
+      ],
+      synonyms: ["if that's okay with you"],
+      examples: [
+        {
+          en: "I'll go ahead, if you don't mind.",
+          de: "Ich gehe schon mal vor, wenn’s recht ist.",
+        },
+      ],
+      derivatives: [
+        { word: "if that's all right", pos: "구", meaning: "wenn’s recht ist" },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY2,
+    slot: 6,
+    pos: "구",
+    de: {
+      headword: "einen Vertrag aufsetzen",
+      meaning: "계약서를 작성하다, 계약서 초안을 만들다",
+      synonyms: ["einen Vertrag erstellen", "einen Vertrag ausarbeiten"],
+      examples: [
+        {
+          de: "Können Sie den Vertrag aufsetzen?",
+          ko: "계약서 작성해 주시겠어요?",
+        },
+        {
+          de: "Der Anwalt setzt den Vertrag auf.",
+          ko: "변호사가 계약서를 작성한다.",
+        },
+      ],
+      derivatives: [
+        { word: "der Vertrag", pos: "명", meaning: "계약, 계약서" },
+        { word: "aufsetzen", pos: "동", meaning: "(문서 등을) 작성하다" },
+      ],
+    },
+    en: {
+      headword: "draw up a contract",
+      meaning: ["einen Vertrag aufsetzen", "einen Vertragsentwurf erstellen"],
+      synonyms: ["draft a contract"],
+      examples: [
+        {
+          en: "Can you draw up the contract?",
+          de: "Können Sie den Vertrag aufsetzen?",
+        },
+        {
+          en: "The lawyer is drawing up the contract.",
+          de: "Der Anwalt setzt den Vertrag auf.",
+        },
+      ],
+      derivatives: [
+        { word: "contract", pos: "명", meaning: "der Vertrag" },
+        { word: "draw up / draft", pos: "동", meaning: "aufsetzen" },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY2,
+    slot: 7,
+    pos: "부",
+    de: {
+      headword: "offenbar",
+      meaning: [
+        "아무래도 ~인 것 같다, 보아하니 (추측)",
+        "분명히, 명백히",
+      ],
+      synonyms: ["anscheinend", "offensichtlich"],
+      examples: [
+        {
+          de: "Er ist offenbar krank.",
+          ko: "아무래도 아픈 것 같다.",
+        },
+        {
+          de: "Das ist offenbar falsch.",
+          ko: "그건 분명히 틀렸다.",
+        },
+      ],
+      derivatives: [
+        { word: "offensichtlich", pos: "형", meaning: "명백한, 분명한" },
+      ],
+    },
+    en: {
+      headword: "apparently / evidently / clearly",
+      meaning: [
+        "offenbar: anscheinend / offensichtlich",
+        "vermutend oder klar feststellend",
+      ],
+      synonyms: ["seemingly", "obviously"],
+      examples: [
+        {
+          en: "He's apparently ill.",
+          de: "Er ist offenbar krank.",
+        },
+        {
+          en: "That's clearly wrong.",
+          de: "Das ist offenbar falsch.",
+        },
+      ],
+      derivatives: [
+        { word: "obvious", pos: "형", meaning: "offensichtlich" },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY2,
+    slot: 8,
+    pos: "동",
+    de: {
+      headword: "stiften",
+      meaning: [
+        "기부하다; (재단·상 등을) 설립하다",
+        "(상태·분위기 등을) 일으키다, 만들다 — Unruhe/Frieden stiften",
+      ],
+      synonyms: ["spenden", "gründen"],
+      examples: [
+        {
+          de: "Wenn man annimmt, dass 30 Prozent gar nicht stiften …",
+          ko: "30%는 아예 기부하지 않는다고 가정하면 …",
+        },
+        {
+          de: "Er hat eine Stiftung gestiftet.",
+          ko: "그는 재단을 설립했다.",
+        },
+      ],
+      derivatives: [
+        { word: "die Stiftung", pos: "명", meaning: "재단, 기부" },
+        { word: "Unruhe stiften", pos: "구", meaning: "소란을 일으키다" },
+      ],
+    },
+    en: {
+      headword: "donate / endow / found; cause (trouble)",
+      meaning: [
+        "stiften: spenden, eine Stiftung gründen",
+        "auch: Unruhe/Frieden stiften",
+      ],
+      synonyms: ["donate", "establish"],
+      examples: [
+        {
+          en: "If one assumes that 30 percent don't donate at all …",
+          de: "Wenn man annimmt, dass 30 Prozent gar nicht stiften …",
+        },
+        {
+          en: "He endowed / founded a foundation.",
+          de: "Er hat eine Stiftung gestiftet.",
+        },
+      ],
+      derivatives: [
+        { word: "foundation", pos: "명", meaning: "die Stiftung" },
+        { word: "cause unrest", pos: "구", meaning: "Unruhe stiften" },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY2,
+    slot: 9,
+    pos: "부",
+    de: {
+      headword: "weitaus",
+      meaning: "훨씬, 단연히 (비교급 앞에서 정도를 강하게 함)",
+      synonyms: ["viel", "bei Weitem"],
+      examples: [
+        {
+          de: "… und die meisten weitaus weniger geben, als sie vorher ansagen,",
+          ko: "… 그리고 대부분은 미리 말한 것보다 훨씬 적게 낸다,",
+        },
+        {
+          de: "Das ist weitaus besser als erwartet.",
+          ko: "그건 예상보다 훨씬 낫다.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "ansagen",
+          pos: "동",
+          meaning: "미리 말하다, 공언하다, 예고하다",
+        },
+        { word: "weitaus mehr / weniger", pos: "구", meaning: "훨씬 더 / 훨씬 덜" },
+      ],
+    },
+    en: {
+      headword: "by far / far (more/less)",
+      meaning: [
+        "weitaus: verstärkt einen Komparativ",
+        "weitaus weniger = far less",
+      ],
+      synonyms: ["far", "much"],
+      examples: [
+        {
+          en: "… and most give far less than they previously announce,",
+          de: "… und die meisten weitaus weniger geben, als sie vorher ansagen,",
+        },
+        {
+          en: "That's far better than expected.",
+          de: "Das ist weitaus besser als erwartet.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "announce / declare beforehand",
+          pos: "동",
+          meaning: "ansagen",
+        },
+        { word: "far less / far more", pos: "구", meaning: "weitaus weniger / mehr" },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY2,
+    slot: 10,
+    pos: "구",
+    de: {
+      headword: "die Zeit anhalten",
+      meaning: "시간을 멈추다",
+      examples: [
+        {
+          de: "Dumm, dass man die Zeit nicht anhalten kann.",
+          ko: "시간을 멈출 수 없다니, 바보 같지.",
+        },
+        {
+          de: "Ich wünschte, ich könnte die Zeit anhalten.",
+          ko: "시간을 멈출 수 있으면 좋겠어.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "anhalten",
+          pos: "동",
+          meaning: "멈추다; 세우다; 계속되다 (단독 뜻은 다양)",
+        },
+      ],
+    },
+    en: {
+      headword: "stop time / freeze time",
+      meaning: ["die Zeit anhalten"],
+      examples: [
+        {
+          en: "It's dumb that you can't stop time.",
+          de: "Dumm, dass man die Zeit nicht anhalten kann.",
+        },
+        {
+          en: "I wish I could stop time.",
+          de: "Ich wünschte, ich könnte die Zeit anhalten.",
+        },
+      ],
+      derivatives: [
+        { word: "stop / halt", pos: "동", meaning: "anhalten" },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY2,
+    slot: 11,
+    pos: "구",
+    de: {
+      headword: "Ein Jammer ist das.",
+      meaning: [
+        "정말 안타까워. / 참 유감이야.",
+        "일상에서는 Schade. 가 더 흔함 — 한탄·문장형 표현",
+      ],
+      synonyms: ["Es ist ein Jammer.", "Das ist schade."],
+      examples: [
+        {
+          de: "Ein Jammer ist das.",
+          ko: "정말 안타까워. / 참 유감이야.",
+        },
+        {
+          de: "Es ist ein Jammer, dass er nicht kommen kann.",
+          ko: "그가 올 수 없다니 참 안타깝다.",
+        },
+      ],
+      derivatives: [
+        { word: "der Jammer", pos: "명", meaning: "안타까움, 한탄" },
+        { word: "schade", pos: "형", meaning: "안타까운 (일상 표현: Schade.)" },
+      ],
+    },
+    en: {
+      headword: "What a pity. / That's a shame.",
+      meaning: [
+        "Ein Jammer ist das. / Es ist ein Jammer.",
+        "im Alltag oft: Schade.",
+      ],
+      synonyms: ["What a shame.", "Too bad."],
+      examples: [
+        {
+          en: "What a pity. / That's a shame.",
+          de: "Ein Jammer ist das.",
+        },
+        {
+          en: "It's a pity that he can't come.",
+          de: "Es ist ein Jammer, dass er nicht kommen kann.",
+        },
+      ],
+      derivatives: [
+        { word: "pity / shame", pos: "명", meaning: "der Jammer" },
+        { word: "too bad / pity", pos: "구", meaning: "schade" },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY2,
+    slot: 12,
+    pos: "동",
+    de: {
+      headword: "jemanden versetzen",
+      meaning: [
+        "(약속을) 바람맞히다, 나타나 주지 않다",
+        "다른 뜻: 전근시키다, 옮기다 — 여기선 약속 맥락",
+      ],
+      synonyms: ["jemanden stehen lassen", "nicht erscheinen"],
+      examples: [
+        {
+          de: "Nein. Man hat mich versetzt.",
+          ko: "아니. 나를 바람맞혔어.",
+        },
+        {
+          de: "Sie hat mich gestern Abend versetzt.",
+          ko: "그녀가 어제 저녁 나를 바람맞혔다.",
+        },
+      ],
+      derivatives: [
+        { word: "die Versetzung", pos: "명", meaning: "전근; (학교) 진급" },
+      ],
+    },
+    en: {
+      headword: "stand someone up",
+      meaning: [
+        "jemanden versetzen (Termin)",
+        "auch: versetzen = transfer (Job)",
+      ],
+      synonyms: ["blow someone off"],
+      examples: [
+        {
+          en: "No. They stood me up.",
+          de: "Nein. Man hat mich versetzt.",
+        },
+        {
+          en: "She stood me up last night.",
+          de: "Sie hat mich gestern Abend versetzt.",
+        },
+      ],
+      derivatives: [
+        { word: "transfer / relocation", pos: "명", meaning: "die Versetzung" },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY2,
+    slot: 13,
+    pos: "구",
+    de: {
+      headword: "den Philanthropen spielen",
+      meaning: "자선가 행세하다, 자선가인 척하다",
+      examples: [
+        {
+          de: "Reiche spielen gern den Philanthropen.",
+          ko: "부자들은 자선가 행세하기를 좋아한다.",
+        },
+        {
+          de: "Aber wenn’s um den Scheck geht, sind sie nicht mehr da.",
+          ko: "그런데 수표(돈) 얘기가 되면, 그들은 더 이상 없다.",
+        },
+      ],
+      derivatives: [
+        { word: "der Philanthrop", pos: "명", meaning: "자선가, 박애주의자" },
+        {
+          word: "wenn es um etwas geht",
+          pos: "구",
+          meaning: "…가 문제/핵심일 때",
+        },
+      ],
+    },
+    en: {
+      headword: "play the philanthropist",
+      meaning: ["den Philanthropen spielen", "sich als Wohltäter geben"],
+      examples: [
+        {
+          en: "Rich people like to play the philanthropist.",
+          de: "Reiche spielen gern den Philanthropen.",
+        },
+        {
+          en: "But when it comes to the check, they're gone.",
+          de: "Aber wenn’s um den Scheck geht, sind sie nicht mehr da.",
+        },
+      ],
+      derivatives: [
+        { word: "philanthropist", pos: "명", meaning: "der Philanthrop" },
+        {
+          word: "when it comes to …",
+          pos: "구",
+          meaning: "wenn es um … geht",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY2,
+    slot: 14,
+    pos: "구",
+    de: {
+      headword: "wenn es um etwas geht",
+      meaning: "…가 문제일 때, …에 관한 일이면, …가 핵심이면",
+      synonyms: ["wenn’s um etwas geht"],
+      examples: [
+        {
+          de: "Aber wenn’s um den Scheck geht, sind sie nicht mehr da.",
+          ko: "그런데 수표(돈) 얘기가 되면, 그들은 더 이상 없다.",
+        },
+        {
+          de: "Wenn es um Geld geht, wird er ernst.",
+          ko: "돈 얘기가 되면 그는 진지해진다.",
+        },
+      ],
+      derivatives: [
+        { word: "der Scheck", pos: "명", meaning: "수표 (여기선 실제 돈·기부금)" },
+      ],
+    },
+    en: {
+      headword: "when it comes to something",
+      meaning: ["wenn es um etwas geht", "wenn’s um etwas geht"],
+      examples: [
+        {
+          en: "But when it comes to the check, they're gone.",
+          de: "Aber wenn’s um den Scheck geht, sind sie nicht mehr da.",
+        },
+        {
+          en: "When it comes to money, he gets serious.",
+          de: "Wenn es um Geld geht, wird er ernst.",
+        },
+      ],
+      derivatives: [
+        { word: "check / cheque", pos: "명", meaning: "der Scheck" },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY2,
+    slot: 15,
+    pos: "동",
+    de: {
+      headword: "improvisieren",
+      meaning: "즉흥으로 하다, 즉석에서 해내다",
+      examples: [
+        {
+          de: "Das kann man nicht improvisieren.",
+          ko: "그건 즉흥으로 할 수 없다.",
+        },
+        {
+          de: "Wir müssen improvisieren.",
+          ko: "우리는 즉흥으로 해야 한다.",
+        },
+      ],
+      derivatives: [
+        { word: "die Improvisation", pos: "명", meaning: "즉흥, 즉흥 연주/연기" },
+      ],
+    },
+    en: {
+      headword: "improvise",
+      meaning: ["improvisieren"],
+      examples: [
+        {
+          en: "You can't improvise that.",
+          de: "Das kann man nicht improvisieren.",
+        },
+        {
+          en: "We'll have to improvise.",
+          de: "Wir müssen improvisieren.",
+        },
+      ],
+      derivatives: [
+        { word: "improvisation", pos: "명", meaning: "die Improvisation" },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY2,
+    slot: 16,
+    pos: "명",
+    de: {
+      headword: "die Provision",
+      meaning: "(판매·중개) 수수료, 커미션",
+      synonyms: ["die Kommission"],
+      examples: [
+        {
+          de: "Er bekommt eine Provision für jeden Verkauf.",
+          ko: "그는 판매마다 수수료를 받는다.",
+        },
+        {
+          de: "Die Provision beträgt zehn Prozent.",
+          ko: "수수료는 10%이다.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "provisorisch",
+          pos: "형",
+          meaning: "임시의 (뜻은 다름 — 헷갈리지 말 것)",
+        },
+      ],
+    },
+    en: {
+      headword: "commission",
+      meaning: ["die Provision", "Vermittlungsgebühr"],
+      synonyms: ["fee", "cut"],
+      examples: [
+        {
+          en: "He gets a commission on every sale.",
+          de: "Er bekommt eine Provision für jeden Verkauf.",
+        },
+        {
+          en: "The commission is ten percent.",
+          de: "Die Provision beträgt zehn Prozent.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "provisional",
+          pos: "형",
+          meaning: "provisorisch (anderer Sinn)",
+        },
       ],
     },
   }),
