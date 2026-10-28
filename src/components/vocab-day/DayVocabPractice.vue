@@ -21,10 +21,8 @@
       >
         <div class="practice__meta">
           <span class="practice__num">{{ idx + 1 }}</span>
-          <span class="practice__headword">{{ item.headword }}</span>
+          <span class="practice__headword">{{ item.prompt }}</span>
         </div>
-
-        <p class="practice__prompt">{{ item.prompt }}</p>
 
         <!-- 독일어: 한글 보고 독일어 쓰기 -->
         <template v-if="!isSpeakMode">
@@ -38,12 +36,18 @@
             @input="onInput(item.id, $event.target.value)"
           />
           <div class="practice__actions">
-            <button type="button" class="practice__btn" @click="checkOne(item)">
+            <button
+              type="button"
+              class="practice__btn"
+              :disabled="!hasAnswer(item.id)"
+              @click="checkOne(item)"
+            >
               확인
             </button>
             <button
               type="button"
               class="practice__btn practice__btn--ghost"
+              :disabled="!hasAnswer(item.id)"
               @click="revealOne(item)"
             >
               정답 보기
@@ -78,14 +82,23 @@
           </details>
         </template>
 
-        <p v-if="revealed[item.id] || results[item.id]" class="practice__answer">
+        <p
+          v-if="showAnswer(item)"
+          class="practice__answer"
+        >
           <span class="practice__answer-label">정답</span>
           {{ item.answer }}
         </p>
-        <p v-if="results[item.id] === 'ok'" class="practice__feedback practice__feedback--ok">
+        <p
+          v-if="showAnswer(item) && results[item.id] === 'ok'"
+          class="practice__feedback practice__feedback--ok"
+        >
           맞아요
         </p>
-        <p v-else-if="results[item.id] === 'bad'" class="practice__feedback practice__feedback--bad">
+        <p
+          v-else-if="showAnswer(item) && results[item.id] === 'bad'"
+          class="practice__feedback practice__feedback--bad"
+        >
           다시 해 보세요
         </p>
       </li>
@@ -94,6 +107,9 @@
 </template>
 
 <script>
+/** { [itemId]: { answer?: string, result?: 'ok'|'bad', revealed?: boolean } } */
+const STORAGE_PRACTICE = "day-vocab-practice";
+
 function exampleSource(ex, studyMode) {
   if (!ex) return "";
   if (studyMode === "en-de") return ex.en || ex.source || "";
@@ -115,6 +131,17 @@ function normalizeAnswer(s) {
     .replace(/[.!?…]+$/g, "");
 }
 
+function loadPracticeMap() {
+  try {
+    const raw = localStorage.getItem(STORAGE_PRACTICE);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw);
+    return parsed && typeof parsed === "object" ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+
 export default {
   name: "DayVocabPractice",
   props: {
@@ -132,6 +159,7 @@ export default {
       answers: {},
       results: {},
       revealed: {},
+      practiceMap: loadPracticeMap(),
     };
   },
   computed: {
@@ -172,33 +200,82 @@ export default {
   },
   watch: {
     studyMode() {
-      this.resetState();
+      this.hydrateFromStorage();
     },
     words: {
       handler() {
-        this.resetState();
+        this.hydrateFromStorage();
       },
       deep: false,
     },
+    items: {
+      handler() {
+        this.hydrateFromStorage();
+      },
+      immediate: true,
+    },
   },
   methods: {
-    resetState() {
-      this.answers = {};
-      this.results = {};
-      this.revealed = {};
+    hydrateFromStorage() {
+      const answers = {};
+      const results = {};
+      const revealed = {};
+      this.items.forEach((it) => {
+        const saved = this.practiceMap[it.id];
+        if (!saved || typeof saved !== "object") return;
+        if (typeof saved.answer === "string") answers[it.id] = saved.answer;
+        if (saved.result === "ok" || saved.result === "bad") {
+          results[it.id] = saved.result;
+        }
+        if (saved.revealed) revealed[it.id] = true;
+      });
+      this.answers = answers;
+      this.results = results;
+      this.revealed = revealed;
+    },
+    persistItem(id) {
+      const entry = {
+        answer: this.answers[id] || "",
+        result: this.results[id] || null,
+        revealed: !!this.revealed[id],
+      };
+      if (!entry.answer && !entry.result && !entry.revealed) {
+        this.$delete(this.practiceMap, id);
+      } else {
+        this.$set(this.practiceMap, id, entry);
+      }
+      try {
+        localStorage.setItem(STORAGE_PRACTICE, JSON.stringify(this.practiceMap));
+      } catch {
+        /* quota / private mode */
+      }
+    },
+    hasAnswer(id) {
+      return String(this.answers[id] || "").trim().length > 0;
+    },
+    showAnswer(item) {
+      if (!(this.revealed[item.id] || this.results[item.id])) return false;
+      // 말하기 모드는 입력 없이 정답 보기 가능
+      if (this.isSpeakMode) return true;
+      return this.hasAnswer(item.id);
     },
     onInput(id, value) {
       this.$set(this.answers, id, value);
       if (this.results[id]) this.$delete(this.results, id);
+      this.persistItem(id);
     },
     checkOne(item) {
+      if (!this.isSpeakMode && !this.hasAnswer(item.id)) return;
       const ok =
         normalizeAnswer(this.answers[item.id]) === normalizeAnswer(item.answer);
       this.$set(this.results, item.id, ok ? "ok" : "bad");
       if (ok) this.$set(this.revealed, item.id, true);
+      this.persistItem(item.id);
     },
     revealOne(item) {
+      if (!this.isSpeakMode && !this.hasAnswer(item.id)) return;
       this.$set(this.revealed, item.id, true);
+      this.persistItem(item.id);
     },
   },
 };
@@ -349,6 +426,11 @@ export default {
   background: var(--c-blue);
   border-radius: var(--c-radius-sm);
   cursor: pointer;
+}
+
+.practice__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .practice__btn--ghost {

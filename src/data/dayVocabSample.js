@@ -1778,18 +1778,748 @@ const day02Pairs = [
   }),
 ];
 
+const DAY3 = 3;
+const DATE3 = "2026-10-25";
+
+/** DAY 03 — Agile/실무 독일어 */
+const day03Pairs = [
+  makePair({
+    day: DAY3,
+    slot: 0,
+    pos: "구",
+    de: {
+      headword: "sich auf etwas erstrecken",
+      meaning: "~에까지 미치다, ~까지 확장되다, ~에 걸쳐 있다 / 적용되다",
+      examples: [
+        {
+          de: "Diese Praktiken erstrecken sich auch auf verschiedene Aspekte ihrer Geschäftstätigkeit.",
+          ko: "이러한 실천 방법들은 기업 활동의 다양한 측면에도 적용된다.",
+        },
+        {
+          de: "Das Projekt erstreckt sich über drei Jahre.",
+          ko: "그 프로젝트는 3년에 걸쳐 있다.",
+        },
+      ],
+      derivatives: [
+        { word: "sich erstrecken", pos: "동", meaning: "뻗다, 미치다, 걸치다" },
+      ],
+    },
+    en: {
+      headword: "extend to / cover / span",
+      meaning: ["sich auf etwas erstrecken"],
+      examples: [
+        {
+          en: "These practices also extend to various aspects of their business.",
+          de: "Diese Praktiken erstrecken sich auch auf verschiedene Aspekte ihrer Geschäftstätigkeit.",
+        },
+        {
+          en: "The project spans three years.",
+          de: "Das Projekt erstreckt sich über drei Jahre.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY3,
+    slot: 1,
+    pos: "동",
+    de: {
+      headword: "aufgliedern",
+      meaning: "나누다, 세분화하다 (aufgegliedert werden = 세분화되다)",
+      synonyms: ["unterteilen", "aufteilen"],
+      examples: [
+        {
+          de: "Komplexe Projekte werden in kleinere Teilabschnitte aufgegliedert.",
+          ko: "복잡한 프로젝트가 더 작은 단계들로 세분화된다.",
+        },
+        {
+          de: "Wir gliedern das Thema in drei Teile auf.",
+          ko: "우리는 주제를 세 부분으로 나눈다.",
+        },
+      ],
+      derivatives: [
+        { word: "die Aufgliederung", pos: "명", meaning: "세분화, 구분" },
+      ],
+    },
+    en: {
+      headword: "break down / subdivide",
+      meaning: ["aufgliedern", "aufgegliedert werden"],
+      examples: [
+        {
+          en: "Complex projects are broken down into smaller sections.",
+          de: "Komplexe Projekte werden in kleinere Teilabschnitte aufgegliedert.",
+        },
+        {
+          en: "We break the topic down into three parts.",
+          de: "Wir gliedern das Thema in drei Teile auf.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY3,
+    slot: 2,
+    pos: "동",
+    de: {
+      headword: "vorankommen",
+      meaning: [
+        "진전되다, 앞으로 나아가다, 발전하다",
+        "Wie kommst du voran? / mit etwas vorankommen",
+      ],
+      synonyms: ["Fortschritte machen"],
+      examples: [
+        {
+          de: "Agile bedeutet, schnell voranzukommen.",
+          ko: "Agile은 빠르게 진전하는 것을 의미한다.",
+        },
+        {
+          de: "Wie kommst du mit dem Projekt voran? — Ich komme gut voran.",
+          ko: "프로젝트는 어떻게 돼 가? — 잘 진행되고 있어.",
+        },
+      ],
+      derivatives: [
+        { word: "mit etwas vorankommen", pos: "구", meaning: "…이 잘 진행되다" },
+        { word: "Fortschritte machen", pos: "구", meaning: "진전을 이루다" },
+      ],
+    },
+    en: {
+      headword: "make progress / get ahead",
+      meaning: ["vorankommen", "Wie kommst du voran?"],
+      synonyms: ["make progress"],
+      examples: [
+        {
+          en: "Agile means making progress quickly.",
+          de: "Agile bedeutet, schnell voranzukommen.",
+        },
+        {
+          en: "How are you getting on with the project? — I'm making good progress.",
+          de: "Wie kommst du mit dem Projekt voran? — Ich komme gut voran.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY3,
+    slot: 3,
+    pos: "명",
+    de: {
+      headword: "der Leitfaden",
+      meaning: "가이드, 안내서, 지침서",
+      synonyms: ["der Guide", "die Anleitung"],
+      examples: [
+        {
+          de: "Dieser Leitfaden stellt die neun besten Optionen vor.",
+          ko: "이 가이드는 9가지 최고의 선택지를 소개한다.",
+        },
+        {
+          de: "Im Leitfaden finden Sie alle wichtigen Schritte.",
+          ko: "안내서에서 모든 중요한 단계를 찾을 수 있다.",
+        },
+      ],
+    },
+    en: {
+      headword: "guide / guidebook / guideline",
+      meaning: ["der Leitfaden"],
+      examples: [
+        {
+          en: "This guide presents the nine best options.",
+          de: "Dieser Leitfaden stellt die neun besten Optionen vor.",
+        },
+        {
+          en: "You'll find all the key steps in the guide.",
+          de: "Im Leitfaden finden Sie alle wichtigen Schritte.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY3,
+    slot: 4,
+    pos: "구",
+    de: {
+      headword: "fundierte Entscheidung",
+      meaning: "충분한 근거에 바탕을 둔 결정, 신중하고 합리적인 결정",
+      examples: [
+        {
+          de: "die nötigen Informationen für eine fundierte Entscheidung",
+          ko: "합리적인 결정을 내리기 위한 필요한 정보",
+        },
+        {
+          de: "Wir brauchen mehr Daten für eine fundierte Entscheidung.",
+          ko: "근거 있는 결정을 위해 데이터가 더 필요하다.",
+        },
+      ],
+      derivatives: [
+        { word: "fundiert", pos: "형", meaning: "근거가 충분한, 탄탄한" },
+        { word: "die Entscheidung", pos: "명", meaning: "결정" },
+      ],
+    },
+    en: {
+      headword: "informed / well-founded decision",
+      meaning: ["fundierte Entscheidung"],
+      examples: [
+        {
+          en: "the information needed for an informed decision",
+          de: "die nötigen Informationen für eine fundierte Entscheidung",
+        },
+        {
+          en: "We need more data for a well-founded decision.",
+          de: "Wir brauchen mehr Daten für eine fundierte Entscheidung.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY3,
+    slot: 5,
+    pos: "구",
+    de: {
+      headword: "den Wert von etwas erkennen",
+      meaning: "~의 가치를 알아보다, ~의 중요성을 인식하다",
+      examples: [
+        {
+          de: "Viele Unternehmen haben den Wert von Agile-Projektmanagementpraktiken erkannt.",
+          ko: "많은 기업들이 애자일 프로젝트 관리 방법의 가치를 인식했다.",
+        },
+        {
+          de: "Sie hat den Wert guter Bildung erkannt.",
+          ko: "그녀는 좋은 교육의 가치를 깨달았다.",
+        },
+      ],
+      derivatives: [
+        { word: "der Wert", pos: "명", meaning: "가치" },
+        { word: "erkennen", pos: "동", meaning: "인식하다, 알아보다" },
+      ],
+    },
+    en: {
+      headword: "recognize the value of something",
+      meaning: ["den Wert von etwas erkennen"],
+      examples: [
+        {
+          en: "Many companies have recognized the value of agile project management practices.",
+          de: "Viele Unternehmen haben den Wert von Agile-Projektmanagementpraktiken erkannt.",
+        },
+        {
+          en: "She recognized the value of a good education.",
+          de: "Sie hat den Wert guter Bildung erkannt.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY3,
+    slot: 6,
+    pos: "동",
+    de: {
+      headword: "evaluieren",
+      meaning: "평가하다, 검토하다, 분석하다",
+      synonyms: ["bewerten", "prüfen"],
+      examples: [
+        {
+          de: "Wir müssen die Ergebnisse evaluieren.",
+          ko: "우리는 결과를 평가해야 한다.",
+        },
+        {
+          de: "Das Unternehmen evaluiert verschiedene Softwarelösungen.",
+          ko: "그 회사는 다양한 소프트웨어 솔루션을 평가하고 있다.",
+        },
+      ],
+      derivatives: [
+        { word: "die Evaluierung", pos: "명", meaning: "평가" },
+      ],
+    },
+    en: {
+      headword: "evaluate",
+      meaning: ["evaluieren", "bewerten"],
+      examples: [
+        {
+          en: "We have to evaluate the results.",
+          de: "Wir müssen die Ergebnisse evaluieren.",
+        },
+        {
+          en: "The company is evaluating various software solutions.",
+          de: "Das Unternehmen evaluiert verschiedene Softwarelösungen.",
+        },
+      ],
+      derivatives: [
+        { word: "evaluation", pos: "명", meaning: "die Evaluierung" },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY3,
+    slot: 7,
+    pos: "구",
+    de: {
+      headword: "einer Anforderung gerecht werden",
+      meaning: "요구사항을 충족하다, 요구에 부응하다",
+      synonyms: ["eine Anforderung erfüllen"],
+      examples: [
+        {
+          de: "Die Software wird den Anforderungen der Kunden gerecht.",
+          ko: "그 소프트웨어는 고객의 요구사항을 충족한다.",
+        },
+        {
+          de: "Das Produkt wird den Erwartungen der Nutzer gerecht.",
+          ko: "이 제품은 사용자들의 기대에 부응한다.",
+        },
+      ],
+      derivatives: [
+        { word: "die Anforderung", pos: "명", meaning: "요구사항, 요구조건" },
+        {
+          word: "den Erwartungen gerecht werden",
+          pos: "구",
+          meaning: "기대에 부응하다",
+        },
+        {
+          word: "den Bedürfnissen gerecht werden",
+          pos: "구",
+          meaning: "필요를 충족하다",
+        },
+      ],
+    },
+    en: {
+      headword: "meet a requirement / live up to",
+      meaning: [
+        "einer Anforderung gerecht werden",
+        "den Erwartungen gerecht werden",
+      ],
+      examples: [
+        {
+          en: "The software meets the customers' requirements.",
+          de: "Die Software wird den Anforderungen der Kunden gerecht.",
+        },
+        {
+          en: "The product lives up to users' expectations.",
+          de: "Das Produkt wird den Erwartungen der Nutzer gerecht.",
+        },
+      ],
+      derivatives: [
+        { word: "requirement", pos: "명", meaning: "die Anforderung" },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY3,
+    slot: 8,
+    pos: "구",
+    de: {
+      headword: "im großen Maßstab",
+      meaning: "대규모로, 조직 전체 규모에서",
+      antonyms: ["im kleinen Maßstab"],
+      examples: [
+        {
+          de: "Vorlagen für agile Zusammenarbeit im großen Maßstab erstellen",
+          ko: "대규모 애자일 협업을 위한 템플릿을 만들다",
+        },
+        {
+          de: "Das System wird bereits im großen Maßstab eingesetzt.",
+          ko: "그 시스템은 이미 대규모로 사용되고 있다.",
+        },
+      ],
+      derivatives: [
+        { word: "der Maßstab", pos: "명", meaning: "척도, 기준; 규모, 축척" },
+        { word: "im kleinen Maßstab", pos: "구", meaning: "소규모로" },
+      ],
+    },
+    en: {
+      headword: "on a large scale",
+      meaning: ["im großen Maßstab", "im kleinen Maßstab = on a small scale"],
+      examples: [
+        {
+          en: "create templates for agile collaboration on a large scale",
+          de: "Vorlagen für agile Zusammenarbeit im großen Maßstab erstellen",
+        },
+        {
+          en: "The system is already being used on a large scale.",
+          de: "Das System wird bereits im großen Maßstab eingesetzt.",
+        },
+      ],
+      derivatives: [
+        { word: "scale / standard", pos: "명", meaning: "der Maßstab" },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY3,
+    slot: 9,
+    pos: "동",
+    de: {
+      headword: "sich überschneiden",
+      meaning: "서로 겹치다, 교차하다, (범위·기능이) 중복되다",
+      synonyms: ["sich überlappen"],
+      examples: [
+        {
+          de: "Viele Funktionen überschneiden sich, und die Produkte entwickeln sich ständig weiter.",
+          ko: "많은 기능들이 서로 겹치고, 제품들은 끊임없이 발전한다.",
+        },
+        {
+          de: "Die Grenzen zwischen den Gruppen sind allerdings nicht immer eindeutig.",
+          ko: "다만 그룹 간의 경계가 항상 분명한 것은 아니다.",
+        },
+      ],
+      derivatives: [
+        { word: "die Überschneidung", pos: "명", meaning: "겹침, 중복" },
+      ],
+    },
+    en: {
+      headword: "overlap / intersect",
+      meaning: ["sich überschneiden", "sich überlappen"],
+      synonyms: ["overlap"],
+      examples: [
+        {
+          en: "Many features overlap, and the products keep evolving.",
+          de: "Viele Funktionen überschneiden sich, und die Produkte entwickeln sich ständig weiter.",
+        },
+        {
+          en: "The boundaries between the groups aren't always clear, though.",
+          de: "Die Grenzen zwischen den Gruppen sind allerdings nicht immer eindeutig.",
+        },
+      ],
+      derivatives: [
+        { word: "overlap (n.)", pos: "명", meaning: "die Überschneidung" },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY3,
+    slot: 10,
+    pos: "동",
+    de: {
+      headword: "sich überlappen",
+      meaning: "서로 겹치다, 오버랩되다 (sich überschneiden과 비슷한 뜻)",
+      synonyms: ["sich überschneiden"],
+      examples: [
+        {
+          de: "Die Gruppen überlappen sich, und die Produkte entwickeln sich weiter.",
+          ko: "그룹들이 서로 겹치고, 제품들은 계속 발전한다.",
+        },
+        {
+          de: "GitHub Projects war früher nur eine Liste und ist heute ein richtiges Board.",
+          ko: "GitHub Projects는 예전엔 단순한 목록이었고, 지금은 제대로 된 보드다.",
+        },
+      ],
+      derivatives: [
+        { word: "die Überlappung", pos: "명", meaning: "겹침, 오버랩" },
+      ],
+    },
+    en: {
+      headword: "overlap",
+      meaning: ["sich überlappen", "sich überschneiden"],
+      synonyms: ["intersect"],
+      examples: [
+        {
+          en: "The groups overlap, and the products keep developing.",
+          de: "Die Gruppen überlappen sich, und die Produkte entwickeln sich weiter.",
+        },
+        {
+          en: "GitHub Projects used to be just a list and is now a real board.",
+          de: "GitHub Projects war früher nur eine Liste und ist heute ein richtiges Board.",
+        },
+      ],
+      derivatives: [
+        { word: "overlap (n.)", pos: "명", meaning: "die Überlappung" },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY3,
+    slot: 11,
+    pos: "동",
+    de: {
+      headword: "etwas vertreiben",
+      meaning: [
+        "여기서: 무엇이 사라지도록 하다, 쫓아내다, 없애다",
+        "다른 뜻: (상품을) 판매·유통하다",
+      ],
+      synonyms: ["wegschaffen", "beseitigen"],
+      examples: [
+        {
+          de: "Wir müssen die Fehler so schnell wie möglich vertreiben.",
+          ko: "우리는 오류를 최대한 빨리 없애야 한다.",
+        },
+        {
+          de: "Die Sonne vertreibt die Wolken.",
+          ko: "태양이 구름을 몰아낸다.",
+        },
+      ],
+      derivatives: [
+        { word: "der Vertrieb", pos: "명", meaning: "판매, 유통 (다른 맥락)" },
+      ],
+    },
+    en: {
+      headword: "drive away / get rid of",
+      meaning: [
+        "etwas vertreiben: dafür sorgen, dass etwas weggeht",
+        "auch: distribute / sell (Waren)",
+      ],
+      synonyms: ["dispel", "chase away"],
+      examples: [
+        {
+          en: "We have to get rid of the errors as quickly as possible.",
+          de: "Wir müssen die Fehler so schnell wie möglich vertreiben.",
+        },
+        {
+          en: "The sun drives the clouds away.",
+          de: "Die Sonne vertreibt die Wolken.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY3,
+    slot: 12,
+    pos: "동",
+    de: {
+      headword: "etwas deponieren",
+      meaning: "보관하다, 맡기다; (짐을) 내려놓다, 적재하다",
+      synonyms: ["lagern", "abladen", "hinterlegen"],
+      examples: [
+        {
+          de: "Die Unterlagen werden im Archiv deponiert.",
+          ko: "서류는 아카이브에 보관된다.",
+        },
+        {
+          de: "Die Waren wurden am Lagerplatz deponiert.",
+          ko: "상품이 창고 장소에 내려져 보관되었다.",
+        },
+      ],
+      derivatives: [
+        { word: "das Depot", pos: "명", meaning: "보관소, 창고" },
+        { word: "die Deponie", pos: "명", meaning: "쓰레기 매립지 (관련 어휘)" },
+      ],
+    },
+    en: {
+      headword: "deposit / store / drop off",
+      meaning: ["etwas deponieren: lagern; abladen"],
+      synonyms: ["store", "unload"],
+      examples: [
+        {
+          en: "The documents are deposited in the archive.",
+          de: "Die Unterlagen werden im Archiv deponiert.",
+        },
+        {
+          en: "The goods were dropped off at the storage site.",
+          de: "Die Waren wurden am Lagerplatz deponiert.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY3,
+    slot: 13,
+    pos: "동",
+    de: {
+      headword: "etwas verbauen",
+      meaning: [
+        "여기서: 무엇을 어디에 장착하다, 넣어 설치하다 (einbauen)",
+        "다른 뜻: (공간을) 가리다/막아버리다; (재료를) 다 써버리다",
+      ],
+      synonyms: ["einbauen", "installieren"],
+      examples: [
+        {
+          de: "Die neue Funktion wird in die App verbaut.",
+          ko: "새 기능이 앱에 넣어 설치된다.",
+        },
+        {
+          de: "Der Motor ist fest im Gehäuse verbaut.",
+          ko: "모터가 하우징에 단단히 장착되어 있다.",
+        },
+      ],
+      derivatives: [
+        { word: "einbauen", pos: "동", meaning: "장착하다, 내장하다" },
+      ],
+    },
+    en: {
+      headword: "install / build in / integrate",
+      meaning: [
+        "etwas verbauen: hier etwas in etwas einbauen",
+        "auch: block (space); use up (materials)",
+      ],
+      synonyms: ["build in", "install"],
+      examples: [
+        {
+          en: "The new feature is built into the app.",
+          de: "Die neue Funktion wird in die App verbaut.",
+        },
+        {
+          en: "The motor is firmly installed in the housing.",
+          de: "Der Motor ist fest im Gehäuse verbaut.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY3,
+    slot: 14,
+    pos: "명",
+    de: {
+      headword: "der Konsens",
+      meaning: "합의, 의견 일치",
+      synonyms: ["die Einigung", "die Übereinstimmung"],
+      examples: [
+        {
+          de: "Den Konsens im Team findet aber nur das Gespräch.",
+          ko: "팀의 합의는 결국 대화로만 이루어진다.",
+        },
+        {
+          de: "Wir brauchen einen Konsens über das Vorgehen.",
+          ko: "우리는 진행 방식에 대한 합의가 필요하다.",
+        },
+      ],
+      derivatives: [
+        { word: "konsensfähig", pos: "형", meaning: "합의 가능한" },
+      ],
+    },
+    en: {
+      headword: "consensus",
+      meaning: ["der Konsens", "agreement"],
+      synonyms: ["agreement"],
+      examples: [
+        {
+          en: "But only conversation finds consensus in the team.",
+          de: "Den Konsens im Team findet aber nur das Gespräch.",
+        },
+        {
+          en: "We need a consensus on how to proceed.",
+          de: "Wir brauchen einen Konsens über das Vorgehen.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY3,
+    slot: 15,
+    pos: "명",
+    de: {
+      headword: "die Sepsis",
+      meaning: "패혈증 (전신 염증 반응을 동반한 중증 감염)",
+      examples: [
+        {
+          de: "Der Patient wurde wegen einer Sepsis behandelt.",
+          ko: "환자는 패혈증으로 치료를 받았다.",
+        },
+        {
+          de: "Eine unbehandelte Infektion kann zu einer Sepsis führen.",
+          ko: "치료하지 않은 감염은 패혈증으로 이어질 수 있다.",
+        },
+      ],
+      derivatives: [
+        { word: "septisch", pos: "형", meaning: "패혈성의, 감염성의" },
+      ],
+    },
+    en: {
+      headword: "sepsis",
+      meaning: ["die Sepsis", "blood poisoning / systemic infection"],
+      examples: [
+        {
+          en: "The patient was treated for sepsis.",
+          de: "Der Patient wurde wegen einer Sepsis behandelt.",
+        },
+        {
+          en: "An untreated infection can lead to sepsis.",
+          de: "Eine unbehandelte Infektion kann zu einer Sepsis führen.",
+        },
+      ],
+      derivatives: [
+        { word: "septic", pos: "형", meaning: "septisch" },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY3,
+    slot: 16,
+    pos: "명",
+    de: {
+      headword: "das Verhör",
+      meaning: "심문, 취조",
+      synonyms: ["die Befragung", "die Vernehmung"],
+      examples: [
+        {
+          de: "Das Verhör dauerte mehrere Stunden.",
+          ko: "심문은 몇 시간 동안 이어졌다.",
+        },
+        {
+          de: "Er wurde zum Verhör vorgeladen.",
+          ko: "그는 심문을 위해 소환되었다.",
+        },
+      ],
+      derivatives: [
+        { word: "verhören", pos: "동", meaning: "심문하다, 취조하다" },
+      ],
+    },
+    en: {
+      headword: "interrogation",
+      meaning: ["das Verhör", "questioning"],
+      synonyms: ["questioning", "cross-examination"],
+      examples: [
+        {
+          en: "The interrogation lasted several hours.",
+          de: "Das Verhör dauerte mehrere Stunden.",
+        },
+        {
+          en: "He was summoned for questioning.",
+          de: "Er wurde zum Verhör vorgeladen.",
+        },
+      ],
+      derivatives: [
+        { word: "interrogate", pos: "동", meaning: "verhören" },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY3,
+    slot: 17,
+    pos: "명",
+    de: {
+      headword: "der Leichnam",
+      meaning: "시신, 시체 (격식·공식 표현)",
+      synonyms: ["die Leiche"],
+      examples: [
+        {
+          de: "Der Leichnam wurde zur Untersuchung gebracht.",
+          ko: "시신은 조사를 위해 옮겨졌다.",
+        },
+        {
+          de: "Die Polizei fand den Leichnam im Wald.",
+          ko: "경찰이 숲에서 시신을 발견했다.",
+        },
+      ],
+      derivatives: [
+        { word: "die Leiche", pos: "명", meaning: "시체 (더 일상·구어적)" },
+      ],
+    },
+    en: {
+      headword: "corpse / dead body",
+      meaning: ["der Leichnam", "die Leiche"],
+      synonyms: ["body", "cadaver"],
+      examples: [
+        {
+          en: "The body was taken for examination.",
+          de: "Der Leichnam wurde zur Untersuchung gebracht.",
+        },
+        {
+          en: "The police found the body in the forest.",
+          de: "Die Polizei fand den Leichnam im Wald.",
+        },
+      ],
+    },
+  }),
+];
+
 /** 새 날짜 추가: 이 배열에 { day, date, pairs } 만 push */
 const dayVocabDaySources = [
   { day: DAY, date: DATE, pairs: day01Pairs },
   { day: DAY2, date: DATE2, pairs: day02Pairs },
+  { day: DAY3, date: DATE3, pairs: day03Pairs },
 ];
-
 
 /** 날짜순 DAY 목록 (번호 0001… 전역 연속) */
 export const dayVocabDays = buildChainedDays(dayVocabDaySources);
 
 export const dayVocabDay01 = dayVocabDays[0];
 export const dayVocabDay02 = dayVocabDays[1];
+export const dayVocabDay03 = dayVocabDays[2];
 
 /** 하위 호환 · 미리보기용 스냅샷 */
 export const dayVocabSampleDay = dayVocabDay01.forMode("de-ko");
