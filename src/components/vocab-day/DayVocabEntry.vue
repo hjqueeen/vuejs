@@ -125,7 +125,7 @@ export default {
     },
     examples() {
       const list = Array.isArray(this.word.examples) ? this.word.examples : [];
-      return list.slice(0, 2);
+      return list.slice(0, 4);
     },
     synonyms() {
       return Array.isArray(this.word.synonyms) ? this.word.synonyms : [];

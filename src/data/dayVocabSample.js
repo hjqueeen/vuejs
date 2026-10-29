@@ -3,7 +3,7 @@
  *
  * 추가 방법:
  *  1) makePair({ day, slot, pos, de: {...}, en: {...} }) 한 번만 작성
- *  2) 그날 공부한 만큼 pairs[] 에 push (개수 제한 없음, 예문 쪽당 1~2)
+ *  2) 그날 공부한 만큼 pairs[] 에 push (개수 제한 없음, 예문 쪽당 1~4)
  *  3) 새 날짜면 dayVocabDaySources 에 { day, date, pairs } 추가
  *     → 번호(0001…)는 전체 단어장에서 이어서 자동 부여 (ID처럼 사용)
  *
@@ -75,7 +75,7 @@ export function makeWord({
     meanings,
     synonyms,
     antonyms,
-    examples: examples.slice(0, 2),
+    examples: examples.slice(0, 4),
     derivatives: derivatives.map((d) =>
       typeof d === "string" ? { word: d } : d
     ),
@@ -2507,11 +2507,701 @@ const day03Pairs = [
   }),
 ];
 
+const DAY4 = 4;
+const DATE4 = "2026-10-27";
+
+/** DAY 04 — 회의·HMI 실무 표현 */
+const day04Pairs = [
+  makePair({
+    day: DAY4,
+    slot: 0,
+    pos: "형",
+    de: {
+      headword: "funktionsübergreifend",
+      meaning: "기능·부서를 아우르는, 크로스펑셔널한",
+      synonyms: ["abteilungsübergreifend", "interdisziplinär"],
+      examples: [
+        {
+          de: "Am besten für die Abstimmung in funktionsübergreifenden Teams geeignet.",
+          ko: "기능 간 팀의 조율에 가장 적합하다.",
+        },
+        {
+          de: "Wir arbeiten in einem funktionsübergreifenden Team.",
+          ko: "우리는 기능 간 팀에서 일한다.",
+        },
+      ],
+      derivatives: [
+        { word: "die Funktion", pos: "명", meaning: "기능, 부서/역할" },
+        { word: "übergreifend", pos: "형", meaning: "아우르는, 횡단하는" },
+      ],
+    },
+    en: {
+      headword: "cross-functional",
+      meaning: ["funktionsübergreifend"],
+      synonyms: ["cross-departmental", "interdisciplinary"],
+      examples: [
+        {
+          en: "Best suited for coordination in cross-functional teams.",
+          de: "Am besten für die Abstimmung in funktionsübergreifenden Teams geeignet.",
+        },
+        {
+          en: "We work in a cross-functional team.",
+          de: "Wir arbeiten in einem funktionsübergreifenden Team.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY4,
+    slot: 1,
+    pos: "부",
+    de: {
+      headword: "preisleistungsmäßig",
+      meaning: "가성비 면에서, 가격 대비 성능으로 보면 (구어)",
+      examples: [
+        {
+          de: "Wir wählen dabei einen preisleistungsmäßig günstigen Ansatz.",
+          ko: "그래서 우리는 가성비가 좋은 접근을 선택한다.",
+        },
+        {
+          de: "Preisleistungsmäßig ist diese Lösung die beste Option.",
+          ko: "가성비로 보면 이 솔루션이 최선의 선택이다.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "das Preis-Leistungs-Verhältnis",
+          pos: "명",
+          meaning: "가격 대비 성능, 가성비",
+        },
+      ],
+    },
+    en: {
+      headword: "in terms of value for money / price-performance",
+      meaning: ["preisleistungsmäßig"],
+      examples: [
+        {
+          en: "We choose a cost-effective approach in terms of price-performance.",
+          de: "Wir wählen dabei einen preisleistungsmäßig günstigen Ansatz.",
+        },
+        {
+          en: "In terms of value for money, this solution is the best option.",
+          de: "Preisleistungsmäßig ist diese Lösung die beste Option.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY4,
+    slot: 2,
+    pos: "동",
+    de: {
+      headword: "umschwenken",
+      meaning: "(방침·기술 등을) 바꾸다, ~로 전환하다, 선회하다",
+      synonyms: ["umsteigen", "wechseln", "umstellen"],
+      examples: [
+        {
+          de: "Wir wollen auf das neue Framework umschwenken.",
+          ko: "우리는 새 프레임워크로 전환하려고 한다.",
+        },
+        {
+          de: "Nach dem Feedback schwenkte das Team auf einen anderen Plan um.",
+          ko: "피드백 이후 팀은 다른 계획으로 선회했다.",
+        },
+      ],
+    },
+    en: {
+      headword: "switch (over) / pivot / change course",
+      meaning: ["umschwenken"],
+      synonyms: ["switch to", "migrate to"],
+      examples: [
+        {
+          en: "We want to switch over to the new framework.",
+          de: "Wir wollen auf das neue Framework umschwenken.",
+        },
+        {
+          en: "After the feedback, the team pivoted to a different plan.",
+          de: "Nach dem Feedback schwenkte das Team auf einen anderen Plan um.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY4,
+    slot: 3,
+    pos: "명",
+    de: {
+      headword: "der Einwand",
+      meaning: "이의, 반대 의견, 반론",
+      synonyms: ["der Widerspruch", "die Kritik"],
+      examples: [
+        {
+          de: "Falls ihr irgendwelche Einwände habt, sagt bitte Bescheid.",
+          ko: "혹시 이의가 있으면 말씀해 주세요.",
+        },
+        {
+          de: "Gegen diesen Vorschlag gab es keine Einwände.",
+          ko: "이 제안에 대한 이의는 없었다.",
+        },
+      ],
+      derivatives: [
+        { word: "einwenden", pos: "동", meaning: "이의를 제기하다" },
+      ],
+    },
+    en: {
+      headword: "objection / reservation",
+      meaning: ["der Einwand", "die Einwände"],
+      synonyms: ["concern", "protest"],
+      examples: [
+        {
+          en: "If you have any objections, please say so.",
+          de: "Falls ihr irgendwelche Einwände habt, sagt bitte Bescheid.",
+        },
+        {
+          en: "There were no objections to this proposal.",
+          de: "Gegen diesen Vorschlag gab es keine Einwände.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY4,
+    slot: 4,
+    pos: "동",
+    de: {
+      headword: "reinquatschen",
+      meaning: "(대화·회의에) 끼어들다, 말참견하다 (구어)",
+      synonyms: ["sich einmischen", "dazwischenreden", "unterbrechen"],
+      examples: [
+        {
+          de: "Falls ihr Fragen oder Einwände habt, dann einfach reinquatschen.",
+          ko: "질문이나 이의가 있으면 그냥 끼어들어도 됩니다.",
+        },
+        {
+          de: "Entschuldigung, dass ich kurz reinquatsche — eine kurze Nachfrage.",
+          ko: "잠깐 끼어들어 죄송해요 — 짧은 질문이 있어요.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "hineinquatschen",
+          pos: "동",
+          meaning: "reinquatschen의 표준형에 가까운 표기",
+        },
+      ],
+    },
+    en: {
+      headword: "jump in / chime in / barge in",
+      meaning: ["reinquatschen"],
+      synonyms: ["interrupt", "cut in"],
+      examples: [
+        {
+          en: "If you have questions or objections, just jump in.",
+          de: "Falls ihr Fragen oder Einwände habt, dann einfach reinquatschen.",
+        },
+        {
+          en: "Sorry to jump in — just a quick question.",
+          de: "Entschuldigung, dass ich kurz reinquatsche — eine kurze Nachfrage.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY4,
+    slot: 5,
+    pos: "구",
+    de: {
+      headword: "den Eindruck erwecken",
+      meaning: "~한 인상을 주다, ~처럼 보이게 하다",
+      examples: [
+        {
+          de: "In der Vergangenheit erweckte es ab und zu den Eindruck, dass die Modultests eher stiefmütterlich behandelt wurden.",
+          ko: "과거에는 모듈 테스트가 다소 소홀히 다뤄진다는 인상을 가끔 주었다.",
+        },
+        {
+          de: "Seine Antwort erweckte den Eindruck, dass er unsicher war.",
+          ko: "그의 답변은 그가 확신이 없다는 인상을 주었다.",
+        },
+      ],
+      derivatives: [
+        { word: "erwecken", pos: "동", meaning: "(감정·인상 등을) 불러일으키다" },
+        { word: "der Eindruck", pos: "명", meaning: "인상" },
+        {
+          word: "stiefmütterlich behandeln",
+          pos: "구",
+          meaning: "소홀히 다루다, 홀대하다",
+        },
+      ],
+    },
+    en: {
+      headword: "give the impression / create the impression",
+      meaning: ["den Eindruck erwecken"],
+      examples: [
+        {
+          en: "In the past it occasionally gave the impression that the module tests were rather neglected.",
+          de: "In der Vergangenheit erweckte es ab und zu den Eindruck, dass die Modultests eher stiefmütterlich behandelt wurden.",
+        },
+        {
+          en: "His answer gave the impression that he was unsure.",
+          de: "Seine Antwort erweckte den Eindruck, dass er unsicher war.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY4,
+    slot: 6,
+    pos: "동",
+    de: {
+      headword: "anregen",
+      meaning: "제안하다, 권하다, 자극하다 (angeregt = 제안했다)",
+      synonyms: ["vorschlagen", "anregen zu"],
+      examples: [
+        {
+          de: "Wir hatten schon einmal angeregt, dass man das entsprechend umbaut.",
+          ko: "우리는 그에 맞게 개편하자고 이미 한 번 제안한 적이 있다.",
+        },
+        {
+          de: "Sie hat angeregt, die Tests früher zu starten.",
+          ko: "그녀는 테스트를 더 일찍 시작하자고 제안했다.",
+        },
+      ],
+      derivatives: [
+        { word: "die Anregung", pos: "명", meaning: "제안, 자극" },
+      ],
+    },
+    en: {
+      headword: "suggest / propose / put forward",
+      meaning: ["anregen", "angeregt"],
+      synonyms: ["recommend", "float the idea"],
+      examples: [
+        {
+          en: "We had already suggested once that it be rebuilt accordingly.",
+          de: "Wir hatten schon einmal angeregt, dass man das entsprechend umbaut.",
+        },
+        {
+          en: "She suggested starting the tests earlier.",
+          de: "Sie hat angeregt, die Tests früher zu starten.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY4,
+    slot: 7,
+    pos: "동",
+    de: {
+      headword: "zusenden",
+      meaning: "(누구에게) 보내다, 송부하다",
+      synonyms: ["schicken", "übersenden", "zukommen lassen"],
+      examples: [
+        {
+          de: "Wenn das nicht möglich ist, dann sollten uns die Leute die Tests zumindest zusenden.",
+          ko: "그게 불가능하다면, 적어도 사람들이 우리에게 테스트라도 보내 줘야 한다.",
+        },
+        {
+          de: "Bitte senden Sie uns die Unterlagen zu.",
+          ko: "자료를 저희에게 보내 주세요.",
+        },
+      ],
+      derivatives: [
+        { word: "die Zusendung", pos: "명", meaning: "송부, 발송" },
+      ],
+    },
+    en: {
+      headword: "send (to) / forward",
+      meaning: ["zusenden"],
+      synonyms: ["send over", "dispatch"],
+      examples: [
+        {
+          en: "If that isn't possible, then at least people should send us the tests.",
+          de: "Wenn das nicht möglich ist, dann sollten uns die Leute die Tests zumindest zusenden.",
+        },
+        {
+          en: "Please send us the documents.",
+          de: "Bitte senden Sie uns die Unterlagen zu.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY4,
+    slot: 8,
+    pos: "동",
+    de: {
+      headword: "auftreten",
+      meaning: "(안건·항목 등이) 나타나다, 뜨다, 올라오다",
+      synonyms: ["vorkommen", "erscheinen"],
+      examples: [
+        {
+          de: "Wenn das Thema in der E-Mail auftritt, kümmere ich mich darum.",
+          ko: "그 주제가 메일에 뜨면 내가 처리할게.",
+        },
+        {
+          de: "Solche Probleme treten immer wieder auf.",
+          ko: "그런 문제는 자꾸 발생한다.",
+        },
+      ],
+      derivatives: [
+        { word: "das Auftreten", pos: "명", meaning: "발생, 출현" },
+      ],
+    },
+    en: {
+      headword: "appear / show up / occur",
+      meaning: ["auftreten"],
+      synonyms: ["come up", "crop up"],
+      examples: [
+        {
+          en: "If the topic shows up in the email, I'll take care of it.",
+          de: "Wenn das Thema in der E-Mail auftritt, kümmere ich mich darum.",
+        },
+        {
+          en: "Such problems keep occurring.",
+          de: "Solche Probleme treten immer wieder auf.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY4,
+    slot: 9,
+    pos: "명",
+    de: {
+      headword: "die Devise",
+      meaning: "방침, 모토, 기본 원칙",
+      synonyms: ["das Motto", "der Grundsatz"],
+      examples: [
+        {
+          de: "Die Devise ist: Wir gucken bitte immer rein.",
+          ko: "방침은 이렇다: 항상 한번 들여다봐 주세요.",
+        },
+        {
+          de: "Unsere Devise lautet: Qualität vor Tempo.",
+          ko: "우리의 모토는 속도보다 품질이다.",
+        },
+      ],
+    },
+    en: {
+      headword: "motto / guiding principle / rule of thumb",
+      meaning: ["die Devise"],
+      synonyms: ["maxim", "policy"],
+      examples: [
+        {
+          en: "The motto is: Please always take a look.",
+          de: "Die Devise ist: Wir gucken bitte immer rein.",
+        },
+        {
+          en: "Our motto is: quality over speed.",
+          de: "Unsere Devise lautet: Qualität vor Tempo.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY4,
+    slot: 10,
+    pos: "동",
+    de: {
+      headword: "auffallen",
+      meaning: "눈에 띄다, 알아채다, (실수·오류가) 발견되다",
+      synonyms: ["bemerkbar sein", "ins Auge fallen"],
+      examples: [
+        {
+          de: "Was an Fehlern auffällt, melden wir — auch wenn es uns nicht zugewiesen wurde.",
+          ko: "눈에 띄는 오류는, 우리에게 배정되지 않았더라도 알린다.",
+        },
+        {
+          de: "Mir ist ein Tippfehler aufgefallen.",
+          ko: "오타가 눈에 띄었다.",
+        },
+      ],
+      derivatives: [
+        { word: "auffällig", pos: "형", meaning: "눈에 띄는" },
+      ],
+    },
+    en: {
+      headword: "stand out / notice / catch one's eye",
+      meaning: ["auffallen", "es fällt auf"],
+      synonyms: ["be noticeable", "spot"],
+      examples: [
+        {
+          en: "Any errors that stand out, we report — even if they weren't assigned to us.",
+          de: "Was an Fehlern auffällt, melden wir — auch wenn es uns nicht zugewiesen wurde.",
+        },
+        {
+          en: "I noticed a typo.",
+          de: "Mir ist ein Tippfehler aufgefallen.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY4,
+    slot: 11,
+    pos: "구",
+    de: {
+      headword: "was an + Dat.",
+      meaning:
+        "(부분 용법) ~에 해당하는 것 / ~라는 범주의 것 — 자연스러운 번역은 대개 「~은/는」",
+      examples: [
+        {
+          de: "Was an Informationen fehlt, hole ich nach.",
+          ko: "부족한 정보는 내가 보완한다.",
+        },
+        {
+          de: "Was an Fragen noch offen ist, klären wir morgen.",
+          ko: "아직 열려 있는 질문은 내일 정리한다.",
+        },
+        {
+          de: "Was an Arbeit übrig bleibt, teilen wir uns auf.",
+          ko: "남은 일은 우리가 나눠 맡는다.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "an + Dat. (부분)",
+          pos: "전",
+          meaning: "종류·범주를 한정하는 부분 용법",
+        },
+      ],
+    },
+    en: {
+      headword: "what … in the way of … / whatever …",
+      meaning: ["was an + Dat."],
+      examples: [
+        {
+          en: "Whatever information is missing, I'll fill in.",
+          de: "Was an Informationen fehlt, hole ich nach.",
+        },
+        {
+          en: "Whatever questions are still open, we'll clarify tomorrow.",
+          de: "Was an Fragen noch offen ist, klären wir morgen.",
+        },
+        {
+          en: "Whatever work is left, we'll split among ourselves.",
+          de: "Was an Arbeit übrig bleibt, teilen wir uns auf.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY4,
+    slot: 12,
+    pos: "동",
+    de: {
+      headword: "grätschen",
+      meaning:
+        "(대화·회의에) 끼어들다, 중간에 끼어들다 (구어, 축구 태클 비유)",
+      synonyms: ["dazwischenreden", "reinquatschen", "unterbrechen"],
+      examples: [
+        {
+          de: "Das ist ein Thema, das sollte ich mir mal nehmen — dann kannst du trotzdem dazwischengrätschen.",
+          ko: "그건 내가 한번 맡아 볼 주제야 — 그래도 중간에 끼어들어도 돼.",
+        },
+        {
+          de: "Du kannst dazwischengrätschen und sagen: Das wurde zwar schon jemandem zugewiesen.",
+          ko: "중간에 끼어들어서 「그건 이미 누군가에게 배정됐어요」라고 해도 돼.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "dazwischengrätschen",
+          pos: "동",
+          meaning: "중간에 끼어들다",
+        },
+        {
+          word: "reingrätschen",
+          pos: "동",
+          meaning: "확 끼어들다 (같은 비유)",
+        },
+      ],
+    },
+    en: {
+      headword: "jump in / cut in (colloquial)",
+      meaning: ["grätschen", "dazwischengrätschen"],
+      synonyms: ["chime in", "interrupt"],
+      examples: [
+        {
+          en: "That's a topic I should take on — you can still jump in anyway.",
+          de: "Das ist ein Thema, das sollte ich mir mal nehmen — dann kannst du trotzdem dazwischengrätschen.",
+        },
+        {
+          en: "You can jump in and say: That was already assigned to someone.",
+          de: "Du kannst dazwischengrätschen und sagen: Das wurde zwar schon jemandem zugewiesen.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY4,
+    slot: 13,
+    pos: "구",
+    de: {
+      headword: "sich etwas nehmen",
+      meaning: "(일·주제 등을) 스스로 맡다, 가져가다",
+      synonyms: ["sich um etwas kümmern", "etwas übernehmen"],
+      examples: [
+        {
+          de: "Das ist ein Thema, das sollte ich mir mal nehmen.",
+          ko: "그건 내가 한번 맡아 볼 주제야.",
+        },
+        {
+          de: "Ich nehme mir das Ticket.",
+          ko: "그 티켓은 내가 가져갈게.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "sich etwas vornehmen",
+          pos: "구",
+          meaning: "~하기로 마음먹다 (비슷한 형태, 다른 뜻)",
+        },
+      ],
+    },
+    en: {
+      headword: "take something on / take something for oneself",
+      meaning: ["sich etwas nehmen"],
+      synonyms: ["take ownership of", "handle"],
+      examples: [
+        {
+          en: "That's a topic I should take on.",
+          de: "Das ist ein Thema, das sollte ich mir mal nehmen.",
+        },
+        {
+          en: "I'll take that ticket.",
+          de: "Ich nehme mir das Ticket.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY4,
+    slot: 14,
+    pos: "구",
+    de: {
+      headword: "sich etwas vornehmen",
+      meaning: "~하기로 마음먹다, ~을 계획하다 / 작정하다",
+      synonyms: ["planen", "beabsichtigen"],
+      examples: [
+        {
+          de: "Ich habe mir vorgenommen, jeden Tag Deutsch zu üben.",
+          ko: "나는 매일 독일어를 연습하기로 마음먹었다.",
+        },
+        {
+          de: "Nimm dir nicht zu viel auf einmal vor.",
+          ko: "한 번에 너무 많이 작정하지 마.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "das Vorhaben",
+          pos: "명",
+          meaning: "계획, 의도",
+        },
+      ],
+    },
+    en: {
+      headword: "resolve to do something / set out to do",
+      meaning: ["sich etwas vornehmen"],
+      synonyms: ["intend", "make up one's mind"],
+      examples: [
+        {
+          en: "I've resolved to practice German every day.",
+          de: "Ich habe mir vorgenommen, jeden Tag Deutsch zu üben.",
+        },
+        {
+          en: "Don't take on too much at once.",
+          de: "Nimm dir nicht zu viel auf einmal vor.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY4,
+    slot: 15,
+    pos: "형",
+    de: {
+      headword: "proaktiv",
+      meaning: "선제적으로, 능동적으로, 미리 나서서",
+      synonyms: ["vorausschauend", "eigeninitiativ"],
+      examples: [
+        {
+          de: "Wenn wir öfter mal ein bisschen proaktiv in die Miste reingucken …",
+          ko: "우리가 가끔 좀 더 선제적으로 그 엉망인 더미를 들여다보면 …",
+        },
+        {
+          de: "Wir sollten proaktiv nachfragen, bevor ein Problem entsteht.",
+          ko: "문제가 생기기 전에 선제적으로 물어보는 게 좋다.",
+        },
+      ],
+    },
+    en: {
+      headword: "proactive",
+      meaning: ["proaktiv"],
+      synonyms: ["forward-looking", "self-initiated"],
+      examples: [
+        {
+          en: "If we look into the mess a bit more proactively more often …",
+          de: "Wenn wir öfter mal ein bisschen proaktiv in die Miste reingucken …",
+        },
+        {
+          en: "We should ask proactively before a problem arises.",
+          de: "Wir sollten proaktiv nachfragen, bevor ein Problem entsteht.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY4,
+    slot: 16,
+    pos: "명",
+    de: {
+      headword: "die Miste",
+      meaning:
+        "원래는 거름더미; 구어·비유로는 엉망인 일거리 더미, 잡동사니 쌓인 곳",
+      synonyms: ["der Mist", "das Chaos", "der Haufen"],
+      examples: [
+        {
+          de: "Wenn wir öfter mal proaktiv in die Miste reingucken und uns das nehmen, wofür wir uns verantwortlich fühlen.",
+          ko: "가끔 선제적으로 그 엉망 더미를 들여다보고, 우리가 책임감 느끼는 걸 가져가자.",
+        },
+        {
+          de: "Schau mal in die Miste — da liegt noch ein offenes Ticket.",
+          ko: "그 더미 한번 봐 — 아직 열린 티켓이 있어.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "der Mist",
+          pos: "명",
+          meaning: "똥·거름; 구어로 「엉망, 짜증, 쓸데없는 것」",
+        },
+      ],
+    },
+    en: {
+      headword: "mess / pile of stuff (colloquial)",
+      meaning: ["die Miste", "der Mist"],
+      synonyms: ["heap", "backlog mess"],
+      examples: [
+        {
+          en: "If we look into the mess more proactively more often and take what we feel responsible for.",
+          de: "Wenn wir öfter mal proaktiv in die Miste reingucken und uns das nehmen, wofür wir uns verantwortlich fühlen.",
+        },
+        {
+          en: "Have a look in the mess — there's still an open ticket there.",
+          de: "Schau mal in die Miste — da liegt noch ein offenes Ticket.",
+        },
+      ],
+    },
+  }),
+];
+
 /** 새 날짜 추가: 이 배열에 { day, date, pairs } 만 push */
 const dayVocabDaySources = [
   { day: DAY, date: DATE, pairs: day01Pairs },
   { day: DAY2, date: DATE2, pairs: day02Pairs },
   { day: DAY3, date: DATE3, pairs: day03Pairs },
+  { day: DAY4, date: DATE4, pairs: day04Pairs },
 ];
 
 /** 날짜순 DAY 목록 (번호 0001… 전역 연속) */
@@ -2520,6 +3210,7 @@ export const dayVocabDays = buildChainedDays(dayVocabDaySources);
 export const dayVocabDay01 = dayVocabDays[0];
 export const dayVocabDay02 = dayVocabDays[1];
 export const dayVocabDay03 = dayVocabDays[2];
+export const dayVocabDay04 = dayVocabDays[3];
 
 /** 하위 호환 · 미리보기용 스냅샷 */
 export const dayVocabSampleDay = dayVocabDay01.forMode("de-ko");
