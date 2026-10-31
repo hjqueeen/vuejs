@@ -3196,12 +3196,443 @@ const day04Pairs = [
   }),
 ];
 
+const DAY5 = 5;
+const DATE5 = "2026-10-30";
+
+/** DAY 05 */
+const day05Pairs = [
+  makePair({
+    day: DAY5,
+    slot: 0,
+    pos: "형",
+    de: {
+      headword: "gierig",
+      meaning: "탐욕스러운, 욕심 많은",
+      synonyms: ["habgierig", "begierig"],
+      examples: [
+        {
+          de: "Weil ich einfach nur gierig bin. Und einfach nur egoistisch.",
+          ko: "그냥 내가 욕심이 많아서. 그리고 그냥 이기적이어서.",
+        },
+        {
+          de: "Er schaute gierig auf das Geld.",
+          ko: "그는 돈을 탐욕스럽게 바라보았다.",
+        },
+      ],
+      derivatives: [
+        { word: "die Gier", pos: "명", meaning: "탐욕, 갈망" },
+        { word: "egoistisch", pos: "형", meaning: "이기적인" },
+      ],
+    },
+    en: {
+      headword: "greedy",
+      meaning: ["gierig"],
+      synonyms: ["avaricious", "eager"],
+      examples: [
+        {
+          en: "Because I'm just greedy. And just selfish.",
+          de: "Weil ich einfach nur gierig bin. Und einfach nur egoistisch.",
+        },
+        {
+          en: "He looked greedily at the money.",
+          de: "Er schaute gierig auf das Geld.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY5,
+    slot: 1,
+    pos: "동",
+    de: {
+      headword: "zurückhalten",
+      meaning: "억제하다, 붙잡다, 만류하다, (감정·말 등을) 참다",
+      synonyms: ["hemmen", "bremsen", "zurückhalten vor"],
+      examples: [
+        {
+          de: "Doch etwas hält mich zurück.",
+          ko: "그런데 무언가가 나를 붙잡는다. / 발목을 잡는다.",
+        },
+        {
+          de: "Sie konnte ihre Tränen nicht zurückhalten.",
+          ko: "그녀는 눈물을 참을 수 없었다.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "hält … zurück",
+          pos: "활",
+          meaning: "분리동사 현재형 (er/sie/es hält … zurück)",
+        },
+      ],
+    },
+    en: {
+      headword: "hold back / restrain / keep back",
+      meaning: ["zurückhalten"],
+      synonyms: ["hold someone back", "suppress"],
+      examples: [
+        {
+          en: "But something is holding me back.",
+          de: "Doch etwas hält mich zurück.",
+        },
+        {
+          en: "She couldn't hold back her tears.",
+          de: "Sie konnte ihre Tränen nicht zurückhalten.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY5,
+    slot: 2,
+    pos: "명",
+    de: {
+      headword: "das Gewissen",
+      meaning: "양심",
+      examples: [
+        {
+          de: "Nein. Ein schlechtes Gewissen.",
+          ko: "아니. 죄책감이야. / 양심에 거리낀다.",
+        },
+        {
+          de: "Er hat ein reines Gewissen.",
+          ko: "그는 양심에 거리낌이 없다 / 떳떳하다.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "ein schlechtes Gewissen",
+          pos: "구",
+          meaning: "죄책감, 거리끼는 양심",
+        },
+        {
+          word: "gewiss",
+          pos: "형",
+          meaning: "확실한 (철자는 비슷하지만 다른 단어)",
+        },
+      ],
+    },
+    en: {
+      headword: "conscience",
+      meaning: ["das Gewissen"],
+      examples: [
+        {
+          en: "No. A guilty conscience.",
+          de: "Nein. Ein schlechtes Gewissen.",
+        },
+        {
+          en: "He has a clear conscience.",
+          de: "Er hat ein reines Gewissen.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY5,
+    slot: 3,
+    pos: "구",
+    de: {
+      headword: "jemanden fertig machen",
+      meaning: "(사람을) 지치게 하다, 무너뜨리다, 완전히 녹초로 만들다 (구어)",
+      synonyms: ["erschöpfen", "mitnehmen", "fertig sein"],
+      examples: [
+        {
+          de: "Das macht mich echt fertig.",
+          ko: "그건 나를 정말 지치게 해. / 진짜 힘들게 해.",
+        },
+        {
+          de: "Der Stress auf der Arbeit macht mich fertig.",
+          ko: "직장 스트레스가 나를 녹초로 만든다.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "fertig sein",
+          pos: "구",
+          meaning: "지치다, 끝장나다, 진이 빠지다 (구어)",
+        },
+      ],
+    },
+    en: {
+      headword: "wear someone out / do someone in",
+      meaning: ["jemanden fertig machen"],
+      synonyms: ["exhaust", "drain"],
+      examples: [
+        {
+          en: "That really wears me out.",
+          de: "Das macht mich echt fertig.",
+        },
+        {
+          en: "The stress at work is finishing me off.",
+          de: "Der Stress auf der Arbeit macht mich fertig.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY5,
+    slot: 4,
+    pos: "동",
+    de: {
+      headword: "entgegenschleudern",
+      meaning: "(말·비난 등을) 마주 던지다, 퍼붓다, 쏘아붙이다",
+      synonyms: ["entgegenwerfen", "an den Kopf werfen"],
+      examples: [
+        {
+          de: "Doch alles, was ich meinem Vater entgegenschleuderte, wurde zu Dornen.",
+          ko: "그런데 내가 아버지에게 마주 던진 모든 말은 가시가 되었다.",
+        },
+        {
+          de: "Sie schleuderte ihm Vorwürfe entgegen.",
+          ko: "그녀는 그에게 비난을 퍼부었다.",
+        },
+      ],
+      derivatives: [
+        { word: "schleudern", pos: "동", meaning: "내던지다, 내팽개치다" },
+        { word: "der Dorn", pos: "명", meaning: "가시 (복수: die Dornen)" },
+      ],
+    },
+    en: {
+      headword: "hurl at / fling at (words, accusations)",
+      meaning: ["entgegenschleudern"],
+      synonyms: ["throw back at", "fling in someone's face"],
+      examples: [
+        {
+          en: "But everything I hurled at my father turned into thorns.",
+          de: "Doch alles, was ich meinem Vater entgegenschleuderte, wurde zu Dornen.",
+        },
+        {
+          en: "She hurled accusations at him.",
+          de: "Sie schleuderte ihm Vorwürfe entgegen.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY5,
+    slot: 5,
+    pos: "구",
+    de: {
+      headword: "jemandem etwas ausrichten",
+      meaning: "(누구에게 말·안부 등을) 전하다, 전달하다",
+      synonyms: ["übermitteln", "ausrichten lassen", "sagen lassen"],
+      examples: [
+        {
+          de: "Richte deinem Lehrer aus, dass ich die Schulgebühren in drei Tagen bezahle.",
+          ko: "선생님께 전학비를 사흘 안에 내겠다고 전해 줘.",
+        },
+        {
+          de: "Kannst du ihm bitte ausrichten, dass ich später komme?",
+          ko: "나중에 온다고 그에게 전해줄래?",
+        },
+      ],
+      derivatives: [
+        {
+          word: "ausrichten",
+          pos: "동",
+          meaning: "전하다; (다른 뜻) 정렬하다, 맞추다, 성사시키다",
+        },
+        {
+          word: "richten",
+          pos: "동",
+          meaning: "향하다, 바로잡다, 판결하다 (여기서의 ‘전하다’ 뜻은 아님)",
+        },
+      ],
+    },
+    en: {
+      headword: "pass on a message / give regards to",
+      meaning: ["jemandem etwas ausrichten", "ausrichten"],
+      synonyms: ["tell someone", "relay"],
+      examples: [
+        {
+          en: "Tell your teacher that I'll pay the school fees in three days.",
+          de: "Richte deinem Lehrer aus, dass ich die Schulgebühren in drei Tagen bezahle.",
+        },
+        {
+          en: "Can you please tell him that I'll come later?",
+          de: "Kannst du ihm bitte ausrichten, dass ich später komme?",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY5,
+    slot: 6,
+    pos: "명",
+    de: {
+      headword: "die Gegend",
+      meaning: "지역, 지방, 부근, 일대",
+      synonyms: ["die Region", "das Gebiet", "die Umgebung"],
+      examples: [
+        {
+          de: "Such dir eine Gegend aus, die sicher für dich ist.",
+          ko: "너에게 안전한 곳을 골라.",
+        },
+        {
+          de: "Kennst du dich in dieser Gegend aus?",
+          ko: "이 동네를 잘 알아?",
+        },
+      ],
+    },
+    en: {
+      headword: "area / region / neighborhood",
+      meaning: ["die Gegend"],
+      synonyms: ["district", "surroundings"],
+      examples: [
+        {
+          en: "Pick an area that's safe for you.",
+          de: "Such dir eine Gegend aus, die sicher für dich ist.",
+        },
+        {
+          en: "Do you know your way around this area?",
+          de: "Kennst du dich in dieser Gegend aus?",
+        },
+      ],
+    },
+  }),
+];
+
+const DAY6 = 6;
+const DATE6 = "2026-10-31";
+
+/** DAY 06 */
+const day06Pairs = [
+  makePair({
+    day: DAY6,
+    slot: 0,
+    pos: "동",
+    de: {
+      headword: "mitbekommen",
+      meaning: "알아채다, (우연히) 듣다·보다, 인지하다",
+      synonyms: ["mitkriegen", "bemerken", "mitbekommen von"],
+      examples: [
+        {
+          de: "Hast du schon mal mitbekommen, dass er irgendwann Urlaub gemacht hat?",
+          ko: "그가 언젠가 휴가 간 걸 알아챈 적 있어?",
+        },
+        {
+          de: "Ich habe das Gespräch nur teilweise mitbekommen.",
+          ko: "그 대화는 일부만 들었다.",
+        },
+      ],
+    },
+    en: {
+      headword: "notice / catch / pick up on",
+      meaning: ["mitbekommen"],
+      synonyms: ["overhear", "register"],
+      examples: [
+        {
+          en: "Have you ever noticed that he took a vacation at some point?",
+          de: "Hast du schon mal mitbekommen, dass er irgendwann Urlaub gemacht hat?",
+        },
+        {
+          en: "I only caught part of the conversation.",
+          de: "Ich habe das Gespräch nur teilweise mitbekommen.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY6,
+    slot: 1,
+    pos: "동",
+    de: {
+      headword: "sich aufregen",
+      meaning: "화내다, 흥분하다, 속상해하다",
+      synonyms: ["sich ärgern", "sich erregen"],
+      examples: [
+        {
+          de: "Hör zu, mein Schatz, wenn du ihn siehst, reg dich bitte nicht auf.",
+          ko: "잘 들어, 자기야. 그를 보면 제발 화내지 마.",
+        },
+        {
+          de: "Reg dich nicht so auf!",
+          ko: "그렇게 화내지 마!",
+        },
+      ],
+      derivatives: [
+        {
+          word: "aufregen",
+          pos: "동",
+          meaning: "(타동) 화나게 하다; 보통은 sich aufregen으로 씀",
+        },
+        {
+          word: "die Aufregung",
+          pos: "명",
+          meaning: "흥분, 소동",
+        },
+      ],
+    },
+    en: {
+      headword: "get upset / get worked up",
+      meaning: ["sich aufregen", "aufregen"],
+      synonyms: ["get angry", "get agitated"],
+      examples: [
+        {
+          en: "Listen, honey, when you see him, please don't get upset.",
+          de: "Hör zu, mein Schatz, wenn du ihn siehst, reg dich bitte nicht auf.",
+        },
+        {
+          en: "Don't get so worked up!",
+          de: "Reg dich nicht so auf!",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY6,
+    slot: 2,
+    pos: "구",
+    de: {
+      headword: "kämpfen um",
+      meaning: "~을 위해/얻으려고 싸우다, 애쓰다, 분투하다",
+      synonyms: ["ringen um", "sich bemühen um"],
+      examples: [
+        {
+          de: "Seit 20 Jahren kämpft er um deine Liebe.",
+          ko: "20년 동안 그는 네 사랑을 얻으려고 싸워 왔다.",
+        },
+        {
+          de: "Sie kämpft um diesen Job.",
+          ko: "그녀는 그 일자리를 얻으려고 애쓰고 있다.",
+        },
+      ],
+      derivatives: [
+        { word: "kämpfen", pos: "동", meaning: "싸우다, 투쟁하다" },
+        { word: "der Kampf", pos: "명", meaning: "싸움, 투쟁" },
+        {
+          word: "kämpfen gegen",
+          pos: "구",
+          meaning: "~에 맞서 싸우다",
+        },
+      ],
+    },
+    en: {
+      headword: "fight for / struggle for",
+      meaning: ["kämpfen um"],
+      synonyms: ["strive for", "battle for"],
+      examples: [
+        {
+          en: "For 20 years he has been fighting for your love.",
+          de: "Seit 20 Jahren kämpft er um deine Liebe.",
+        },
+        {
+          en: "She is fighting for this job.",
+          de: "Sie kämpft um diesen Job.",
+        },
+      ],
+    },
+  }),
+];
+
 /** 새 날짜 추가: 이 배열에 { day, date, pairs } 만 push */
 const dayVocabDaySources = [
   { day: DAY, date: DATE, pairs: day01Pairs },
   { day: DAY2, date: DATE2, pairs: day02Pairs },
   { day: DAY3, date: DATE3, pairs: day03Pairs },
   { day: DAY4, date: DATE4, pairs: day04Pairs },
+  { day: DAY5, date: DATE5, pairs: day05Pairs },
+  { day: DAY6, date: DATE6, pairs: day06Pairs },
 ];
 
 /** 날짜순 DAY 목록 (번호 0001… 전역 연속) */
@@ -3211,6 +3642,8 @@ export const dayVocabDay01 = dayVocabDays[0];
 export const dayVocabDay02 = dayVocabDays[1];
 export const dayVocabDay03 = dayVocabDays[2];
 export const dayVocabDay04 = dayVocabDays[3];
+export const dayVocabDay05 = dayVocabDays[4];
+export const dayVocabDay06 = dayVocabDays[5];
 
 /** 하위 호환 · 미리보기용 스냅샷 */
 export const dayVocabSampleDay = dayVocabDay01.forMode("de-ko");
