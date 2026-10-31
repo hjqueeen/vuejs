@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" width="520" height="300">
+  <rect width="520" height="300" fill="#f7f4ef"/>
+  <text x="260" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#1a1a1a">Kraftwirkung zwischen Magneten</text>
+  <!-- a) Abstoﬂung -->
+  <text x="130" y="58" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="600" fill="#c53030">a) Abstoﬂung</text>
+  <rect x="40" y="80" width="55" height="36" fill="#c53030" stroke="#1a1a1a"/><text x="67" y="104" text-anchor="middle" fill="#fff" font-weight="700" font-size="16" font-family="system-ui,sans-serif">N</text>
+  <rect x="95" y="80" width="55" height="36" fill="#2b6cb0" stroke="#1a1a1a"/><text x="122" y="104" text-anchor="middle" fill="#fff" font-weight="700" font-size="16" font-family="system-ui,sans-serif">S</text>
+  <rect x="175" y="80" width="55" height="36" fill="#2b6cb0" stroke="#1a1a1a"/><text x="202" y="104" text-anchor="middle" fill="#fff" font-weight="700" font-size="16" font-family="system-ui,sans-serif">S</text>
+  <rect x="230" y="80" width="55" height="36" fill="#c53030" stroke="#1a1a1a"/><text x="257" y="104" text-anchor="middle" fill="#fff" font-weight="700" font-size="16" font-family="system-ui,sans-serif">N</text>
+  <path d="M145 98 L160 98" stroke="#c53030" stroke-width="2" marker-end="url(#r)"/>
+  <path d="M170 98 L155 98" stroke="#c53030" stroke-width="2"/>
+  <text x="155" y="140" text-anchor="middle" font-size="12" fill="#c53030" font-family="system-ui,sans-serif">S î S stoﬂen sich ab</text>
+  <!-- b) Anziehung -->
+  <text x="390" y="58" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="600" fill="#276749">b) Anziehung</text>
+  <rect x="310" y="80" width="55" height="36" fill="#2b6cb0" stroke="#1a1a1a"/><text x="337" y="104" text-anchor="middle" fill="#fff" font-weight="700" font-size="16" font-family="system-ui,sans-serif">S</text>
+  <rect x="365" y="80" width="55" height="36" fill="#c53030" stroke="#1a1a1a"/><text x="392" y="104" text-anchor="middle" fill="#fff" font-weight="700" font-size="16" font-family="system-ui,sans-serif">N</text>
+  <rect x="430" y="80" width="55" height="36" fill="#2b6cb0" stroke="#1a1a1a"/><text x="457" y="104" text-anchor="middle" fill="#fff" font-weight="700" font-size="16" font-family="system-ui,sans-serif">S</text>
+  <path d="M415 98 L425 98" stroke="#276749" stroke-width="2.5"/>
+  <text x="400" y="140" text-anchor="middle" font-size="12" fill="#276749" font-family="system-ui,sans-serif">N î S ziehen sich an</text>
+  <!-- second anziehung row -->
+  <rect x="310" y="170" width="55" height="36" fill="#c53030" stroke="#1a1a1a"/><text x="337" y="194" text-anchor="middle" fill="#fff" font-weight="700" font-size="16" font-family="system-ui,sans-serif">N</text>
+  <rect x="365" y="170" width="55" height="36" fill="#2b6cb0" stroke="#1a1a1a"/><text x="392" y="194" text-anchor="middle" fill="#fff" font-weight="700" font-size="16" font-family="system-ui,sans-serif">S</text>
+  <rect x="430" y="170" width="55" height="36" fill="#c53030" stroke="#1a1a1a"/><text x="457" y="194" text-anchor="middle" fill="#fff" font-weight="700" font-size="16" font-family="system-ui,sans-serif">N</text>
+  <text x="400" y="230" text-anchor="middle" font-size="12" fill="#276749" font-family="system-ui,sans-serif">S î N ziehen sich an</text>
+  <text x="260" y="275" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#444">Gleichartig abstoﬂen ∑ Verschiedenartig anziehen</text>
+  <defs>
+    <marker id="r" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#c53030"/>
+    </marker>
+  </defs>
+</svg>
