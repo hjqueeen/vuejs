@@ -4314,6 +4314,678 @@ const day06Pairs = [
   }),
 ];
 
+const DAY7 = 7;
+const DATE7 = "2026-11-09";
+
+/** DAY 07 */
+const day07Pairs = [
+  makePair({
+    day: DAY7,
+    slot: 0,
+    pos: "형",
+    de: {
+      headword: "gewiss",
+      meaning: "어떤, 일정한; 확실한 (여기서는 「어떤·특정한」)",
+      synonyms: ["bestimmt", "manche", "sicher"],
+      examples: [
+        {
+          de: "Gewisse Operationen dauern nie länger als eine bestimmte Zeit.",
+          ko: "어떤 연산들은 정해진 시간보다 절대 오래 걸리지 않는다.",
+        },
+        {
+          de: "In gewissen Fällen ist das erlaubt.",
+          ko: "어떤 경우에는 그게 허용된다.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "gewisse",
+          pos: "형",
+          meaning: "gewiss의 변화형 (복수·여성 등)",
+        },
+        {
+          word: "das Gewissen",
+          pos: "명",
+          meaning: "양심 (철자 비슷, 다른 단어)",
+        },
+      ],
+    },
+    en: {
+      headword: "certain / some",
+      meaning: ["gewiss", "gewisse"],
+      synonyms: ["particular", "sure"],
+      examples: [
+        {
+          en: "Certain operations never take longer than a set amount of time.",
+          de: "Gewisse Operationen dauern nie länger als eine bestimmte Zeit.",
+        },
+        {
+          en: "In certain cases that is allowed.",
+          de: "In gewissen Fällen ist das erlaubt.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY7,
+    slot: 1,
+    pos: "형",
+    de: {
+      headword: "ambitioniert",
+      meaning: "야심 찬, 도전적인, (목표가) 높게 잡힌",
+      synonyms: ["ehrgeizig", "anspruchsvoll"],
+      examples: [
+        {
+          de: "Meine Schätzung wird ambitionierter, aber auf jeden Fall schlechter.",
+          ko: "내 추정은 더 야심 차게 되겠지만, 어쨌든 더 나빠질 거야.",
+        },
+        {
+          de: "Das ist ein ambitioniertes Ziel.",
+          ko: "그건 야심 찬 목표다.",
+        },
+      ],
+      derivatives: [
+        { word: "die Ambition", pos: "명", meaning: "야심, 포부" },
+      ],
+    },
+    en: {
+      headword: "ambitious",
+      meaning: ["ambitioniert"],
+      synonyms: ["aspiring", "demanding"],
+      examples: [
+        {
+          en: "My estimate will get more ambitious, but definitely worse.",
+          de: "Meine Schätzung wird ambitionierter, aber auf jeden Fall schlechter.",
+        },
+        {
+          en: "That is an ambitious goal.",
+          de: "Das ist ein ambitioniertes Ziel.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY7,
+    slot: 2,
+    pos: "동",
+    de: {
+      headword: "eintakten",
+      meaning: "(일정·계획에) 짜 넣다, 스케줄에 맞추다, 타임라인에 배치하다",
+      synonyms: ["einplanen", "terminieren", "einteilen"],
+      examples: [
+        {
+          de: "Vorgesetzte fragen nach der Dauer, um eure Arbeit eintakten zu können.",
+          ko: "상사가 기간을 묻는 건, 너희 일을 일정에 짜 넣기 위해서다.",
+        },
+        {
+          de: "Wir müssen die Aufgaben besser eintakten.",
+          ko: "우리는 업무를 일정에 더 잘 짜 넣어야 한다.",
+        },
+      ],
+      derivatives: [
+        { word: "der Takt", pos: "명", meaning: "박자, 주기, (업무) 리듬" },
+      ],
+    },
+    en: {
+      headword: "schedule / slot into a plan",
+      meaning: ["eintakten"],
+      synonyms: ["plan in", "fit into the timeline"],
+      examples: [
+        {
+          en: "Managers ask about duration so they can schedule your work.",
+          de: "Vorgesetzte fragen nach der Dauer, um eure Arbeit eintakten zu können.",
+        },
+        {
+          en: "We need to schedule the tasks better.",
+          de: "Wir müssen die Aufgaben besser eintakten.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY7,
+    slot: 3,
+    pos: "구",
+    de: {
+      headword: "unter Umständen",
+      meaning: "경우에 따라서는, 어쩌면, 상황에 따라",
+      synonyms: ["möglicherweise", "gegebenenfalls", "vielleicht"],
+      examples: [
+        {
+          de: "Unter Umständen würde so ein Betriebssystem sagen, dass es die Liefergarantie nicht einhalten kann.",
+          ko: "경우에 따라 그런 운영체제는 납품 보증을 지킬 수 없다고 말할 것이다.",
+        },
+        {
+          de: "Das kann unter Umständen teuer werden.",
+          ko: "그건 경우에 따라 비싸질 수 있다.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "der Umstand",
+          pos: "명",
+          meaning: "사정, 상황 (복수: die Umstände)",
+        },
+      ],
+    },
+    en: {
+      headword: "under certain circumstances / possibly",
+      meaning: ["unter Umständen", "Umständen"],
+      synonyms: ["possibly", "as the case may be"],
+      examples: [
+        {
+          en: "Under certain circumstances such an operating system would say it cannot meet the delivery guarantee.",
+          de: "Unter Umständen würde so ein Betriebssystem sagen, dass es die Liefergarantie nicht einhalten kann.",
+        },
+        {
+          en: "That could possibly get expensive.",
+          de: "Das kann unter Umständen teuer werden.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY7,
+    slot: 4,
+    pos: "명",
+    de: {
+      headword: "die Liefergarantie",
+      meaning: "납품 보증, 납기·공급 보장",
+      synonyms: ["die Lieferzusage", "die Lieferversprechen"],
+      examples: [
+        {
+          de: "Das System kann die Liefergarantie nicht einhalten.",
+          ko: "그 시스템은 납품 보증을 지킬 수 없다.",
+        },
+        {
+          de: "Wir geben eine Liefergarantie von 48 Stunden.",
+          ko: "우리는 48시간 납품 보증을 한다.",
+        },
+      ],
+      derivatives: [
+        { word: "liefern", pos: "동", meaning: "납품하다, 공급하다" },
+        { word: "die Garantie", pos: "명", meaning: "보증, 보장" },
+      ],
+    },
+    en: {
+      headword: "delivery guarantee",
+      meaning: ["die Liefergarantie"],
+      synonyms: ["delivery commitment"],
+      examples: [
+        {
+          en: "The system cannot meet the delivery guarantee.",
+          de: "Das System kann die Liefergarantie nicht einhalten.",
+        },
+        {
+          en: "We give a delivery guarantee of 48 hours.",
+          de: "Wir geben eine Liefergarantie von 48 Stunden.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY7,
+    slot: 5,
+    pos: "동",
+    de: {
+      headword: "einhalten",
+      meaning: "(약속·기한·규칙 등을) 지키다, 준수하다",
+      synonyms: ["befolgen", "erfüllen", "einhalten von"],
+      examples: [
+        {
+          de: "Die Liefergarantie einhalten.",
+          ko: "납품 보증을 지키다.",
+        },
+        {
+          de: "Wir müssen den Termin einhalten.",
+          ko: "우리는 기한을 지켜야 한다.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "die Einhaltung",
+          pos: "명",
+          meaning: "준수, 이행",
+        },
+      ],
+    },
+    en: {
+      headword: "keep / meet / comply with",
+      meaning: ["einhalten"],
+      synonyms: ["adhere to", "observe"],
+      examples: [
+        {
+          en: "Meet the delivery guarantee.",
+          de: "Die Liefergarantie einhalten.",
+        },
+        {
+          en: "We have to meet the deadline.",
+          de: "Wir müssen den Termin einhalten.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY7,
+    slot: 6,
+    pos: "동",
+    de: {
+      headword: "überschreiten",
+      meaning: "(한도·기한·선 등을) 넘다, 초과하다",
+      synonyms: ["übersteigen", "hinausgehen über"],
+      examples: [
+        {
+          de: "Manchmal ist es besser, einen Job abzubrechen, als die Lieferzeit zu überschreiten.",
+          ko: "납품 기한을 넘기는 것보다 작업을 중단하는 편이 나을 때도 있다.",
+        },
+        {
+          de: "Wir dürfen das Budget nicht überschreiten.",
+          ko: "우리는 예산을 초과해서는 안 된다.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "die Überschreitung",
+          pos: "명",
+          meaning: "초과, 위반",
+        },
+        {
+          word: "die Lieferzeit",
+          pos: "명",
+          meaning: "납품 기한, 배송 기간",
+        },
+      ],
+    },
+    en: {
+      headword: "exceed / go beyond / overrun",
+      meaning: ["überschreiten"],
+      synonyms: ["surpass", "overstep"],
+      examples: [
+        {
+          en: "Sometimes it's better to cancel a job than to exceed the delivery time.",
+          de: "Manchmal ist es besser, einen Job abzubrechen, als die Lieferzeit zu überschreiten.",
+        },
+        {
+          en: "We must not exceed the budget.",
+          de: "Wir dürfen das Budget nicht überschreiten.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY7,
+    slot: 7,
+    pos: "부",
+    de: {
+      headword: "dementsprechend",
+      meaning: "그에 따라, 그에 상응하여, 따라서",
+      synonyms: ["entsprechend", "demnach", "folglich"],
+      examples: [
+        {
+          de: "Dementsprechend gibt es in der Informatik Bedarf an Echtzeitbetriebssystemen.",
+          ko: "그에 따라 정보학에서도 실시간 운영체제에 대한 수요가 있다.",
+        },
+        {
+          de: "Die Lage ist ernst. Dementsprechend müssen wir handeln.",
+          ko: "상황이 심각하다. 그에 맞게 행동해야 한다.",
+        },
+      ],
+      derivatives: [
+        { word: "entsprechend", pos: "형/부", meaning: "해당하는, 그에 맞게" },
+      ],
+    },
+    en: {
+      headword: "accordingly / correspondingly",
+      meaning: ["dementsprechend"],
+      synonyms: ["therefore", "as a result"],
+      examples: [
+        {
+          en: "Accordingly, there is a need for real-time operating systems in computer science.",
+          de: "Dementsprechend gibt es in der Informatik Bedarf an Echtzeitbetriebssystemen.",
+        },
+        {
+          en: "The situation is serious. Accordingly, we must act.",
+          de: "Die Lage ist ernst. Dementsprechend müssen wir handeln.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY7,
+    slot: 8,
+    pos: "형",
+    de: {
+      headword: "zeitkritisch",
+      meaning: "시간에 민감한, 시간 제약이 큰, 실시간성이 중요한",
+      synonyms: ["dringend", "zeitabhängig", "echtzeitkritisch"],
+      examples: [
+        {
+          de: "Überall, wo es richtig zeitkritisch ist.",
+          ko: "정말로 시간에 민감한 모든 곳에서.",
+        },
+        {
+          de: "Das ist eine zeitkritische Aufgabe.",
+          ko: "그건 시간에 민감한 작업이다.",
+        },
+      ],
+      derivatives: [
+        { word: "die Zeit", pos: "명", meaning: "시간" },
+        { word: "kritisch", pos: "형", meaning: "중요한, 위급한, 비판적인" },
+      ],
+    },
+    en: {
+      headword: "time-critical",
+      meaning: ["zeitkritisch"],
+      synonyms: ["time-sensitive", "urgent"],
+      examples: [
+        {
+          en: "Wherever things are really time-critical.",
+          de: "Überall, wo es richtig zeitkritisch ist.",
+        },
+        {
+          en: "That is a time-critical task.",
+          de: "Das ist eine zeitkritische Aufgabe.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY7,
+    slot: 9,
+    pos: "동",
+    de: {
+      headword: "liefern",
+      meaning: [
+        "납품하다, 공급하다",
+        "(기술) 결과를 내다, (연산·작업을) 제시간에 완료·전달하다",
+      ],
+      synonyms: ["bereitstellen", "erbringen", "abgeben"],
+      examples: [
+        {
+          de: "Wenn eine Realtime-Aufgabe ihre Operation nicht rechtzeitig liefern kann.",
+          ko: "실시간 작업이 연산을 제시간에 끝내지(결과를 내지) 못하면.",
+        },
+        {
+          de: "Die Funktion liefert einen Fehlercode.",
+          ko: "그 함수는 에러 코드를 반환한다.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "ein Ergebnis liefern",
+          pos: "구",
+          meaning: "결과를 내다",
+        },
+        {
+          word: "rechtzeitig liefern",
+          pos: "구",
+          meaning: "제시간에 내다/완료하다",
+        },
+      ],
+    },
+    en: {
+      headword: "deliver / produce / return",
+      meaning: ["liefern"],
+      synonyms: ["provide", "yield"],
+      examples: [
+        {
+          en: "If a real-time task cannot deliver its operation on time.",
+          de: "Wenn eine Realtime-Aufgabe ihre Operation nicht rechtzeitig liefern kann.",
+        },
+        {
+          en: "The function returns an error code.",
+          de: "Die Funktion liefert einen Fehlercode.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY7,
+    slot: 10,
+    pos: "형",
+    de: {
+      headword: "geneigt",
+      meaning: "마음이 기울어진, ~할 마음이 있는, 솔깃한 (zu etwas geneigt sein)",
+      synonyms: ["bereit", "willig", "aufgelegt"],
+      examples: [
+        {
+          de: "Haushaltsroboter — wäre das ein Ding für euch? Ich bin extrem geneigt.",
+          ko: "가사 로봇 — 너희한테 괜찮은 아이디어야? 나는 엄청 솔깃해.",
+        },
+        {
+          de: "Ich bin geneigt, dem Vorschlag zuzustimmen.",
+          ko: "그 제안에 동의하고 싶은 마음이다.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "zu etwas geneigt sein",
+          pos: "구",
+          meaning: "~할 마음이 있다, ~에 끌린다",
+        },
+        { word: "die Neigung", pos: "명", meaning: "성향, 기호, 경사" },
+      ],
+    },
+    en: {
+      headword: "inclined / tempted / up for it",
+      meaning: ["geneigt", "geneigt sein"],
+      synonyms: ["willing", "disposed"],
+      examples: [
+        {
+          en: "Household robots — would that be a thing for you? I'm extremely inclined.",
+          de: "Haushaltsroboter — wäre das ein Ding für euch? Ich bin extrem geneigt.",
+        },
+        {
+          en: "I'm inclined to agree with the proposal.",
+          de: "Ich bin geneigt, dem Vorschlag zuzustimmen.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY7,
+    slot: 11,
+    pos: "명",
+    de: {
+      headword: "der Despot",
+      meaning: "독재자, 전제 군주, (비유) 독단적으로 군림하는 사람",
+      synonyms: ["der Diktator", "der Tyrann"],
+      examples: [
+        {
+          de: "Wenn ich ein Despot wäre …",
+          ko: "내가 독재자라면 …",
+        },
+        {
+          de: "Er regiert wie ein Despot.",
+          ko: "그는 독재자처럼 군림한다.",
+        },
+      ],
+      derivatives: [
+        { word: "despotisch", pos: "형", meaning: "독재적인, 전제적인" },
+        { word: "der Despotismus", pos: "명", meaning: "전제 정치, 독재" },
+      ],
+    },
+    en: {
+      headword: "despot / tyrant",
+      meaning: ["der Despot"],
+      synonyms: ["dictator", "autocrat"],
+      examples: [
+        {
+          en: "If I were a despot …",
+          de: "Wenn ich ein Despot wäre …",
+        },
+        {
+          en: "He rules like a despot.",
+          de: "Er regiert wie ein Despot.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY7,
+    slot: 12,
+    pos: "형/부",
+    de: {
+      headword: "kalkulatorisch",
+      meaning: "계산상으로, 원가·손익 계산상, 산술적으로",
+      synonyms: ["rechnerisch", "kostenmäßig"],
+      examples: [
+        {
+          de: "Es muss nur ein bisschen günstiger sein als die Dienstleistungskraft — kalkulatorisch.",
+          ko: "서비스 인력보다 조금만 더 저렴하면 된다 — 계산상으로.",
+        },
+        {
+          de: "Kalkulatorisch lohnt sich das nicht.",
+          ko: "계산상으로는 수지가 안 맞는다.",
+        },
+      ],
+      derivatives: [
+        { word: "kalkulieren", pos: "동", meaning: "계산하다, 견적 내다" },
+        { word: "die Kalkulation", pos: "명", meaning: "원가 계산, 견적" },
+      ],
+    },
+    en: {
+      headword: "in accounting terms / on paper (cost-wise)",
+      meaning: ["kalkulatorisch"],
+      synonyms: ["calculatively", "cost-wise"],
+      examples: [
+        {
+          en: "It only needs to be a bit cheaper than service labor — on paper.",
+          de: "Es muss nur ein bisschen günstiger sein als die Dienstleistungskraft — kalkulatorisch.",
+        },
+        {
+          en: "On paper, it doesn't pay off.",
+          de: "Kalkulatorisch lohnt sich das nicht.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY7,
+    slot: 13,
+    pos: "구",
+    de: {
+      headword: "jemanden unter Druck setzen",
+      meaning: "누구에게 압력을 가하다, 압박하다",
+      synonyms: ["unter Druck setzen", "bedrängen", "drängen"],
+      examples: [
+        {
+          de: "Vorgesetzte fragen nicht, um euch unter Druck zu setzen.",
+          ko: "상사가 묻는 건 너희를 압박하려는 게 아니다.",
+        },
+        {
+          de: "Setz mich bitte nicht unter Druck.",
+          ko: "나한테 압박 주지 마.",
+        },
+      ],
+      derivatives: [
+        { word: "der Druck", pos: "명", meaning: "압력, 압박" },
+        {
+          word: "unter Druck stehen",
+          pos: "구",
+          meaning: "압박을 받다, 스트레스를 받다",
+        },
+      ],
+    },
+    en: {
+      headword: "put someone under pressure",
+      meaning: ["jemanden unter Druck setzen"],
+      synonyms: ["pressure", "lean on"],
+      examples: [
+        {
+          en: "Managers aren't asking in order to put you under pressure.",
+          de: "Vorgesetzte fragen nicht, um euch unter Druck zu setzen.",
+        },
+        {
+          en: "Please don't put me under pressure.",
+          de: "Setz mich bitte nicht unter Druck.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY7,
+    slot: 14,
+    pos: "명",
+    de: {
+      headword: "die Augenwischerei",
+      meaning: "눈가림, 생색내기, 기만적인 보여주기식 행동",
+      synonyms: ["die Täuschung", "das Blendwerk", "Schwindel"],
+      examples: [
+        {
+          de: "Das ist reine Augenwischerei.",
+          ko: "그건 순수한 눈가림이야.",
+        },
+        {
+          de: "Ohne konkrete Maßnahmen bleibt das Augenwischerei.",
+          ko: "구체적인 조치 없이는 그건 보여주기식에 불과하다.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "jemandem Sand in die Augen streuen",
+          pos: "구",
+          meaning: "눈을 가리다, 속이려 하다 (비슷한 뉘앙스)",
+        },
+      ],
+    },
+    en: {
+      headword: "smoke and mirrors / window dressing",
+      meaning: ["die Augenwischerei"],
+      synonyms: ["deception", "eyewash"],
+      examples: [
+        {
+          en: "That's pure smoke and mirrors.",
+          de: "Das ist reine Augenwischerei.",
+        },
+        {
+          en: "Without concrete measures, that remains window dressing.",
+          de: "Ohne konkrete Maßnahmen bleibt das Augenwischerei.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY7,
+    slot: 15,
+    pos: "명",
+    de: {
+      headword: "die Rechtsdurchsetzung",
+      meaning: "법 집행, 권리·법의 관철, 법적 강제력의 실현",
+      synonyms: ["die Rechtsdurchsetzungskraft", "die Durchsetzung des Rechts"],
+      examples: [
+        {
+          de: "Leider können wir uns auf die Rechtsdurchsetzung nicht ausreichend verlassen.",
+          ko: "안타깝게도 우리는 법 집행에 충분히 의존할 수 없다.",
+        },
+        {
+          de: "Ohne wirksame Rechtsdurchsetzung bleiben Regeln wirkungslos.",
+          ko: "실효성 있는 법 집행이 없으면 규칙은 무력해진다.",
+        },
+      ],
+      derivatives: [
+        { word: "das Recht", pos: "명", meaning: "법, 권리" },
+        { word: "durchsetzen", pos: "동", meaning: "관철하다, 관철시키다" },
+      ],
+    },
+    en: {
+      headword: "law enforcement / enforcement of rights",
+      meaning: ["die Rechtsdurchsetzung"],
+      synonyms: ["legal enforcement"],
+      examples: [
+        {
+          en: "Unfortunately, we cannot rely sufficiently on law enforcement.",
+          de: "Leider können wir uns auf die Rechtsdurchsetzung nicht ausreichend verlassen.",
+        },
+        {
+          en: "Without effective enforcement of the law, rules remain ineffective.",
+          de: "Ohne wirksame Rechtsdurchsetzung bleiben Regeln wirkungslos.",
+        },
+      ],
+    },
+  }),
+];
+
 /** 새 날짜 추가: 이 배열에 { day, date, pairs } 만 push */
 const dayVocabDaySources = [
   { day: DAY, date: DATE, pairs: day01Pairs },
@@ -4322,6 +4994,7 @@ const dayVocabDaySources = [
   { day: DAY4, date: DATE4, pairs: day04Pairs },
   { day: DAY5, date: DATE5, pairs: day05Pairs },
   { day: DAY6, date: DATE6, pairs: day06Pairs },
+  { day: DAY7, date: DATE7, pairs: day07Pairs },
 ];
 
 /** 날짜순 DAY 목록 (번호 0001… 전역 연속) */
@@ -4333,6 +5006,7 @@ export const dayVocabDay03 = dayVocabDays[2];
 export const dayVocabDay04 = dayVocabDays[3];
 export const dayVocabDay05 = dayVocabDays[4];
 export const dayVocabDay06 = dayVocabDays[5];
+export const dayVocabDay07 = dayVocabDays[6];
 
 /** 하위 호환 · 미리보기용 스냅샷 */
 export const dayVocabSampleDay = dayVocabDay01.forMode("de-ko");
