@@ -362,6 +362,86 @@ export const physikProbeFragenCards = [
     "하중 인양 자석의 작동을 짧게 설명하시오.",
     "H · Elektromagnet",
   ),
+
+  // ─── I. BSL-Übung (04.11.2026) ───
+  q(
+    "card-ppf-i1",
+    "Zeichne Anordnungen zweier Stabmagneten mit Feldlinien: a) Abstoßung, b) Anziehung.",
+    "막대자석 두 개의 배치를 자기력선과 함께: a) 반발, b) 인력.",
+    "I · BSL",
+  ),
+  q(
+    "card-ppf-i2",
+    "Erkläre mithilfe der Kompassnadel, welcher Magnetpol am geografischen Nordpol sein muss.",
+    "나침반으로 지리적 북극에 어떤 자극이 있어야 하는지 설명하시오.",
+    "I · BSL",
+  ),
+  q(
+    "card-ppf-i3",
+    "Was ist ein „magnetischer Monopol“? Was passiert beim Zerbrechen eines Stabmagneten (Elementarmagnete)?",
+    "자기 단극이란? 막대자석을 부러뜨리면? (소자석)",
+    "I · BSL",
+  ),
+  q(
+    "card-ppf-i4",
+    "Erkläre magnetische Influenz an Dauermagnet + Büroklammer: Elementarmagnete a) im Feld, b) außerhalb.",
+    "자기 유도(클립): 소자석이 a) 장 안, b) 장 밖에서?",
+    "I · BSL",
+  ),
+  q(
+    "card-ppf-i5",
+    "Nenne zwei Möglichkeiten zur Entmagnetisierung und erkläre sie mit Elementarmagneten.",
+    "탈자화 방법 두 가지와 소자석 모델 설명.",
+    "I · BSL",
+  ),
+  q(
+    "card-ppf-i6",
+    "Warum lässt sich das Magnetfeld eines Elektromagneten nicht durch Elementarmagnete erklären?",
+    "전자석 장을 소자석 모델로 설명할 수 없는 이유는?",
+    "I · BSL",
+  ),
+  q(
+    "card-ppf-i7",
+    "Nenne und begründe Möglichkeiten, das Feld einer stromdurchflossenen Spule zu verstärken.",
+    "전류 코일 장을 세게 하는 방법과 이유.",
+    "I · BSL",
+  ),
+  q(
+    "card-ppf-i8",
+    "Nenne die drei wesentlichen Bestandteile eines Elektromotors und erkläre ihre Funktion.",
+    "전동기 핵심 부품 세 가지와 기능.",
+    "I · BSL",
+  ),
+  q(
+    "card-ppf-i9",
+    "Vervollständige: Motor/Generator – Energieumwandlung, Prinzipien, Induktion, Lorentz-Kraft.",
+    "빈칸: 모터/발전기 – 에너지 변환, 원리, 유도, 로렌츠 힘.",
+    "I · BSL",
+  ),
+  q(
+    "card-ppf-i10",
+    "Nenne zwei Möglichkeiten, durch elektromagnetische Induktion Strom in einer Spule zu erzeugen.",
+    "전자기 유도로 코일에 전류를 만드는 방법 두 가지.",
+    "I · BSL",
+  ),
+  q(
+    "card-ppf-i11",
+    "Nenne vier Möglichkeiten, die in einer Spule induzierte Spannung zu vergrößern.",
+    "유도 전압을 키우는 방법 네 가지.",
+    "I · BSL",
+  ),
+  q(
+    "card-ppf-i12",
+    "Beschreibe, inwiefern das lenzsche Gesetz zur Selbstinduktion führt.",
+    "렌츠 법칙이 자기유도로 이어지는 과정은?",
+    "I · BSL",
+  ),
+  q(
+    "card-ppf-i13",
+    "Nenne mögliche Probleme, die durch Selbstinduktion auftreten können.",
+    "자기유도로 생길 수 있는 문제는?",
+    "I · BSL",
+  ),
 ];
 
 export const physikProbeFragenSections = [
@@ -462,6 +542,25 @@ export const physikProbeFragenSections = [
     id: "section-ppf-h",
     title: "H · Elektromagnet",
     cardIds: ["card-ppf-h1", "card-ppf-h2", "card-ppf-h3"],
+  },
+  {
+    id: "section-ppf-i",
+    title: "I · BSL-Übung",
+    cardIds: [
+      "card-ppf-i1",
+      "card-ppf-i2",
+      "card-ppf-i3",
+      "card-ppf-i4",
+      "card-ppf-i5",
+      "card-ppf-i6",
+      "card-ppf-i7",
+      "card-ppf-i8",
+      "card-ppf-i9",
+      "card-ppf-i10",
+      "card-ppf-i11",
+      "card-ppf-i12",
+      "card-ppf-i13",
+    ],
   },
 ];
 

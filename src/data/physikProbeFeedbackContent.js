@@ -121,6 +121,11 @@ const NS = {
     noteDe: "7. Elektromagnetismus – Lasthebemagnet",
     noteKo: "7. 전자기 – 전자석 크레인",
   },
+  bsl8: {
+    noteChapterId: "ch-bsl-uebung",
+    noteDe: "8. Übungsaufgaben zur BSL",
+    noteKo: "8. BSL 연습문제",
+  },
 };
 
 /** @type {Record<string, typeof NS[keyof typeof NS]>} */
@@ -179,6 +184,19 @@ export const physikProbeNoteSourceByCardId = {
   "card-ppf-h1": NS.elektro7,
   "card-ppf-h2": NS.elektro7,
   "card-ppf-h3": NS.elektro7,
+  "card-ppf-i1": NS.bsl8,
+  "card-ppf-i2": NS.bsl8,
+  "card-ppf-i3": NS.bsl8,
+  "card-ppf-i4": NS.bsl8,
+  "card-ppf-i5": NS.bsl8,
+  "card-ppf-i6": NS.bsl8,
+  "card-ppf-i7": NS.bsl8,
+  "card-ppf-i8": NS.bsl8,
+  "card-ppf-i9": NS.bsl8,
+  "card-ppf-i10": NS.bsl8,
+  "card-ppf-i11": NS.bsl8,
+  "card-ppf-i12": NS.bsl8,
+  "card-ppf-i13": NS.bsl8,
 };
 
 /** @type {Record<string, ProbeFeedbackItem>} */
@@ -513,6 +531,88 @@ export const physikProbeFeedbackByCardId = {
     modelDe:
       "Strom ein → starkes Feld → Last angezogen. Strom aus → Feld weg → Last ablegbar.",
     commentKo: "맞음.",
+  },
+
+  // ─── I · BSL ───
+  "card-ppf-i1": {
+    mark: "ok",
+    modelDe:
+      "a) Gleichartige Pole gegenüber, z. B. [N|S] [S|N]; Feldlinien weichen aus. b) Verschiedenartige Pole gegenüber, z. B. [N|S] [N|S]; Feldlinien von N nach S.",
+    commentKo: "스케치만 있으면 됨. 같은 극=반발, 다른 극=인력.",
+  },
+  "card-ppf-i2": {
+    mark: "partial",
+    modelDe:
+      "Der Nordpol der Kompassnadel zeigt nach geografisch Norden. Verschiedenartige Pole ziehen sich an → am geografischen Nordpol liegt der magnetische Südpol der Erde.",
+    commentKo:
+      "결론(자기 남극 @ 지리적 북극)은 맞음. 「S-Pol der Nadel zeigt nach Norden」은 틀림 — 바늘의 북극이 북쪽. 「verschiedenartige Pole」로 쓰세요.",
+  },
+  "card-ppf-i3": {
+    mark: "ok",
+    modelDe:
+      "Magnetischer Monopol = Magnet mit nur einem Pol — gibt es nicht. Beim Zerbrechen entstehen zwei kleinere Magnete mit N- und S-Pol (Elementarmagnete haben immer beide Pole).",
+    commentKo: "단극 없음 + 자르면 항상 N/S 새 자석.",
+  },
+  "card-ppf-i4": {
+    mark: "ok",
+    modelDe:
+      "Influenz: Stoff wird im äußeren Feld selbst magnetisch. a) Elementarmagnete ausgerichtet → Anziehung. b) Außerhalb: Ausrichtung geht verloren (magnetisch weich).",
+    commentKo: "장 안=정렬, 장 밖=풀림.",
+  },
+  "card-ppf-i5": {
+    mark: "ok",
+    modelDe:
+      "Starkes Erhitzen; starke Erschütterungen. Elementarmagnete werden ungeordnet → Felder heben sich auf.",
+    commentKo: "가열·충격 → 소자석 무질서.",
+  },
+  "card-ppf-i6": {
+    mark: "ok",
+    modelDe:
+      "Das Feld entsteht durch den Strom (bewegte Ladungen) in der Spule, nicht durch fest ausgerichtete Elementarmagnete. Strom aus → Feld weg.",
+    commentKo: "전류가 원인. 소자석 모델은 주로 영구자석.",
+  },
+  "card-ppf-i7": {
+    mark: "ok",
+    modelDe:
+      "Stromstärke↑; Windungszahl↑; Eisenkern; Spule verkürzen. Mehr bewegte Ladungen / mehr Schleifen / ausgerichtete Elementarmagnete im Eisen / dichtere Feldlinien.",
+    commentKo: "네 가지 중 여러 개 + 짧은 이유.",
+  },
+  "card-ppf-i8": {
+    mark: "ok",
+    modelDe:
+      "1) Dauermagnet (Feldmagnet): konstantes Feld. 2) Spule/Anker: Lorentz-Kraft dreht. 3) Kommutator: kehrt Stromrichtung um, damit Drehung weitergeht.",
+    commentKo: "세 부품 + 기능. 스케치도 연습하세요.",
+  },
+  "card-ppf-i9": {
+    mark: "ok",
+    modelDe:
+      "Motor: elektrische → mechanische Energie (elektromotorisches Prinzip). Generator: mechanische → elektrische Energie (Generatorprinzip). Phänomen: elektromagnetische Induktion. Ursache: Lorentz-Kraft.",
+    commentKo:
+      "내용 맞음. 형태: mechanische/elektrische (…en 아님), Generatorprinzip 한 단어.",
+  },
+  "card-ppf-i10": {
+    mark: "ok",
+    modelDe:
+      "1) Magnet in Spule hinein-/herausbewegen (oder Spule bewegen). 2) Magnetfeld einer Nachbarspule ändern (Strom ein/aus oder Stromstärke ändern).",
+    commentKo: "자기 선속(플럭스)이 변하면 됨.",
+  },
+  "card-ppf-i11": {
+    mark: "ok",
+    modelDe:
+      "Windungszahl↑; stärkeres Magnetfeld; Feld schneller ändern; größere Spulenfläche / mehr Feldlinien durch die Spule.",
+    commentKo: "네 가지 모두.",
+  },
+  "card-ppf-i12": {
+    mark: "ok",
+    modelDe:
+      "Stromänderung → eigenes Magnetfeld ändert sich. Nach Lenz wirkt die induzierte Spannung der Änderung entgegen und bremst Anstieg/Abfall des eigenen Stroms = Selbstinduktion.",
+    commentKo: "자기 전류 변화에 반대하는 유도 전압 = 자기유도.",
+  },
+  "card-ppf-i13": {
+    mark: "ok",
+    modelDe:
+      "Hohe Induktionsspannung beim Abschalten → Funken, Bauteilschaden; verzögerter Stromanstieg beim Einschalten; unerwünschte Spannungsstöße.",
+    commentKo: "끌 때 서지·불꽃, 켤 때 지연.",
   },
 };
 

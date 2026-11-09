@@ -528,7 +528,126 @@ Dann wird die einheitliche Ausrichtung der Elementarmagnete zerstört.
 
 ---
 
-## I. 한 문장으로 쓰기 연습 (시험용 모델 문장)
+## I. BSL-Übung (04.11.2026)
+
+### I1
+**Q:** Zeichne Anordnungen zweier Stabmagneten mit Feldlinien: a) Abstoßung, b) Anziehung.  
+*(막대자석 두 개: a) 반발, b) 인력)*
+
+**A:** a) Gleichartige Pole gegenüber, z. B. `[N|S] [S|N]`. b) Verschiedenartige Pole gegenüber, z. B. `[N|S] [N|S]`.  
+*(같은 극=반발, 다른 극=인력.)*
+
+---
+
+### I2
+**Q:** Erkläre mithilfe der Kompassnadel, welcher Magnetpol am geografischen Nordpol sein muss.  
+*(지리적 북극의 자극은?)*
+
+**A:** Der **Nordpol** der Kompassnadel zeigt nach geografisch Norden. Verschiedenartige Pole ziehen sich an → am geografischen Nordpol liegt der **magnetische Südpol**.  
+*(주의: 「S-Pol der Nadel zeigt nach Norden」은 틀림.)*
+
+---
+
+### I3
+**Q:** Was ist ein „magnetischer Monopol“? Was passiert beim Zerbrechen eines Stabmagneten?  
+*(자기 단극? 자석을 부러뜨리면?)*
+
+**A:** Monopol = Magnet mit nur einem Pol — gibt es nicht. Zerbrechen → zwei kleinere Magnete mit N- und S-Pol.  
+*(단극 없음. 자르면 항상 N/S.)*
+
+---
+
+### I4
+**Q:** Magnetische Influenz an Dauermagnet + Büroklammer: Elementarmagnete a) im Feld, b) außerhalb?  
+*(자기 유도: 장 안 / 장 밖)*
+
+**A:** a) ausgerichtet → magnetisch, angezogen. b) ungeordnet → Wirkung weg (magnetisch weich).  
+*(장 안=정렬, 장 밖=풀림.)*
+
+---
+
+### I5
+**Q:** Zwei Möglichkeiten zur Entmagnetisierung — Erklärung mit Elementarmagneten.  
+*(탈자화 두 가지)*
+
+**A:** Starkes Erhitzen; starke Erschütterungen → Elementarmagnete ungeordnet → Felder heben sich auf.  
+*(가열·충격 → 무질서.)*
+
+---
+
+### I6
+**Q:** Warum lässt sich das Feld eines Elektromagneten nicht durch Elementarmagnete erklären?  
+*(전자석 ≠ 소자석 모델)*
+
+**A:** Feld entsteht durch den **Strom** (bewegte Ladungen). Strom aus → Feld weg. Elementarmagnete erklären vor allem Dauermagnete.  
+*(전류가 원인.)*
+
+---
+
+### I7
+**Q:** Möglichkeiten, das Feld einer stromdurchflossenen Spule zu verstärken.  
+*(코일 장 세게)*
+
+**A:** Stromstärke↑; Windungszahl↑; Eisenkern; Spule verkürzen.  
+*(전류·권선·철심·짧게.)*
+
+---
+
+### I8
+**Q:** Drei wesentliche Bestandteile eines Elektromotors und ihre Funktion.  
+*(전동기 세 부품)*
+
+**A:** 1) Dauermagnet — Feld. 2) Spule/Anker — Lorentz-Kraft dreht. 3) Kommutator — kehrt Stromrichtung um.  
+*(계자·전기자·정류자.)*
+
+---
+
+### I9
+**Q:** Motor/Generator — Energieumwandlung, Prinzipien, Induktion, Lorentz-Kraft.  
+*(빈칸 요약)*
+
+**A:** Motor: elektrisch → mechanisch (elektromotorisches Prinzip). Generator: mechanisch → elektrisch (**Generatorprinzip**). Phänomen: **elektromagnetische Induktion**. Ursache: **Lorentz-Kraft**.  
+*(형태: mechanische/elektrische; Generatorprinzip 한 단어.)*
+
+---
+
+### I10
+**Q:** Zwei Möglichkeiten, durch Induktion Strom in einer Spule zu erzeugen.  
+*(유도로 전류)*
+
+**A:** 1) Magnet hinein-/herausbewegen. 2) Feld einer Nachbarspule ändern (Strom ein/aus).  
+*(플럭스 변화.)*
+
+---
+
+### I11
+**Q:** Vier Möglichkeiten, die induzierte Spannung zu vergrößern.  
+*(유도 전압↑)*
+
+**A:** Windungszahl↑; stärkeres Feld; Feld schneller ändern; größere Fläche / mehr Feldlinien.  
+*(권선·장·속도·면적.)*
+
+---
+
+### I12
+**Q:** Inwiefern führt das lenzsche Gesetz zur Selbstinduktion?  
+*(렌츠 → 자기유도)*
+
+**A:** Stromänderung → eigenes Feld ändert sich → induzierte Spannung wirkt der Änderung entgegen = **Selbstinduktion**.  
+*(자기 전류 변화에 반대.)*
+
+---
+
+### I13
+**Q:** Mögliche Probleme durch Selbstinduktion.  
+*(자기유도 문제)*
+
+**A:** Hohe Spannung beim Abschalten → Funken, Schaden; verzögerter Stromanstieg; Spannungsstöße.  
+*(끌 때 서지·불꽃.)*
+
+---
+
+## J. 한 문장으로 쓰기 연습 (시험용 모델 문장)
 
 시험에 **그대로 쓸 수 있는** 짧은 문장만 모았습니다. 큰소리로 3번씩 말해 보세요.
 
@@ -561,7 +680,8 @@ Dann wird die einheitliche Ausrichtung der Elementarmagnete zerstört.
 - [ ] F (지구자기장) 7장  
 - [ ] G (코일) 7장  
 - [ ] H (전자석) 3장  
-- [ ] I 모델 문장 12개  
+- [ ] I (BSL) 13장  
+- [ ] J 모델 문장 12개  
 
 ---
 

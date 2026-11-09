@@ -226,9 +226,9 @@ export const publicBooks = [
     id: PHYSIK_K9_NOTES_BOOK_ID,
     templateType: "study-notes",
     title: "Physik · Klasse 9 Notizen",
-    subtitle: "수업 노트 읽기 — Strom · Magnetismus · Elektromagnet",
+    subtitle: "수업 노트 읽기 — Strom · Magnetismus · BSL-Übung",
     description:
-      "9학년 물리 수업 노트(독·한). 챕터별 스크롤 읽기, DE / KO / 양쪽 전환. 이해한 뒤 플래시카드로 암기하세요.",
+      "9학년 물리 수업 노트(독·한). 챕터별 스크롤 읽기, DE / KO / 양쪽 전환. BSL 연습문제 포함. 이해한 뒤 플래시카드로 암기하세요.",
     coverColor: "book-cover-c",
     relatedFlashcardBookId: PHYSIK_K9_NOTES_RELATED_FLASHCARD_ID,
     owner: "hangyeol",
@@ -257,7 +257,7 @@ export const publicBooks = [
     title: "Physik · Probe-Fragen",
     subtitle: "Frage vorne · Antwort leer — selbst formulieren",
     description:
-      "9학년 물리 시험 연습: 질문만 앞면(DE 또는 DE+KO). 답을 입력하면 로컬에 저장되고, 마지막에 JSON으로 제출(내보내기)할 수 있습니다. 54문항.",
+      "9학년 물리 시험 연습: 질문만 앞면(DE 또는 DE+KO). 답을 입력하면 로컬에 저장되고, 마지막에 JSON으로 제출(내보내기)할 수 있습니다. 67문항 (BSL 포함).",
     coverColor: "book-cover-a",
     cardIds: PHYSIK_PROBE_FRAGEN_CARD_IDS,
     relatedNotesBookId: PHYSIK_K9_NOTES_BOOK_ID,

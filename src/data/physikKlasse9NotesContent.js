@@ -550,6 +550,363 @@ export const physikKlasse9NotesChapters = [
       },
     ],
   },
+  {
+    id: "ch-bsl-uebung",
+    titleDe: "8. Übungsaufgaben zur BSL",
+    titleKo: "8. BSL 연습문제",
+    blocks: [
+      {
+        type: "meta",
+        de: "Datum: 04.11.2026 · BG – Klasse 9 · Elektromagnetismus",
+        ko: "날짜: 2026.11.04 · BG – 9학년 · 전자기",
+      },
+      {
+        type: "p",
+        de: "Übungsaufgaben zur BSL (Bildvorlage). Aufgaben 1–8: Magnetismus & Elektromotor. Aufgaben 9–13: Motor, Generator, Induktion, Selbstinduktion.",
+        ko: "BSL 연습문제(이미지 원본). 1–8: 자기 & 전동기. 9–13: 모터·발전기·유도·자기유도.",
+      },
+
+      // ——— Aufgabe 1 ———
+      {
+        type: "h3",
+        de: "1. Anordnung zweier Stabmagneten",
+        ko: "1. 막대자석 두 개의 배치",
+      },
+      {
+        type: "p",
+        de: "Zeichne eine mögliche Anordnung zweier Stabmagneten inklusive der Feldlinien und Magnetpole, bei denen a) die Magnetpole sich gegenseitig abstoßen, b) die Magnetpole sich gegenseitig anziehen.",
+        ko: "두 막대자석의 가능한 배치를 자기력선·자극과 함께 그리시오. a) 서로 반발, b) 서로 끌어당김.",
+      },
+      {
+        type: "ul",
+        items: [
+          {
+            de: "Antwort a) Abstoßung: gleichartige Pole gegenüber, z. B. [N|S]  [S|N] (S trifft S). Feldlinien zwischen den Polen weichen nach außen aus.",
+            ko: "답 a) 반발: 같은 극이 마주봄, 예) [N|S]  [S|N] (S가 S와 만남). 극 사이 자기력선은 바깥으로 밀려남.",
+          },
+          {
+            de: "Antwort b) Anziehung: verschiedenartige Pole gegenüber, z. B. [N|S]  [N|S] (S trifft N). Feldlinien verlaufen vom N-Pol des einen zum S-Pol des anderen Magneten.",
+            ko: "답 b) 인력: 다른 극이 마주봄, 예) [N|S]  [N|S] (S가 N과 만남). 자기력선은 한쪽 N에서 다른 쪽 S로 이어짐.",
+          },
+        ],
+      },
+
+      // ——— Aufgabe 2 ———
+      {
+        type: "h3",
+        de: "2. Magnetpol am geografischen Nordpol",
+        ko: "2. 지리적 북극의 자극",
+      },
+      {
+        type: "p",
+        de: "Erkläre mithilfe der Magnetisierung von Kompassnadeln, welcher Magnetpol am geografischen Nordpol sein muss.",
+        ko: "나침반 바늘의 자화를 이용해 지리적 북극에 어떤 자극이 있어야 하는지 설명하시오.",
+      },
+      {
+        type: "p",
+        de: "Antwort: Der Nordpol der Kompassnadel zeigt nach geografisch Norden. Verschiedenartige Pole ziehen sich an — also liegt am geografischen Nordpol der magnetische Südpol der Erde.",
+        ko: "답: 나침반의 북극이 지리적 북쪽을 가리킨다. 다른 극끼리 끌어당기므로 지리적 북극에는 지구의 자기 남극이 있다.",
+      },
+      {
+        type: "callout",
+        de: "Handschrift prüfen: Schluss (magnetischer Südpol am geografischen Nordpol) ist richtig. Falsch wäre „S-Pol der Nadel zeigt nach Norden“ — es ist der Nordpol der Nadel. Auch: verschiedenartige (nicht „gegenseitige“) Pole.",
+        ko: "손글씨 검수: 결론(지리적 북극 = 자기 남극)은 맞음. 「바늘의 S극이 북쪽을 가리킨다」는 틀림 — 바늘의 북극이 북쪽. 「gegenseitige」도 「verschiedenartige」가 맞음.",
+      },
+
+      // ——— Aufgabe 3 ———
+      {
+        type: "h3",
+        de: "3. Magnetischer Monopol & Zerbrechen",
+        ko: "3. 자기 단극 & 자석 절단",
+      },
+      {
+        type: "p",
+        de: "Erläutere den Begriff „magnetischer Monopol“ und erkläre mithilfe des Modells der Elementarmagneten, was passiert, wenn man einen Stabmagneten zerbricht.",
+        ko: "「자기 단극(magnetischer Monopol)」을 설명하고, 소자석 모델로 막대자석을 부러뜨리면 어떻게 되는지 설명하시오.",
+      },
+      {
+        type: "ul",
+        items: [
+          {
+            de: "Antwort: Ein magnetischer Monopol wäre ein Magnet mit nur einem Pol (nur N oder nur S). Solche Monopole gibt es nicht.",
+            ko: "답: 자기 단극은 N 또는 S만 가진 자석을 뜻한다. 그런 단극은 존재하지 않는다.",
+          },
+          {
+            de: "Zerbricht man einen Stabmagneten, entstehen zwei kleinere Magnete — jeder mit N- und S-Pol. Nach dem Elementarmagnet-Modell haben die winzigen Magnetbereiche immer beide Pole; an der Bruchstelle bilden sich neue Pole.",
+            ko: "막대자석을 부러뜨리면 N·S극을 가진 더 작은 자석 두 개가 생긴다. 소자석 모델에서 작은 자기 영역은 항상 양 극을 갖고, 단면에는 새 극이 생긴다.",
+          },
+        ],
+      },
+
+      // ——— Aufgabe 4 ———
+      {
+        type: "h3",
+        de: "4. Magnetische Influenz (Büroklammer)",
+        ko: "4. 자기 유도 (클립)",
+      },
+      {
+        type: "p",
+        de: "Erkläre den Begriff magnetische Influenz anhand der Interaktion eines Dauermagneten mit einer Büroklammer aus Edelstahl. Beschreibe, was mit den Elementarmagneten in der Büroklammer passiert a) im Magnetfeld des Dauermagneten, b) außerhalb des Magnetfelds.",
+        ko: "영구자석과 스테인리스 클립의 상호작용으로 자기 유도(magnetische Influenz)를 설명하시오. 클립 속 소자석이 a) 영구자석 자기장 안, b) 자기장 밖에서 어떻게 되는지 쓰시오.",
+      },
+      {
+        type: "ul",
+        items: [
+          {
+            de: "Antwort – Begriff: Magnetische Influenz heißt: Ein magnetisierbarer Stoff wird im äußeren Magnetfeld selbst zum Magneten.",
+            ko: "답 – 개념: 자기 유도란 자화 가능 물질이 외부 자기장 안에서 스스로 자석이 되는 것이다.",
+          },
+          {
+            de: "a) Im Feld: Die Elementarmagnete in der Büroklammer richten sich aus → die Klammer wird magnetisch und wird angezogen.",
+            ko: "a) 장 안: 클립의 소자석이 정렬 → 클립이 자성을 띠고 끌린다.",
+          },
+          {
+            de: "b) Außerhalb des Feldes: Die Ausrichtung geht wieder verloren (ungeordnet) → die Büroklammer verliert ihre magnetische Wirkung (magnetisch weich).",
+            ko: "b) 장 밖: 정렬이 다시 풀림(무질서) → 클립은 자성을 잃는다(연자성).",
+          },
+        ],
+      },
+
+      // ——— Aufgabe 5 ———
+      {
+        type: "h3",
+        de: "5. Entmagnetisierung",
+        ko: "5. 탈자화",
+      },
+      {
+        type: "p",
+        de: "Nenne zwei Möglichkeiten, um einem Magneten seine magnetischen Eigenschaften zu nehmen. Erkläre mithilfe des Modells der Elementarmagneten, warum diese beiden Methoden funktionieren.",
+        ko: "자석의 자기 성질을 없애는 방법 두 가지를 쓰고, 소자석 모델로 왜 되는지 설명하시오.",
+      },
+      {
+        type: "ul",
+        items: [
+          {
+            de: "Antwort: 1) Starkes Erhitzen, 2) starke Erschütterungen (Schlagen/Fallen).",
+            ko: "답: 1) 강하게 가열, 2) 강한 충격(두드리기·떨어뜨리기).",
+          },
+          {
+            de: "Begründung: Beide Methoden bringen die Elementarmagnete aus der Ordnung. Wirken sie ungeordnet, heben sich ihre Felder auf — der Körper ist kein Magnet mehr.",
+            ko: "이유: 두 방법 모두 소자석의 정렬을 깨뜨린다. 무질서하면 장이 상쇄되어 더 이상 자석이 아니다.",
+          },
+        ],
+      },
+
+      // ——— Aufgabe 6 ———
+      {
+        type: "h3",
+        de: "6. Elektromagnet ≠ Elementarmagnete",
+        ko: "6. 전자석 ≠ 소자석 모델",
+      },
+      {
+        type: "p",
+        de: "Begründe, warum sich das Magnetfeld eines Elektromagneten nicht durch das Modell der Elementarmagneten erklären lässt.",
+        ko: "전자석의 자기장을 소자석 모델로 설명할 수 없는 이유를 쓰시오.",
+      },
+      {
+        type: "p",
+        de: "Antwort: Das Feld eines Elektromagneten entsteht durch den elektrischen Strom (bewegte Ladungen) in der Spule — nicht durch fest ausgerichtete Elementarmagnete. Schaltet man den Strom ab, verschwindet das Feld (bei weichem Eisenkern). Das Elementarmagnet-Modell erklärt vor allem Dauermagnete.",
+        ko: "답: 전자석의 장은 코일의 전류(움직이는 전하) 때문에 생기며, 고정 정렬된 소자석 때문이 아니다. 전류를 끄면(연철심이면) 장이 사라진다. 소자석 모델은 주로 영구자석을 설명한다.",
+      },
+
+      // ——— Aufgabe 7 ———
+      {
+        type: "h3",
+        de: "7. Spulenfeld verstärken",
+        ko: "7. 코일 자기장 세게 하기",
+      },
+      {
+        type: "p",
+        de: "Nenne und begründe, durch welche Möglichkeiten sich das Magnetfeld einer stromdurchflossenen Spule verstärken lässt.",
+        ko: "전류가 흐르는 코일의 자기장을 세게 하는 방법을 쓰고 이유를 밝히시오.",
+      },
+      {
+        type: "ul",
+        items: [
+          {
+            de: "Antwort: Stromstärke erhöhen → mehr bewegte Ladungen → stärkeres Feld.",
+            ko: "답: 전류↑ → 움직이는 전하↑ → 장↑.",
+          },
+          {
+            de: "Windungszahl vergrößern → mehr Stromschleifen addieren ihre Felder.",
+            ko: "권선수↑ → 전류 고리가 장을 더함.",
+          },
+          {
+            de: "Eisenkern einlegen → Elementarmagnete im Eisen richten sich aus und verstärken das Feld stark.",
+            ko: "철심 삽입 → 철의 소자석이 정렬되어 장을 크게 강화.",
+          },
+          {
+            de: "Spule verkürzen (bei gleicher Windungszahl) → Feldlinien dichter → lokal stärkeres Feld.",
+            ko: "코일을 짧게(같은 권선수) → 력선이 조밀 → 국소적으로 더 센 장.",
+          },
+        ],
+      },
+
+      // ——— Aufgabe 8 ———
+      {
+        type: "h3",
+        de: "8. Bestandteile eines Elektromotors",
+        ko: "8. 전동기의 구성 요소",
+      },
+      {
+        type: "p",
+        de: "Nenne die drei wesentlichen Bestandteile eines Elektromotors und erkläre ihre Funktion. Zeichne eine entsprechende Skizze.",
+        ko: "전동기의 세 가지 핵심 부품을 쓰고 기능을 설명하시오. 스케치도 그리시오.",
+      },
+      {
+        type: "ul",
+        items: [
+          {
+            de: "Antwort: 1) Dauermagnet (Feldmagnet/Stator) — erzeugt ein konstantes Magnetfeld.",
+            ko: "답: 1) 영구자석(계자/고정자) — 일정한 자기장을 만듦.",
+          },
+          {
+            de: "2) Spule / Anker (Rotor) — stromdurchflossen; die Lorentz-Kraft dreht die Spule.",
+            ko: "2) 코일/전기자(회전자) — 전류가 흐르면 로렌츠 힘이 코일을 돌림.",
+          },
+          {
+            de: "3) Kommutator (Stromwender) — kehrt die Stromrichtung im richtigen Moment um, damit die Drehung weitergeht.",
+            ko: "3) 정류자(전류 전환기) — 적절한 순간에 전류 방향을 바꿔 회전이 이어지게 함.",
+          },
+          {
+            de: "Skizze: Dauermagnet mit N/S, drehbare Spule dazwischen, Schleifkontakte/Kommutator an der Achse.",
+            ko: "스케치: N/S 영구자석, 그 사이 회전 코일, 축의 슬립/정류자.",
+          },
+        ],
+      },
+
+      // ——— Aufgabe 9 ———
+      {
+        type: "h3",
+        de: "9. Motor & Generator (Lückentext)",
+        ko: "9. 모터 & 발전기 (빈칸)",
+      },
+      {
+        type: "p",
+        de: "Vervollständige die folgenden Sätze.",
+        ko: "다음 문장의 빈칸을 채우시오.",
+      },
+      {
+        type: "p",
+        de: "Antwort: Bei einem Elektromotor wird elektrische Energie in mechanische Energie umgewandelt. Dies beruht auf dem elektromotorischen Prinzip. Bei einem Generator wird mechanische Energie in elektrische Energie umgewandelt. Das hier zugrunde liegende Prinzip wird Generatorprinzip genannt. Das hierbei auftretende physikalische Phänomen wird elektromagnetische Induktion genannt. Die Ursache für dieses Phänomen ist die sogenannte Lorentz-Kraft.",
+        ko: "답: 전동기에서는 전기 에너지가 역학 에너지로 바뀐다. 이는 전동기 원리에 따른다. 발전기에서는 역학 에너지가 전기 에너지로 바뀐다. 그 원리를 발전기 원리라 한다. 이때 나타나는 현상은 전자기 유도이다. 원인인 힘은 로렌츠 힘이다.",
+      },
+      {
+        type: "callout",
+        de: "Handschrift prüfen: Inhalt der Lücken ist richtig (elektrisch↔mechanisch, elektromotorisches Prinzip, Generatorprinzip, elektromagnetische Induktion, Lorentz-Kraft). Achtung Form: „mechanische/elektrische Energie“ (nicht …en); „Generatorprinzip“ als ein Wort.",
+        ko: "손글씨 검수: 빈칸 내용은 맞음. 형태만 주의 — 「mechanische/elektrische Energie」(…en 아님), 「Generatorprinzip」은 한 단어.",
+      },
+
+      // ——— Aufgabe 10 ———
+      {
+        type: "h3",
+        de: "10. Strom durch Induktion erzeugen",
+        ko: "10. 유도로 전류 만들기",
+      },
+      {
+        type: "p",
+        de: "Nenne zwei Möglichkeiten, um mithilfe von elektromagnetischer Induktion einen Strom in einer Spule zu erzeugen.",
+        ko: "전자기 유도로 코일에 전류를 만드는 방법 두 가지를 쓰시오.",
+      },
+      {
+        type: "ul",
+        items: [
+          {
+            de: "Antwort: 1) Einen Dauermagneten in die Spule hinein- bzw. herausbewegen (oder Spule relativ zum Magneten bewegen).",
+            ko: "답: 1) 영구자석을 코일 안·밖으로 움직이거나 코일을 자석에 대해 움직임.",
+          },
+          {
+            de: "2) Das Magnetfeld einer benachbarten stromdurchflossenen Spule (Elektromagnet) ändern — z. B. Strom ein-/ausschalten oder Stromstärke ändern.",
+            ko: "2) 옆 코일(전자석)의 자기장을 바꿈 — 예: 전류 ON/OFF 또는 세기 변경.",
+          },
+        ],
+      },
+      {
+        type: "callout",
+        de: "Allgemein: Induktionsstrom entsteht, wenn sich der magnetische Fluss durch die Spule ändert.",
+        ko: "일반: 코일을 지나는 자기 선속(플럭스)이 변할 때 유도 전류가 생긴다.",
+      },
+
+      // ——— Aufgabe 11 ———
+      {
+        type: "h3",
+        de: "11. Induzierte Spannung vergrößern",
+        ko: "11. 유도 전압 키우기",
+      },
+      {
+        type: "p",
+        de: "Nenne vier Möglichkeiten, um die in einer Spule induzierte Spannung zu vergrößern.",
+        ko: "코일에 유도되는 전압을 키우는 방법 네 가지를 쓰시오.",
+      },
+      {
+        type: "ul",
+        items: [
+          {
+            de: "Antwort: 1) Windungszahl der Spule erhöhen.",
+            ko: "답: 1) 코일 권선수 늘리기.",
+          },
+          {
+            de: "2) Stärkeres Magnetfeld verwenden (stärkerer Magnet / Eisenkern).",
+            ko: "2) 더 센 자기장(더 센 자석·철심).",
+          },
+          {
+            de: "3) Magnetfeld schneller ändern (Magnet schneller bewegen).",
+            ko: "3) 자기장을 더 빨리 바꾸기(자석을 더 빠르게 움직임).",
+          },
+          {
+            de: "4) Größere Spulenfläche / mehr Magnetfeldlinien durch die Spule.",
+            ko: "4) 코일 면적↑ / 코일을 지나는 자기력선↑.",
+          },
+        ],
+      },
+
+      // ——— Aufgabe 12 ———
+      {
+        type: "h3",
+        de: "12. Lenzsches Gesetz → Selbstinduktion",
+        ko: "12. 렌츠 법칙 → 자기유도",
+      },
+      {
+        type: "p",
+        de: "Beschreibe, inwiefern das lenzsche Gesetz zum Phänomen der Selbstinduktion führt.",
+        ko: "렌츠 법칙이 어떻게 자기유도(Selbstinduktion) 현상으로 이어지는지 설명하시오.",
+      },
+      {
+        type: "p",
+        de: "Antwort: Ändert sich der Strom in einer Spule, ändert sich auch ihr eigenes Magnetfeld. Nach dem lenzschen Gesetz wirkt die induzierte Spannung der Ursache der Änderung entgegen — sie bremst also das Ansteigen oder Abfallen des eigenen Stroms. Diese Selbsthemmung einer Spule gegenüber Stromänderungen heißt Selbstinduktion.",
+        ko: "답: 코일 전류가 변하면 코일 자신의 자기장도 변한다. 렌츠 법칙에 따라 유도 전압은 그 변화의 원인에 반대한다 — 곧 자기 전류의 증가·감소를 늦춘다. 전류 변화에 대한 이런 자체 저항을 자기유도라 한다.",
+      },
+
+      // ——— Aufgabe 13 ———
+      {
+        type: "h3",
+        de: "13. Probleme durch Selbstinduktion",
+        ko: "13. 자기유도로 인한 문제",
+      },
+      {
+        type: "p",
+        de: "Nenne mögliche Probleme, die durch Selbstinduktion auftreten können.",
+        ko: "자기유도 때문에 생길 수 있는 문제를 쓰시오.",
+      },
+      {
+        type: "ul",
+        items: [
+          {
+            de: "Antwort: Beim Abschalten kann eine hohe Induktionsspannung entstehen → Funken am Schalter, Beschädigung von Bauteilen/Elektronik.",
+            ko: "답: 전원을 끌 때 높은 유도 전압 → 스위치 불꽃, 부품·전자회로 손상.",
+          },
+          {
+            de: "Beim Einschalten steigt der Strom verzögert an (Spule „widersetzt“ sich).",
+            ko: "켤 때 전류가 늦게 올라감(코일이 「저항」).",
+          },
+          {
+            de: "Unerwünschte Spannungsstöße in Stromnetzen und Geräten.",
+            ko: "전력망·기기에서 원치 않는 전압 서지.",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export const getPhysikKlasse9NotesChapterById = (chapterId) =>

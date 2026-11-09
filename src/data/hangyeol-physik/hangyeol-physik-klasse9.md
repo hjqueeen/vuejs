@@ -15,6 +15,7 @@
 5. [Feldlinien (08.09.2026)](#5-feldlinien)
 6. [Magnetfelder stromdurchflossener Leiter (09.09.2026)](#6-magnetfelder-stromdurchflossener-leiter)
 7. [Elektromagnetismus – Lasthebemagnet](#7-elektromagnetismus--lasthebemagnet)
+8. [Übungsaufgaben zur BSL (04.11.2026)](#8-übungsaufgaben-zur-bsl)
 
 ---
 
@@ -425,6 +426,107 @@ Ein geschlossener Eisenkern hat ein geschlossenes Magnetfeld. Er lässt Magnetfe
 
 ---
 
+## 8. Übungsaufgaben zur BSL
+
+**Datum:** 04.11.2026 · **BG – Klasse 9 · Elektromagnetismus**
+
+### 1. Anordnung zweier Stabmagneten
+
+Zeichne eine mögliche Anordnung zweier Stabmagneten inklusive der Feldlinien und Magnetpole, bei denen  
+**a)** die Magnetpole sich gegenseitig abstoßen.  
+**b)** die Magnetpole sich gegenseitig anziehen.
+
+**Antwort:**  
+- **a)** Gleichartige Pole gegenüber, z. B. `[N|S]  [S|N]` (S trifft S). Feldlinien weichen zwischen den Polen nach außen aus.  
+- **b)** Verschiedenartige Pole gegenüber, z. B. `[N|S]  [N|S]` (S trifft N). Feldlinien vom N-Pol des einen zum S-Pol des anderen.
+
+### 2. Magnetpol am geografischen Nordpol
+
+Erkläre mithilfe der Magnetisierung von Kompassnadeln, welcher Magnetpol am geografischen Nordpol sein muss.
+
+**Antwort:** Der Nordpol der Kompassnadel zeigt nach geografisch Norden. Verschiedenartige Pole ziehen sich an → am geografischen Nordpol liegt der **magnetische Südpol** der Erde.
+
+> **Handschrift prüfen:** Schluss (magnetischer Südpol am geografischen Nordpol) ist richtig. Falsch: „S-Pol der Nadel zeigt nach Norden“ — es ist der **Nordpol** der Nadel. Auch: **verschiedenartige** (nicht „gegenseitige“) Pole.
+
+### 3. Magnetischer Monopol & Zerbrechen
+
+Erläutere den Begriff „magnetischer Monopol“ und erkläre mithilfe des Modells der Elementarmagneten, was passiert, wenn man einen Stabmagneten zerbricht.
+
+**Antwort:** Ein magnetischer Monopol wäre ein Magnet mit nur einem Pol — solche gibt es nicht. Zerbricht man einen Stabmagneten, entstehen zwei kleinere Magnete mit jeweils N- und S-Pol, weil Elementarmagnete immer beide Pole haben und an der Bruchstelle neue Pole entstehen.
+
+### 4. Magnetische Influenz (Büroklammer)
+
+Erkläre den Begriff magnetische Influenz anhand der Interaktion eines Dauermagneten mit einer Büroklammer aus Edelstahl. Beschreibe, was mit den Elementarmagneten passiert  
+**a)** im Magnetfeld des Dauermagneten.  
+**b)** außerhalb des Magnetfelds.
+
+**Antwort:** Influenz = magnetisierbarer Stoff wird im äußeren Feld selbst zum Magneten.  
+- **a)** Elementarmagnete richten sich aus → Klammer wird magnetisch und angezogen.  
+- **b)** Ausrichtung geht verloren → magnetische Wirkung verschwindet (magnetisch weich).
+
+### 5. Entmagnetisierung
+
+Nenne zwei Möglichkeiten, um einem Magneten seine magnetischen Eigenschaften zu nehmen. Erkläre mithilfe des Elementarmagnet-Modells warum.
+
+**Antwort:** Starkes Erhitzen; starke Erschütterungen. Beide Methoden bringen die Elementarmagnete aus der Ordnung → Felder heben sich auf.
+
+### 6. Elektromagnet ≠ Elementarmagnete
+
+Begründe, warum sich das Magnetfeld eines Elektromagneten nicht durch das Modell der Elementarmagneten erklären lässt.
+
+**Antwort:** Das Feld entsteht durch den **Strom** (bewegte Ladungen) in der Spule, nicht durch fest ausgerichtete Elementarmagnete. Strom aus → Feld weg. Das Elementarmagnet-Modell erklärt vor allem Dauermagnete.
+
+### 7. Spulenfeld verstärken
+
+Nenne und begründe, durch welche Möglichkeiten sich das Magnetfeld einer stromdurchflossenen Spule verstärken lässt.
+
+**Antwort:** Stromstärke↑; Windungszahl↑; Eisenkern; Spule verkürzen (dichte Feldlinien).
+
+### 8. Bestandteile eines Elektromotors
+
+Nenne die drei wesentlichen Bestandteile eines Elektromotors und erkläre ihre Funktion. Zeichne eine entsprechende Skizze.
+
+**Antwort:**  
+1. **Dauermagnet (Feldmagnet)** — konstantes Magnetfeld.  
+2. **Spule / Anker** — stromdurchflossen; Lorentz-Kraft dreht die Spule.  
+3. **Kommutator (Stromwender)** — kehrt die Stromrichtung um, damit die Drehung weitergeht.
+
+### 9. Motor & Generator (Lückentext)
+
+Vervollständige die folgenden Sätze.
+
+**Antwort:** Bei einem Elektromotor wird **elektrische** Energie in **mechanische** Energie umgewandelt. Dies beruht auf dem **elektromotorischen** Prinzip. Bei einem Generator wird **mechanische** Energie in **elektrische** Energie umgewandelt. Das hier zugrunde liegende Prinzip wird **Generatorprinzip** genannt. Das hierbei auftretende physikalische Phänomen wird **elektromagnetische Induktion** genannt. Die Ursache für dieses Phänomen ist die sogenannte **Lorentz**-Kraft.
+
+> **Handschrift prüfen:** Inhalt der Lücken ist richtig. Form: „mechanische/elektrische Energie“ (nicht …en); „Generatorprinzip“ als ein Wort.
+
+### 10. Strom durch Induktion erzeugen
+
+Nenne zwei Möglichkeiten, um mithilfe von elektromagnetischer Induktion einen Strom in einer Spule zu erzeugen.
+
+**Antwort:**  
+1. Dauermagneten in die Spule hinein-/herausbewegen (oder Spule relativ zum Magneten bewegen).  
+2. Magnetfeld einer benachbarten Spule ändern (Strom ein-/ausschalten oder Stromstärke ändern).
+
+### 11. Induzierte Spannung vergrößern
+
+Nenne vier Möglichkeiten, um die in einer Spule induzierte Spannung zu vergrößern.
+
+**Antwort:** Windungszahl↑; stärkeres Magnetfeld; Magnetfeld schneller ändern; größere Spulenfläche / mehr Feldlinien durch die Spule.
+
+### 12. Lenzsches Gesetz → Selbstinduktion
+
+Beschreibe, inwiefern das lenzsche Gesetz zum Phänomen der Selbstinduktion führt.
+
+**Antwort:** Ändert sich der Strom in einer Spule, ändert sich ihr eigenes Magnetfeld. Nach dem lenzschen Gesetz wirkt die induzierte Spannung der Änderung entgegen und bremst Anstieg/Abfall des eigenen Stroms. Das heißt **Selbstinduktion**.
+
+### 13. Probleme durch Selbstinduktion
+
+Nenne mögliche Probleme, die durch Selbstinduktion auftreten können.
+
+**Antwort:** Hohe Induktionsspannung beim Abschalten → Funken am Schalter, Bauteilschaden; verzögerter Stromanstieg beim Einschalten; unerwünschte Spannungsstöße.
+
+---
+
 ## 핵심 개념 요약 (한국어)
 
 | 독일어 | 의미 |
@@ -441,6 +543,11 @@ Ein geschlossener Eisenkern hat ein geschlossenes Magnetfeld. Er lässt Magnetfe
 | Elektronenfluss | 전자는 − → + 로 흐름 |
 | Elektromagnet / Eisenkern | 전자석 / 철심 (폐쇄 철심이 더 강함) |
 | Linke-Hand-Regel | 왼손 법칙 (전자 흐름 방향 기준) |
+| Elektromotor / Generator | 전동기 / 발전기 |
+| Elektromagnetische Induktion | 전자기 유도 |
+| Lorentz-Kraft | 로렌츠 힘 |
+| Lenzsches Gesetz / Selbstinduktion | 렌츠 법칙 / 자기유도 |
+| Kommutator (Stromwender) | 정류자 (전류 전환기) |
 
 ---
 
