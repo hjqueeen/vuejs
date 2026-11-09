@@ -3623,6 +3623,695 @@ const day06Pairs = [
       ],
     },
   }),
+  makePair({
+    day: DAY6,
+    slot: 3,
+    pos: "동",
+    de: {
+      headword: "weiterreichen",
+      meaning: "전달하다, 넘겨주다, (다음 사람에게) 건네다",
+      synonyms: ["weitergeben", "übermitteln", "vererben"],
+      examples: [
+        {
+          de: "Die Güte und Tugend der Eltern wird an die Kinder weitergereicht.",
+          ko: "부모의 선행과 덕은 자녀에게 전해진다.",
+        },
+        {
+          de: "Kannst du die Nachricht bitte weiterreichen?",
+          ko: "그 소식 좀 전달해 줄래?",
+        },
+      ],
+      derivatives: [
+        {
+          word: "weitergereicht",
+          pos: "분",
+          meaning: "전달된, 넘겨진 (과거분사)",
+        },
+      ],
+    },
+    en: {
+      headword: "pass on / hand on / pass down",
+      meaning: ["weiterreichen", "weitergereicht"],
+      synonyms: ["pass along", "transmit"],
+      examples: [
+        {
+          en: "The goodness and virtue of the parents is passed on to the children.",
+          de: "Die Güte und Tugend der Eltern wird an die Kinder weitergereicht.",
+        },
+        {
+          en: "Can you please pass on the message?",
+          de: "Kannst du die Nachricht bitte weiterreichen?",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY6,
+    slot: 4,
+    pos: "동",
+    de: {
+      headword: "überreden",
+      meaning: "설득하다, 구슬리다 (말로 타일러서 ~하게 만들다)",
+      synonyms: ["überzeugen", "überreden zu"],
+      examples: [
+        {
+          de: "Meine Mutter hat mich dazu überredet.",
+          ko: "엄마가 나를 그렇게 하도록 설득했다.",
+        },
+        {
+          de: "Er hat sie zum Mitkommen überredet.",
+          ko: "그는 그녀를 같이 가자고 구슬렸다.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "die Überredung",
+          pos: "명",
+          meaning: "설득",
+        },
+        {
+          word: "überzeugen",
+          pos: "동",
+          meaning: "납득시키다 (이성으로 설득; überreden보다 중립적)",
+        },
+      ],
+    },
+    en: {
+      headword: "talk into / persuade / coax",
+      meaning: ["überreden"],
+      synonyms: ["convince", "cajole"],
+      examples: [
+        {
+          en: "My mother talked me into it.",
+          de: "Meine Mutter hat mich dazu überredet.",
+        },
+        {
+          en: "He talked her into coming along.",
+          de: "Er hat sie zum Mitkommen überredet.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY6,
+    slot: 5,
+    pos: "동",
+    de: {
+      headword: "sich einmischen",
+      meaning: "간섭하다, 참견하다, 개입하다",
+      synonyms: ["sich einmischen in", "dazwischenreden", "reinquatschen"],
+      examples: [
+        {
+          de: "Was mischen Sie sich da ein?",
+          ko: "거기 왜 끼어드세요? / 왜 참견하세요?",
+        },
+        {
+          de: "Misch dich bitte nicht in meine Angelegenheiten ein.",
+          ko: "내 일에 참견하지 마.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "einmischen = mischen + ein",
+          pos: "활",
+          meaning: "분리동사 (mischen … ein)",
+        },
+        {
+          word: "die Angelegenheit",
+          pos: "명",
+          meaning: "일, 사안, 문제 (복수: die Angelegenheiten)",
+        },
+      ],
+    },
+    en: {
+      headword: "interfere / meddle / butt in",
+      meaning: ["sich einmischen"],
+      synonyms: ["intervene", "intrude"],
+      examples: [
+        {
+          en: "Why are you interfering?",
+          de: "Was mischen Sie sich da ein?",
+        },
+        {
+          en: "Please don't meddle in my affairs.",
+          de: "Misch dich bitte nicht in meine Angelegenheiten ein.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY6,
+    slot: 6,
+    pos: "동",
+    de: {
+      headword: "vorleben",
+      meaning: "(행동으로) 모범을 보이다, 본보기로 살다, 솔선수범하다",
+      synonyms: ["vorbildlich leben", "ein Vorbild sein"],
+      examples: [
+        {
+          de: "Warum leben Sie Ihrer Tochter so viel Unehrlichkeit vor?",
+          ko: "왜 딸에게 그렇게 많은 부정직함을 본보기로 보여 주십니까?",
+        },
+        {
+          de: "Eltern sollten ihren Kindern Respekt vorleben.",
+          ko: "부모는 자녀에게 존중을 몸소 보여 주어야 한다.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "vorleben = leben + vor",
+          pos: "활",
+          meaning: "분리동사 (leben … vor)",
+        },
+        { word: "das Vorbild", pos: "명", meaning: "본보기, 모범" },
+      ],
+    },
+    en: {
+      headword: "set an example / model (behavior) for",
+      meaning: ["vorleben"],
+      synonyms: ["exemplify", "live as a model"],
+      examples: [
+        {
+          en: "Why do you set your daughter such an example of dishonesty?",
+          de: "Warum leben Sie Ihrer Tochter so viel Unehrlichkeit vor?",
+        },
+        {
+          en: "Parents should model respect for their children.",
+          de: "Eltern sollten ihren Kindern Respekt vorleben.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY6,
+    slot: 7,
+    pos: "명",
+    de: {
+      headword: "der Mitmensch",
+      meaning: "함께 사는 사람, 이웃·동료 사람, 동포 (복수: die Mitmenschen)",
+      synonyms: ["der Mitbürger", "der Nächste"],
+      examples: [
+        {
+          de: "Sie sollten Ihre Mitmenschen gut behandeln.",
+          ko: "주변 사람들을 잘 대해야 합니다.",
+        },
+        {
+          de: "Hilf deinen Mitmenschen, wo du kannst.",
+          ko: "할 수 있는 곳에서 주변 사람들을 도와라.",
+        },
+      ],
+    },
+    en: {
+      headword: "fellow human being / fellow person",
+      meaning: ["der Mitmensch", "die Mitmenschen"],
+      synonyms: ["fellow man", "neighbor"],
+      examples: [
+        {
+          en: "You should treat your fellow human beings well.",
+          de: "Sie sollten Ihre Mitmenschen gut behandeln.",
+        },
+        {
+          en: "Help your fellow humans wherever you can.",
+          de: "Hilf deinen Mitmenschen, wo du kannst.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY6,
+    slot: 8,
+    pos: "동",
+    de: {
+      headword: "einreichen",
+      meaning: "제출하다, 건네다, 내밀다 (구어·명령: 이리 내 / 내 봐)",
+      synonyms: ["abgeben", "hereinreichen", "übergeben"],
+      examples: [
+        {
+          de: "Reich das ein.",
+          ko: "내 봐. / 이리 내.",
+        },
+        {
+          de: "Ich muss den Antrag bis Freitag einreichen.",
+          ko: "금요일까지 신청서를 제출해야 한다.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "einreichen = reichen + ein",
+          pos: "활",
+          meaning: "분리동사 (reich … ein)",
+        },
+      ],
+    },
+    en: {
+      headword: "hand in / submit / hand over",
+      meaning: ["einreichen"],
+      synonyms: ["turn in", "pass over"],
+      examples: [
+        {
+          en: "Hand that over.",
+          de: "Reich das ein.",
+        },
+        {
+          en: "I have to submit the application by Friday.",
+          de: "Ich muss den Antrag bis Freitag einreichen.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY6,
+    slot: 9,
+    pos: "동",
+    de: {
+      headword: "verweisen",
+      meaning: [
+        "(학교·장소에서) 쫓아내다, 퇴학·퇴장시키다",
+        "(다른 뜻) ~을 가리키다 / 안내하다 (auf etwas verweisen)",
+      ],
+      synonyms: ["ausschließen", "entlassen", "verweisen von"],
+      examples: [
+        {
+          de: "Haben sie die Adresse nicht, weil man dich von der Schule verwiesen hat?",
+          ko: "학교에서 쫓겨나서 주소를 모르는 거야?",
+        },
+        {
+          de: "Er wurde vom Platz verwiesen.",
+          ko: "그는 경기장에서 퇴장당했다.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "von der Schule verweisen",
+          pos: "구",
+          meaning: "퇴학시키다",
+        },
+        {
+          word: "die Verweisung",
+          pos: "명",
+          meaning: "퇴학, 퇴장, 추방",
+        },
+      ],
+    },
+    en: {
+      headword: "expel / ban / refer",
+      meaning: ["verweisen", "verwiesen"],
+      synonyms: ["expel from school", "send off"],
+      examples: [
+        {
+          en: "Don't they have the address because you were expelled from school?",
+          de: "Haben sie die Adresse nicht, weil man dich von der Schule verwiesen hat?",
+        },
+        {
+          en: "He was sent off the pitch.",
+          de: "Er wurde vom Platz verwiesen.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY6,
+    slot: 10,
+    pos: "구",
+    de: {
+      headword: "von der Schule fliegen",
+      meaning: "학교에서 짤리다, 퇴학당하다 (구어)",
+      synonyms: ["von der Schule verwiesen werden", "rausfliegen"],
+      examples: [
+        {
+          de: "Wieso? Weil sie von der Schule geflogen ist?",
+          ko: "왜? 학교에서 짤려서?",
+        },
+        {
+          de: "Pass auf, sonst fliegst du von der Schule.",
+          ko: "조심해, 안 그러면 학교에서 짤려.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "fliegen",
+          pos: "동",
+          meaning: "날다; 구어로 「잘리다, 쫓겨나다」",
+        },
+        {
+          word: "rausfliegen",
+          pos: "동",
+          meaning: "쫓겨나다, 잘리다 (구어)",
+        },
+      ],
+    },
+    en: {
+      headword: "get kicked out of school / get expelled",
+      meaning: ["von der Schule fliegen", "geflogen"],
+      synonyms: ["get the boot", "be expelled"],
+      examples: [
+        {
+          en: "Why? Because she got kicked out of school?",
+          de: "Wieso? Weil sie von der Schule geflogen ist?",
+        },
+        {
+          en: "Watch out, or you'll get kicked out of school.",
+          de: "Pass auf, sonst fliegst du von der Schule.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY6,
+    slot: 11,
+    pos: "명",
+    de: {
+      headword: "der Vortritt",
+      meaning: "우선권, 먼저 가는 권리, 양보받는 자리",
+      synonyms: ["der Vorrang", "das Vorrecht"],
+      examples: [
+        {
+          de: "Du tust, als hättest du mir den Vortritt gelassen.",
+          ko: "너 나한테 양보한 척하는데.",
+        },
+        {
+          de: "Ich lasse Ihnen gerne den Vortritt.",
+          ko: "기꺼이 먼저 가시도록 양보하겠습니다.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "jemandem den Vortritt lassen",
+          pos: "구",
+          meaning: "누구에게 먼저 가도록 양보하다",
+        },
+      ],
+    },
+    en: {
+      headword: "right of way / precedence / going first",
+      meaning: ["der Vortritt"],
+      synonyms: ["priority", "privilege"],
+      examples: [
+        {
+          en: "You act as if you had let me go first.",
+          de: "Du tust, als hättest du mir den Vortritt gelassen.",
+        },
+        {
+          en: "I'm happy to let you go first.",
+          de: "Ich lasse Ihnen gerne den Vortritt.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY6,
+    slot: 12,
+    pos: "명",
+    de: {
+      headword: "der Minderwertigkeitskomplex",
+      meaning: "열등감, 자신감 부족, 자기 낮춤감 (복수: die Minderwertigkeitskomplexe)",
+      synonyms: ["das Minderwertigkeitsgefühl"],
+      examples: [
+        {
+          de: "Hast du Minderwertigkeitskomplexe wegen mir?",
+          ko: "너 나한테 열등감 있니?",
+        },
+        {
+          de: "Er leidet unter Minderwertigkeitskomplexen.",
+          ko: "그는 열등감에 시달린다.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "minderwertig",
+          pos: "형",
+          meaning: "열등한, 가치가 낮은",
+        },
+        {
+          word: "der Komplex",
+          pos: "명",
+          meaning: "(심리) 콤플렉스",
+        },
+      ],
+    },
+    en: {
+      headword: "inferiority complex",
+      meaning: ["der Minderwertigkeitskomplex"],
+      synonyms: ["feelings of inferiority"],
+      examples: [
+        {
+          en: "Do you have an inferiority complex because of me?",
+          de: "Hast du Minderwertigkeitskomplexe wegen mir?",
+        },
+        {
+          en: "He suffers from an inferiority complex.",
+          de: "Er leidet unter Minderwertigkeitskomplexen.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY6,
+    slot: 13,
+    pos: "형",
+    de: {
+      headword: "gutherzig",
+      meaning: "친절한, 마음씨 좋은, 상냥한",
+      synonyms: ["gutmütig", "freundlich", "herzensgut"],
+      examples: [
+        {
+          de: "Hältst du sie in ihrer Entwicklung für weniger gutherzig?",
+          ko: "네가 보기에 그녀는 성장하면서 덜 마음씨 좋아진 거야?",
+        },
+        {
+          de: "Er ist ein gutherziger Mensch.",
+          ko: "그는 마음씨 좋은 사람이다.",
+        },
+      ],
+      derivatives: [
+        { word: "die Gutherzigkeit", pos: "명", meaning: "마음씨 좋음, 친절함" },
+        { word: "das Herz", pos: "명", meaning: "마음, 심장" },
+      ],
+    },
+    en: {
+      headword: "kind-hearted / good-natured",
+      meaning: ["gutherzig"],
+      synonyms: ["kind", "warm-hearted"],
+      examples: [
+        {
+          en: "Do you consider her less kind-hearted in her development?",
+          de: "Hältst du sie in ihrer Entwicklung für weniger gutherzig?",
+        },
+        {
+          en: "He is a kind-hearted person.",
+          de: "Er ist ein gutherziger Mensch.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY6,
+    slot: 14,
+    pos: "동",
+    de: {
+      headword: "hinausgehen",
+      meaning: [
+        "(밖으로) 나가다",
+        "über etwas hinausgehen = ~을 넘어서다, ~을 초과하다",
+      ],
+      synonyms: ["überschreiten", "übersteigen", "hinausgehen über"],
+      examples: [
+        {
+          de: "Das geht über neun Stimmen hinaus.",
+          ko: "그건 아홉 표를 넘어서는 일이야.",
+        },
+        {
+          de: "Seine Ansprüche gehen über das Normale hinaus.",
+          ko: "그의 요구는 보통 수준을 넘어선다.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "hinausgehen = gehen + hinaus",
+          pos: "활",
+          meaning: "분리동사 (geht … hinaus)",
+        },
+      ],
+    },
+    en: {
+      headword: "go out / go beyond",
+      meaning: ["hinausgehen", "über etwas hinausgehen"],
+      synonyms: ["exceed", "surpass"],
+      examples: [
+        {
+          en: "That goes beyond nine votes.",
+          de: "Das geht über neun Stimmen hinaus.",
+        },
+        {
+          en: "His demands go beyond what is normal.",
+          de: "Seine Ansprüche gehen über das Normale hinaus.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY6,
+    slot: 15,
+    pos: "구",
+    de: {
+      headword: "von sich eingenommen sein",
+      meaning: "자기 도취에 빠져 있다, 잘난 척하다, 재수 뽕이다 (구어 뉘앙스)",
+      synonyms: ["eingebildet sein", "arrogant sein", "selbstverliebt sein"],
+      examples: [
+        {
+          de: "Ye-rim ist sehr von sich eingenommen.",
+          ko: "예림이는 좀 재수 뽕이야. / 자기 자랑이 심해.",
+        },
+        {
+          de: "Sei nicht so von dir eingenommen.",
+          ko: "그렇게 잘난 척하지 마.",
+        },
+      ],
+      derivatives: [
+        {
+          word: "eingenommen",
+          pos: "분",
+          meaning: "점유된, 복용한, 사로잡힌 — 관용구와 뜻이 다름",
+        },
+        {
+          word: "einnehmen",
+          pos: "동",
+          meaning: "차지하다, (약 등을) 먹다",
+        },
+      ],
+    },
+    en: {
+      headword: "be full of oneself / be conceited",
+      meaning: ["von sich eingenommen sein"],
+      synonyms: ["arrogant", "self-absorbed"],
+      examples: [
+        {
+          en: "Ye-rim is very full of herself.",
+          de: "Ye-rim ist sehr von sich eingenommen.",
+        },
+        {
+          en: "Don't be so full of yourself.",
+          de: "Sei nicht so von dir eingenommen.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY6,
+    slot: 16,
+    pos: "동",
+    de: {
+      headword: "ergehen",
+      meaning:
+        "(주로 es ergeht jemandem) ~에게 (상황이) 일어나다, ~처럼 되다, ~한 처지가 되다",
+      synonyms: ["geschehen", "widerfahren"],
+      examples: [
+        {
+          de: "Sonst wird es Ihnen wie mir ergehen.",
+          ko: "안 그러면 당신도 나처럼 된다.",
+        },
+        {
+          de: "Wie ist es dir ergangen?",
+          ko: "너는 어떻게 지냈어? / 어떻게 됐어?",
+        },
+      ],
+      derivatives: [
+        {
+          word: "es ergeht jemandem gut/schlecht",
+          pos: "구",
+          meaning: "~의 형편이 좋다/나쁘다",
+        },
+      ],
+    },
+    en: {
+      headword: "fare / turn out for someone",
+      meaning: ["ergehen", "es ergeht jemandem"],
+      synonyms: ["happen to", "befall"],
+      examples: [
+        {
+          en: "Otherwise the same will happen to you as to me.",
+          de: "Sonst wird es Ihnen wie mir ergehen.",
+        },
+        {
+          en: "How have you been? / How did it go for you?",
+          de: "Wie ist es dir ergangen?",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY6,
+    slot: 17,
+    pos: "명",
+    de: {
+      headword: "der Spatz",
+      meaning: "참새 (복수: die Spatzen); 친근하게 사람을 부를 때도 씀",
+      synonyms: ["der Sperling"],
+      examples: [
+        {
+          de: "Nur Sie füttern die Spatzen mit Äpfeln.",
+          ko: "당신만 참새에게 사과를 먹이네요.",
+        },
+        {
+          de: "Die Spatzen zwitschern im Garten.",
+          ko: "정원에서 참새들이 지저귄다.",
+        },
+      ],
+    },
+    en: {
+      headword: "sparrow",
+      meaning: ["der Spatz", "die Spatzen"],
+      synonyms: ["sparrow"],
+      examples: [
+        {
+          en: "Only you feed the sparrows with apples.",
+          de: "Nur Sie füttern die Spatzen mit Äpfeln.",
+        },
+        {
+          en: "The sparrows are chirping in the garden.",
+          de: "Die Spatzen zwitschern im Garten.",
+        },
+      ],
+    },
+  }),
+  makePair({
+    day: DAY6,
+    slot: 18,
+    pos: "형",
+    de: {
+      headword: "großzügig",
+      meaning: "관대한, 후한, 아낌없는",
+      synonyms: ["freigebig", "generös", "tolerant"],
+      examples: [
+        {
+          de: "Sie sind wirklich ganz besonders großzügig.",
+          ko: "당신은 정말 특별히 관대하시네요.",
+        },
+        {
+          de: "Er hat uns großzügig geholfen.",
+          ko: "그는 우리에게 아낌없이 도와주었다.",
+        },
+      ],
+      derivatives: [
+        { word: "die Großzügigkeit", pos: "명", meaning: "관대함, 너그러움" },
+      ],
+    },
+    en: {
+      headword: "generous / open-handed",
+      meaning: ["großzügig"],
+      synonyms: ["liberal", "magnanimous"],
+      examples: [
+        {
+          en: "You are truly especially generous.",
+          de: "Sie sind wirklich ganz besonders großzügig.",
+        },
+        {
+          en: "He helped us generously.",
+          de: "Er hat uns großzügig geholfen.",
+        },
+      ],
+    },
+  }),
 ];
 
 /** 새 날짜 추가: 이 배열에 { day, date, pairs } 만 push */
