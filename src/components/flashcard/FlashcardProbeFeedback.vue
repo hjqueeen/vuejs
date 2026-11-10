@@ -1,5 +1,8 @@
 <template>
-  <section v-if="feedback && (feedback.modelDe || feedback.commentKo)" class="probe-fb">
+  <section
+    v-if="feedback && (feedback.modelDe || feedback.modelImageUrl || feedback.commentKo)"
+    class="probe-fb"
+  >
     <div class="probe-fb-head">
       <h3 class="probe-fb-title">Feedback</h3>
       <span v-if="markLabel" class="probe-fb-mark" :class="`mark-${feedback.mark}`">
@@ -26,9 +29,15 @@
       <p class="probe-fb-text student">{{ studentAnswer }}</p>
     </div>
 
-    <div v-if="feedback.modelDe" class="probe-fb-block">
+    <div v-if="feedback.modelDe || feedback.modelImageUrl" class="probe-fb-block">
       <p class="probe-fb-label">Musterlösung</p>
-      <p class="probe-fb-text model">{{ feedback.modelDe }}</p>
+      <p v-if="feedback.modelDe" class="probe-fb-text model">{{ feedback.modelDe }}</p>
+      <img
+        v-if="feedback.modelImageUrl"
+        class="probe-fb-img"
+        :src="feedback.modelImageUrl"
+        :alt="feedback.modelImageAlt || 'Musterlösung Skizze'"
+      />
     </div>
 
     <div v-if="feedback.commentKo" class="probe-fb-block">
@@ -175,5 +184,16 @@ export default {
   font-weight: 700;
   cursor: pointer;
   text-decoration: underline;
+}
+
+.probe-fb-img {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  margin-top: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--c-border);
+  background: #fff;
 }
 </style>

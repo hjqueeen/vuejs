@@ -437,8 +437,10 @@ Zeichne eine mögliche Anordnung zweier Stabmagneten inklusive der Feldlinien un
 **b)** die Magnetpole sich gegenseitig anziehen.
 
 **Antwort:**  
-- **a)** Gleichartige Pole gegenüber, z. B. `[N|S]  [S|N]` (S trifft S). Feldlinien weichen zwischen den Polen nach außen aus.  
-- **b)** Verschiedenartige Pole gegenüber, z. B. `[N|S]  [N|S]` (S trifft N). Feldlinien vom N-Pol des einen zum S-Pol des anderen.
+- **a)** Gleichnamige Pole gegenüber, z. B. `[S|N]  [N|S]` (N trifft N). Feldlinien weichen aus (Pfeile N→S).  
+- **b)** Ungleichnamige Pole gegenüber, z. B. `[S|N]  [S|N]` (N trifft S). Im Spalt N→S.
+
+![Zwei Stabmagneten mit Feldlinien](../../../public/images/physik-hangyeol/zwei-stabmagneten-feldlinien.png)
 
 ### 2. Magnetpol am geografischen Nordpol
 
@@ -454,6 +456,8 @@ Erläutere den Begriff „magnetischer Monopol“ und erkläre mithilfe des Mode
 
 **Antwort:** Ein magnetischer Monopol wäre ein Magnet mit nur einem Pol — solche gibt es nicht. Zerbricht man einen Stabmagneten, entstehen zwei kleinere Magnete mit jeweils N- und S-Pol, weil Elementarmagnete immer beide Pole haben und an der Bruchstelle neue Pole entstehen.
 
+![Elementarmagnete Zerbrechen & Influenz](../../../public/images/physik-hangyeol/bsl-aufgabe3-4-elementarmagnete.png)
+
 ### 4. Magnetische Influenz (Büroklammer)
 
 Erkläre den Begriff magnetische Influenz anhand der Interaktion eines Dauermagneten mit einer Büroklammer aus Edelstahl. Beschreibe, was mit den Elementarmagneten passiert  
@@ -462,7 +466,9 @@ Erkläre den Begriff magnetische Influenz anhand der Interaktion eines Dauermagn
 
 **Antwort:** Influenz = magnetisierbarer Stoff wird im äußeren Feld selbst zum Magneten.  
 - **a)** Elementarmagnete richten sich aus → Klammer wird magnetisch und angezogen.  
-- **b)** Ausrichtung geht verloren → magnetische Wirkung verschwindet (magnetisch weich).
+- **b)** Bei **Stahl/Edelstahl** bleibt außerhalb oft eine schwache Magnetisierung (**Remanenz**). Bei **Weicheisen** würden die Elementarmagnete wieder ungeordnet und die Wirkung verschwände.
+
+> Lehrbuch-Hinweis: „Stahl“ → Restmagnetismus; „Weicheisen“ → wieder ungeordnet / Wirkung weg.
 
 ### 5. Entmagnetisierung
 
@@ -491,39 +497,52 @@ Nenne die drei wesentlichen Bestandteile eines Elektromotors und erkläre ihre F
 2. **Spule / Anker** — stromdurchflossen; Lorentz-Kraft dreht die Spule.  
 3. **Kommutator (Stromwender)** — kehrt die Stromrichtung um, damit die Drehung weitergeht.
 
+![Elektromotor Skizze](../../../public/images/physik-hangyeol/elektromotor-skizze.png)
+
 ### 9. Motor & Generator (Lückentext)
 
 Vervollständige die folgenden Sätze.
 
 **Antwort:** Bei einem Elektromotor wird **elektrische** Energie in **mechanische** Energie umgewandelt. Dies beruht auf dem **elektromotorischen** Prinzip. Bei einem Generator wird **mechanische** Energie in **elektrische** Energie umgewandelt. Das hier zugrunde liegende Prinzip wird **Generatorprinzip** genannt. Das hierbei auftretende physikalische Phänomen wird **elektromagnetische Induktion** genannt. Die Ursache für dieses Phänomen ist die sogenannte **Lorentz**-Kraft.
 
-> **Handschrift prüfen:** Inhalt der Lücken ist richtig. Form: „mechanische/elektrische Energie“ (nicht …en); „Generatorprinzip“ als ein Wort.
+> Lücken-Reihenfolge: elektrische → mechanische · elektromotorischen · mechanische → elektrische · Generator(prinzip) · elektromagnetische Induktion · Lorentz(-Kraft). (Handschrift: alle richtig.)
 
 ### 10. Strom durch Induktion erzeugen
 
 Nenne zwei Möglichkeiten, um mithilfe von elektromagnetischer Induktion einen Strom in einer Spule zu erzeugen.
 
 **Antwort:**  
-1. Dauermagneten in die Spule hinein-/herausbewegen (oder Spule relativ zum Magneten bewegen).  
-2. Magnetfeld einer benachbarten Spule ändern (Strom ein-/ausschalten oder Stromstärke ändern).
+1. Einen Stabmagneten in die Spule hineinschieben oder herausziehen (oder die Spule über den Magneten bewegen).  
+2. Das Magnetfeld in der Spule verändern, ohne etwas zu bewegen, z. B. einen Elektromagneten neben der Spule ein- und ausschalten. Man kann auch einen Magneten vor der Spule drehen.
+
+> Wichtig: Es wird nur dann eine Spannung induziert, wenn sich das Magnetfeld in der Spule ändert.
 
 ### 11. Induzierte Spannung vergrößern
 
 Nenne vier Möglichkeiten, um die in einer Spule induzierte Spannung zu vergrößern.
 
-**Antwort:** Windungszahl↑; stärkeres Magnetfeld; Magnetfeld schneller ändern; größere Spulenfläche / mehr Feldlinien durch die Spule.
+**Antwort:**  
+1. Windungszahl der Spule erhöhen  
+2. Einen stärkeren Magneten verwenden  
+3. Den Magneten schneller bewegen (schnellere Änderung des Magnetfelds)  
+4. Einen Eisenkern in die Spule stecken
 
 ### 12. Lenzsches Gesetz → Selbstinduktion
 
 Beschreibe, inwiefern das lenzsche Gesetz zum Phänomen der Selbstinduktion führt.
 
-**Antwort:** Ändert sich der Strom in einer Spule, ändert sich ihr eigenes Magnetfeld. Nach dem lenzschen Gesetz wirkt die induzierte Spannung der Änderung entgegen und bremst Anstieg/Abfall des eigenen Stroms. Das heißt **Selbstinduktion**.
+**Antwort:** Nach dem lenzschen Gesetz ist der Induktionsstrom immer so gerichtet, dass er seiner Ursache entgegenwirkt. Beim Einschalten steigt der Strom in der Spule an, und ihr Magnetfeld baut sich auf. Diese Änderung induziert in der Spule selbst eine Spannung, die dem Anstieg entgegenwirkt — der Strom steigt deshalb nur verzögert an. Beim Ausschalten bricht das Magnetfeld zusammen. Die induzierte Spannung wirkt dieser Abnahme entgegen und versucht, den Strom aufrechtzuerhalten; dabei kann kurzzeitig eine sehr hohe Spannung entstehen. Weil die Spule auf ihre eigene Stromänderung reagiert, nennt man das **Selbstinduktion**.
 
 ### 13. Probleme durch Selbstinduktion
 
 Nenne mögliche Probleme, die durch Selbstinduktion auftreten können.
 
-**Antwort:** Hohe Induktionsspannung beim Abschalten → Funken am Schalter, Bauteilschaden; verzögerter Stromanstieg beim Einschalten; unerwünschte Spannungsstöße.
+**Antwort:**  
+- Beim Ausschalten entstehen hohe Spannungsspitzen.  
+- Am Schalter kommt es zu Funken (Abreißfunken). Die Kontakte nutzen sich ab, und es besteht Brandgefahr.  
+- Empfindliche elektronische Bauteile (z. B. Transistoren, Computerchips) können zerstört werden.  
+- Wer die Kontakte berührt, kann einen elektrischen Schlag bekommen.  
+- Beim Einschalten erreicht der Strom nur verzögert seinen vollen Wert.
 
 ---
 

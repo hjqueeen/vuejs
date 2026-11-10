@@ -3,15 +3,19 @@
  *  원본: hangyeol-physik-klasse9.md / hangyeol-physik-klasse9-ko.md
  */
 
+import { publicAssetUrl } from "@/utils/publicAssetUrl";
+
 export const PHYSIK_K9_NOTES_BOOK_ID = "book-physik-klasse9-notes";
 
 /** 읽기 후 연습용 플래시카드 (Probe-Fragen · 질문만) */
 export const PHYSIK_K9_NOTES_RELATED_FLASHCARD_ID = "book-physik-probe-fragen-k9";
 // 모범답 카드(숨김): "book-physik-magnetismus-k9"
 
+const physikImg = (name) => publicAssetUrl(`images/physik-hangyeol/${name}`);
+
 /**
- * @typedef {'p'|'h3'|'ul'|'ol'|'callout'|'meta'} NoteBlockType
- * @typedef {{ type: NoteBlockType, de?: string, ko?: string, items?: { de: string, ko: string }[] }} NoteBlock
+ * @typedef {'p'|'h3'|'ul'|'ol'|'callout'|'meta'|'figure'} NoteBlockType
+ * @typedef {{ type: NoteBlockType, de?: string, ko?: string, items?: { de: string, ko: string }[], src?: string, captionDe?: string, captionKo?: string }} NoteBlock
  * @typedef {{ id: string, titleDe: string, titleKo: string, blocks: NoteBlock[] }} NoteChapter
  */
 
@@ -581,14 +585,20 @@ export const physikKlasse9NotesChapters = [
         type: "ul",
         items: [
           {
-            de: "Antwort a) Abstoßung: gleichartige Pole gegenüber, z. B. [N|S]  [S|N] (S trifft S). Feldlinien zwischen den Polen weichen nach außen aus.",
-            ko: "답 a) 반발: 같은 극이 마주봄, 예) [N|S]  [S|N] (S가 S와 만남). 극 사이 자기력선은 바깥으로 밀려남.",
+            de: "Antwort a) Abstoßung: gleichnamige Pole gegenüber, z. B. [S|N]  [N|S] (N trifft N). Feldlinien weichen im Spalt nach außen aus (Pfeile weiterhin N→S).",
+            ko: "답 a) 반발: 같은 극이 마주봄, 예) [S|N]  [N|S] (N이 N과 만남). 간격에서 력선이 바깥으로 밀림(화살표는 항상 N→S).",
           },
           {
-            de: "Antwort b) Anziehung: verschiedenartige Pole gegenüber, z. B. [N|S]  [N|S] (S trifft N). Feldlinien verlaufen vom N-Pol des einen zum S-Pol des anderen Magneten.",
-            ko: "답 b) 인력: 다른 극이 마주봄, 예) [N|S]  [N|S] (S가 N과 만남). 자기력선은 한쪽 N에서 다른 쪽 S로 이어짐.",
+            de: "Antwort b) Anziehung: ungleichnamige Pole gegenüber, z. B. [S|N]  [S|N] (N trifft S). Im Spalt laufen Feldlinien von N nach S.",
+            ko: "답 b) 인력: 다른 극이 마주봄, 예) [S|N]  [S|N] (N이 S와 만남). 간격에서 력선은 N→S.",
           },
         ],
+      },
+      {
+        type: "figure",
+        src: physikImg("zwei-stabmagneten-feldlinien.png"),
+        captionDe: "Skizze Aufgabe 1: a) Abstoßung N–N · b) Anziehung N–S. Feldlinien immer N→S.",
+        captionKo: "문제 1 스케치: a) 반발 N–N · b) 인력 N–S. 력선은 항상 N→S.",
       },
 
       // ——— Aufgabe 2 ———
@@ -637,6 +647,12 @@ export const physikKlasse9NotesChapters = [
           },
         ],
       },
+      {
+        type: "figure",
+        src: physikImg("bsl-aufgabe3-4-elementarmagnete.png"),
+        captionDe: "Skizze Aufgabe 3–4: Zerbrechen → zwei neue Magnete mit N und S. Influenz: ungeordnet → im Magnetfeld ausgerichtet.",
+        captionKo: "문제 3–4 스케치: 절단 → N·S를 가진 새 자석 둘. 유도: 무질서 → 자기장에서 정렬.",
+      },
 
       // ——— Aufgabe 4 ———
       {
@@ -657,14 +673,19 @@ export const physikKlasse9NotesChapters = [
             ko: "답 – 개념: 자기 유도란 자화 가능 물질이 외부 자기장 안에서 스스로 자석이 되는 것이다.",
           },
           {
-            de: "a) Im Feld: Die Elementarmagnete in der Büroklammer richten sich aus → die Klammer wird magnetisch und wird angezogen.",
-            ko: "a) 장 안: 클립의 소자석이 정렬 → 클립이 자성을 띠고 끌린다.",
+            de: "a) Im Feld: Die Elementarmagnete richten sich aus → die Klammer wird magnetisch und wird angezogen.",
+            ko: "a) 장 안: 소자석이 정렬 → 클립이 자성을 띠고 끌린다.",
           },
           {
-            de: "b) Außerhalb des Feldes: Die Ausrichtung geht wieder verloren (ungeordnet) → die Büroklammer verliert ihre magnetische Wirkung (magnetisch weich).",
-            ko: "b) 장 밖: 정렬이 다시 풀림(무질서) → 클립은 자성을 잃는다(연자성).",
+            de: "b) Außerhalb (bei Stahl/Edelstahl): Die Ausrichtung bleibt teilweise erhalten — es bleibt eine schwache Magnetisierung (Remanenz). Bei Weicheisen dagegen würden die Elementarmagnete wieder ungeordnet und die Wirkung verschwände.",
+            ko: "b) 장 밖(Stahl/스테인리스): 정렬이 일부 남아 약한 자성이 남는다(잔류자기). Weicheisen이면 다시 무질서해져 자성이 사라진다.",
           },
         ],
+      },
+      {
+        type: "callout",
+        de: "Lehrbuch-Hinweis: Steht in der Aufgabe „Stahl“, erwartet man oft Restmagnetismus außerhalb des Feldes. Steht „Weicheisen“, erwartet man: wieder ungeordnet, Wirkung weg.",
+        ko: "교과서 팁: 「Stahl」이면 장 밖에서도 약한 자성 잔류를, 「Weicheisen」이면 다시 무질서·자성 소실을 기대하는 경우가 많음.",
       },
 
       // ——— Aufgabe 5 ———
@@ -774,6 +795,12 @@ export const physikKlasse9NotesChapters = [
           },
         ],
       },
+      {
+        type: "figure",
+        src: physikImg("elektromotor-skizze.png"),
+        captionDe: "Skizze Aufgabe 8: Feldmagnet (N/S), drehbare Spule, Kommutator mit Schleifkontakten, Spannungsquelle.",
+        captionKo: "문제 8 스케치: 계자(N/S), 회전 코일, 정류자+브러시, 전원.",
+      },
 
       // ——— Aufgabe 9 ———
       {
@@ -789,12 +816,12 @@ export const physikKlasse9NotesChapters = [
       {
         type: "p",
         de: "Antwort: Bei einem Elektromotor wird elektrische Energie in mechanische Energie umgewandelt. Dies beruht auf dem elektromotorischen Prinzip. Bei einem Generator wird mechanische Energie in elektrische Energie umgewandelt. Das hier zugrunde liegende Prinzip wird Generatorprinzip genannt. Das hierbei auftretende physikalische Phänomen wird elektromagnetische Induktion genannt. Die Ursache für dieses Phänomen ist die sogenannte Lorentz-Kraft.",
-        ko: "답: 전동기에서는 전기 에너지가 역학 에너지로 바뀐다. 이는 전동기 원리에 따른다. 발전기에서는 역학 에너지가 전기 에너지로 바뀐다. 그 원리를 발전기 원리라 한다. 이때 나타나는 현상은 전자기 유도이다. 원인인 힘은 로렌츠 힘이다.",
+        ko: "답: 전기→역학 / elektromotorischen / 역학→전기 / Generatorprinzip / elektromagnetische Induktion / Lorentz-Kraft. (손글씨 답 모두 맞음.)",
       },
       {
         type: "callout",
-        de: "Handschrift prüfen: Inhalt der Lücken ist richtig (elektrisch↔mechanisch, elektromotorisches Prinzip, Generatorprinzip, elektromagnetische Induktion, Lorentz-Kraft). Achtung Form: „mechanische/elektrische Energie“ (nicht …en); „Generatorprinzip“ als ein Wort.",
-        ko: "손글씨 검수: 빈칸 내용은 맞음. 형태만 주의 — 「mechanische/elektrische Energie」(…en 아님), 「Generatorprinzip」은 한 단어.",
+        de: "Reihenfolge der Lücken: elektrische → mechanische · elektromotorischen · mechanische → elektrische · Generator(prinzip) · elektromagnetische Induktion · Lorentz(-Kraft).",
+        ko: "빈칸 순서: elektrische→mechanische · elektromotorischen · mechanische→elektrische · Generator(prinzip) · elektromagnetische Induktion · Lorentz(-Kraft).",
       },
 
       // ——— Aufgabe 10 ———
@@ -812,19 +839,19 @@ export const physikKlasse9NotesChapters = [
         type: "ul",
         items: [
           {
-            de: "Antwort: 1) Einen Dauermagneten in die Spule hinein- bzw. herausbewegen (oder Spule relativ zum Magneten bewegen).",
-            ko: "답: 1) 영구자석을 코일 안·밖으로 움직이거나 코일을 자석에 대해 움직임.",
+            de: "1) Einen Stabmagneten in die Spule hineinschieben oder herausziehen (oder die Spule über den Magneten bewegen).",
+            ko: "1) 막대자석을 코일에 넣거나 빼기(또는 코일을 자석 위로 움직이기).",
           },
           {
-            de: "2) Das Magnetfeld einer benachbarten stromdurchflossenen Spule (Elektromagnet) ändern — z. B. Strom ein-/ausschalten oder Stromstärke ändern.",
-            ko: "2) 옆 코일(전자석)의 자기장을 바꿈 — 예: 전류 ON/OFF 또는 세기 변경.",
+            de: "2) Das Magnetfeld in der Spule verändern, ohne etwas zu bewegen, z. B. einen Elektromagneten neben der Spule ein- und ausschalten. Man kann auch einen Magneten vor der Spule drehen.",
+            ko: "2) 움직이지 않고 코일 속 자기장을 바꾸기 — 옆 전자석 ON/OFF, 또는 자석을 코일 앞에서 회전.",
           },
         ],
       },
       {
         type: "callout",
-        de: "Allgemein: Induktionsstrom entsteht, wenn sich der magnetische Fluss durch die Spule ändert.",
-        ko: "일반: 코일을 지나는 자기 선속(플럭스)이 변할 때 유도 전류가 생긴다.",
+        de: "Wichtig: Es wird nur dann eine Spannung induziert, wenn sich das Magnetfeld in der Spule ändert.",
+        ko: "중요: 코일 속 자기장이 변할 때만 전압이 유도된다.",
       },
 
       // ——— Aufgabe 11 ———
@@ -842,20 +869,20 @@ export const physikKlasse9NotesChapters = [
         type: "ul",
         items: [
           {
-            de: "Antwort: 1) Windungszahl der Spule erhöhen.",
-            ko: "답: 1) 코일 권선수 늘리기.",
+            de: "1) Windungszahl der Spule erhöhen",
+            ko: "1) 코일 권선수 늘리기",
           },
           {
-            de: "2) Stärkeres Magnetfeld verwenden (stärkerer Magnet / Eisenkern).",
-            ko: "2) 더 센 자기장(더 센 자석·철심).",
+            de: "2) Einen stärkeren Magneten verwenden",
+            ko: "2) 더 센 자석 사용",
           },
           {
-            de: "3) Magnetfeld schneller ändern (Magnet schneller bewegen).",
-            ko: "3) 자기장을 더 빨리 바꾸기(자석을 더 빠르게 움직임).",
+            de: "3) Den Magneten schneller bewegen (schnellere Änderung des Magnetfelds)",
+            ko: "3) 자석을 더 빠르게 움직이기(자기장 변화↑)",
           },
           {
-            de: "4) Größere Spulenfläche / mehr Magnetfeldlinien durch die Spule.",
-            ko: "4) 코일 면적↑ / 코일을 지나는 자기력선↑.",
+            de: "4) Einen Eisenkern in die Spule stecken",
+            ko: "4) 코일에 철심 넣기",
           },
         ],
       },
@@ -873,8 +900,8 @@ export const physikKlasse9NotesChapters = [
       },
       {
         type: "p",
-        de: "Antwort: Ändert sich der Strom in einer Spule, ändert sich auch ihr eigenes Magnetfeld. Nach dem lenzschen Gesetz wirkt die induzierte Spannung der Ursache der Änderung entgegen — sie bremst also das Ansteigen oder Abfallen des eigenen Stroms. Diese Selbsthemmung einer Spule gegenüber Stromänderungen heißt Selbstinduktion.",
-        ko: "답: 코일 전류가 변하면 코일 자신의 자기장도 변한다. 렌츠 법칙에 따라 유도 전압은 그 변화의 원인에 반대한다 — 곧 자기 전류의 증가·감소를 늦춘다. 전류 변화에 대한 이런 자체 저항을 자기유도라 한다.",
+        de: "Antwort: Nach dem lenzschen Gesetz ist der Induktionsstrom immer so gerichtet, dass er seiner Ursache entgegenwirkt. Beim Einschalten steigt der Strom in der Spule an, und ihr Magnetfeld baut sich auf. Diese Änderung induziert in der Spule selbst eine Spannung, die dem Anstieg entgegenwirkt — der Strom steigt deshalb nur verzögert an. Beim Ausschalten bricht das Magnetfeld zusammen. Die induzierte Spannung wirkt dieser Abnahme entgegen und versucht, den Strom aufrechtzuerhalten; dabei kann kurzzeitig eine sehr hohe Spannung entstehen. Weil die Spule auf ihre eigene Stromänderung reagiert, nennt man das Selbstinduktion.",
+        ko: "답: 렌츠 법칙 — 유도 전류는 원인에 반대. 켤 때: 전류·자기장 증가 → 자체 유도 전압이 증가를 막아 전류가 늦게 올라감. 끌 때: 자기장 붕괴 → 유도 전압이 감소에 반대해 전류를 유지하려 함(순간 고전압). 자기 전류 변화에 반응하므로 자기유도.",
       },
 
       // ——— Aufgabe 13 ———
@@ -892,16 +919,24 @@ export const physikKlasse9NotesChapters = [
         type: "ul",
         items: [
           {
-            de: "Antwort: Beim Abschalten kann eine hohe Induktionsspannung entstehen → Funken am Schalter, Beschädigung von Bauteilen/Elektronik.",
-            ko: "답: 전원을 끌 때 높은 유도 전압 → 스위치 불꽃, 부품·전자회로 손상.",
+            de: "Beim Ausschalten entstehen hohe Spannungsspitzen.",
+            ko: "끌 때 높은 전압 피크.",
           },
           {
-            de: "Beim Einschalten steigt der Strom verzögert an (Spule „widersetzt“ sich).",
-            ko: "켤 때 전류가 늦게 올라감(코일이 「저항」).",
+            de: "Am Schalter kommt es zu Funken (Abreißfunken). Die Kontakte nutzen sich ab, und es besteht Brandgefahr.",
+            ko: "스위치에 불꽃(개방 불꽃) → 접점 마모·화재 위험.",
           },
           {
-            de: "Unerwünschte Spannungsstöße in Stromnetzen und Geräten.",
-            ko: "전력망·기기에서 원치 않는 전압 서지.",
+            de: "Empfindliche elektronische Bauteile (z. B. Transistoren, Computerchips) können zerstört werden.",
+            ko: "민감한 전자 부품(트랜지스터·칩 등) 손상.",
+          },
+          {
+            de: "Wer die Kontakte berührt, kann einen elektrischen Schlag bekommen.",
+            ko: "접점을 만지면 감전 가능.",
+          },
+          {
+            de: "Beim Einschalten erreicht der Strom nur verzögert seinen vollen Wert.",
+            ko: "켤 때 전류가 늦게 최대값에 도달.",
           },
         ],
       },

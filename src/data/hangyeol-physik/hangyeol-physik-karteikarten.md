@@ -534,8 +534,10 @@ Dann wird die einheitliche Ausrichtung der Elementarmagnete zerstört.
 **Q:** Zeichne Anordnungen zweier Stabmagneten mit Feldlinien: a) Abstoßung, b) Anziehung.  
 *(막대자석 두 개: a) 반발, b) 인력)*
 
-**A:** a) Gleichartige Pole gegenüber, z. B. `[N|S] [S|N]`. b) Verschiedenartige Pole gegenüber, z. B. `[N|S] [N|S]`.  
-*(같은 극=반발, 다른 극=인력.)*
+**A:** a) Gleichnamige Pole, z. B. `[S|N] [N|S]` (N–N). b) Ungleichnamige Pole, z. B. `[S|N] [S|N]` (N–S).  
+*(같은 극=반발, 다른 극=인력. 력선 N→S.)*
+
+![Zwei Stabmagneten](../../../public/images/physik-hangyeol/zwei-stabmagneten-feldlinien.png)
 
 ---
 
@@ -561,8 +563,10 @@ Dann wird die einheitliche Ausrichtung der Elementarmagnete zerstört.
 **Q:** Magnetische Influenz an Dauermagnet + Büroklammer: Elementarmagnete a) im Feld, b) außerhalb?  
 *(자기 유도: 장 안 / 장 밖)*
 
-**A:** a) ausgerichtet → magnetisch, angezogen. b) ungeordnet → Wirkung weg (magnetisch weich).  
-*(장 안=정렬, 장 밖=풀림.)*
+**A:** a) ausgerichtet → magnetisch, angezogen. b) Bei Stahl oft Remanenz; bei Weicheisen wieder ungeordnet.  
+*(장 안=정렬. Stahl=잔류, Weicheisen=풀림.)*
+
+![Influenz](../../../public/images/physik-hangyeol/bsl-aufgabe3-4-elementarmagnete.png)
 
 ---
 
@@ -600,6 +604,8 @@ Dann wird die einheitliche Ausrichtung der Elementarmagnete zerstört.
 **A:** 1) Dauermagnet — Feld. 2) Spule/Anker — Lorentz-Kraft dreht. 3) Kommutator — kehrt Stromrichtung um.  
 *(계자·전기자·정류자.)*
 
+![Elektromotor](../../../public/images/physik-hangyeol/elektromotor-skizze.png)
+
 ---
 
 ### I9
@@ -615,8 +621,8 @@ Dann wird die einheitliche Ausrichtung der Elementarmagnete zerstört.
 **Q:** Zwei Möglichkeiten, durch Induktion Strom in einer Spule zu erzeugen.  
 *(유도로 전류)*
 
-**A:** 1) Magnet hinein-/herausbewegen. 2) Feld einer Nachbarspule ändern (Strom ein/aus).  
-*(플럭스 변화.)*
+**A:** 1) Stabmagnet hinein-/herausziehen (oder Spule bewegen). 2) Feld ändern ohne Bewegung (Elektromagnet ein/aus; Magnet drehen). Nur bei Feldänderung.  
+*(자기장 변화일 때만.)*
 
 ---
 
@@ -624,8 +630,8 @@ Dann wird die einheitliche Ausrichtung der Elementarmagnete zerstört.
 **Q:** Vier Möglichkeiten, die induzierte Spannung zu vergrößern.  
 *(유도 전압↑)*
 
-**A:** Windungszahl↑; stärkeres Feld; Feld schneller ändern; größere Fläche / mehr Feldlinien.  
-*(권선·장·속도·면적.)*
+**A:** Windungszahl↑; stärkerer Magnet; Magnet schneller bewegen; Eisenkern in die Spule.  
+*(권선·자석·속도·철심.)*
 
 ---
 
@@ -633,8 +639,8 @@ Dann wird die einheitliche Ausrichtung der Elementarmagnete zerstört.
 **Q:** Inwiefern führt das lenzsche Gesetz zur Selbstinduktion?  
 *(렌츠 → 자기유도)*
 
-**A:** Stromänderung → eigenes Feld ändert sich → induzierte Spannung wirkt der Änderung entgegen = **Selbstinduktion**.  
-*(자기 전류 변화에 반대.)*
+**A:** Induktionsstrom wirkt der Ursache entgegen. Ein: Anstieg gehemmt. Aus: Strom gehalten (hohe Spannung). = **Selbstinduktion**.  
+*(켤 때 지연 / 끌 때 고전압.)*
 
 ---
 
@@ -642,8 +648,8 @@ Dann wird die einheitliche Ausrichtung der Elementarmagnete zerstört.
 **Q:** Mögliche Probleme durch Selbstinduktion.  
 *(자기유도 문제)*
 
-**A:** Hohe Spannung beim Abschalten → Funken, Schaden; verzögerter Stromanstieg; Spannungsstöße.  
-*(끌 때 서지·불꽃.)*
+**A:** Spannungsspitzen; Abreißfunken/Brandgefahr; Bauteilschaden; Stromschlag; verzögerter Einschaltstrom.  
+*(불꽃·손상·감전·지연.)*
 
 ---
 

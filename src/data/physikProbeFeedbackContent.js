@@ -1,5 +1,9 @@
 /** Physik Probe-Fragen — Musterlösung + Feedback (Hangyeol 2026-09-28 export 기준) */
 
+import { publicAssetUrl } from "@/utils/publicAssetUrl";
+
+const physikImg = (name) => publicAssetUrl(`images/physik-hangyeol/${name}`);
+
 export const PHYSIK_PROBE_FEEDBACK_META = {
   bookId: "book-physik-probe-fragen-k9",
   sourceExport: "physik-probe-antworten-hangyeol-2026-09-28.json",
@@ -12,6 +16,8 @@ export const PHYSIK_PROBE_FEEDBACK_META = {
  * @typedef {{
  *   mark: ProbeMark,
  *   modelDe: string,
+ *   modelImageUrl?: string,
+ *   modelImageAlt?: string,
  *   commentKo?: string,
  *   noteChapterId?: string,
  *   noteDe?: string,
@@ -537,8 +543,10 @@ export const physikProbeFeedbackByCardId = {
   "card-ppf-i1": {
     mark: "ok",
     modelDe:
-      "a) Gleichartige Pole gegenüber, z. B. [N|S] [S|N]; Feldlinien weichen aus. b) Verschiedenartige Pole gegenüber, z. B. [N|S] [N|S]; Feldlinien von N nach S.",
-    commentKo: "스케치만 있으면 됨. 같은 극=반발, 다른 극=인력.",
+      "a) Gleichnamige Pole gegenüber, z. B. [S|N] [N|S] (N–N); Feldlinien weichen aus. b) Ungleichnamige Pole, z. B. [S|N] [S|N] (N–S); im Spalt N→S.",
+    modelImageUrl: physikImg("zwei-stabmagneten-feldlinien.png"),
+    modelImageAlt: "Zwei Stabmagneten mit Feldlinien: Abstoßung und Anziehung",
+    commentKo: "스케치 + 같은 극=반발, 다른 극=인력. 력선은 항상 N→S.",
   },
   "card-ppf-i2": {
     mark: "partial",
@@ -551,13 +559,17 @@ export const physikProbeFeedbackByCardId = {
     mark: "ok",
     modelDe:
       "Magnetischer Monopol = Magnet mit nur einem Pol — gibt es nicht. Beim Zerbrechen entstehen zwei kleinere Magnete mit N- und S-Pol (Elementarmagnete haben immer beide Pole).",
-    commentKo: "단극 없음 + 자르면 항상 N/S 새 자석.",
+    modelImageUrl: physikImg("bsl-aufgabe3-4-elementarmagnete.png"),
+    modelImageAlt: "Stabmagnet zerbrechen und Elementarmagnete",
+    commentKo: "단극 없음 + 자르면 항상 N/S 새 자석. 위쪽 스케치 참고.",
   },
   "card-ppf-i4": {
     mark: "ok",
     modelDe:
-      "Influenz: Stoff wird im äußeren Feld selbst magnetisch. a) Elementarmagnete ausgerichtet → Anziehung. b) Außerhalb: Ausrichtung geht verloren (magnetisch weich).",
-    commentKo: "장 안=정렬, 장 밖=풀림.",
+      "Influenz: Stoff wird im äußeren Feld selbst magnetisch. a) Elementarmagnete ausgerichtet → Anziehung. b) Bei Stahl/Edelstahl bleibt außerhalb oft schwache Remanenz; bei Weicheisen wieder ungeordnet / Wirkung weg.",
+    modelImageUrl: physikImg("bsl-aufgabe3-4-elementarmagnete.png"),
+    modelImageAlt: "Elementarmagnete ungeordnet und ausgerichtet",
+    commentKo: "장 안=정렬. 장 밖: Stahl→잔류자기, Weicheisen→무질서. 아래 스케치 참고.",
   },
   "card-ppf-i5": {
     mark: "ok",
@@ -580,39 +592,41 @@ export const physikProbeFeedbackByCardId = {
   "card-ppf-i8": {
     mark: "ok",
     modelDe:
-      "1) Dauermagnet (Feldmagnet): konstantes Feld. 2) Spule/Anker: Lorentz-Kraft dreht. 3) Kommutator: kehrt Stromrichtung um, damit Drehung weitergeht.",
-    commentKo: "세 부품 + 기능. 스케치도 연습하세요.",
+      "1) Feldmagnet (Dauermagnet N/S): konstantes Feld. 2) Drehbare Spule/Anker: Lorentz-Kraft dreht. 3) Kommutator mit Schleifkontakten: kehrt Stromrichtung um.",
+    modelImageUrl: physikImg("elektromotor-skizze.png"),
+    modelImageAlt: "Elektromotor: Feldmagnet, Spule, Kommutator, Spannungsquelle",
+    commentKo: "세 부품 + 기능. 아래 스케치를 따라 그려 보세요.",
   },
   "card-ppf-i9": {
     mark: "ok",
     modelDe:
       "Motor: elektrische → mechanische Energie (elektromotorisches Prinzip). Generator: mechanische → elektrische Energie (Generatorprinzip). Phänomen: elektromagnetische Induktion. Ursache: Lorentz-Kraft.",
     commentKo:
-      "내용 맞음. 형태: mechanische/elektrische (…en 아님), Generatorprinzip 한 단어.",
+      "손글씨 답 모두 맞음. 순서: elektrische→mechanische · elektromotorischen · mechanische→elektrische · Generatorprinzip · Induktion · Lorentz-Kraft.",
   },
   "card-ppf-i10": {
     mark: "ok",
     modelDe:
-      "1) Magnet in Spule hinein-/herausbewegen (oder Spule bewegen). 2) Magnetfeld einer Nachbarspule ändern (Strom ein/aus oder Stromstärke ändern).",
-    commentKo: "자기 선속(플럭스)이 변하면 됨.",
+      "1) Stabmagnet in die Spule hinein-/herausziehen (oder Spule über den Magneten bewegen). 2) Magnetfeld ändern ohne Bewegung, z. B. Elektromagnet neben der Spule ein-/ausschalten; oder Magnet vor der Spule drehen. Spannung nur bei Änderung des Magnetfelds in der Spule.",
+    commentKo: "자기장이 변할 때만 유도.",
   },
   "card-ppf-i11": {
     mark: "ok",
     modelDe:
-      "Windungszahl↑; stärkeres Magnetfeld; Feld schneller ändern; größere Spulenfläche / mehr Feldlinien durch die Spule.",
+      "1) Windungszahl erhöhen. 2) Stärkeren Magneten. 3) Magneten schneller bewegen. 4) Eisenkern in die Spule stecken.",
     commentKo: "네 가지 모두.",
   },
   "card-ppf-i12": {
     mark: "ok",
     modelDe:
-      "Stromänderung → eigenes Magnetfeld ändert sich. Nach Lenz wirkt die induzierte Spannung der Änderung entgegen und bremst Anstieg/Abfall des eigenen Stroms = Selbstinduktion.",
-    commentKo: "자기 전류 변화에 반대하는 유도 전압 = 자기유도.",
+      "Lenz: Induktionsstrom wirkt seiner Ursache entgegen. Einschalten: Feld baut sich auf → induzierte Spannung hemmt Anstieg (Strom verzögert). Ausschalten: Feld bricht zusammen → induzierte Spannung hält Strom aufrecht (hohe Spannung möglich). Reaktion auf eigene Stromänderung = Selbstinduktion.",
+    commentKo: "켤 때 지연 / 끌 때 고전압 = 자기유도.",
   },
   "card-ppf-i13": {
     mark: "ok",
     modelDe:
-      "Hohe Induktionsspannung beim Abschalten → Funken, Bauteilschaden; verzögerter Stromanstieg beim Einschalten; unerwünschte Spannungsstöße.",
-    commentKo: "끌 때 서지·불꽃, 켤 때 지연.",
+      "Hohe Spannungsspitzen beim Ausschalten; Abreißfunken am Schalter (Kontaktverschleiß, Brandgefahr); Zerstörung empfindlicher Bauteile; Stromschlaggefahr an Kontakten; verzögerter Stromanstieg beim Einschalten.",
+    commentKo: "불꽃·부품손상·감전·지연.",
   },
 };
 

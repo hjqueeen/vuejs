@@ -112,6 +112,24 @@
               </li>
             </component>
           </template>
+
+          <template v-else-if="block.type === 'figure'">
+            <figure class="note-figure">
+              <img
+                class="note-figure-img"
+                :src="block.src"
+                alt=""
+              />
+              <figcaption v-if="block.captionDe || block.captionKo">
+                <span v-if="showDe && block.captionDe" class="text-de">{{
+                  block.captionDe
+                }}</span>
+                <span v-if="showKo && block.captionKo" class="text-ko">{{
+                  block.captionKo
+                }}</span>
+              </figcaption>
+            </figure>
+          </template>
         </div>
       </section>
     </div>
@@ -450,6 +468,33 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
+}
+
+.note-figure {
+  margin: 0.5rem 0 0.85rem;
+  padding: 0.65rem;
+  background: #fff;
+  border: 1px solid var(--c-border);
+  border-radius: 10px;
+}
+
+.note-figure-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.note-figure figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-top: 0.55rem;
+}
+
+.note-figure .text-de,
+.note-figure .text-ko {
+  font-size: 0.85rem;
 }
 
 .notes-missing {
