@@ -440,7 +440,7 @@ LED에 흐르는 전류의 세기는 20 mA이다. 1초 동안 측정된 전하�
 - **a)** 같은 극이 마주봄, 예) `[S|N]  [N|S]` (N이 N과 만남). 력선이 밀려남(화살표 N→S).  
 - **b)** 다른 극이 마주봄, 예) `[S|N]  [S|N]` (N이 S와 만남). 간격에서 N→S.
 
-![막대자석 두 개 자기력선](../../../public/images/physik-hangyeol/zwei-stabmagneten-feldlinien.png)
+![막대자석 두 개 자기력선](../../../public/images/physik-hangyeol/stabmagnete_abstossen_anziehen.svg)
 
 ### 2. 지리적 북극의 자극
 
@@ -456,7 +456,7 @@ LED에 흐르는 전류의 세기는 20 mA이다. 1초 동안 측정된 전하�
 
 **답:** 자기 단극은 N 또는 S만 가진 자석을 뜻한다 — 그런 것은 없다. 막대자석을 부러뜨리면 N·S극을 가진 더 작은 자석 두 개가 생긴다. 소자석은 항상 양 극을 갖고, 단면에 새 극이 생긴다.
 
-![소자석 절단 & 유도](../../../public/images/physik-hangyeol/bsl-aufgabe3-4-elementarmagnete.png)
+![소자석 절단 & 유도](../../../public/images/physik-hangyeol/elementarmagnete_zerbrechen_influenz.svg)
 
 ### 4. 자기 유도 (클립)
 
@@ -497,7 +497,7 @@ LED에 흐르는 전류의 세기는 20 mA이다. 1초 동안 측정된 전하�
 2. **코일/전기자** — 전류가 흐르면 로렌츠 힘이 코일을 돌림.  
 3. **정류자(전류 전환기)** — 전류 방향을 바꿔 회전이 이어지게 함.
 
-![전동기 스케치](../../../public/images/physik-hangyeol/elektromotor-skizze.png)
+![전동기 스케치](../../../public/images/physik-hangyeol/elektromotor_skizze_bestandteile.svg)
 
 ### 9. 모터 & 발전기 (빈칸)
 

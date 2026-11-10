@@ -596,7 +596,7 @@ export const physikKlasse9NotesChapters = [
       },
       {
         type: "figure",
-        src: physikImg("zwei-stabmagneten-feldlinien.png"),
+        src: physikImg("stabmagnete_abstossen_anziehen.svg"),
         captionDe: "Skizze Aufgabe 1: a) Abstoßung N–N · b) Anziehung N–S. Feldlinien immer N→S.",
         captionKo: "문제 1 스케치: a) 반발 N–N · b) 인력 N–S. 력선은 항상 N→S.",
       },
@@ -649,7 +649,7 @@ export const physikKlasse9NotesChapters = [
       },
       {
         type: "figure",
-        src: physikImg("bsl-aufgabe3-4-elementarmagnete.png"),
+        src: physikImg("elementarmagnete_zerbrechen_influenz.svg"),
         captionDe: "Skizze Aufgabe 3–4: Zerbrechen → zwei neue Magnete mit N und S. Influenz: ungeordnet → im Magnetfeld ausgerichtet.",
         captionKo: "문제 3–4 스케치: 절단 → N·S를 가진 새 자석 둘. 유도: 무질서 → 자기장에서 정렬.",
       },
@@ -797,7 +797,7 @@ export const physikKlasse9NotesChapters = [
       },
       {
         type: "figure",
-        src: physikImg("elektromotor-skizze.png"),
+        src: physikImg("elektromotor_skizze_bestandteile.svg"),
         captionDe: "Skizze Aufgabe 8: Feldmagnet (N/S), drehbare Spule, Kommutator mit Schleifkontakten, Spannungsquelle.",
         captionKo: "문제 8 스케치: 계자(N/S), 회전 코일, 정류자+브러시, 전원.",
       },

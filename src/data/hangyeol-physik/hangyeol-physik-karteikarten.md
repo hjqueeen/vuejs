@@ -537,7 +537,7 @@ Dann wird die einheitliche Ausrichtung der Elementarmagnete zerstört.
 **A:** a) Gleichnamige Pole, z. B. `[S|N] [N|S]` (N–N). b) Ungleichnamige Pole, z. B. `[S|N] [S|N]` (N–S).  
 *(같은 극=반발, 다른 극=인력. 력선 N→S.)*
 
-![Zwei Stabmagneten](../../../public/images/physik-hangyeol/zwei-stabmagneten-feldlinien.png)
+![Zwei Stabmagneten](../../../public/images/physik-hangyeol/stabmagnete_abstossen_anziehen.svg)
 
 ---
 
@@ -566,7 +566,7 @@ Dann wird die einheitliche Ausrichtung der Elementarmagnete zerstört.
 **A:** a) ausgerichtet → magnetisch, angezogen. b) Bei Stahl oft Remanenz; bei Weicheisen wieder ungeordnet.  
 *(장 안=정렬. Stahl=잔류, Weicheisen=풀림.)*
 
-![Influenz](../../../public/images/physik-hangyeol/bsl-aufgabe3-4-elementarmagnete.png)
+![Influenz](../../../public/images/physik-hangyeol/elementarmagnete_zerbrechen_influenz.svg)
 
 ---
 
@@ -604,7 +604,7 @@ Dann wird die einheitliche Ausrichtung der Elementarmagnete zerstört.
 **A:** 1) Dauermagnet — Feld. 2) Spule/Anker — Lorentz-Kraft dreht. 3) Kommutator — kehrt Stromrichtung um.  
 *(계자·전기자·정류자.)*
 
-![Elektromotor](../../../public/images/physik-hangyeol/elektromotor-skizze.png)
+![Elektromotor](../../../public/images/physik-hangyeol/elektromotor_skizze_bestandteile.svg)
 
 ---
 

@@ -440,7 +440,7 @@ Zeichne eine mögliche Anordnung zweier Stabmagneten inklusive der Feldlinien un
 - **a)** Gleichnamige Pole gegenüber, z. B. `[S|N]  [N|S]` (N trifft N). Feldlinien weichen aus (Pfeile N→S).  
 - **b)** Ungleichnamige Pole gegenüber, z. B. `[S|N]  [S|N]` (N trifft S). Im Spalt N→S.
 
-![Zwei Stabmagneten mit Feldlinien](../../../public/images/physik-hangyeol/zwei-stabmagneten-feldlinien.png)
+![Zwei Stabmagneten mit Feldlinien](../../../public/images/physik-hangyeol/stabmagnete_abstossen_anziehen.svg)
 
 ### 2. Magnetpol am geografischen Nordpol
 
@@ -456,7 +456,7 @@ Erläutere den Begriff „magnetischer Monopol“ und erkläre mithilfe des Mode
 
 **Antwort:** Ein magnetischer Monopol wäre ein Magnet mit nur einem Pol — solche gibt es nicht. Zerbricht man einen Stabmagneten, entstehen zwei kleinere Magnete mit jeweils N- und S-Pol, weil Elementarmagnete immer beide Pole haben und an der Bruchstelle neue Pole entstehen.
 
-![Elementarmagnete Zerbrechen & Influenz](../../../public/images/physik-hangyeol/bsl-aufgabe3-4-elementarmagnete.png)
+![Elementarmagnete Zerbrechen & Influenz](../../../public/images/physik-hangyeol/elementarmagnete_zerbrechen_influenz.svg)
 
 ### 4. Magnetische Influenz (Büroklammer)
 
@@ -497,7 +497,7 @@ Nenne die drei wesentlichen Bestandteile eines Elektromotors und erkläre ihre F
 2. **Spule / Anker** — stromdurchflossen; Lorentz-Kraft dreht die Spule.  
 3. **Kommutator (Stromwender)** — kehrt die Stromrichtung um, damit die Drehung weitergeht.
 
-![Elektromotor Skizze](../../../public/images/physik-hangyeol/elektromotor-skizze.png)
+![Elektromotor Skizze](../../../public/images/physik-hangyeol/elektromotor_skizze_bestandteile.svg)
 
 ### 9. Motor & Generator (Lückentext)
 

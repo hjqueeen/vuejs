@@ -544,7 +544,7 @@ export const physikProbeFeedbackByCardId = {
     mark: "ok",
     modelDe:
       "a) Gleichnamige Pole gegenüber, z. B. [S|N] [N|S] (N–N); Feldlinien weichen aus. b) Ungleichnamige Pole, z. B. [S|N] [S|N] (N–S); im Spalt N→S.",
-    modelImageUrl: physikImg("zwei-stabmagneten-feldlinien.png"),
+    modelImageUrl: physikImg("stabmagnete_abstossen_anziehen.svg"),
     modelImageAlt: "Zwei Stabmagneten mit Feldlinien: Abstoßung und Anziehung",
     commentKo: "스케치 + 같은 극=반발, 다른 극=인력. 력선은 항상 N→S.",
   },
@@ -559,7 +559,7 @@ export const physikProbeFeedbackByCardId = {
     mark: "ok",
     modelDe:
       "Magnetischer Monopol = Magnet mit nur einem Pol — gibt es nicht. Beim Zerbrechen entstehen zwei kleinere Magnete mit N- und S-Pol (Elementarmagnete haben immer beide Pole).",
-    modelImageUrl: physikImg("bsl-aufgabe3-4-elementarmagnete.png"),
+    modelImageUrl: physikImg("elementarmagnete_zerbrechen_influenz.svg"),
     modelImageAlt: "Stabmagnet zerbrechen und Elementarmagnete",
     commentKo: "단극 없음 + 자르면 항상 N/S 새 자석. 위쪽 스케치 참고.",
   },
@@ -567,7 +567,7 @@ export const physikProbeFeedbackByCardId = {
     mark: "ok",
     modelDe:
       "Influenz: Stoff wird im äußeren Feld selbst magnetisch. a) Elementarmagnete ausgerichtet → Anziehung. b) Bei Stahl/Edelstahl bleibt außerhalb oft schwache Remanenz; bei Weicheisen wieder ungeordnet / Wirkung weg.",
-    modelImageUrl: physikImg("bsl-aufgabe3-4-elementarmagnete.png"),
+    modelImageUrl: physikImg("elementarmagnete_zerbrechen_influenz.svg"),
     modelImageAlt: "Elementarmagnete ungeordnet und ausgerichtet",
     commentKo: "장 안=정렬. 장 밖: Stahl→잔류자기, Weicheisen→무질서. 아래 스케치 참고.",
   },
@@ -593,7 +593,7 @@ export const physikProbeFeedbackByCardId = {
     mark: "ok",
     modelDe:
       "1) Feldmagnet (Dauermagnet N/S): konstantes Feld. 2) Drehbare Spule/Anker: Lorentz-Kraft dreht. 3) Kommutator mit Schleifkontakten: kehrt Stromrichtung um.",
-    modelImageUrl: physikImg("elektromotor-skizze.png"),
+    modelImageUrl: physikImg("elektromotor_skizze_bestandteile.svg"),
     modelImageAlt: "Elektromotor: Feldmagnet, Spule, Kommutator, Spannungsquelle",
     commentKo: "세 부품 + 기능. 아래 스케치를 따라 그려 보세요.",
   },
