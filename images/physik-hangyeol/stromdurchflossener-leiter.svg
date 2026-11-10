@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 340" width="400" height="340">
+  <rect width="400" height="340" fill="#f7f4ef"/>
+  <text x="200" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1a1a1a">Stromdurchflossener Leiter</text>
+  <text x="200" y="48" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#666">Linke-Hand-Regel ∑ Elektronenfluss</text>
+  <!-- wire -->
+  <rect x="175" y="70" width="50" height="200" fill="#cbd5e0" stroke="#1a1a1a" stroke-width="1.5" rx="4"/>
+  <text x="200" y="95" text-anchor="middle" font-size="18" font-weight="700" fill="#c53030" font-family="system-ui,sans-serif">+</text>
+  <text x="200" y="250" text-anchor="middle" font-size="22" font-weight="700" fill="#2b6cb0" font-family="system-ui,sans-serif"></text>
+  <!-- electron arrow up -->
+  <path d="M200 220 L200 120" stroke="#2b6cb0" stroke-width="3" marker-end="url(#up)"/>
+  <text x="200" y="280" text-anchor="middle" font-size="11" fill="#2b6cb0" font-family="system-ui,sans-serif">e{ Flieﬂrichtung</text>
+  <!-- field circles -->
+  <ellipse cx="200" cy="160" rx="90" ry="35" fill="none" stroke="#dd6b20" stroke-width="1.8" stroke-dasharray="4 2"/>
+  <ellipse cx="200" cy="160" rx="115" ry="50" fill="none" stroke="#dd6b20" stroke-width="1.4" opacity="0.7"/>
+  <defs>
+    <marker id="up" markerWidth="8" markerHeight="8" refX="4" refY="0" orient="auto">
+      <path d="M0,8 L4,0 L8,8 Z" fill="#2b6cb0"/>
+    </marker>
+  </defs>
+  <text x="320" y="155" font-size="12" fill="#dd6b20" font-family="system-ui,sans-serif">Feldlinien</text>
+  <text x="200" y="320" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#444">Daumen = e{ ∑ Finger = Feldlinien</text>
+</svg>

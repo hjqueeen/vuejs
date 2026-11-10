@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 300" width="540" height="300">
+  <rect width="540" height="300" fill="#f7f4ef"/>
+  <text x="270" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#1a1a1a">Spule ” Stabmagnet</text>
+  <defs>
+    <marker id="c" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#2b6cb0"/>
+    </marker>
+  </defs>
+  <!-- Spule -->
+  <text x="150" y="55" text-anchor="middle" font-size="14" font-weight="600" font-family="system-ui,sans-serif">Spule (stromdurchflossen)</text>
+  <ellipse cx="70" cy="140" rx="18" ry="40" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+  <ellipse cx="100" cy="140" rx="18" ry="40" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+  <ellipse cx="130" cy="140" rx="18" ry="40" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+  <ellipse cx="160" cy="140" rx="18" ry="40" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+  <ellipse cx="190" cy="140" rx="18" ry="40" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+  <ellipse cx="220" cy="140" rx="18" ry="40" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+  <circle cx="55" cy="100" r="10" fill="#c53030" stroke="#1a1a1a"/><text x="55" y="104" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">+</text>
+  <circle cx="55" cy="180" r="10" fill="#2b6cb0" stroke="#1a1a1a"/><text x="55" y="184" text-anchor="middle" font-size="14" fill="#fff" font-weight="700"></text>
+  <text x="70" y="145" text-anchor="middle" font-size="14" font-weight="700" fill="#c53030" font-family="system-ui,sans-serif">N</text>
+  <text x="220" y="145" text-anchor="middle" font-size="14" font-weight="700" fill="#2b6cb0" font-family="system-ui,sans-serif">S</text>
+  <g fill="none" stroke="#2b6cb0" stroke-width="1.4" marker-end="url(#c)">
+    <path d="M80 95 C 145 50, 145 50, 210 95"/>
+    <path d="M80 185 C 145 230, 145 230, 210 185"/>
+  </g>
+  <!-- Stabmagnet -->
+  <text x="400" y="55" text-anchor="middle" font-size="14" font-weight="600" font-family="system-ui,sans-serif">Stabmagnet</text>
+  <rect x="340" y="100" width="50" height="80" fill="#c53030" stroke="#1a1a1a"/>
+  <rect x="390" y="100" width="50" height="80" fill="#2b6cb0" stroke="#1a1a1a"/>
+  <text x="365" y="148" text-anchor="middle" font-size="20" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">N</text>
+  <text x="415" y="148" text-anchor="middle" font-size="20" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">S</text>
+  <g fill="none" stroke="#2b6cb0" stroke-width="1.4" marker-end="url(#c)">
+    <path d="M350 95 C 390 50, 390 50, 430 95"/>
+    <path d="M350 185 C 390 230, 390 230, 430 185"/>
+  </g>
+  <text x="270" y="270" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#444">ähnliche Feldlinien · entgegengesetzte Pole</text>
+</svg>
