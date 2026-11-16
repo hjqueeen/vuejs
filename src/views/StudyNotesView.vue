@@ -146,6 +146,7 @@ import {
 } from "@/data/physikKlasse9NotesContent.js";
 import {
   CHEMIE_K9_NOTES_BOOK_ID,
+  CHEMIE_K9_NOTES_RELATED_FLASHCARD_ID,
   chemieKlasse9NotesChapters,
 } from "@/data/chemieKlasse9NotesContent.js";
 import { getDashboardLocation } from "@/data/bookCatalog";
@@ -191,6 +192,9 @@ export default {
         this.book?.relatedFlashcardBookId ||
         (this.resolvedBookId === PHYSIK_K9_NOTES_BOOK_ID
           ? PHYSIK_K9_NOTES_RELATED_FLASHCARD_ID
+          : null) ||
+        (this.resolvedBookId === CHEMIE_K9_NOTES_BOOK_ID
+          ? CHEMIE_K9_NOTES_RELATED_FLASHCARD_ID
           : null)
       );
     },

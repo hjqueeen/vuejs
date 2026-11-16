@@ -74,6 +74,12 @@ import {
   orderedPhysikProbeFragenCards,
   getPhysikProbeFragenCardById,
 } from "./physikProbeFragenContent.js";
+import {
+  CHEMIE_K9_FLASHCARDS_BOOK_ID,
+  chemieKlasse9FlashcardSections,
+  orderedChemieKlasse9Flashcards,
+  getChemieKlasse9FlashcardById,
+} from "./chemieKlasse9FlashcardsContent.js";
 
 /** @type {Record<string, { cards: object[], getCardById: (id: string) => object|null, labels: { front: string, back: string }, hint: string, showKoOnBack?: boolean }>} */
 export const flashcardBooks = {
@@ -223,6 +229,14 @@ export const flashcardBooks = {
     hint: "질문을 보고 아래에 답을 입력하세요. 뒤집으면 모범답·피드백을 볼 수 있습니다. 목록에서 JSON 불러오기/내보내기 가능.",
     showKoOnBack: false,
     probeAnswers: true,
+  },
+  [CHEMIE_K9_FLASHCARDS_BOOK_ID]: {
+    cards: orderedChemieKlasse9Flashcards,
+    sections: chemieKlasse9FlashcardSections,
+    getCardById: getChemieKlasse9FlashcardById,
+    labels: { front: "Begriff / Frage", back: "Erklärung" },
+    hint: "질문을 보고 답을 떠올린 뒤, 카드를 뒤집어 독일어·한국어 설명을 확인하세요. 섹션별로 접어 공부할 수 있습니다.",
+    showKoOnBack: true,
   },
 };
 

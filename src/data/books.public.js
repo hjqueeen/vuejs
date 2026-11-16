@@ -59,6 +59,11 @@ import {
 } from "./physikProbeFragenContent.js";
 import { CHEMIE_K9_NOTES_BOOK_ID } from "./chemieKlasse9NotesContent.js";
 import {
+  CHEMIE_K9_FLASHCARDS_BOOK_ID,
+  CHEMIE_K9_FLASHCARD_IDS,
+  CHEMIE_K9_FLASHCARDS_RELATED_NOTES_ID,
+} from "./chemieKlasse9FlashcardsContent.js";
+import {
   MATH_QUIZ_BOOK_ID,
   MATH_QUIZ_QUESTION_IDS,
   MATH_WORKSHEET_PAGE_IDS,
@@ -290,6 +295,22 @@ export const publicBooks = [
     description:
       "9학년 화학 수업 노트(독·한). 염기 정의·해리, 제조법, 지시약, 중화 반응식. 챕터별 스크롤 읽기, DE / KO / 양쪽 전환.",
     coverColor: "book-cover-d",
+    relatedFlashcardBookId: CHEMIE_K9_FLASHCARDS_BOOK_ID,
+    owner: "hangyeol",
+    grade: 9,
+    subjectKey: "chemie",
+    subjectLabel: "화학",
+  },
+  {
+    id: CHEMIE_K9_FLASHCARDS_BOOK_ID,
+    templateType: "flashcard",
+    title: "Chemie · Klasse 9 Karteikarten",
+    subtitle: "Begriff / Frage → Erklärung — Basen · Neutralisation",
+    description:
+      "9학년 화학 플래시카드 41장. 염기·제조법·지시약·중화. 앞면 질문, 뒷면 독·한 설명. 섹션별로 접어 공부하세요.",
+    coverColor: "book-cover-e",
+    cardIds: CHEMIE_K9_FLASHCARD_IDS,
+    relatedNotesBookId: CHEMIE_K9_FLASHCARDS_RELATED_NOTES_ID,
     owner: "hangyeol",
     grade: 9,
     subjectKey: "chemie",

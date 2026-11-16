@@ -5,6 +5,10 @@
 
 export const CHEMIE_K9_NOTES_BOOK_ID = "book-chemie-klasse9-notes";
 
+/** 읽기 후 연습용 플래시카드 */
+export const CHEMIE_K9_NOTES_RELATED_FLASHCARD_ID =
+  "book-chemie-klasse9-flashcards";
+
 /**
  * @typedef {'p'|'h3'|'ul'|'ol'|'callout'|'meta'|'figure'} NoteBlockType
  * @typedef {{ type: NoteBlockType, de?: string, ko?: string, items?: { de: string, ko: string }[], src?: string, captionDe?: string, captionKo?: string }} NoteBlock

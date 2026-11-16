@@ -8,6 +8,7 @@ import { PHYSIK_MAGNETISMUS_BOOK_ID } from "./physikMagnetismusContent.js";
 import { PHYSIK_K9_NOTES_BOOK_ID } from "./physikKlasse9NotesContent.js";
 import { PHYSIK_PROBE_FRAGEN_BOOK_ID } from "./physikProbeFragenContent.js";
 import { CHEMIE_K9_NOTES_BOOK_ID } from "./chemieKlasse9NotesContent.js";
+import { CHEMIE_K9_FLASHCARDS_BOOK_ID } from "./chemieKlasse9FlashcardsContent.js";
 
 /** @typedef {'hyejin'|'hangyeol'|'amin'} BookOwnerId */
 
@@ -87,6 +88,12 @@ export const BOOK_CATALOG_META = {
     subjectKey: "chemie",
     subjectLabel: "화학",
   },
+  [CHEMIE_K9_FLASHCARDS_BOOK_ID]: {
+    owner: BOOK_OWNERS.HANGYEOL,
+    grade: 9,
+    subjectKey: "chemie",
+    subjectLabel: "화학",
+  },
 };
 
 /** @param {object} book */
@@ -106,6 +113,19 @@ export function filterBooksByOwner(bookList, ownerId) {
   return bookList
     .map(enrichBookCatalog)
     .filter((book) => book.owner === ownerId);
+}
+
+/** 같은 학년 안에서 과목 표시 순서 (작을수록 위). 없으면 가나다순. */
+const SUBJECT_SORT_ORDER = {
+  chemie: 10,
+  physik: 20,
+};
+
+function compareSubjects(a, b) {
+  const orderA = SUBJECT_SORT_ORDER[a.subjectKey] ?? 1000;
+  const orderB = SUBJECT_SORT_ORDER[b.subjectKey] ?? 1000;
+  if (orderA !== orderB) return orderA - orderB;
+  return a.subjectLabel.localeCompare(b.subjectLabel, "ko");
 }
 
 /** @param {object[]} bookList */
@@ -134,9 +154,7 @@ export function groupBooksByGradeSubject(bookList) {
     .map(([grade, subjectMap]) => ({
       grade,
       gradeLabel: `${grade}학년`,
-      subjects: [...subjectMap.values()].sort((a, b) =>
-        a.subjectLabel.localeCompare(b.subjectLabel, "ko"),
-      ),
+      subjects: [...subjectMap.values()].sort(compareSubjects),
     }));
 }
 
