@@ -144,6 +144,10 @@ import {
   PHYSIK_K9_NOTES_RELATED_FLASHCARD_ID,
   physikKlasse9NotesChapters,
 } from "@/data/physikKlasse9NotesContent.js";
+import {
+  CHEMIE_K9_NOTES_BOOK_ID,
+  chemieKlasse9NotesChapters,
+} from "@/data/chemieKlasse9NotesContent.js";
 import { getDashboardLocation } from "@/data/bookCatalog";
 
 const LANG_KEY = "study-notes-lang-mode";
@@ -176,6 +180,9 @@ export default {
     chapters() {
       if (this.resolvedBookId === PHYSIK_K9_NOTES_BOOK_ID) {
         return physikKlasse9NotesChapters;
+      }
+      if (this.resolvedBookId === CHEMIE_K9_NOTES_BOOK_ID) {
+        return chemieKlasse9NotesChapters;
       }
       return this.book?.chapters || [];
     },

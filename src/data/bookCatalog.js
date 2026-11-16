@@ -7,6 +7,7 @@ import { SPANISH_LLUVIAS_BOOK_ID } from "./spanishLluviasContent.js";
 import { PHYSIK_MAGNETISMUS_BOOK_ID } from "./physikMagnetismusContent.js";
 import { PHYSIK_K9_NOTES_BOOK_ID } from "./physikKlasse9NotesContent.js";
 import { PHYSIK_PROBE_FRAGEN_BOOK_ID } from "./physikProbeFragenContent.js";
+import { CHEMIE_K9_NOTES_BOOK_ID } from "./chemieKlasse9NotesContent.js";
 
 /** @typedef {'hyejin'|'hangyeol'|'amin'} BookOwnerId */
 
@@ -79,6 +80,12 @@ export const BOOK_CATALOG_META = {
     grade: 9,
     subjectKey: "physik",
     subjectLabel: "물리",
+  },
+  [CHEMIE_K9_NOTES_BOOK_ID]: {
+    owner: BOOK_OWNERS.HANGYEOL,
+    grade: 9,
+    subjectKey: "chemie",
+    subjectLabel: "화학",
   },
 };
 

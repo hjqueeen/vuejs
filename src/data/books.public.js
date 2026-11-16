@@ -57,6 +57,7 @@ import {
   PHYSIK_PROBE_FRAGEN_BOOK_ID,
   PHYSIK_PROBE_FRAGEN_CARD_IDS,
 } from "./physikProbeFragenContent.js";
+import { CHEMIE_K9_NOTES_BOOK_ID } from "./chemieKlasse9NotesContent.js";
 import {
   MATH_QUIZ_BOOK_ID,
   MATH_QUIZ_QUESTION_IDS,
@@ -280,6 +281,19 @@ export const publicBooks = [
     grade: 9,
     subjectKey: "physik",
     subjectLabel: "물리",
+  },
+  {
+    id: CHEMIE_K9_NOTES_BOOK_ID,
+    templateType: "study-notes",
+    title: "Chemie · Klasse 9 Notizen",
+    subtitle: "수업 노트 읽기 — Basen · Indikatoren · Neutralisation",
+    description:
+      "9학년 화학 수업 노트(독·한). 염기 정의·해리, 제조법, 지시약, 중화 반응식. 챕터별 스크롤 읽기, DE / KO / 양쪽 전환.",
+    coverColor: "book-cover-d",
+    owner: "hangyeol",
+    grade: 9,
+    subjectKey: "chemie",
+    subjectLabel: "화학",
   },
   {
     id: MATH_QUIZ_BOOK_ID,

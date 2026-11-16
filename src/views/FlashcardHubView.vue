@@ -45,7 +45,7 @@
     </button>
 
     <a
-      v-if="bookSourceUrl && !cardSections.length"
+      v-if="bookSourceUrl"
       :href="bookSourceUrl"
       target="_blank"
       rel="noopener noreferrer"

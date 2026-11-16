@@ -108,6 +108,8 @@ export const flashcardBooks = {
     labels: { front: "Frage", back: "Antwort" },
     hint: "질문을 보고 답을 떠올린 뒤, 카드를 뒤집어 확인하세요. 섹션(우선순위)별로 접어 공부할 수 있습니다.",
     showKoOnBack: false,
+    sourceUrl: "https://youtu.be/Svq1Q7J_r_Y",
+    sourceLabel: "Vortrag · YouTube",
   },
   [LIVE_ACADEMY_TODDLER_BOOK_ID]: {
     cards: orderedLiveAcademyToddlerCards,
