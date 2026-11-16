@@ -17,6 +17,12 @@ import {
   getAlltagKoDeCardById,
 } from "./alltagKoDeContent.js";
 import {
+  PM_SOFTWARE_AGILE_BOOK_ID,
+  pmSoftwareAgileSections,
+  orderedPmSoftwareAgileCards,
+  getPmSoftwareAgileCardById,
+} from "./pmSoftwareAgileContent.js";
+import {
   BB84_PROTOCOL_BOOK_ID,
   BB84ProtocolCards,
   getBb84ProtocolCardById,
@@ -93,6 +99,14 @@ export const flashcardBooks = {
         : "한국어를 보고 독일어를 떠올린 뒤, 카드를 뒤집어 확인하세요.",
     labels: { front: "한국어", back: "Deutsch" },
     hint: "한국어를 보고 독일어 또는 영어를 떠올린 뒤, 카드를 뒤집어 확인하세요. Anki 복습은 언어별(Deutsch/English)로 따로 진행·저장됩니다.",
+    showKoOnBack: false,
+  },
+  [PM_SOFTWARE_AGILE_BOOK_ID]: {
+    cards: orderedPmSoftwareAgileCards,
+    sections: pmSoftwareAgileSections,
+    getCardById: getPmSoftwareAgileCardById,
+    labels: { front: "Frage", back: "Antwort" },
+    hint: "질문을 보고 답을 떠올린 뒤, 카드를 뒤집어 확인하세요. 섹션(우선순위)별로 접어 공부할 수 있습니다.",
     showKoOnBack: false,
   },
   [LIVE_ACADEMY_TODDLER_BOOK_ID]: {

@@ -8,6 +8,10 @@ import {
   ALLTAG_KO_DE_BOOK_ID,
   ALLTAG_KO_DE_CARD_IDS,
 } from "./alltagKoDeContent.js";
+import {
+  PM_SOFTWARE_AGILE_BOOK_ID,
+  PM_SOFTWARE_AGILE_CARD_IDS,
+} from "./pmSoftwareAgileContent.js";
 import { DAY_VOCAB_BOOK_ID } from "./dayVocabSample.js";
 import {
   WAERME_KARTEIKARTEN_BOOK_ID,
@@ -122,6 +126,17 @@ export const publicBooks = [
     description:
       "그날 공부한 단어를 날짜별로 모아 둡니다. 독일어(한글 해석)와 영어(독일어 해석)를 전환하고, 예문 연습으로 복습합니다.",
     coverColor: "book-cover-a",
+    owner: "hyejin",
+  },
+  {
+    id: PM_SOFTWARE_AGILE_BOOK_ID,
+    templateType: "flashcard",
+    title: "PM-Software · agile Projekte",
+    subtitle: "Erwartete Fragen — Frage → Antwort",
+    description:
+      "Agile PM-Tools 발표용 예상 질문 49장 (독일어만). 앞면: Frage, 뒷면: Antwort. 우선순위·섹션별로 접어 복습합니다.",
+    coverColor: "book-cover-c",
+    cardIds: PM_SOFTWARE_AGILE_CARD_IDS,
     owner: "hyejin",
   },
   {
