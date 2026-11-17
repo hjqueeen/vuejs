@@ -44,16 +44,19 @@
       <span class="fc-notes-arrow" aria-hidden="true">→</span>
     </button>
 
-    <a
-      v-if="bookSourceUrl"
-      :href="bookSourceUrl"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="fc-source-link"
-    >
-      <span>{{ bookSourceLabel }}</span>
-      <span class="fc-source-external" aria-hidden="true">↗</span>
-    </a>
+    <div v-if="bookSourceLinks.length" class="fc-source-links">
+      <a
+        v-for="link in bookSourceLinks"
+        :key="link.url"
+        :href="link.url"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="fc-source-link"
+      >
+        <span>{{ link.label }}</span>
+        <span class="fc-source-external" aria-hidden="true">↗</span>
+      </a>
+    </div>
 
     <div v-if="cardSections.length" class="fc-sections">
       <section
@@ -419,11 +422,24 @@ export default {
       if (Object.keys(live).length) return live;
       return getLatestAttemptMarkMap(this.bookId);
     },
-    bookSourceUrl() {
-      return this.bookMeta?.sourceUrl || "";
-    },
-    bookSourceLabel() {
-      return this.bookMeta?.sourceLabel || "원본 영상 보기";
+    bookSourceLinks() {
+      const links = this.bookMeta?.sourceLinks;
+      if (Array.isArray(links) && links.length) {
+        return links
+          .filter((link) => link?.url)
+          .map((link) => ({
+            url: link.url,
+            label: link.label || "원본 영상 보기",
+          }));
+      }
+      const url = this.bookMeta?.sourceUrl;
+      if (!url) return [];
+      return [
+        {
+          url,
+          label: this.bookMeta?.sourceLabel || "원본 영상 보기",
+        },
+      ];
     },
     cards() {
       return getCardsForBook(this.bookId);
@@ -955,11 +971,18 @@ export default {
   opacity: 0.8;
 }
 
+.fc-source-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
 .fc-source-link {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  margin: 0 0 16px;
+  margin: 0;
   padding: 5px 11px;
   border-radius: var(--c-radius-pill);
   border: 1.5px solid #ef4444;
@@ -969,6 +992,10 @@ export default {
   font-weight: 700;
   text-decoration: none;
   transition: filter 0.15s;
+}
+
+.fc-section-source {
+  margin: 0 0 12px;
 }
 
 html[data-theme="dark"] .fc-source-link {

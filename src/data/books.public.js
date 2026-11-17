@@ -140,7 +140,7 @@ export const publicBooks = [
     title: "PM-Software · agile Projekte",
     subtitle: "Erwartete Fragen — Frage → Antwort",
     description:
-      "Agile PM-Tools 발표용 예상 질문 49장 (독일어만). 앞면: Frage, 뒷면: Antwort. 우선순위·섹션별로 접어 복습합니다.",
+      "Agile PM-Tools 발표용 예상 질문 52장 (독일어). 앞면: Frage, 뒷면: Antwort. 우선순위·연습 시나리오별로 접어 복습합니다.",
     coverColor: "book-cover-c",
     cardIds: PM_SOFTWARE_AGILE_CARD_IDS,
     owner: "hyejin",

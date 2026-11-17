@@ -1,13 +1,14 @@
-/** PM-Software für agile Projekte — Erwartete Fragen (Frage → Antwort, nur Deutsch) */
+/** PM-Software für agile Projekte — Erwartete Fragen (Frage → Antwort, Deutsch) */
 
 export const PM_SOFTWARE_AGILE_BOOK_ID = "book-pm-software-agile";
 
-/** @param {string} id @param {string} category @param {string} question @param {string} answer */
-const card = (id, category, question, answer) => ({
+/** @param {string} id @param {string} category @param {string} question @param {string} answer @param {string} [ko] */
+const card = (id, category, question, answer, ko) => ({
   id,
   frontCategory: category,
   term: question,
   explanationDe: answer,
+  ...(ko ? { explanationKo: ko } : {}),
 });
 
 export const pmSoftwareAgileCards = [
@@ -45,8 +46,10 @@ export const pmSoftwareAgileCards = [
     "card-pm-q3",
     "Priorität hoch · Einführung, Wechsel, Alltag",
     "Wie viel Zeit sollte man für die Einführung oder für die Nutzung von dem Tool im Alltag einplanen?",
-    "Einführung: grob 1–2 Sprints zum echten Test (nicht nur Demo), plus Zeit für Schulung und Daten-Umzug – je nach Teamgröße mehr.\n" +
-      "Alltag: kurze Pflege gehört zur Arbeit dazu (Ticket aktualisieren, Status, Done-Kriterien) – oft wenige Minuten pro Aufgabe, nicht eine Extra-Stunde. Wenn die Pflege länger dauert als die Abstimmung, ist das Tool zu komplex.",
+    "Einführung: grob 1–2 Sprints zum echten Test (nicht nur Demo), plus Zeit für Schulung und Daten-Umzug – je nach Teamgröße mehr.\n\n" +
+      "Im Alltag gehört eine kurze Pflege einfach dazu: Ticket aktualisieren, Status setzen, schauen ob Done passt.\n" +
+      "Das sind oft nur ein paar Minuten pro Aufgabe – nicht extra eine Stunde.\n\n" +
+      "Wenn man länger am Tool hängt als beim echten Abstimmen, dann ist das Tool zu kompliziert.",
   ),
   card(
     "card-pm-q4",
@@ -73,13 +76,16 @@ export const pmSoftwareAgileCards = [
     "card-pm-q7",
     "Priorität hoch · Praxis + eigene Erfahrung",
     "Wie stark ist Jira bei euch / in eurer Branche wirklich „drin“ – oder nur auf dem Papier?",
-    "In der Softwarebranche oft sehr stark – viele Firmen haben Jira schon als Standard. Bei Alstom / Bahn nutzen wir eher Jazz/RTC, nicht Jira. Also: Jira ist branchenweit oft „drin“, aber nicht überall – es hängt am Konzern und an Compliance.",
+    "In der Softwarebranche oft sehr stark – viele Firmen haben Jira schon als Standard. Bei Alstom nutzen wir eher IBM Jazz, nicht Jira. Also: Jira ist branchenweit oft „drin“, aber nicht überall – es hängt am Konzern und an Compliance.",
   ),
   card(
     "card-pm-q8",
     "Priorität hoch · Praxis + eigene Erfahrung",
     "Kannst du ein konkretes Beispiel nennen, wo ein Tool die Arbeit klar verbessert hat – und eines, wo es eher gestört hat?",
-    "Besser: GitHub Projects im Teamprojekt – Pull Request und Aufgabe nah beieinander, weniger Tool-Wechsel. Gestört: Wenn Jira (oder Jazz) zu viele Pflichtfelder und Status hat – dann wird nur noch Status gepflegt und das Gespräch fehlt.",
+    "Ein gutes Beispiel ist GitHub Projects in einem Teamprojekt. Dort hat man die Aufgaben und Pull Requests direkt zusammen. Dadurch muss man nicht ständig zwischen verschiedenen Tools wechseln.\n\n" +
+      "Ein schlechtes Beispiel ist Jira oder Jazz, wenn es zu viele Pflichtfelder und Status gibt. Dann beschäftigt sich das Team mehr damit, den Status zu aktualisieren, anstatt miteinander zu sprechen.\n\n" +
+      "Ein anderes gutes Beispiel ist bei uns Jazz: Man sieht an der Ticket-ID im Commit, wer warum etwas geändert hat, und Tests hängen mit dran. Das hilft wirklich bei der Nachverfolgbarkeit.\n\n" +
+      "Gestört hat es zum Beispiel, wenn man nur aufs Dashboard schaut, aber niemand das Board pflegt. Dann sind die Diagramme falsch – und das ist schlimmer als gar keine Zahlen. Oder wenn das Team meint, mit Kommentaren im Tool sei das Gespräch schon erledigt. Das reicht oft nicht.",
   ),
 
   // —— Eine Stufe tiefer ——
@@ -176,167 +182,202 @@ export const pmSoftwareAgileCards = [
     "card-pm-q22",
     "Priorität mittel · Zusage vs. Prognose",
     "Das Tool zeigt einen Fertigstellungstermin. Darf man den dem Kunden als Zusage geben?",
-    "Nein – das ist eine Prognose, keine Garantie. Dem Kunden klar sagen: Schätzung unter Annahmen; Scope kann sich ändern. Lieber wenig fest zusagen (under-promise).",
+    "Nein – das ist eine Prognose, keine Garantie. Dem Kunden sollte man klar sagen, dass es nur eine Schätzung ist und sich der Umfang noch ändern kann. Deshalb sollte man lieber nicht zu viel versprechen.\n\n" +
+      "Damit die Schätzung stimmt, sollte man die Aufgaben gleichmäßig aufteilen. Aber die Schätzung kann auch falsch sein. Deshalb sollte man die Aufgaben nicht zu hoch einschätzen. Under-promise ist besser.\n\n" +
+      "Lieber weniger versprechen als zu viel.",
   ),
   card(
     "card-pm-q23",
     "Priorität mittel · Zusage vs. Prognose",
     "Wie verhindert man, dass man dem Kunden zu viele Features im nächsten Release verspricht – hilft das Tool dabei überhaupt?",
-    "Tool zeigt Kapazität/Velocity nur als Hilfe. Verhindern tut Priorisierung und Kommunikation: Must klar machen, Rest als optional. Was man zusagt, wird zum Must – also nicht zu viel nennen.",
+    "Tool zeigt Kapazität/Velocity nur als Hilfe. Das Tool zeigt uns nur, wie viel Kapazität das Team hat und wie schnell es arbeitet. Aber wichtig sind vor allem die Priorisierung und die Kommunikation. Man muss klar sagen, was unbedingt gemacht werden muss und was nur optional ist. Denn alles, was man zusagt, wird schnell als Pflicht angesehen. Deshalb sollte man lieber nicht zu viel versprechen.",
+    "유용한 표현\n" +
+      "• unbedingt gemacht werden muss: 반드시 해야 하는 것\n" +
+      "• nur optional ist: 선택 사항인 것\n" +
+      "• als Pflicht angesehen werden: 의무로 여겨지다\n" +
+      "• nicht zu viel versprechen: 너무 많은 것을 약속하지 않다",
   ),
 
-  // —— Form / Dozent ——
+  // —— Verständnis sichern ——
+  card(
+    "card-pm-u1",
+    "Weitere · Verständnis sichern",
+    "Kannst du die Frage bitte noch einmal sagen?",
+    "Kannst du die Frage bitte noch einmal sagen?",
+  ),
+  card(
+    "card-pm-u2",
+    "Weitere · Verständnis sichern",
+    "Meinst du …, oder eher …?",
+    "Meinst du …, oder eher …?",
+  ),
+  card(
+    "card-pm-u3",
+    "Weitere · Verständnis sichern",
+    "Kurz nachfragen: Geht es dir um die Auswahl des Tools – oder um den Alltag danach?",
+    "Geht es dir um die Auswahl des Tools – oder um den Alltag danach?",
+  ),
+  card(
+    "card-pm-u4",
+    "Weitere · Verständnis sichern",
+    "Zeit gewinnen: Gute Frage. Ich glaube, du meinst … – stimmt das so?",
+    "Gute Frage. Ich glaube, du meinst … – stimmt das so?",
+  ),
+  card(
+    "card-pm-u5",
+    "Weitere · Verständnis sichern",
+    "Ehrlich: Einen Teil habe ich akustisch nicht verstanden. Meinst du X oder Y?",
+    "Einen Teil habe ich akustisch nicht verstanden. Meinst du X oder Y?",
+  ),
+
+  // —— Praxis-Szenarien ——
   card(
     "card-pm-q24",
-    "Form / Dozent",
-    "(Kontrast/Beamer) Sind die Tabellen und das Vergleichs-Dashboard auf dem Beamer noch lesbar?",
-    "Danke – ich zoome / zeige nur die relevante Spalte / schwarzer Text, hoher Kontrast. Die Details stehen auch im Handout.",
+    "Weitere · Praxis-Szenarien",
+    "Was machst du, wenn der Kunde oder der Chef das Board sehen will – und das Team das unangenehm findet?",
+    "In dem Fall würde ich nicht einfach das komplette Arbeitsboard freigeben. Stattdessen würde ich eine gefilterte Ansicht oder ein kleines Dashboard erstellen, auf dem nur die wichtigsten Epics und deren aktueller Status zu sehen sind. Interne Kommentare und Diskussionen würde ich ausblenden. Das Team braucht einen geschützten Raum, in dem es offen arbeiten kann. Nach außen sollte man transparent zeigen, was geliefert wird und wie der Fortschritt aussieht, aber nicht jede interne Diskussion offenlegen.",
   ),
   card(
     "card-pm-q25",
-    "Form / Dozent",
-    "(Folien-Dichte) Kannst du die Vergleichstabelle oder das Dashboard einmal nur mit dem relevanten Teil zeigen?",
-    "Ja – z. B. nur die Zeile „Diagramme“ oder nur Jira vs. Azure. Vollständige Tabelle ist im Handout.",
+    "Weitere · Praxis-Szenarien",
+    "Das Tool sagt „Done“, der Tester sagt „noch nicht fertig“. Was gilt?",
+    "Für mich gilt hier ganz klar die Definition of Done, also die gemeinsam festgelegten Kriterien dafür, wann eine Aufgabe wirklich fertig ist. Nur weil jemand im Tool auf „Done“ klickt, heißt das noch lange nicht, dass die Arbeit abgeschlossen ist. Wenn Entwickler und Tester unterschiedliche Vorstellungen haben, muss das Team die Definition of Done noch einmal gemeinsam klären. Sonst stimmen am Ende auch die Auswertungen und Diagramme nicht mehr.",
   ),
   card(
     "card-pm-q26",
-    "Form / Dozent",
-    "(Sprechdynamik) Kannst du den Unterschied Jira vs. Azure noch einmal in einem Satz sagen?",
-    "Funktionell ähnlich – die Wahl hängt am Umfeld: Microsoft-Stack → Azure DevOps; viele Apps/Schnittstellen → oft Jira.",
+    "Weitere · Praxis-Szenarien",
+    "Zwei Teams: ein gemeinsames Jira-Projekt oder zwei getrennte?",
+    "Ich würde in den meisten Fällen zwei getrennte Projekte empfehlen, weil jedes Team seine eigenen Abläufe und Verantwortlichkeiten hat. Dadurch bleiben die Boards übersichtlicher und die Teams können unabhängiger arbeiten. Natürlich kann man gemeinsame Epics, Abhängigkeiten oder ein übergeordnetes Dashboard miteinander verbinden. Nur weil beide Teams dasselbe Tool verwenden, müssen sie nicht automatisch im selben Projekt arbeiten.",
   ),
-
-  // —— Weitere ——
   card(
     "card-pm-q27",
-    "Weitere",
-    "Was sieht ein Entwickler im Alltag von Velocity und Burndown – oder nur das Ticket-Board?",
-    "Meistens vor allem das Board und die eigenen Tickets. Burndown/Velocity sieht man eher im Planning oder Retro – nicht den ganzen Tag. Wenn niemand das Board pflegt, sind die Diagramme sowieso wenig wert.",
+    "Weitere · Praxis-Szenarien",
+    "Die Demo sah toll aus – nach zwei echten Sprints hasst das Team das Tool. Abbrechen?",
+    "Ja, ich würde auf jeden Fall darüber nachdenken, den Test abzubrechen oder das Tool deutlich zu vereinfachen. Genau dafür macht man ja einen Praxistest. Eine gute Demo bedeutet nicht automatisch, dass das Tool auch im Alltag funktioniert. Wenn das Team nach zwei Sprints merkt, dass die Arbeit damit komplizierter wird, sollte man das ernst nehmen. Es bringt nichts, nur wegen der bereits investierten Zeit daran festzuhalten. Lieber früh wechseln, als jahrelang mit dem falschen Tool arbeiten.",
   ),
   card(
     "card-pm-q28",
-    "Weitere",
-    "Wenn das Team remote arbeitet: Reicht das Tool, oder braucht man trotzdem feste Meetings?",
-    "Das Tool reicht nicht allein. Es macht Status sichtbar und hilft bei Kommentaren. Prioritäten, Unklarheiten und echtes Feedback brauchen weiter Gespräch – Daily, Planning, Review.",
+    "Weitere · Praxis-Szenarien",
+    "Darf man Jira und GitHub Projects und Confluence gleichzeitig nutzen?",
+    "Technisch ist das natürlich möglich, aber ich würde damit eher vorsichtig sein. Jedes zusätzliche Tool bedeutet auch zusätzlichen Pflegeaufwand. Wenn Aufgaben in Jira stehen, der Code in GitHub und wichtige Informationen in Confluence, muss klar sein, welches System für was zuständig ist. Meine Empfehlung wäre, einen zentralen Ort für die Aufgabenverwaltung zu haben und die anderen Tools sinnvoll damit zu integrieren. Sonst verbringt das Team irgendwann mehr Zeit mit der Pflege der Tools als mit der eigentlichen Arbeit.",
   ),
   card(
     "card-pm-q29",
-    "Weitere",
-    "Du sagst: Das Tool priorisiert nicht. Wer priorisiert dann konkret – Product Owner, Team, oder der Chef über das Tool?",
-    "Fachlich der Product Owner (mit Stakeholdern). Das Team schätzt und sagt, was realistisch ist. Der Chef darf Ziele setzen – aber Priorität gehört nicht „ins Tool klicken“ ohne Gespräch. Das Tool speichert nur die Reihenfolge.",
+    "Weitere · Praxis-Szenarien",
+    "Remote-Team: reicht das Tool statt Daily Stand-up?",
+    "Nein, meiner Meinung nach reicht das allein nicht aus. Das Tool zeigt zwar, woran jeder gerade arbeitet und welchen Status eine Aufgabe hat, aber es ersetzt nicht die direkte Kommunikation. Im Daily kann das Team kurz besprechen, ob es Blocker gibt oder jemand Unterstützung braucht. Gerade bei Remote-Teams ist dieser Austausch wichtig. Das Meeting muss auch nicht lange dauern, aber es komplett zu streichen, nur weil alle ihr Board aktualisieren, halte ich für keine gute Idee.",
   ),
   card(
     "card-pm-q30",
-    "Weitere",
-    "Gesamtkosten über drei Jahre: Welche Posten vergisst man am häufigsten außer der Lizenz?",
-    "Zusatz-Apps, Schulung, Admin-/Pflegezeit (Workflows, Rechte), Migration/Umzug – manchmal auch eigener Server (Updates, Backup).",
+    "Weitere · Praxis-Szenarien",
+    "Der Product Owner pflegt das Backlog im Tool kaum. Ist das Tool dann nutzlos?",
+    "Ja, zumindest verliert das Tool dadurch einen großen Teil seines Nutzens. Wenn das Backlog nicht gepflegt wird und Prioritäten fehlen, zeigt das Board irgendwann nur noch eine unübersichtliche Sammlung von Aufgaben. Das Problem liegt dann aber nicht unbedingt an der Software, sondern eher an der Organisation. Zuerst muss geklärt werden, wer für die Priorisierung verantwortlich ist und wann das Backlog aktualisiert wird. Erst wenn diese Regeln klar sind, kann das Tool wirklich helfen.",
   ),
+
+  // —— Eine Stufe tiefer / Grenzen ——
   card(
     "card-pm-q31",
-    "Weitere",
-    "Was hat Vorrang, wenn Cloud billiger ist, aber Compliance den Server verlangt?",
-    "Compliance zuerst. Billige Cloud hilft nicht, wenn Daten nicht dürfen. Dann Server/Data Center – und die Mehrarbeit (Betrieb) gleich mitplanen.",
+    "Weitere · Eine Stufe tiefer / Grenzen",
+    "Kann ein Tool Scrum und Kanban gleichzeitig gut abbilden?",
+    "Ja, viele moderne Projektmanagement-Tools können sowohl Scrum als auch Kanban unterstützen. Man kann zum Beispiel Sprints aktivieren oder deaktivieren und die Boards entsprechend anpassen. Entscheidend ist für mich aber nicht, ob das Tool beide Methoden technisch unterstützt. Viel wichtiger ist, dass das Team weiß, nach welchen Regeln es arbeitet. Wenn man Scrum und Kanban einfach vermischt, ohne klare Abläufe festzulegen, wird das Board schnell unübersichtlich und die Zusammenarbeit schwierig.",
   ),
   card(
     "card-pm-q32",
-    "Weitere",
-    "Ist Excel dann auch eine PM-Software – oder ab wann zählt etwas als „richtiges“ Tool?",
-    "Excel reicht für eine Momentaufnahme. Für agile Teams fehlt oft Historie, Rechte, Code-Anbindung, automatische Diagramme. „Richtig“ ab dem Punkt, wo Workflow, Zusammenarbeit und Auswertung dauerhaft gebraucht werden.",
+    "Weitere · Eine Stufe tiefer / Grenzen",
+    "Wandboard plus digitales Tool – Hybrid sinnvoll oder doppelte Arbeit?",
+    "Ich finde eine Kombination grundsätzlich sinnvoll, zumindest für bestimmte Situationen. Bei einem Workshop vor Ort kann ein physisches Wandboard sehr praktisch sein, während das digitale Tool für die langfristige Dokumentation und für Remote-Teammitglieder genutzt wird. Problematisch wird es aber, wenn beide Boards dauerhaft parallel gepflegt werden müssen. Dann entstehen schnell unterschiedliche Informationsstände. Deshalb sollte man vorher festlegen, welches Board die führende Quelle ist und wann die Informationen übertragen werden.",
   ),
   card(
     "card-pm-q33",
-    "Weitere",
-    "Ersetzt Integration (Git, Pipeline, Chat) die Kommunikation – oder macht sie nur sichtbarer?",
-    "Nur sichtbarer. Status und Pull Requests werden klarer. Entscheidungen und Feedback bleiben menschlich.",
+    "Weitere · Eine Stufe tiefer / Grenzen",
+    "„Integration“ auf der Folie – was ist das Minimum, das wirklich helfen muss?",
+    "Für ein Entwicklerteam würde ich vor allem die Verbindung zwischen Aufgabenverwaltung und Code empfehlen. Zum Beispiel kann man die Ticket-ID direkt in der Commit-Message hinterlegen oder den Status eines Tickets mit einem Pull Request verknüpfen. Dadurch sieht man schneller, welche Änderungen zu welcher Aufgabe gehören. Das spart im Alltag einiges an Zeit und verhindert Missverständnisse. Chat- und Wiki-Integrationen sind natürlich auch hilfreich, aber die Verbindung zum Entwicklungsprozess ist für mich besonders wichtig.",
   ),
   card(
     "card-pm-q34",
-    "Weitere",
-    "Kann ein Tool ein Team „agil machen“ – oder nur ein schon agiles Team unterstützen?",
-    "Nur unterstützen. Agil wird man durch Verhalten (Priorisieren, Feedback, Anpassen) – nicht durch eine Lizenz.",
+    "Weitere · Eine Stufe tiefer / Grenzen",
+    "Export ist möglich – aber heißt das wirklich kein Vendor-Lock-in?",
+    "Nein, nur weil ein Tool einen Export anbietet, bedeutet das noch lange nicht, dass man unabhängig vom Anbieter ist. Entscheidend ist, ob man die exportierten Daten auch in ein anderes System übernehmen kann. Dazu gehören nicht nur die Tickets selbst, sondern auch Kommentare, Anhänge, Verknüpfungen und die Änderungshistorie. Bei einem einfachen CSV-Export können viele dieser Informationen verloren gehen. Deshalb würde ich den Export schon während der Testphase ausprobieren und überprüfen, ob sich die Daten tatsächlich weiterverwenden lassen.",
   ),
   card(
     "card-pm-q35",
-    "Weitere",
-    "Kleines Studienprojekt startet mit Trello, wächst auf 20 Leute – wann ist der Umstieg fällig, und wohin?",
-    "Wenn Rechte, Sprints/Reports oder mehrere Teams wichtig werden – und Trello + Apps nicht mehr reicht. Dann oft Jira oder Azure DevOps; bei viel Code weiterhin GitHub/GitLab prüfen.",
+    "Weitere · Eine Stufe tiefer / Grenzen",
+    "Marketplace / Zusatz-Apps: Chance oder Falle?",
+    "Ich würde sagen, beides. Zusatz-Apps können sehr hilfreich sein, wenn einem bestimmte Funktionen fehlen oder man spezielle Anforderungen hat. Gleichzeitig entstehen dadurch aber zusätzliche Kosten und Abhängigkeiten. Außerdem können Updates oder Kompatibilitätsprobleme Schwierigkeiten verursachen. Wenn ein Tool nur mit fünf oder sechs zusätzlichen Plugins richtig funktioniert, würde ich mich fragen, ob es überhaupt das passende Tool für das Team ist. Im Idealfall sollte bereits die Grundversion die wichtigsten Anforderungen erfüllen.",
   ),
+
+  // —— Quelle, Zahlen, Folien ——
   card(
     "card-pm-q36",
-    "Weitere",
-    "Der Chef verlangt ein Dashboard „wie bei Jira“, das Team will GitHub Projects. Wie entscheidest du?",
-    "Bedarf klären: Braucht man wirklich die Diagramme? Wenn ja und GitHub zu wenig Reports hat → Jira/Azure oder Reporting separat. Wenn das Team nur Tasks+Code braucht → GitHub, und dem Chef zeigen, welche Transparenz schon reicht.",
+    "Weitere · Quelle, Zahlen, Folien",
+    "Der State of Agile Report – wie belastbar sind die 84 % / 49 %?",
+    "Ich würde diese Zahlen nicht als absolute Wahrheit betrachten, weil es sich um Umfrageergebnisse und nicht um eine wissenschaftliche Laborstudie handelt. Sie zeigen aber eine interessante Entwicklung und geben einen guten Überblick darüber, wie Unternehmen bestimmte Technologien einsetzen. Für mich ist vor allem die Richtung wichtig: Die Nutzung von KI nimmt zu, aber klare Regeln und Governance entwickeln sich nicht immer genauso schnell. Genau diese Lücke finde ich besonders interessant. Die konkreten Prozentzahlen würde ich deshalb eher als Orientierung und nicht als allgemeingültigen Beweis verwenden.",
   ),
   card(
     "card-pm-q37",
-    "Weitere",
-    "Zwei Tools parallel (z. B. Jira + Miro, oder Jira + GitHub): Wann ist das sinnvoll, wann schädlich?",
-    "Sinnvoll, wenn jedes eine klare Rolle hat (Tasks vs. Workshop, oder PM vs. Code). Schädlich, wenn dieselbe Aufgabe doppelt gepflegt wird – dann doppelte Wahrheit und Chaos.",
+    "Weitere · Quelle, Zahlen, Folien",
+    "Warum genau diese Metriken – und nicht z. B. Story Points pro Person?",
+    "Weil ich finde, dass Metriken in erster Linie dem Team helfen sollen, den eigenen Arbeitsprozess zu verbessern. Wenn man Story Points pro Person vergleicht, entsteht schnell der Eindruck, dass einzelne Mitarbeiter bewertet werden. Das kann zu unnötigem Druck führen und sogar das Verhalten im Team negativ beeinflussen. Metriken wie Burndown, Velocity, Cycle Time oder Throughput sind sinnvoller, weil sie den gesamten Arbeitsfluss und die Planbarkeit betrachten. Wichtig ist natürlich, dass die Daten im Board auch ehrlich und regelmäßig gepflegt werden.",
   ),
   card(
     "card-pm-q38",
-    "Weitere",
-    "Pull Request ist fertig, aber das Ticket bleibt auf „In Progress“. Was läuft organisatorisch schief – und was kann das Tool davon lösen?",
-    "Organisatorisch: Done-Definition unklar oder niemand aktualisiert. Tool kann helfen durch Integration (Pull Request schließen → Status). Aber die Regel „wann ist Done?“ muss das Team setzen.",
+    "Weitere · Quelle, Zahlen, Folien",
+    "OpenProject bei Behörden – hast du das selbst gesehen, oder nur gelesen?",
+    "Da würde ich ehrlich zwischen eigener Erfahrung und Informationen aus Literatur oder Berichten unterscheiden. Meine eigene praktische Erfahrung liegt eher bei Tools wie Jazz, Jira und GitHub Projects. OpenProject kenne ich vor allem als typisches Beispiel für eine Open-Source-Lösung, die auch On-Premise betrieben werden kann. Das bedeutet, dass Unternehmen oder Behörden ihre Daten auf eigenen Servern speichern können. Ich würde also nicht behaupten, dass ich selbst intensiv damit gearbeitet habe, sondern es eher als bekanntes Einsatzbeispiel nennen.",
   ),
+
+  // —— Organisation, Kauf, Druck ——
   card(
     "card-pm-q39",
-    "Weitere",
-    "OpenProject: Reicht „Daten bleiben im Haus“ als Argument, wenn Funktionen und Community schwächer sind?",
-    "Für Behörden/sensible Daten oft ja, das ist das Hauptargument. Man tauscht Funktionsfülle gegen Kontrolle. Man muss den Betriebsaufwand ehrlich mitrechnen.",
+    "Weitere · Organisation, Kauf, Druck",
+    "Wer entscheidet beim Tool-Kauf – das Team oder die IT / der Einkauf?",
+    "Ich finde, dass beide Seiten beteiligt sein sollten, aber unterschiedliche Aufgaben haben. Das Team sollte entscheiden können, ob das Tool zum eigenen Arbeitsprozess passt und ob es im Alltag gut funktioniert. Die IT und der Einkauf sollten dagegen Themen wie Datenschutz, Sicherheit, Kosten, Lizenzen und Betrieb prüfen. Wenn nur die IT ein Tool auswählt, ohne das Team einzubeziehen, besteht die Gefahr, dass das Tool später nicht akzeptiert wird. Andersherum kann das Team zwar ein gutes Tool finden, aber wenn es nicht den Sicherheitsanforderungen entspricht, kann es trotzdem nicht eingesetzt werden.",
   ),
   card(
     "card-pm-q40",
-    "Weitere",
-    "Trello ohne Sprint-Diagramme – wann ist „einfach“ wichtiger als Reporting?",
-    "Kleine Teams, kurze Projekte, wenig Stakeholder-Reporting – z. B. Studienprojekt. Sobald Planung über Sprints und Zahlen nach außen wichtig wird, reicht Trello oft nicht mehr.",
+    "Weitere · Organisation, Kauf, Druck",
+    "Die Firma zwingt ein Tool, das du nicht empfehlen würdest. Was dann?",
+    "Wenn das Tool bereits von der Firma vorgegeben ist, würde ich zunächst versuchen, das Beste daraus zu machen. Man kann auch innerhalb eines nicht idealen Tools viele Dinge verbessern, zum Beispiel unnötige Status entfernen, die Definition of Done klar festlegen und überflüssige Pflichtfelder reduzieren. Außerdem würde ich darauf achten, dass Metriken nicht zur Bewertung einzelner Mitarbeiter verwendet werden. Natürlich würde ich auch offen ansprechen, welche Nachteile das Tool hat. Aber wenn ein Wechsel momentan nicht möglich ist, sollte man zumindest den eigenen Arbeitsprozess sinnvoll gestalten.",
   ),
   card(
     "card-pm-q41",
-    "Weitere",
-    "Kann ein Unternehmen mehrere PM-Tools gleichzeitig sinnvoll nutzen?",
-    "Ja – z. B. Jira für Tasks, Miro für Workshops, GitHub für Code-nah. Wichtig: klare Zuständigkeit, keine doppelte Ticket-Pflege.",
+    "Weitere · Organisation, Kauf, Druck",
+    "Lizenz wird plötzlich teurer. Was ist die Exit-Strategie?",
+    "Das sollte man am besten schon vor der Einführung des Tools berücksichtigen. Ich würde vorher prüfen, ob ein vollständiger Export der Daten möglich ist und ob sich diese Daten auch in ein anderes System übertragen lassen. Außerdem sollte man die eigenen Workflows dokumentieren und möglichst wenige zusätzliche Plugins verwenden. Wenn man alle Prozesse stark an einen bestimmten Anbieter anpasst, wird ein späterer Wechsel schwierig und teuer. Deshalb sollte man sich schon bei der Auswahl überlegen, wie man im Notfall wieder aus dem System herauskommt.",
   ),
   card(
     "card-pm-q42",
-    "Weitere",
-    "Gruppen A–E überschneiden sich. Nach welchem Kriterium würdest du ein Tool einer Gruppe zuordnen, wenn es in zwei passt?",
-    "Nach dem Hauptnutzen für die Zielgruppe – z. B. GitHub Projects eher „beim Code“ (C), auch wenn es ein Board hat; Jira Align eher „viele Teams“ (E).",
+    "Weitere · Organisation, Kauf, Druck",
+    "Externe Freelancer sollen mitarbeiten – was mit Rechten und Sichtbarkeit?",
+    "In diesem Fall würde ich für externe Freelancer eigene Benutzerkonten einrichten und ihnen nur die Rechte geben, die sie für ihre Arbeit wirklich benötigen. Sie sollten beispielsweise nur Zugriff auf die Projekte und Informationen haben, an denen sie beteiligt sind. Admin-Rechte würde ich grundsätzlich nicht vergeben, nur weil es gerade einfacher ist. Gerade in der Industrie können Kommentare, Dokumente oder technische Informationen sensibel sein. Deshalb muss man genau kontrollieren, wer welche Informationen sehen und bearbeiten darf.",
   ),
+
+  // —— KI und Alltag ——
   card(
     "card-pm-q43",
-    "Weitere",
-    "Cycle Time vs. Throughput: Was würdest du einem kleinen Team zuerst zeigen?",
-    "Oft Cycle Time – „wie lange braucht eine Aufgabe?“ Das zeigt Blocker. Throughput später, wenn man Durchsatz vergleichen will.",
+    "Weitere · KI und Alltag",
+    "Die KI schreibt User Stories – aber sie sind falsch oder zu vage. Wie gehst du damit um?",
+    "Ich würde die von der KI erstellte User Story zunächst nur als Entwurf betrachten und nicht direkt übernehmen. Der Product Owner oder das Team muss den Inhalt prüfen und die Akzeptanzkriterien konkretisieren. Besonders wichtig ist, dass die Anforderungen verständlich und umsetzbar sind. Wenn man ungenaue KI-Texte ungeprüft ins Backlog übernimmt, entstehen später Probleme bei der Entwicklung und beim Testen. Meine Grundregel wäre deshalb: Die KI darf Vorschläge machen, aber die endgültige Entscheidung und Freigabe liegt immer beim Menschen.",
   ),
   card(
     "card-pm-q44",
-    "Weitere",
-    "State of Agile: 84 % KI, aber nur 49 % Regeln – was sollte ein Team als Erstes festlegen, bevor es KI im Tool nutzt?",
-    "Was KI darf (welche Daten), wer prüft, und dass Menschen Priorität und Schätzung final entscheiden. Nutzung ohne Guardrails ist das Risiko.",
+    "Weitere · KI und Alltag",
+    "KI fasst Ticket-Diskussionen zusammen – darf man dem Summary vertrauen?",
+    "Ich würde das Summary durchaus nutzen, aber nicht als einzige Informationsquelle. Gerade bei längeren Diskussionen kann eine KI helfen, die wichtigsten Punkte schnell zu verstehen und Zeit zu sparen. Allerdings besteht immer die Gefahr, dass wichtige Details oder unterschiedliche Meinungen verloren gehen. Deshalb sollten wichtige Entscheidungen direkt im Ticket dokumentiert werden. So kann jeder später nachvollziehen, was tatsächlich beschlossen wurde, ohne sich ausschließlich auf die KI-Zusammenfassung verlassen zu müssen.",
   ),
+
+  // —— Studienprojekt / kleine Teams ——
   card(
     "card-pm-q45",
-    "Weitere",
-    "Wenn die Kapazitätsanzeige im Tool „grün“ ist, aber das Team unsicher ist: Wem glaubst du – Zahl oder Bauchgefühl des Teams?",
-    "Dem Team. Die Zahl kennt Risiken, On-Duty, Unklarheiten nicht. Lieber weniger einplanen; wird es schneller, zieht man nach.",
+    "Weitere · Studienprojekt / kleine Teams",
+    "Für ein Hochschulprojekt: Wann lohnt sich Jira wirklich nicht?",
+    "Für ein kleines Hochschulprojekt mit vielleicht drei bis sechs Personen würde ich Jira nicht unbedingt empfehlen. Wenn das Projekt nur ein Semester dauert, die Aufgaben relativ überschaubar sind und man keine umfangreichen Reports benötigt, reichen GitHub Projects oder Trello meistens völlig aus. Jira bietet zwar viele Funktionen, aber man muss auch Zeit für die Einrichtung und Pflege investieren. Das lohnt sich meiner Meinung nach erst dann, wenn man wirklich komplexere Workflows, unterschiedliche Benutzerrechte oder detaillierte Auswertungen benötigt. Für kleine Teams ist eine einfache Lösung oft praktischer.",
   ),
   card(
     "card-pm-q46",
-    "Weitere",
-    "Für Entwickler: Welcher Vorteil zählt am meisten – Board, Code-Anbindung oder Diagramme?",
-    "Für mich oft Code-Anbindung (weniger Wechsel, Status am Pull Request). Board ist Basis; Diagramme eher für Planung/Stakeholder.",
-  ),
-  card(
-    "card-pm-q47",
-    "Weitere",
-    "Wer sollte das Tool auswählen – Entwickler, Scrum Master, oder IT/Management?",
-    "Gemeinsam: Team sagt Alltagstauglichkeit, SM/PO den Prozess, IT/Management Hosting, Lizenz, Compliance. Ohne Team-Stimme wird es Tool-Diktat.",
-  ),
-  card(
-    "card-pm-q48",
-    "Weitere",
-    "Wann lohnt sich ein Tool-Wechsel mitten im Projekt – und wann eher nicht?",
-    "Lohnt, wenn Blocker groß sind (Compliance, kein Export, Tool unbenutzbar). Eher nicht mitten in kritischer Lieferung nur wegen „schönerer Features“ – Umzug kostet Fokus.",
+    "Weitere · Studienprojekt / kleine Teams",
+    "Gratis-Version: Kann man damit „für immer“ arbeiten?",
+    "Ja, grundsätzlich kann man mit einer kostenlosen Version auch langfristig arbeiten, besonders wenn es sich um ein kleines Team handelt. Für viele Hochschulprojekte oder kleinere Unternehmen reichen die kostenlosen Funktionen vollkommen aus. Allerdings sollte man sich vorher informieren, welche Einschränkungen es gibt. Das können zum Beispiel die maximale Anzahl an Benutzern, der verfügbare Speicherplatz, Automatisierungen oder zusätzliche Apps sein. Wichtig ist, dass man diese Grenzen kennt, bevor das Projekt größer wird oder man mitten in einer wichtigen Entwicklungsphase plötzlich auf eine kostenpflichtige Version wechseln muss.",
   ),
 ];
 
@@ -389,37 +430,64 @@ export const pmSoftwareAgileSections = [
     cardIds: ["card-pm-q22", "card-pm-q23"],
   },
   {
-    id: "section-pm-dozent",
-    title: "3. Form / Dozent",
-    cardIds: ["card-pm-q24", "card-pm-q25", "card-pm-q26"],
+    id: "section-pm-verstaendnis",
+    title: "3. Weitere · Verständnis sichern",
+    cardIds: [
+      "card-pm-u1",
+      "card-pm-u2",
+      "card-pm-u3",
+      "card-pm-u4",
+      "card-pm-u5",
+    ],
   },
   {
-    id: "section-pm-weitere",
-    title: "4. Weitere",
+    id: "section-pm-praxis-szenarien",
+    title: "3. Weitere · Praxis-Szenarien",
     cardIds: [
+      "card-pm-q24",
+      "card-pm-q25",
+      "card-pm-q26",
       "card-pm-q27",
       "card-pm-q28",
       "card-pm-q29",
       "card-pm-q30",
+    ],
+  },
+  {
+    id: "section-pm-grenzen",
+    title: "3. Weitere · Eine Stufe tiefer / Grenzen",
+    cardIds: [
       "card-pm-q31",
       "card-pm-q32",
       "card-pm-q33",
       "card-pm-q34",
       "card-pm-q35",
-      "card-pm-q36",
-      "card-pm-q37",
-      "card-pm-q38",
+    ],
+  },
+  {
+    id: "section-pm-quelle",
+    title: "3. Weitere · Quelle, Zahlen, Folien",
+    cardIds: ["card-pm-q36", "card-pm-q37", "card-pm-q38"],
+  },
+  {
+    id: "section-pm-organisation",
+    title: "3. Weitere · Organisation, Kauf, Druck",
+    cardIds: [
       "card-pm-q39",
       "card-pm-q40",
       "card-pm-q41",
       "card-pm-q42",
-      "card-pm-q43",
-      "card-pm-q44",
-      "card-pm-q45",
-      "card-pm-q46",
-      "card-pm-q47",
-      "card-pm-q48",
     ],
+  },
+  {
+    id: "section-pm-ki-alltag",
+    title: "3. Weitere · KI und Alltag",
+    cardIds: ["card-pm-q43", "card-pm-q44"],
+  },
+  {
+    id: "section-pm-studienprojekt",
+    title: "3. Weitere · Studienprojekt / kleine Teams",
+    cardIds: ["card-pm-q45", "card-pm-q46"],
   },
 ];
 
