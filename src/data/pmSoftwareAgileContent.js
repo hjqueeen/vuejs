@@ -93,19 +93,20 @@ export const pmSoftwareAgileCards = [
     "card-pm-q9",
     "Priorität hoch · Eine Stufe tiefer",
     "WIP-Limits stehen auf dem Board – aber was passiert, wenn das Management trotzdem mehr Tickets in „In Progress“ schiebt?",
-    "Dann ist das Limit nur Dekoration. Folge: mehr parallele Arbeit, längere Cycle Time, schlechtere Qualität. Man muss das Limit als Regel verteidigen – oder sichtbar machen, was blockiert ist, statt neues anzufangen.",
+    "Dann ist das Limit eigentlich nur noch Dekoration. Das Team arbeitet dann an zu vielen Aufgaben gleichzeitig. Dadurch dauert alles länger und auch die Qualität kann darunter leiden. Deshalb muss man das Limit als feste Regel einhalten. Wenn etwas blockiert ist, sollte man das offen zeigen, statt direkt eine neue Aufgabe anzufangen.",
   ),
   card(
     "card-pm-q10",
     "Priorität hoch · Eine Stufe tiefer",
     "Velocity soll keine Note sein. Wie erklärst du das einem Stakeholder, der genau diese Zahl als KPI will?",
-    "Velocity zeigt, wie viel das Team plant – nicht wie „fleißig“ jemand ist. Als Note steigen die Schätzungen künstlich. Besser: Velocity intern zur Planung; nach außen Lieferung / Nutzen, nicht die Punktzahl.",
+    "Velocity zeigt uns, wie viel Arbeit das Team in einem Sprint schafft. Aber sie sagt nicht, wie fleißig jemand ist. Wenn man Velocity als Bewertung benutzt, besteht die Gefahr, dass Teams ihre Schätzungen künstlich erhöhen. Deshalb sollte man Velocity nur intern für die Planung nutzen. Nach außen sollte man lieber zeigen, was tatsächlich geliefert wurde und welchen Nutzen es gebracht hat.",
   ),
   card(
     "card-pm-q11",
     "Priorität hoch · Eine Stufe tiefer",
     "„Zwei Sprints mit echten Aufgaben testen“ – was genau prüft man in dem Test, und wann bricht man ab?",
-    "Prüfen: eigener Workflow, Rechte, Integrationen, Reports, ob das Team das Board wirklich pflegt. Abbruch, wenn Grundbedürfnisse fehlen (z. B. kein Export, keine Code-Anbindung, zu komplex) oder der Pflegeaufwand den Nutzen frisst.",
+    "In den zwei Sprints würde ich prüfen, ob das Tool wirklich zum Team passt. Zum Beispiel: Funktioniert unser Workflow? Sind die Rechte richtig eingestellt? Funktionieren die Integrationen und Reports? Und kann das Team das Board einfach pflegen?\n\n" +
+      "Abbrechen würde ich den Test, wenn wichtige Funktionen fehlen oder das Tool zu kompliziert ist. Wenn der Aufwand für die Pflege größer ist als der Nutzen, lohnt es sich einfach nicht.",
   ),
 
   // —— Szenario ——
@@ -113,19 +114,19 @@ export const pmSoftwareAgileCards = [
     "card-pm-q12",
     "Priorität hoch · Szenario",
     "Das Team will kein neues Tool. Wie gehst du vor, ohne es zu zwingen?",
-    "Wenige Einstellungen, Team mitentscheiden lassen, Schulung einplanen. Erst den Schmerz klären (Warum wechseln?), dann klein starten – nicht „alles auf einmal Jira“.",
+    "Ich würde das Team auf keinen Fall zwingen. Zuerst würde ich fragen, warum wir überhaupt ein neues Tool brauchen und welche Probleme es aktuell gibt. Dann würde ich das Team bei der Auswahl und Einrichtung mitentscheiden lassen. Am Anfang würde ich nur die wichtigsten Funktionen nutzen und das Team Schritt für Schritt einarbeiten. Also lieber klein anfangen, statt direkt alles umzustellen.",
   ),
   card(
     "card-pm-q13",
     "Priorität hoch · Szenario",
     "Alle nutzen schon Jira, aber es ist chaotisch (zu viele Status, Pflichtfelder). Wechseln oder aufräumen?",
-    "Meist erst aufräumen: Status reduzieren, Pflichtfelder streichen, Workflow vereinfachen. Wechsel nur, wenn das Tool grundsätzlich nicht passt (z. B. Daten/Hosting) – Umzug ist teuer.",
+    "Ich würde Jira nicht sofort ersetzen, sondern erst einmal aufräumen. Zum Beispiel würde ich unnötige Status und Pflichtfelder entfernen und den Workflow einfacher machen. Ein Wechsel lohnt sich nur, wenn Jira grundsätzlich nicht zu den Anforderungen passt, zum Beispiel beim Thema Hosting oder Datenschutz. Denn ein kompletter Umzug kostet viel Zeit und Geld.",
   ),
   card(
     "card-pm-q14",
     "Priorität hoch · Szenario",
     "Das Board wird nicht gepflegt – die Diagramme sind falsch. Tool abschalten, Regeln erzwingen, oder Metriken weglassen?",
-    "Zuerst Metriken weglassen oder nicht als Entscheidung nutzen – falsche Diagramme sind schlimmer als keine. Dann Pflege-Regel im Team (Done-Definition). Tool abschalten löst das Verhalten nicht.",
+    "Ich würde die Metriken erst einmal nicht mehr für wichtige Entscheidungen verwenden. Denn falsche Zahlen sind manchmal sogar schlimmer als gar keine Zahlen. Danach würde ich gemeinsam mit dem Team klare Regeln für die Board-Pflege festlegen. Zum Beispiel, wann ein Ticket wirklich als „Done“ gilt. Das Tool komplett abzuschalten bringt meiner Meinung nach wenig, weil dadurch das eigentliche Problem nicht gelöst wird.",
   ),
 
   // —— Metriken ——
@@ -133,13 +134,13 @@ export const pmSoftwareAgileCards = [
     "card-pm-q15",
     "Priorität hoch · Metriken",
     "Warum kann eine hohe Velocity ein schlechtes Zeichen sein?",
-    "Weil man sie hochtreiben kann: höher schätzen, Tickets früh auf Done, Nacharbeit verstecken. Die Zahl steigt – die echte Leistung nicht. Als Note nutzlos.",
+    "Eine hohe Velocity ist nicht automatisch etwas Gutes. Das Team kann zum Beispiel anfangen, Aufgaben höher zu schätzen oder Tickets zu früh auf „Done“ zu setzen. Dadurch steigt zwar die Zahl, aber die tatsächliche Leistung verbessert sich nicht. Deshalb sollte man Velocity nicht als Leistungsbewertung verwenden.",
   ),
   card(
     "card-pm-q16",
     "Priorität hoch · Metriken",
     "Wann haben Burndown und Velocity wirklich Sinn – und wann eher nicht?",
-    "Sinn: Aufgaben gleichmäßig geschnitten, Board ehrlich gepflegt, Zahlen zur Team-Planung. Nicht: als Chef-Note, bei chaotischem Board oder sehr ungleichen Tickets.",
+    "Burndown und Velocity sind sinnvoll, wenn die Aufgaben ungefähr gleichmäßig aufgeteilt sind und das Board regelmäßig und ehrlich gepflegt wird. Dann helfen sie dem Team bei der Planung. Wenn das Board aber chaotisch ist oder die Aufgaben sehr unterschiedlich groß sind, sind die Zahlen nicht besonders aussagekräftig. Als Bewertung für Mitarbeiter oder Teams sollte man sie sowieso nicht verwenden.",
   ),
 
   // —— Priorität mittel · Vergleich / Jira-Dominanz ——
@@ -147,20 +148,21 @@ export const pmSoftwareAgileCards = [
     "card-pm-q17",
     "Priorität mittel · Vergleich / Jira-Dominanz",
     "Warum gerade diese fünf Tools – und nicht Linear, GitLab oder Asana?",
-    "Typische Fälle: groß/mächtig (Jira, Azure), beim Code (GitHub), eigener Server (OpenProject), einfach (Trello). Linear/GitLab/Asana wären ähnliche Gruppen – fünf reichen für den Vergleich.",
+    "Ich habe diese fünf Tools ausgewählt, weil sie unterschiedliche Anwendungsfälle abdecken. Jira und Azure DevOps sind eher umfangreiche Lösungen. GitHub eignet sich besonders gut für die Arbeit rund um Code. OpenProject ist interessant, wenn man einen eigenen Server nutzen möchte, und Trello ist eher für eine einfache Aufgabenplanung gedacht.\n\n" +
+      "Linear, GitLab oder Asana könnte man natürlich auch vergleichen. Aber ich finde, dass fünf Tools für einen guten Überblick erst einmal ausreichen.",
   ),
   card(
     "card-pm-q18",
     "Priorität mittel · Vergleich / Jira-Dominanz",
     "Jira und Azure DevOps können laut dir fast dasselbe. Gibt es einen Fall, in dem Azure klar besser ist als Jira?",
-    "Ja – wenn das Umfeld schon Microsoft-Stack ist (Azure Repos, Pipelines, Boards an einem Ort). Dann weniger Integration-Chaos als Jira + viele Einzellösungen.",
+    "Ja, auf jeden Fall. Azure DevOps hat einen klaren Vorteil, wenn ein Unternehmen sowieso schon mit Microsoft arbeitet. Wenn man zum Beispiel Azure Repos, Pipelines und Boards zusammen nutzt, hat man alles an einem Ort. Dadurch braucht man weniger zusätzliche Integrationen als bei Jira mit verschiedenen Einzellösungen.",
   ),
   card(
     "card-pm-q19",
     "Priorität mittel · Vergleich / Jira-Dominanz",
     "Warum ist Jira so weit verbreitet – Historie, Marketplace, oder weil Firmen es schon haben?",
-    "Alles drei: seit ~2002, viele Schnittstellen/Apps, und in Konzernen oft schon Standard – deshalb bleibt es die erste Wahl.\n" +
-      "Beispiele für Anbindungen: GitHub/GitLab (Code), Jenkins o. ä. (Build-Pipeline), Slack/Teams (Chat), Confluence (Wiki/Doku) – plus viele Apps im Atlassian Marketplace.",
+    "Ich denke, es liegt an mehreren Gründen. Erstens gibt es Jira schon sehr lange, nämlich seit ungefähr 2002. Zweitens bietet Jira viele Schnittstellen und Erweiterungen. Und drittens nutzen viele große Unternehmen Jira bereits als Standard. Deshalb bleiben viele Unternehmen einfach dabei.\n\n" +
+      "Man kann zum Beispiel GitHub oder GitLab für den Code, Jenkins für die Build-Pipeline, Slack oder Teams für die Kommunikation und Confluence für die Dokumentation anbinden. Dazu kommen noch viele weitere Erweiterungen über den Atlassian Marketplace.",
   ),
 
   // —— KI / Manifest ——
@@ -168,13 +170,13 @@ export const pmSoftwareAgileCards = [
     "card-pm-q20",
     "Priorität mittel · KI / Manifest",
     "Steht das Agile Manifest nicht gegen Tools – wann schadet ein Tool der Agilität?",
-    "Nein – da steht „mehr als“, nicht „ohne“. Es schadet, wenn das Tool die Arbeit diktiert (Defaults = Prozess), zu komplex wird oder das Gespräch ersetzt.",
+    "Nein, das Agile Manifest ist nicht grundsätzlich gegen Tools. Es sagt ja, dass Menschen und Zusammenarbeit wichtiger sind als Prozesse und Werkzeuge. Ein Tool kann also durchaus hilfreich sein. Problematisch wird es erst, wenn das Tool dem Team vorschreibt, wie es arbeiten soll, zu kompliziert wird oder persönliche Gespräche ersetzt.",
   ),
   card(
     "card-pm-q21",
     "Priorität mittel · KI / Manifest",
     "Wenn KI Stories schreibt und Fertigstellung schätzt: Wer trägt die Verantwortung, wenn die Schätzung falsch ist?",
-    "Immer das Team / die Menschen, die die Zahl übernehmen. KI ist Vorschlag – Priorität und Commitment bleiben bei uns. Deshalb braucht man Regeln, bevor man KI stark nutzt.",
+    "Die Verantwortung liegt immer beim Team beziehungsweise bei den Menschen, die die Schätzung übernehmen. KI kann einen Vorschlag machen, aber die Entscheidung müssen wir selbst treffen. Auch die Prioritäten und die Verantwortung für die Planung bleiben beim Team. Deshalb sollte man klare Regeln festlegen, bevor man KI stärker im Arbeitsalltag einsetzt.",
   ),
 
   // —— Zusage vs. Prognose ——
