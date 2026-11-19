@@ -37,24 +37,24 @@ export const pmSoftwareAgileCards = [
     "card-pm-q2",
     "Priorität hoch · Einführung, Wechsel, Alltag",
     "Wie kann man sicherstellen, dass die Einführung von einem neuen Tool erfolgreich ist?",
-    "Zuerst muss man klar definieren, wie das Team arbeiten will und was das Team sich wünscht.\n" +
-      "Danach sollte das Team mit echten Aufgaben testen – zum Beispiel zwei Sprints.\n" +
-      "Und wenn möglich, sollen alle Daten erfolgreich und vollständig umgezogen werden, und alle Mitarbeitenden sollen sich daran gewöhnen.",
+    "Man sollte den Mitarbeitern das neue Tool gut erklären und zeigen, wie es funktioniert. Außerdem sollte es eine kurze Schulung geben. Wichtig ist auch, Feedback zu sammeln und bei Problemen zu helfen.",
   ),
   card(
     "card-pm-q3",
     "Priorität hoch · Einführung, Wechsel, Alltag",
     "Wie viel Zeit sollte man für die Einführung oder für die Nutzung von dem Tool im Alltag einplanen?",
-    "Einführung: grob 1–2 Sprints zum echten Test (nicht nur Demo), plus Zeit für Schulung und Daten-Umzug – je nach Teamgröße mehr.\n\n" +
-      "Im Alltag gehört eine kurze Pflege einfach dazu: Ticket aktualisieren, Status setzen, schauen ob Done passt.\n" +
-      "Das sind oft nur ein paar Minuten pro Aufgabe – nicht extra eine Stunde.\n\n" +
-      "Wenn man länger am Tool hängt als beim echten Abstimmen, dann ist das Tool zu kompliziert.",
+    "Ich würde sagen, man sollte das Tool erst mal 1–2 Sprints richtig testen. Dazu braucht man auch etwas Zeit für die Schulung und die Übertragung der Daten. Je nach Teamgröße kann es etwas länger dauern.\n\n" +
+      "Im Alltag sollte man das Tool regelmäßig pflegen, zum Beispiel Tickets aktualisieren, den Status ändern und prüfen, ob alles richtig auf „Done“ gesetzt ist.\n\n" +
+      "Das dauert meistens nur ein paar Minuten pro Aufgabe. Dafür muss man keine extra Stunde einplanen.\n\n" +
+      "Wenn man mehr Zeit mit dem Tool verbringt als mit der eigentlichen Abstimmung, dann ist das Tool wahrscheinlich zu kompliziert.",
   ),
   card(
     "card-pm-q4",
     "Priorität hoch · Einführung, Wechsel, Alltag",
     "Gibt es Situationen, wo man kein Tool nutzen sollte?",
-    "Ja – sehr kleines Team am einem Ort, wenige Aufgaben, kurze Zeit: Wandboard oder einfache Liste kann reichen. Auch wenn niemand pflegen will/kann: dann lieber kein Dashboard als falsche Zahlen. „Mehr als Werkzeuge“ heißt: erst Menschen und Prozess, dann Tool – nicht Tool um jeden Preis.",
+    "Ja, auf jeden Fall. Wenn ein Team sehr klein ist, alle am gleichen Ort arbeiten und es nur wenige Aufgaben gibt, braucht man nicht unbedingt ein Tool. Eine einfache Liste oder ein Whiteboard reicht oft aus.\n\n" +
+      "Wenn niemand Zeit hat, das Tool regelmäßig zu pflegen, sollte man lieber darauf verzichten. Sonst sind die Daten nicht aktuell.\n\n" +
+      "Ich finde, zuerst sind die Menschen und der Arbeitsprozess wichtig. Das Tool sollte nur unterstützen und nicht um jeden Preis eingesetzt werden.",
   ),
   card(
     "card-pm-q5",
