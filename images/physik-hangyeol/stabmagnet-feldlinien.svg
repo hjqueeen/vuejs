@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280" width="480" height="280">
+  <rect width="480" height="280" fill="#f7f4ef"/>
+  <text x="240" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#1a1a1a">Stabmagnet · Feldlinien</text>
+  <!-- field lines -->
+  <g fill="none" stroke="#2b6cb0" stroke-width="1.6">
+    <path d="M160 110 C 80 60, 80 220, 160 170" marker-end="url(#arr)"/>
+    <path d="M160 100 C 50 40, 50 240, 160 180"/>
+    <path d="M160 120 C 110 90, 110 190, 160 160"/>
+    <path d="M320 110 C 400 60, 400 220, 320 170"/>
+    <path d="M320 100 C 430 40, 430 240, 320 180"/>
+    <path d="M320 120 C 370 90, 370 190, 320 160"/>
+    <path d="M160 90 C 240 40, 240 40, 320 90"/>
+    <path d="M160 190 C 240 240, 240 240, 320 190"/>
+  </g>
+  <!-- arrows N to S on outer lines -->
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#2b6cb0"/>
+    </marker>
+  </defs>
+  <g stroke="#2b6cb0" fill="none" stroke-width="1.6" marker-end="url(#arr)">
+    <path d="M170 95 C 240 55, 240 55, 310 95"/>
+    <path d="M170 185 C 240 225, 240 225, 310 185"/>
+    <path d="M155 125 C 100 100, 100 180, 155 155"/>
+    <path d="M325 125 C 380 100, 380 180, 325 155"/>
+  </g>
+  <!-- bar -->
+  <rect x="160" y="115" width="80" height="50" fill="#c53030" stroke="#1a1a1a" stroke-width="1.5"/>
+  <rect x="240" y="115" width="80" height="50" fill="#2b6cb0" stroke="#1a1a1a" stroke-width="1.5"/>
+  <text x="200" y="147" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="#fff">N</text>
+  <text x="280" y="147" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="#fff">S</text>
+  <text x="240" y="260" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#444">Feldlinien: N ’ S (kreuzen sich nie)</text>
+</svg>

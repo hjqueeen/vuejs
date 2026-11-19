@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 580" width="700" height="580">
+  <rect width="700" height="580" fill="#f7f4ef"/>
+  <text x="350" y="30" text-anchor="middle" font-family="Georgia, serif" font-size="17" fill="#1a1a1a">BSL Aufgabe 1 - Zwei Stabmagneten mit Feldlinien</text>
+
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#2b6cb0"/>
+    </marker>
+  </defs>
+
+  <!-- ===== a) Abstossung ===== -->
+  <text x="350" y="64" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#c53030">a) Abstossung (gleichartige Pole)</text>
+  <text x="350" y="84" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12.5" fill="#555">[N | S]&#x2003;&#x2003;[S | N]&#x2003;&#x2014;&#x2003;S trifft auf S</text>
+
+  <!-- magnets -->
+  <rect x="120" y="165" width="95" height="52" fill="#c53030" stroke="#1a1a1a" stroke-width="1.5"/>
+  <rect x="215" y="165" width="95" height="52" fill="#2b6cb0" stroke="#1a1a1a" stroke-width="1.5"/>
+  <text x="167" y="199" text-anchor="middle" fill="#fff" font-size="22" font-weight="700" font-family="system-ui,sans-serif">N</text>
+  <text x="262" y="199" text-anchor="middle" fill="#fff" font-size="22" font-weight="700" font-family="system-ui,sans-serif">S</text>
+
+  <rect x="390" y="165" width="95" height="52" fill="#2b6cb0" stroke="#1a1a1a" stroke-width="1.5"/>
+  <rect x="485" y="165" width="95" height="52" fill="#c53030" stroke="#1a1a1a" stroke-width="1.5"/>
+  <text x="437" y="199" text-anchor="middle" fill="#fff" font-size="22" font-weight="700" font-family="system-ui,sans-serif">S</text>
+  <text x="532" y="199" text-anchor="middle" fill="#fff" font-size="22" font-weight="700" font-family="system-ui,sans-serif">N</text>
+
+  <g fill="none" stroke="#2b6cb0" stroke-width="1.75" marker-end="url(#arr)">
+    <!-- left magnet loops: start at N-face (x=120), end at S-face (x=310) -->
+    <path d="M120 175 C 55 105, 55 140, 215 165"/>
+    <path d="M120 185 C 25 90, 25 170, 215 180"/>
+    <path d="M120 205 C 55 275, 55 245, 215 217"/>
+    <path d="M120 200 C 25 300, 25 250, 215 205"/>
+
+    <!-- right magnet loops: start at N-face (x=580), end at S-face (x=390) -->
+    <path d="M580 175 C 645 105, 645 140, 485 165"/>
+    <path d="M580 185 C 675 90, 675 170, 485 180"/>
+    <path d="M580 205 C 645 275, 645 245, 485 217"/>
+    <path d="M580 200 C 675 300, 675 250, 485 205"/>
+
+    <!-- gap S-S: )( shape - arrows point INTO each S (not S->S) -->
+    <!-- into left S from gap (rightward-origin paths ending at left S) -->
+    <path d="M350 145 C 330 130, 300 140, 310 165"/>
+    <path d="M350 191 C 340 191, 325 191, 310 191"/>
+    <path d="M350 235 C 330 250, 300 240, 310 217"/>
+    <!-- into right S from gap -->
+    <path d="M350 145 C 370 130, 400 140, 390 165"/>
+    <path d="M350 191 C 360 191, 375 191, 390 191"/>
+    <path d="M350 235 C 370 250, 400 240, 390 217"/>
+  </g>
+
+  <text x="350" y="270" text-anchor="middle" font-size="12.5" fill="#c53030" font-family="system-ui,sans-serif">Im Spalt weichen die Linien aus - Pfeile zeigen jeweils in den S-Pol (N-&gt;S)</text>
+
+  <!-- ===== b) Anziehung ===== -->
+  <text x="350" y="315" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#276749">b) Anziehung (verschiedenartige Pole)</text>
+  <text x="350" y="335" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12.5" fill="#555">[N | S]&#x2003;&#x2003;[N | S]&#x2003;&#x2014;&#x2003;S trifft auf N</text>
+
+  <rect x="120" y="410" width="95" height="52" fill="#c53030" stroke="#1a1a1a" stroke-width="1.5"/>
+  <rect x="215" y="410" width="95" height="52" fill="#2b6cb0" stroke="#1a1a1a" stroke-width="1.5"/>
+  <text x="167" y="444" text-anchor="middle" fill="#fff" font-size="22" font-weight="700" font-family="system-ui,sans-serif">N</text>
+  <text x="262" y="444" text-anchor="middle" fill="#fff" font-size="22" font-weight="700" font-family="system-ui,sans-serif">S</text>
+
+  <rect x="390" y="410" width="95" height="52" fill="#c53030" stroke="#1a1a1a" stroke-width="1.5"/>
+  <rect x="485" y="410" width="95" height="52" fill="#2b6cb0" stroke="#1a1a1a" stroke-width="1.5"/>
+  <text x="437" y="444" text-anchor="middle" fill="#fff" font-size="22" font-weight="700" font-family="system-ui,sans-serif">N</text>
+  <text x="532" y="444" text-anchor="middle" fill="#fff" font-size="22" font-weight="700" font-family="system-ui,sans-serif">S</text>
+
+  <g fill="none" stroke="#2b6cb0" stroke-width="1.75" marker-end="url(#arr)">
+    <!-- gap: from right N (x=390) into left S (x=310) -->
+    <path d="M390 420 L310 420"/>
+    <path d="M390 436 L310 436"/>
+    <path d="M390 452 L310 452"/>
+    <path d="M390 415 C 365 390, 335 390, 310 415"/>
+    <path d="M390 457 C 365 482, 335 482, 310 457"/>
+
+    <!-- return loops: left N (120) around to right S (580) -->
+    <path d="M120 420 C 60 345, 600 345, 580 420"/>
+    <path d="M120 415 C 30 315, 640 315, 580 415"/>
+    <path d="M120 452 C 60 525, 600 525, 580 452"/>
+    <path d="M120 457 C 30 555, 640 555, 580 457"/>
+  </g>
+
+  <text x="350" y="515" text-anchor="middle" font-size="12.5" fill="#276749" font-family="system-ui,sans-serif">Im Spalt laufen die Feldlinien von N nach S</text>
+
+  <rect x="100" y="532" width="500" height="34" rx="6" fill="#fff" stroke="#ddd"/>
+  <text x="350" y="554" text-anchor="middle" font-size="13" font-family="system-ui,sans-serif" fill="#333">Merkregel: ausserhalb des Magneten immer N -&gt; S / Linien kreuzen sich nie</text>
+</svg>

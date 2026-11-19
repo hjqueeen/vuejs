@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 260" width="520" height="260">
+  <rect width="520" height="260" fill="#f7f4ef"/>
+  <text x="260" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#1a1a1a">Stromrichtung vs. Elektronenfluss</text>
+  <!-- conductor -->
+  <rect x="80" y="90" width="360" height="70" fill="#e2e8f0" stroke="#1a1a1a" stroke-width="1.5" rx="8"/>
+  <circle cx="100" cy="125" r="18" fill="#2b6cb0" stroke="#1a1a1a"/><text x="100" y="131" text-anchor="middle" fill="#fff" font-size="20" font-weight="700"></text>
+  <circle cx="420" cy="125" r="18" fill="#c53030" stroke="#1a1a1a"/><text x="420" y="131" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">+</text>
+  <!-- technical current -->
+  <path d="M140 105 L380 105" stroke="#744210" stroke-width="2.5" marker-end="url(#br)"/>
+  <text x="260" y="88" text-anchor="middle" font-size="12" fill="#744210" font-family="system-ui,sans-serif">technische Stromrichtung (+ ’ )</text>
+  <!-- electrons -->
+  <g>
+    <circle cx="360" cy="140" r="8" fill="#2b6cb0"/><text x="360" y="143" text-anchor="middle" fill="#fff" font-size="8">e{</text>
+    <circle cx="320" cy="140" r="8" fill="#2b6cb0"/><text x="320" y="143" text-anchor="middle" fill="#fff" font-size="8">e{</text>
+    <circle cx="280" cy="140" r="8" fill="#2b6cb0"/><text x="280" y="143" text-anchor="middle" fill="#fff" font-size="8">e{</text>
+    <circle cx="240" cy="140" r="8" fill="#2b6cb0"/><text x="240" y="143" text-anchor="middle" fill="#fff" font-size="8">e{</text>
+  </g>
+  <path d="M370 155 L200 155" stroke="#2b6cb0" stroke-width="2" marker-end="url(#bl)"/>
+  <text x="260" y="185" text-anchor="middle" font-size="12" fill="#2b6cb0" font-family="system-ui,sans-serif">Elektronenfluss ( ’ +)</text>
+  <text x="260" y="230" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#444">Ampère: technische Richtung vom + zum </text>
+  <defs>
+    <marker id="br" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#744210"/>
+    </marker>
+    <marker id="bl" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#2b6cb0"/>
+    </marker>
+  </defs>
+</svg>
