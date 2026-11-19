@@ -27,12 +27,11 @@ export const pmSoftwareAgileCards = [
     "card-pm-q1-1",
     "Priorität hoch · Einführung, Wechsel, Alltag",
     "Wie kann man effizient ein Tool wechseln?",
-    "Es ist schwer, von einem Tool zu einem anderen zu wechseln.\n" +
-      "Wir haben es so gemacht: Alte Tasks bleiben im alten Tool.\n" +
-      "Neue Aufgaben haben wir im neuen Tool angelegt.\n\n" +
-      "Für eine gewisse Zeit haben wir beide Tools benutzt:\n\n" +
-      "Mit der Zeit, als die alten Aufgaben fertig waren, wurde das alte Tool nach und nach leer.\n" +
-      "So konnten wir Schritt für Schritt zum neuen Tool wechseln – über eine Übergangszeit.",
+    "Zuerst muss man prüfen: Geht der Datenaustausch zwischen den beiden Tools überhaupt?\n\n" +
+      "Beim Export reicht oft CSV nicht. Man sollte schauen: Kommen Bilder, Anhänge, Kommentare, Reviews – also wirklich alles – vollständig raus? Und: Kann das neue Tool das Format auch lesen?\n\n" +
+      "Wenn ja – dann kann man direkt umziehen. Wenn nicht – braucht man einen Zwischenschritt.\n\n" +
+      "Zum Beispiel so: Neue Aufgaben nur noch im neuen Tool anlegen. Alte Tasks bleiben im alten Tool. Eine Zeit lang laufen beide parallel. Wenn die alten Aufgaben fertig sind, wird das alte Tool nach und nach leer. So wechselt man Schritt für Schritt.\n\n" +
+      "Und wichtig: Mit dem Team sprechen und Schulung einplanen. Sonst technisch umgezogen – und niemand nutzt es richtig.",
   ),
   card(
     "card-pm-q2",
