@@ -80,6 +80,12 @@ import {
   orderedChemieKlasse9Flashcards,
   getChemieKlasse9FlashcardById,
 } from "./chemieKlasse9FlashcardsContent.js";
+import {
+  PHYSIK_MAG_ELEK_K8_BOOK_ID,
+  physikMagElekK8Sections,
+  orderedPhysikMagElekK8Cards,
+  getPhysikMagElekK8CardById,
+} from "./physikMagnetismusElektrostatikK8Content.js";
 
 /** @type {Record<string, { cards: object[], getCardById: (id: string) => object|null, labels: { front: string, back: string }, hint: string, showKoOnBack?: boolean }>} */
 export const flashcardBooks = {
@@ -238,6 +244,14 @@ export const flashcardBooks = {
     getCardById: getChemieKlasse9FlashcardById,
     labels: { front: "Begriff / Frage", back: "Erklärung" },
     hint: "질문을 보고 답을 떠올린 뒤, 카드를 뒤집어 독일어·한국어 설명을 확인하세요. 섹션별로 접어 공부할 수 있습니다.",
+    showKoOnBack: true,
+  },
+  [PHYSIK_MAG_ELEK_K8_BOOK_ID]: {
+    cards: orderedPhysikMagElekK8Cards,
+    sections: physikMagElekK8Sections,
+    getCardById: getPhysikMagElekK8CardById,
+    labels: { front: "Begriff / Frage", back: "Erklärung" },
+    hint: "질문을 보고 답을 떠올린 뒤, 카드를 뒤집어 독일어·한국어 설명을 확인하세요. LEK 1 Magnetismus / Elektrostatik — 섹션별로 접어 공부할 수 있습니다.",
     showKoOnBack: true,
   },
 };

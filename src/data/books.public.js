@@ -68,6 +68,10 @@ import {
   MATH_QUIZ_QUESTION_IDS,
   MATH_WORKSHEET_PAGE_IDS,
 } from "./mathQuizContent.js";
+import {
+  PHYSIK_MAG_ELEK_K8_BOOK_ID,
+  PHYSIK_MAG_ELEK_K8_CARD_IDS,
+} from "./physikMagnetismusElektrostatikK8Content.js";
 export { TONGIL_QUIZ_BOOK_ID } from "./quizWorkbookRegistry.js";
 export const TONGIL_QUIZ_QUESTION_IDS = tongilQuizQuestions.map((q) => q.id);
 
@@ -330,5 +334,19 @@ export const publicBooks = [
     grade: 8,
     subjectKey: "mathe",
     subjectLabel: "수학",
+  },
+  {
+    id: PHYSIK_MAG_ELEK_K8_BOOK_ID,
+    templateType: "flashcard",
+    title: "Physik · Magnetismus / Elektrostatik",
+    subtitle: "Karteikarten — Klasse 8 · LEK 1",
+    description:
+      "8학년 물리 LEK 1: 자기·정전기 핵심 23장. 자극·기본자석·자기장·마찰전기·러더퍼드·유도. 앞면 질문, 뒷면 독·한 설명. 섹션별로 접어 암기하세요.",
+    coverColor: "book-cover-c",
+    cardIds: PHYSIK_MAG_ELEK_K8_CARD_IDS,
+    owner: "amin",
+    grade: 8,
+    subjectKey: "physik",
+    subjectLabel: "물리",
   },
 ];

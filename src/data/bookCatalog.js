@@ -9,6 +9,7 @@ import { PHYSIK_K9_NOTES_BOOK_ID } from "./physikKlasse9NotesContent.js";
 import { PHYSIK_PROBE_FRAGEN_BOOK_ID } from "./physikProbeFragenContent.js";
 import { CHEMIE_K9_NOTES_BOOK_ID } from "./chemieKlasse9NotesContent.js";
 import { CHEMIE_K9_FLASHCARDS_BOOK_ID } from "./chemieKlasse9FlashcardsContent.js";
+import { PHYSIK_MAG_ELEK_K8_BOOK_ID } from "./physikMagnetismusElektrostatikK8Content.js";
 
 /** @typedef {'hyejin'|'hangyeol'|'amin'} BookOwnerId */
 
@@ -93,6 +94,12 @@ export const BOOK_CATALOG_META = {
     grade: 9,
     subjectKey: "chemie",
     subjectLabel: "화학",
+  },
+  [PHYSIK_MAG_ELEK_K8_BOOK_ID]: {
+    owner: BOOK_OWNERS.AMIN,
+    grade: 8,
+    subjectKey: "physik",
+    subjectLabel: "물리",
   },
 };
 
